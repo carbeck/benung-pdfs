@@ -1,0 +1,219 @@
+\documentclass[12pt,paper=letter]{scrartcl}
+
+% Language be German, with quotation marks accordingly
+\usepackage[ngerman,english]{babel}
+\usepackage{csquotes} % Put quotations in \enquote{}!
+
+% Set all margins to 2.54 cm
+\usepackage[margin=1in]{geometry}
+\widowpenalty10000 % Avoid widows like the plague!
+\clubpenalty10000 % Avoid orphans like the plage, too!
+
+% Make text colors and color names available
+\usepackage[xetex]{xcolor}
+
+% Load font stuff for XeTeX, including Unicode support
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+
+% Set main fonts
+\newfontfamily{\Tagati}[
+    Scale=1.1,
+    BoldFont={* Italic},
+]{Tagati Book G}
+
+\setmainfont[
+    Ligatures=TeX,
+    Numbers=Lowercase,
+]{Junicode}
+
+\setsansfont[
+    Ligatures=TeX,
+    Numbers=Lowercase,
+    Scale=MatchUppercase,
+    BoldFont={Open Sans Condensed Bold},
+]{Open Sans Condensed Light}
+
+% Load BibLaTeX (using Biber), configure citation styles
+% Uses <https://github.com/semprag/biblatex-sp-unified>
+\usepackage[
+    style=biblatex-sp-unified,
+    citestyle=sp-authoryear-comp,
+    maxnames=2,
+    backend=biber,
+    safeinputenc,
+]{biblatex}
+
+% To make \textcite look like "Doe (2014: 213)"
+\renewcommand*{\postnotedelim}{\addcolon\addspace}
+\DeclareFieldFormat{postnote}{#1}
+\DeclareFieldFormat{multipostnote}{#1}
+
+% Enable generating files from this .tex file (for the bibliography) 
+\usepackage{filecontents}
+
+% Date etc.
+\usepackage{datetime}
+\renewcommand{\dateseparator}{/}
+
+% Clickable links in footnotes, TOC, etc.
+\usepackage[
+    xetex,
+    bookmarks=true,
+    colorlinks=false,
+    linktoc=section,
+    hidelinks,
+]{hyperref}
+
+\usepackage{url}
+\urlstyle{rm}
+
+% Ability to include graphics and dealing with footnotes in descriptions
+\usepackage{graphicx}
+\usepackage[font={small,sf},labelfont={small,sf},format=plain]{caption}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\setlength{\columnsep}{2\baselineskip}
+
+% General headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead[L]{} % empty
+\fancyhead[C]{} % empty
+\fancyhead[R]{\thepage}
+
+\fancyfoot[L]{} % empty
+\fancyfoot[C]{} % empty
+\fancyfoot[R]{} % empty
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% First page headers and footers are different
+\fancypagestyle{firstpage}{
+    \fancyhead[L]{\sffamily \footnotesize \textbf{Benung. The Ayeri Language Resource}}
+    \fancyhead[C]{} % empty
+    \fancyhead[R]{\sffamily \footnotesize Carsten Becker · \yyyymmdddate\today}
+    
+    \fancyfoot[L]{} % empty
+    \fancyfoot[C]{} % empty
+    \fancyfoot[R]{\sffamily \footnotesize 
+	\href{http://benung.nfshost.com}{http://benung.nfshost.com} · 
+	\href{https://creativecommons.org/licenses/by-sa/4.0/}{CC~BY-SA~4.0}
+    }
+    
+    \renewcommand{\headrulewidth}{0.5pt}
+    \setlength\footskip{0.5in}
+}
+
+\usepackage{ifthen}
+\ifthenelse{\value{page}=1}{\thispagestyle{firstpage}{\pagestyle{fancy}}}
+
+% Line spacing
+\usepackage{setspace}
+\onehalfspacing
+%\linespread{1.5}
+
+% Rotate big tables
+\usepackage{rotating}
+
+% Line numbering in verse environment
+\usepackage{lineno}
+
+% Formatting of glosses
+\usepackage{gb4e}
+%\def\cgdepthstrut{\vrule height 0pt depth 2ex width 0pt}
+%\def\eachwordone{\cgdepthstrut} %\rm\bfseries}
+%\pretocmd{\glt}{\vspace{0.75ex}}{}{}
+%\AtBeginEnvironment{exe}{\smaller}
+\let\eachwordone=\itshape
+
+% Nicer footnotes
+\usepackage[bottom]{footmisc}
+\deffootnote{0em}{1.5em}{\textsuperscript\thefootnotemark\enskip}
+\renewcommand{\footnoterule}{\rule{0pt}{0pt}{\vspace*{-0pt}}}
+\setlength{\footnotesep}{1.5em}
+
+% Smaller font in block quotes
+\usepackage{relsize,etoolbox}
+\AtBeginEnvironment{quote}{\noindent\smaller}
+\AtBeginEnvironment{quotation}{\smaller}
+
+% Macros
+\newcommand{\fw}[1]{\textit{#1}} % Foreign Word
+\newcommand{\tit}[1]{\textit{#1}} % Title of a work
+\newcommand{\q}[1]{\enquote{#1}} % Context-aware quotation
+\newcommand{\qq}[1]{\enquote*{#1}} % Explicit sublevel quotation
+\newcommand{\tsup}[1]{\textsuperscript{#1}} % Superscript
+\newcommand{\markyellow}[1]{\colorbox{yellow}{#1}} % Yellow highlighter
+
+\newcommand{\mor}[1]{\textsc{\lowercase{#1}}}
+\newenvironment{ayeri}{\Tagati}{\par}
+\newenvironment{mytitle}{\begin{center} \Large \sffamily\bfseries ~\\}{\end{center}}
+
+% blah
+\usepackage{lipsum}
+
+%% META INFORMATION IN PDF FILE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hypersetup{%
+    pdfinfo={%
+	Title={<TITEL>: <SUBTITLE>},
+	Author={Carsten Becker}
+    }
+}
+
+%% BIBLIOGRAPHY DATABASE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{filecontents*}{\jobname.bib}
+@book{blah,
+title	= {A Grammar of {Blah}},
+author = {Alfred E. Neuman and John X. Doe},
+publisher = {Maximegalon University Press},
+location = {Maximegalon},
+date = {1972},
+series = {Reference Grammars of Inexistent Languages},
+number = {4},
+}
+\end{filecontents*}
+
+\addbibresource{\jobname.bib}
+
+%% END OF PREAMBLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%% MAIN PART %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{mytitle}
+    Title of the Thing: An Example for this Template
+\end{mytitle}
+
+\section{Lorem ipsum}
+\lipsum[1]
+
+\begin{exe}
+    \ex \textcite[17]{blah}:
+    \gll Ang kama    -yan           para daga   -as      vala,   baha  -u         ca! \\
+    \mor{AT} be.more \mor{-3PL.M.T} fast turtle \mor{-P} pretty, shout \mor{-IMP} \mor{3PL.M.LOC}! \\
+    \glt \enquote{If they're faster than a pretty turtle, shout at them!}
+\end{exe}
+
+\begin{exe}
+    \ex 
+    \gll Da= baha  -tang,          sa       aka     -ya          para    vaga -Ø       lama       -na. \\
+         so= shout \mor{-3PL.M.A}, \mor{PT} swallow \mor{-3SG.M} quickly pig  \mor{-T} restaurant \mor{-GEN}\\
+    \glt \enquote{So they shouted that the the restaurant’s pig was quickly swallowed.}\footnote{\lipsum[10]}
+\end{exe}
+
+\lipsum[2-5]
+
+%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\nocite{*} % gibt alle Einträge in der Bibliografiedatenbank aus
+\printbibliography
+
+\end{document}
