@@ -125,11 +125,11 @@
 
 % Formatting of glosses
 \usepackage{gb4e}
+\let\eachwordone=\itshape
 %\def\cgdepthstrut{\vrule height 0pt depth 2ex width 0pt}
-%\def\eachwordone{\cgdepthstrut} %\rm\bfseries}
+%\def\eachwordone{\cgdepthstrut\itshape}
 %\pretocmd{\glt}{\vspace{0.75ex}}{}{}
 %\AtBeginEnvironment{exe}{\smaller}
-\let\eachwordone=\itshape
 
 % Nicer footnotes
 \usepackage[bottom]{footmisc}
@@ -151,6 +151,7 @@
 \newcommand{\markyellow}[1]{\colorbox{yellow}{#1}} % Yellow highlighter
 
 \newcommand{\mor}[1]{\textsc{\lowercase{#1}}}
+\newcommand{\ayr}[1]{{\Tagati #1}}
 \newenvironment{ayeri}{\Tagati}{\par}
 \newenvironment{mytitle}{\begin{center} \Large \sffamily\bfseries ~\\}{\end{center}}
 
