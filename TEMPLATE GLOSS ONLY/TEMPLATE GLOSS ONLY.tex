@@ -1,0 +1,61 @@
+\documentclass[12pt,paper=letter]{scrartcl}
+%%% FOR SOME REASON, "STANDALONE" THROWS AN ERROR WITH GLOSSES %%%
+
+% Load font stuff for XeTeX, including Unicode support
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+
+% Set main fonts
+\newfontfamily{\Tagati}[
+    Scale=1.1,
+    BoldFont={* Italic},
+]{Tagati Book G}
+
+\setmainfont[
+    Ligatures=TeX,
+    Numbers=Lowercase,
+]{Junicode}
+
+\setsansfont[
+    Ligatures=TeX,
+    Numbers=Lowercase,
+    Scale=MatchUppercase,
+    BoldFont={Open Sans Condensed Bold},
+]{Open Sans Condensed Light}
+
+\pagestyle{empty}
+
+% Line spacing
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{etoolbox}
+
+% Formatting of glosses
+\usepackage{gb4e}
+\def\cgdepthstrut{{\vrule height 0pt depth 2ex width 0pt}}
+\def\eachwordone{\cgdepthstrut\itshape}
+\pretocmd{\glt}{\vspace{0.75ex}}{}{}
+
+\newcommand{\tsup}[1]{\textsuperscript{#1}} % Superscript
+\newcommand{\mor}[1]{\textsc{\lowercase{#1}}}
+\newcommand{\ayr}[1]{{\Tagati #1}}
+\newenvironment{ayeri}{\Tagati}{\par}
+\newenvironment{mytitle}{\begin{center} \Large \sffamily\bfseries ~\\}{\end{center}}
+
+\begin{document}
+
+%% MAIN PART %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exe}
+    \ex
+    \glll \ayr{AN} \ayr{429A} \ayr{—} \ayr{thnisaanF} \ayr{bjrmi} \ayr{n} \ayr{18\tsup{n}} \ayr{siMkYnen} \ayr{y} \ayr{2\tsup{n}} \ayr{kynen} \ayr{mvj} \ayr{pesnF}\\
+    ANG 429A — Tahanisān Bayrami na 18’ sinkyanena ya 2’ Kayanena Mavay pesan \\
+    \mor{ANGLI} 429A — Literature American \mor{GEN} 20\tsup{th} century-\mor{GEN} \mor{LOC} 2\tsup{nd} War-\mor{GEN} World until \\
+    \glt “ENGL 429A — 20th century American literature until World War II”
+\end{exe}
+
+%% END %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
