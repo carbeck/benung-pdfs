@@ -1,5 +1,6 @@
-\documentclass[12pt,paper=letter]{scrartcl}
-%%% FOR SOME REASON, "STANDALONE" THROWS AN ERROR WITH GLOSSES %%%
+% To generate a PNG file, you may have to compile this with
+% xelatex --shell-escape <filename>.
+\documentclass[12pt,varwidth,convert]{standalone}
 
 % Load font stuff for XeTeX, including Unicode support
 \usepackage{fontspec}
@@ -16,13 +17,6 @@
     Ligatures=TeX,
     Numbers=Lowercase,
 ]{Junicode}
-
-\setsansfont[
-    Ligatures=TeX,
-    Numbers=Lowercase,
-    Scale=MatchUppercase,
-    BoldFont={Open Sans Condensed Bold},
-]{Open Sans Condensed Light}
 
 \pagestyle{empty}
 
@@ -41,19 +35,17 @@
 \newcommand{\tsup}[1]{\textsuperscript{#1}} % Superscript
 \newcommand{\mor}[1]{\textsc{\lowercase{#1}}}
 \newcommand{\ayr}[1]{{\Tagati #1}}
-\newenvironment{ayeri}{\Tagati}{\par}
-\newenvironment{mytitle}{\begin{center} \Large \sffamily\bfseries ~\\}{\end{center}}
 
 \begin{document}
 
 %% MAIN PART %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exe}
-    \ex
-    \glll \ayr{AN} \ayr{429A} \ayr{—} \ayr{thnisaanF} \ayr{bjrmi} \ayr{n} \ayr{18\tsup{n}} \ayr{siMkYnen} \ayr{y} \ayr{2\tsup{n}} \ayr{kynen} \ayr{mvj} \ayr{pesnF}\\
-    ANG 429A — Tahanisān Bayrami na 18’ sinkyanena ya 2’ Kayanena Mavay pesan \\
-    \mor{ANGLI} 429A — Literature American \mor{GEN} 20\tsup{th} century-\mor{GEN} \mor{LOC} 2\tsup{nd} War-\mor{GEN} World until \\
-    \glt “ENGL 429A — 20th century American literature until World War II”
+    \ex \ayr{d/bhtNF, s Aky pr vg lmn.}
+    \glll \ayr{d/} \ayr{bh} \ayr{/tNF,}     \ayr{s}  \ayr{Ak} \ayr{/y}    \ayr{pr} \ayr{vg} {}       \ayr{lm}   \ayr{/n.} \\
+	  Da=      baha     -tang,          sa       aka      -ya          para    vaga     -Ø       lama       -na. \\
+          so=      shout    \mor{-3PL.M.A}, \mor{PT} swallow  \mor{-3SG.M} quickly pig      \mor{-T} restaurant \mor{-GEN}\\
+    \glt ‘So they shouted that the the restaurant’s pig was quickly swallowed.’
 \end{exe}
 
 %% END %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
