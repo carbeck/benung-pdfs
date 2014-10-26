@@ -1,7 +1,7 @@
 \documentclass[12pt,paper=letter]{scrartcl}
 
 % Language be German, with quotation marks accordingly
-\usepackage[ngerman,english]{babel}
+\usepackage[ngerman,american]{babel}
 \usepackage{csquotes} % Put quotations in \enquote{}!
 \SetBlockEnvironment{quotation}
 \renewcommand*{\mkccitation}[1]{ (#1)}
@@ -164,7 +164,7 @@
 
 \hypersetup{%
     pdfinfo={%
-	Title={<TITEL>: <SUBTITLE>},
+	Title={Translation Challenge: The Beginning of Tolstoy's "Anna Karenina"},
 	Author={Carsten Becker}
     }
 }
@@ -172,17 +172,17 @@
 %% BIBLIOGRAPHY DATABASE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{filecontents*}{\jobname.bib}
-@book{blah,
-title	= {A Grammar of {Blah}},
-author = {Alfred E. Neuman and John X. Doe},
-publisher = {Maximegalon University Press},
-location = {Maximegalon},
-date = {1972},
-series = {Reference Grammars of Inexistent Languages},
-number = {4},
+@online{tolstoy,
+author = {Leo Tolstoy},
+title	= {{Anna Karenina}},
+translator = {Constance Garnett},
+editor = {David Brannan and David Widger and Andrew Sly},
+organization = {Project Gutenberg},
+date = {2013-02-22},
+urldate = {2014-10-26},
+url = {http://www.gutenberg.org/ebooks/1399},
 }
 \end{filecontents*}
-
 \addbibresource{\jobname.bib}
 
 %% END OF PREAMBLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -192,27 +192,60 @@ number = {4},
 %% MAIN PART %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{mytitle}
-    Title of the Thing: An Example for this Template
+    Translation Challenge: The Beginning of Tolstoy's \q{\citetitle{tolstoy}}
 \end{mytitle}
 
-\section{Lorem ipsum}
-\lipsum[1]
+\section{Text in English}
+
+The text to be translated in this Translation Challenge is the initial passage
+of \citeauthor{tolstoy}'s 1878 novel \citetitle{tolstoy}. The Ayeri translation 
+here follows the English one by Constance Garnett (1901), which can be
+found on Project Gutenberg.
+
+\blockcquote{tolstoy}{
+\noindent Happy families are all alike; every unhappy family is unhappy in its 
+own way.
+
+Everything was in confusion in the Oblonskys' house. The wife had discovered 
+that the husband was carrying on an intrigue with a French girl, who had been a 
+governess in their family, and she had announced to her husband that she could 
+not go on living in the same house with him. This position of affairs had now 
+lasted three days, and not only the husband and wife themselves, but all the 
+members of their family and household, were painfully conscious of it. Every 
+person in the house felt that there was so sense in their living together, and 
+that the stray people brought together by chance in any inn had more in common 
+with one another than they, the members of the family and household of the 
+Oblonskys. The wife did not leave her own room, the husband had not been at 
+home for three days. The children ran wild all over the house; the English 
+governess quarreled with the housekeeper, and wrote to a friend asking her to 
+look out for a new situation for her; the man-cook had walked of the day before 
+just at dinner-time; the kitchen-maid, and the coachman had given warning.
+}
+
+\section{Text in Ayeri}
+\ayr{kmyonF pMdhye\_aNF/henF mino – minrY mirneri sitNF/tonF pMdhaaNF/henF minrY.}
+
+...
+
+\noindent Kamayon pandahajang-hen mino; minarya miraneri sitang-ton 
+pandahāng-hen minarya.
+
+...
+
+\section{Interlinear Breakdown}
 
 \begin{exe}
-    \ex \textcite[17]{blah}:
-    \gll Ang kama    -yan           para daga   -as      vala,   baha  -u         ca! \\
-    \mor{AT} be.more \mor{-3PL.M.T} fast turtle \mor{-P} pretty, shout \mor{-IMP} \mor{3PL.M.LOC}! \\
-    \glt \enquote{If they're faster than a pretty turtle, shout at them!}
-\end{exe}
+    \ex
+    \gll Kama -yon pandaha -j -ang =hen mino; mino -arya miran -eri sitang =ton 
+	pandaha -ang =hen mino -arya \\
+    be.like -\mor{3PL.N} family -\mor{PL} -\mor{A} =all happy; happy -\mor{NEG} 
+	way -\mor{INS} self =\mor{3PL.N.GEN} family -\mor{A} =every happy
+	-\mor{NEG} \\
+    \glt \enquote{All happy families are alike; every unhappy family is unhappy 
+	in its own way.}
 
-\begin{exe}
-    \ex 
-    \gll Da= baha  -tang,          sa       aka     -ya          para    vaga -Ø       lama       -na. \\
-         so= shout \mor{-3PL.M.A}, \mor{PT} swallow \mor{-3SG.M} quickly pig  \mor{-T} restaurant \mor{-GEN}\\
-    \glt \enquote{So they shouted that the the restaurant’s pig was quickly swallowed.}\footnote{\lipsum[10]}
+    \ex ...
 \end{exe}
-
-\lipsum[2-5]
 
 %% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
