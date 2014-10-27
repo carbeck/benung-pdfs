@@ -1,8 +1,8 @@
 \documentclass[12pt,paper=letter]{scrartcl}
 
 % Handle language and quotation marks
-\usepackage[ngerman,american]{babel}
-\usepackage{csquotes} % Put quotations in \enquote{}!
+\usepackage[ngerman,english]{babel}
+\usepackage{csquotes} % Put quotations in \q{}!
 \SetBlockEnvironment{quotation}
 \renewcommand*{\mkccitation}[1]{ (#1)}
 
@@ -26,6 +26,7 @@
 \newfontfamily{\Tagati}[
     Scale=1.1,
     BoldFont={* Italic},
+    HyphenChar=·,
 ]{Tagati Book G}
 
 \setmainfont[
@@ -159,8 +160,25 @@
 
 \newcommand{\mor}[1]{\textsc{\lowercase{#1}}}
 \newcommand{\ayr}[1]{{\Tagati #1}}
-\newenvironment{ayeri}{\begin{multicols}{2} \Tagati}{\end{multicols} \par}
-\newenvironment{mytitle}{\begin{center} \Large \sffamily\bfseries ~\\}{\end{center}}
+
+\newenvironment{ayeri}{
+    %\hyphenpenalty=10000
+    %\hbadness=10000
+    \doublespacing
+    \begin{multicols}{2}
+    \Tagati
+}{
+    \end{multicols} \par
+}
+
+\newenvironment{mytitle}{
+    \begin{center}
+	\Large
+	\sffamily\bfseries
+	~\\
+}{
+    \end{center}
+}
 
 % blah
 \usepackage{lipsum}
@@ -261,15 +279,22 @@ before just at dinner time; the kitchen-maid, and the coachman had given warning
 \begin{ayeri}
 kmyonF pMdhye\_aNF/henF mino – minrY mirneri sitNF/tonF pMdhaaNF/henF minrY.
 
-EnYrENF Atauy kaarYo nNy pMdhn ObFlonFsFki. - - - ANF srojye EnFvnF sNlsF yen,
-ANF mN yomojy AyonF rNY tonF lug bhisY kj. - - - 
+EnYrENF Atauy kaarYo nNy pMdhn ObFlonFsFki. silF\-visye sris EnFvnNF, ANF mN miry
+AyonF yen tyaan/tyaansF lyeri khni, seri gnFvyaasF pMdhy tonF, \& ANF nrisye
+AyonYmF yen, ANF miNF sjliNojye mitnYmF nNy kmo kjvo yaaj --- ANF srojye 
+EnFvnF sNlsF yen, ANF mN yomojy AyonF rNY tonF lug bhisY kj.
+
+--- 
 \end{ayeri}
 
 \noindent Kamayon pandahajang-hen mino; minarya miraneri sitang-ton 
 pandahāng-hen minarya.
 
-Enyareng atauya kāryo nangaya pandahana Oblonski. . . . Ang saroyye envan 
-sangalas yena, ang manga yomoyya ayon rangya ton luga bahisya kay.
+Enyareng atauya kāryo nangaya pandahana Oblonski. Silvisaye sarisa envanang, 
+ang manga miraya ayon yena cān-cānas layeri Kahani, seri ganvayās pandahaya ton, 
+nay ang narisaye ayonyam yena, ang ming saylingoyye mitanyam nangaya kamo kayvo 
+yāy. […] Ang saroyye envan sangalas yena, ang manga yomoyya ayon rangya ton 
+luga bahisya kay.
 
 ...
 
@@ -282,7 +307,7 @@ sangalas yena, ang manga yomoyya ayon rangya ton luga bahisya kay.
     be.like \mor{-3PL.N} family \mor{-PL} \mor{-A} =all happy; happy \mor{-NEG} 
 	way \mor{-INS} self- \mor{3PL.N.GEN} family \mor{-A} =every happy
 	\mor{-NEG}. \\
-    \glt \enquote{All happy families are alike; every unhappy family is unhappy 
+    \glt \q{All happy families are alike; every unhappy family is unhappy 
 	in its own way.}
 \end{exe}
 
@@ -311,7 +336,7 @@ sitang-ton} does not flow as well as with the constituents reversed.
     \gll Enya -reng atau -ya kāryo nanga -ya pandaha -na Oblonski. \\
     everything \mor{-A.INAN} chaos \mor{-LOC} big house \mor{-LOC} family 
 	\mor{-GEN} Oblonski. \\
-    \glt \enquote{Everything was in a big chaos in the Oblonski family's house.}
+    \glt \q{Everything was in a big chaos in the Oblonski family's house.}
 \end{exe}
 
 This sentence shows Ayeri's normal constituent order again, as compared to 
@@ -325,12 +350,12 @@ not only predicative adjectives, but also predicative NPs before actors, however
 	\ex
 	\gll Abogado ang lalaki. \\
 	lawyer \mor{T-} man \\
-	\glt \enquote{The man is a lawyer.}
+	\glt \q{The man is a lawyer.}
 	
 	\ex
 	\gll Matalino ang lalaki. \\
 	intelligent \mor{T-} man \\
-	\glt \enquote{The man is intelligent.}
+	\glt \q{The man is intelligent.}
     \end{xlist}
 \end{exe}
 
@@ -340,11 +365,45 @@ transcription.
 
 \divider
 
-The wife had discovered that the husband was carrying on an intrigue with a French girl, who had been a governess in their family, and she had announced to her husband that she could not go on living in the same house with him.
-
 \begin{exe}
-    \ex ...
+    \ex
+    \begin{xlist}
+	\ex \gll Silvisa -ye sarisa envan -ang, ang manga mira -ya ayon {} yena 
+	    cān \textasciitilde{}cān -as lay -eri Kahani, si -eri ganvaya -as 
+	    pandaha -ya ton, … \\
+	Discover \mor{-3SG.F} previously wife \mor{-A}, \mor{AT} \mor{PROG} do
+	    \mor{-3SG.M} husband \mor{(.T)} \mor{3SG.F.GEN} love 
+	    \mor{\textasciitilde{}DIM} \mor{-P} girl \mor{INS} French, 
+	    \mor{REL} \mor{-INS} governess \mor{-P} family \mor{-LOC} 
+	    \mor{3PL.N.GEN}, … \\
+	\glt \q{The wife had previously discovered that her husband
+	    had been having an affair with a French girl, who had been a
+	    governess in their family, …}
+	
+	\ex \gll …, nay ang narisa -ye {} ayon -yam yena, ang ming sayling -oy 
+	    -ye {} mitan -yam nanga -ya kamo kayvo yāy. \\
+	…, and \mor{AT} announce \mor{-3SG.F} \mor{(.T)} husband \mor{-DAT}
+	    \mor{3SG.F.GEN}, \mor{AT} can continue \mor{-NEG} \mor{-3SG.F} {(.T)}
+	    live \mor{-PTCP} house \mor{-LOC} same with \mor{3SG.M.LOC}. \\
+	\glt \q{…, and had announced to her husband that she could not 
+	    continue living in the same house with him.}
+    \end{xlist}
 \end{exe}
+
+This is the first section that necessitated coming up with new vocabulary:
+\ayr{tYaanF/tYaanF} \fw{cān-cān} \qq{(love) affair} as a diminutive of 
+\ayr{tYaanF} \fw{cān} \qq{love} (a little like German \fw{Liebelei} and 
+\fw{Techtelmechtel}); \ayr{gnFvy} \fw{ganvaya} \qq{governess} from a 
+combination of \ayr{gnF} \fw{gan} \qq{child} and the feminine occupational 
+derivative suffix \ayr{/vy} \fw{-vaya}; and \ayr{nris/} \fw{narisa-} 
+\qq{announce} as a causative derivation of \ayr{nr/} \fw{nara-} \qq{say, 
+speak}: \qq{make sth. said}.
+
+This sentence is also a good illustration for Ayeri's tendency to underspecify
+tense. For one, narratives are not marked by the epic past tense, and secondly,
+the aspect of actions happening before the time of narration or leading up to it
+is only signified by the time adverb \ayr{sris} \fw{sarisa} \qq{previous(ly), 
+earlier; former(ly)}.
 
 \divider
 
@@ -367,25 +426,22 @@ Every person in the house felt that there was no sense in their living together,
 \begin{exe}
     \ex
     \begin{xlist}
-    \ex \gll Ang sara -oy -ye envan {} sangal -as yena, … \\
-    \mor{AT} leave \mor{-NEG} \mor{-3SG.F} wife \mor{(.T)} room \mor{-P} 
-	\mor{3SG.F.GEN}, … \\
-    \glt \enquote{The wife did not leave her room, …}
-	
-    \ex \gll …, ang manga yoma -oy -ya ayon {} rang -ya ton luga bahis -ya kay. \\
-    …, \mor{AT} \mor{PROG} exist \mor{-NEG} \mor{-3SG.M} husband \mor{(.T)} home 
-	\mor{-LOC} \mor{3PL.N.GEN} for day \mor{-LOC} three. \\
-    \glt \enquote{…, the husband had not been at home for three days.}
+	\ex \gll Ang sara -oy -ye envan {} sangal -as yena, … \\
+	\mor{AT} leave \mor{-NEG} \mor{-3SG.F} wife \mor{(.T)} room \mor{-P} 
+	    \mor{3SG.F.GEN}, … \\
+	\glt \q{The wife did not leave her room, …}
+	    
+	\ex \gll …, ang manga yoma -oy -ya ayon {} rang -ya ton luga bahis -ya 
+	    kay. \\
+	…, \mor{AT} \mor{PROG} exist \mor{-NEG} \mor{-3SG.M} husband \mor{(.T)} 
+	    home \mor{-LOC} \mor{3PL.N.GEN} for day \mor{-LOC} three. \\
+	\glt \q{…, the husband had not been at home for three days.}
     \end{xlist}
 \end{exe}
 
 I am a little tempted to insert a conjunction between the two main clauses here,
 but I do not know whether it should be \ayr{nj} \fw{nay} \qq{and} or \ayr{ynoymF}
-\fw{yanoyam} \qq{because}, since either reading is possible. This sentence is
-also a good illustration for Ayeri's sparsity with tense marking: the (past) 
-perfect sense of Oblonsky not having been \textcquote{tolstoy}{at home for 
-three days} prior to the time of narration is only conveyed by the time 
-adverbial, \q{manga … luga bahisya kay}.
+\fw{yanoyam} \qq{because}, since either reading is possible.
 
 \divider
 

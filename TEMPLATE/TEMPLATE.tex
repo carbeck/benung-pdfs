@@ -26,6 +26,7 @@
 \newfontfamily{\Tagati}[
     Scale=1.1,
     BoldFont={* Italic},
+    HyphenChar=·,
 ]{Tagati Book G}
 
 \setmainfont[
@@ -157,8 +158,25 @@
 
 \newcommand{\mor}[1]{\textsc{\lowercase{#1}}}
 \newcommand{\ayr}[1]{{\Tagati #1}}
-\newenvironment{ayeri}{\begin{multicols}{2} \Tagati}{\end{multicols} \par}
-\newenvironment{mytitle}{\begin{center} \Large \sffamily\bfseries ~\\}{\end{center}}
+
+\newenvironment{ayeri}{
+    %\hyphenpenalty=10000
+    %\hbadness=10000
+    \doublespacing
+    \begin{multicols}{2}
+    \Tagati
+}{
+    \end{multicols} \par
+}
+
+\newenvironment{mytitle}{
+    \begin{center}
+	\Large
+	\sffamily\bfseries
+	~\\
+}{
+    \end{center}
+}
 
 % blah
 \usepackage{lipsum}
