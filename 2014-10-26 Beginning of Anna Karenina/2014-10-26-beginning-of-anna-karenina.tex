@@ -26,7 +26,7 @@
 \newfontfamily{\Tagati}[
     Scale=1.1,
     BoldFont={* Italic},
-    HyphenChar=·,
+    HyphenChar=/,
 ]{Tagati Book G}
 
 \setmainfont[
@@ -156,7 +156,9 @@
 \newcommand{\tsup}[1]{\textsuperscript{#1}} % Superscript
 \newcommand{\markyellow}[1]{\colorbox{yellow}{#1}} % Yellow highlighter
 
-\newcommand{\divider}{\vspace{0.5\baselineskip} \centerline{* * *} \vspace{0.5\baselineskip}}
+\newcommand{\divider}{
+    \vspace{\baselineskip}
+}
 
 \newcommand{\mor}[1]{\textsc{\lowercase{#1}}}
 \newcommand{\ayr}[1]{{\Tagati #1}}
@@ -277,19 +279,20 @@ before just at dinner time; the kitchen-maid, and the coachman had given warning
 
 \section{Text in Ayeri}
 \begin{ayeri}
-\noindent kmyonF pMdhye\_aNF/henF mino – minrY mirneri sitNF/tonF pMdhaaNF/henF minrY.
+\noindent
+kmyonF pMdhye\_aNF/henF mino – minrY mirneri sitNF/tonF pMdhaaNF/henF minrY.
 
 EnYrENF Atauy kaarYo nNy pMdhn ObFlonFsFki.
 silF\-visye sris EnFvnNF, ANF mN miry AyonF yen tyaan/tyaansF lyeri khni, seri 
-gnFvyaasF pMdhy tonF, nj ANF nrisye Ayo\-nYmF yen, ANF miNF sjliNojye mitnYmF 
-nNy kmo kjvo yaaj. ENF mN yomaarnF Ed/mineye lug bhisY kj, nj toNF vksF tenF 
-puleNeri, sitNF/toNF/nmoj AyonNF nj EnFvnNF, naarY nsimyye\_aNF/henF pMdhn nj 
-nNaanen tonF njnj. 
+    gnFvyaasF pMdhy tonF, nj ANF nrisye AyonF\-ymF yen, ANF miNF sjliNojye 
+    mitnYmF nNy kmo kjvo yaaj. ENF mN yomaarnF Ed/mineye lug bhisY kj, nj toNF 
+    vksF tenF puleNeri, sitNF/toNF/nmoj AyonNF nj EnFvnNF, naarY 
+    nsimyye\_aNF/henF pMdhn nj nNaanen tonF njnj. 
 ANF myyo nYaanF/henF nNy, miNF tenubisojrej, mitMtoNF kdnY.
-ANF ENYonF vihYmF miromaanYe\_asF kejnmF sisaa ANF lMtYo kdnY ApinF koMdNy, nsimyye\_asF pMdhn nj nNaanen ObFlonFsFki.
+ANF ENYonF vihYmF miromaanYe\_asF kejnmF sisaa ANF lMtYo kdnY ApinF koMdNy, 
+    nsimyye\_asF pMdhn nj nNaanen ObFlonFsFki.
 ANF srojye EnFvnF sNlsF yen, ANF mN yomojy AyonF rNY tonF lug bhisY kj.
-
---- 
+s senYonF gnYe nNy/henF, ---
 \end{ayeri}
 
 \noindent
@@ -308,8 +311,7 @@ ANF srojye EnFvnF sNlsF yen, ANF mN yomojy AyonF rNY tonF lug bhisY kj.
     kondangaya, nasimayajas pandahana nay nangānena Oblonski.
 \tsup{6b}~Ang saroyye envan sangalas yena, ang manga yomoyya ayon rangya ton 
     luga bahisya kay.
-
-...
+\tsup{7}~Sa senyon ganye nangaya-hen, …
 
 \section{Interlinear Breakdown}
 
@@ -532,12 +534,19 @@ The children ran wild all over the house; the English governess quarreled with t
 \begin{exe}  % SENTENCE 7
     \ex
     \begin{xlist}
-	\ex …
+	\ex \gll Sa sen -yon gan -ye {} nanga -ya =hen, … \\
+	\mor{PT} neglect \mor{-3PL.N} child \mor{-PL} \mor{(.T)} house 
+	    \mor{-LOC} \mor{=all}, … \\
+	\glt \q{Children were neglected all over the house, …}
 	\ex …
 	\ex …
 	\ex …
     \end{xlist}
 \end{exe}
+
+For this passage as well, a few new words had to be coined: \ayr{senF/} 
+\fw{sen-} \qq{neglect}, …
+
 
 %% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
