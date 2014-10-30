@@ -503,8 +503,8 @@ it, essentially serving as the quality of \mor{STD} that \mor{CMP} is compared t
 \begin{exe}
     \exi{(ii)}
     \begin{xlist}
-	\ex \mor{CMP} be.more [\raisebox{-0.2em}{\mor{QTY}} big] than \mor{STD}.
-	\ex \mor{CMP} be.more [\raisebox{-0.2em}{\mor{QTY}} sharing traits] than \mor{STD}.
+	\ex \mor{CMP} be.more [\fakesubscript{\mor{QTY}} big] than \mor{STD}.
+	\ex \mor{CMP} be.more [\fakesubscript{\mor{QTY}} sharing traits] than \mor{STD}.
     \end{xlist}
 \end{exe}
 
@@ -531,7 +531,7 @@ both forms would be homophonous:
 		\= \hspace{7em}
 		\= \enskip $\Rightarrow$ \enskip \ayr{siymF} \fw{siyam} \qq{\mor{REL-DAT}} \\
 	    \ayr{si} \fw{si} \qq{\mor{REL}}
-		\> \enskip + \enskip \_
+		\> \enskip + \enskip \_\fakesubscript{\mor{case}}
 		\> \enskip + \enskip \ayr{ymF} \fw{yam} \qq{\mor{DAT}}
 		\> \enskip $\Rightarrow$ \enskip \ayr{siyaamF} \fw{siyām} \qq{\mor{REL-Ø-DAT}}
 	\end{tabbing}
@@ -542,7 +542,7 @@ both forms would be homophonous:
 		\= \hspace{7em}
 		\= \enskip $\Rightarrow$ \enskip \ayr{sis} \fw{sisa} \qq{\mor{REL-CAU}} \\
 	    \ayr{si} \fw{si} \qq{\mor{REL}}
-		\> \enskip + \enskip \_
+		\> \enskip + \enskip \_\fakesubscript{\mor{case}}
 		\> \enskip + \enskip \ayr{saa} \fw{sā} \qq{\mor{CAU}}
 		\> \enskip $\Rightarrow$ \enskip \ayr{sisaa} \fw{sisā} \qq{\mor{REL-Ø-CAU}}
 	\end{tabbing}
@@ -562,7 +562,7 @@ forms are unambiguous:
 		\= \hspace{7em}
 		\= \enskip $\Rightarrow$ \enskip \ayr{ssF} \fw{sas} \qq{\mor{REL-P}} \\
 	    \ayr{si} \fw{si} \qq{\mor{REL}}
-		\> \enskip + \enskip \_
+		\> \enskip + \enskip \_\fakesubscript{\mor{case}}
 		\> \enskip + \enskip \ayr{s} \fw{sa} \qq{\mor{P}}
 		\> \enskip $\Rightarrow$ \enskip \ayr{sis} \fw{sisa} \qq{\mor{REL-Ø-P}}
 	\end{tabbing}
@@ -570,7 +570,10 @@ forms are unambiguous:
 \end{exe}
 
 The second marker on the relativizer is always the case marker in its respective
-prefixed form, i.e. the form that is used with names.
+prefixed form, i.e. the form that is used with names. While the pairs of 
+inflected relativizers are unambiguous internally, there is still ambiguity 
+between \ayr{sis} \fw{sisa} \qq{\mor{REL-CAU}} and \qq{\mor{REL-Ø-P}}, though
+context should -- as usually -- take care of that.
 
 \divider
 
@@ -581,7 +584,7 @@ prefixed form, i.e. the form that is used with names.
 	\mor{AT} leave \mor{-NEG} \mor{-3SG.F} wife \mor{(-T)} room \mor{-P} 
 	    \mor{3SG.F.GEN},~… \\
 	\glt \q{The wife did not leave her room,~…}
-	    
+	\goodbreak
 	\ex \gll …, ang manga yoma -oy -ya ayon {} rang -ya ton luga bahis -ya 
 	    kay. \\
 	…, \mor{AT} \mor{PROG} exist \mor{-NEG} \mor{-3SG.M} husband \mor{(-T)} 
@@ -638,6 +641,7 @@ transparent and not in desperate need of a new dictionary entry.
 
 %% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newpage
 \printbibliography
 
 \end{document}
