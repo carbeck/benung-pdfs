@@ -170,12 +170,17 @@
 }
 
 \newenvironment{mytitle}{
-    \begin{center}
-	\Large
-	\sffamily\bfseries
-	~\\
+    \hfill
+    \begin{minipage}{0.667\textwidth}
+	\vspace{\baselineskip}
+	\begin{center}
+	    \Large
+	    \sffamily\bfseries
 }{
-    \end{center}
+	\end{center}
+	\vspace{1em}
+    \end{minipage}
+    \hfill
 }
 
 % blah
