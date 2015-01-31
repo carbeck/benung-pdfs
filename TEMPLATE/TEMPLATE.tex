@@ -1,4 +1,9 @@
-\documentclass[12pt,paper=letter]{scrartcl}
+\documentclass[12pt,paper=a4]{scrartcl}
+
+% Author, Title, Subtitle etc.
+\author{Carsten Becker}
+\title{TITLE}
+\subtitle{SUBTITLE}
 
 % Handle language and quotation marks
 \usepackage[ngerman,english]{babel}
@@ -70,6 +75,7 @@
     colorlinks=false,
     linktoc=section,
     hidelinks,
+    pdfusetitle,
 ]{hyperref}
 
 \usepackage{url}
@@ -107,7 +113,7 @@
     \fancyfoot[C]{} % empty
     \fancyfoot[R]{\sffamily \footnotesize 
 	\href{http://benung.nfshost.com}{http://benung.nfshost.com} · 
-	\href{https://github.com/carbeck/benung-pdfs}{github:carbeck/benung-pdfs} · 
+	\href{https://github.com/carbeck/benung-pdfs}{https://github.com/carbeck/benung-pdfs} · 
 	\href{https://creativecommons.org/licenses/by-sa/4.0/}{CC~BY-SA~4.0}
     }
     
@@ -176,7 +182,9 @@
 	\begin{center}
 	    \Large
 	    \sffamily\bfseries
+	    \makeatletter
 }{
+	    \makeatother
 	\end{center}
 	\vspace{1em}
     \end{minipage}
@@ -185,15 +193,6 @@
 
 % blah
 \usepackage{lipsum}
-
-%% META INFORMATION IN PDF FILE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\hypersetup{%
-    pdfinfo={%
-	Title={<TITEL>: <SUBTITLE>},
-	Author={Carsten Becker}
-    }
-}
 
 %% BIBLIOGRAPHY DATABASE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -218,7 +217,7 @@ number = {4},
 %% MAIN PART %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{mytitle}
-    Title of the Thing: An Example for this Template
+    \@title: \@subtitle
 \end{mytitle}
 
 \section{Lorem ipsum}
