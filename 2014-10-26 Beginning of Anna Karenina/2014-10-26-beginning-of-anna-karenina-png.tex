@@ -1,6 +1,6 @@
 % To generate a PNG file, you may have to compile this with
 % xelatex --shell-escape <filename>.
-\documentclass[12pt,varwidth=15.835cm,convert={density=96},border=1]{standalone}
+\documentclass[12pt,varwidth=15.835cm,convert={density=300},border=5]{standalone}
 
 % Load font stuff for XeTeX, including Unicode support
 \usepackage{fontspec}
@@ -11,6 +11,7 @@
 \newfontfamily{\Tagati}[
     Scale=1.2,
     BoldFont={* Italic},
+    HyphenChar=·,
 ]{Tagati Book G}
 
 \pagestyle{empty}
@@ -18,6 +19,7 @@
 % Line spacing
 \usepackage{setspace}
 \newenvironment{ayeri}{
+	\hyphenpenalty=10000
     \doublespacing
     \Tagati
 }{
@@ -35,7 +37,7 @@ kmyonF pMdhye\_aNF/henF mino – minrY mirneri sitNF/tonF pMdhaaNF/henF minrY.
 silF\-visye sris EnFvnNF, ANF mN miry AyonF yen tYaan/tYaansF lyeri khni, seri 
     gnFvyaasF pMdhy tonF, nj ANF nrisye AyonF\-ymF yen, ANF miNF sjliNojye 
     mitnYmF nNy kmo kjvo yaaj. ENF mN yomaarnF Ed/mineye lug bhisY kj, nj toNF 
-    vksF tenF puleNeri, sitNF/toNF/nmoj AyonNF nj EnFvnNF, naarY 
+	vksF tenF puleNeri, sitNF/toNF/nmoj AyonNF nj EnF\-vnNF, naarY 
     nsimyye\_aNF/henF pMdhn nj nNaanen tonF njnj. 
 ANF myyo nYaanF/henF nNy, miNF tenubisojrej, mitMtoNF kdnY.
 ANF ENYonF vihYmF miromaanYe\_asF kejnmF si s lMtYonF kdnY Apineri koMdNy, 
