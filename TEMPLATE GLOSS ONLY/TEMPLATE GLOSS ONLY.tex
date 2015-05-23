@@ -9,11 +9,11 @@
 
 % Load font stuff for XeTeX, including Unicode support
 \usepackage{fontspec}
-\usepackage{xunicode}
-\usepackage{xltxtra}
 
 % Set main fonts
+
 \newfontfamily{\Tagati}[
+    Renderer=Graphite,
     Scale=1.1,
     BoldFont={* Italic},
 ]{Tagati Book G}
@@ -29,29 +29,33 @@
 \usepackage{setspace}
 \onehalfspacing
 
-\usepackage{etoolbox}
-
 % Formatting of glosses
-\usepackage{gb4e}
-\def\cgdepthstrut{{\vrule height 0pt depth 2ex width 0pt}}
-\def\eachwordone{\cgdepthstrut\itshape}
-\pretocmd{\glt}{\vspace{0.75ex}}{}{}
+\usepackage{expex}
+\usepackage{leipzig}
+
+\newleipzig{AgtT}{at}{agent topic}
+\newleipzig{PatT}{pt}{patient topic}
+\newleipzig{DatT}{datt}{dative topic}
+\newleipzig{GenT}{gent}{genitive topic}
+\newleipzig{LocT}{loct}{locative topic}
+\newleipzig{InsT}{inst}{instrumentative topic}
+\newleipzig{CauT}{caut}{causative topic}
 
 \newcommand{\tsup}[1]{\textsuperscript{#1}} % Superscript
-\newcommand{\mor}[1]{\textsc{\lowercase{#1}}}
 \newcommand{\ayr}[1]{{\Tagati #1}}
 
 \begin{document}
 
 %% MAIN PART %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{exe}
-    \ex \ayr{d/bhtNF, s Aky pr vg lmn.}
-    \glll \ayr{d/} \ayr{bh} \ayr{/tNF,}     \ayr{s}  \ayr{Ak} \ayr{/y}    \ayr{pr} \ayr{vg} {}       \ayr{lm}   \ayr{/n.} \\
-	  Da=      baha     -tang,          sa       aka      -ya          para    vaga     -Ø       lama       -na. \\
-          so=      shout    \mor{-3PL.M.A}, \mor{PT} swallow  \mor{-3SG.M} quickly pig      \mor{-T} restaurant \mor{-GEN}\\
-    \glt ‘So they shouted that the the restaurant’s pig was quickly swallowed.’
-\end{exe}
+\ex[everygla=\Tagati]
+\begingl
+    \gla d/  bh    /tNF,                s       Ak      /y          pr      vg           lm         /n. //
+    \glb Da= baha  -tang,               sa      aka     -ya         para    vaga -Ø      lama       -na. //
+    \glc so= shout \Tpl{}.\M{}.\Aarg{}, \PatT{} swallow \Tsg{}.\M{} quickly pig  -\Top{} restaurant -\Gen{} //
+    \glft ``So they shouted that the the restaurant’s pig was quickly swallowed.'' //
+\endgl
+\xe
 
 %% END %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

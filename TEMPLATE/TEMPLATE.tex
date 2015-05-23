@@ -22,15 +22,14 @@
 % Make text colors and color names available
 \usepackage[xetex]{xcolor}
 
-% Load font stuff for XeTeX, including Unicode support
+% Load font stuff for XeTeX
 \usepackage{fontspec}
-\usepackage{xunicode}
-\usepackage{xltxtra}
 
 % Set main fonts
 \usepackage[config=mt-Junicode]{microtype}
 
 \newfontfamily{\Tagati}[
+    Renderer=Graphite,
     Scale=1.1,
     BoldFont={* Italic},
     HyphenChar=·,
@@ -129,21 +128,23 @@
 % Line spacing
 \usepackage{setspace}
 \onehalfspacing
-%\linespread{1.5}
 
-% Rotate big tables
-\usepackage{rotating}
-
-% Line numbering in verse environment
-\usepackage{lineno}
+% Things for tables
+% \usepackage{longtable}
+% \usepackage{tabu}
+% \usepackage{rotating}
 
 % Formatting of glosses
-\usepackage{gb4e}
-\let\eachwordone=\itshape
-%\def\cgdepthstrut{\vrule height 0pt depth 2ex width 0pt}
-%\def\eachwordone{\cgdepthstrut\itshape}
-%\pretocmd{\glt}{\vspace{0.75ex}}{}{}
-%\AtBeginEnvironment{exe}{\smaller}
+\usepackage{expex}
+\usepackage{leipzig}
+
+\newleipzig{AgtT}{at}{agent topic}
+\newleipzig{PatT}{pt}{patient topic}
+\newleipzig{DatT}{datt}{dative topic}
+\newleipzig{GenT}{gent}{genitive topic}
+\newleipzig{LocT}{loct}{locative topic}
+\newleipzig{InsT}{inst}{instrumentative topic}
+\newleipzig{CauT}{caut}{causative topic}
 
 % Nicer footnotes
 \usepackage[bottom]{footmisc}
@@ -164,7 +165,6 @@
 \newcommand{\tsup}[1]{\textsuperscript{#1}} % Superscript
 \newcommand{\markyellow}[1]{\colorbox{yellow}{#1}} % Yellow highlighter
 
-\newcommand{\mor}[1]{\textsc{\lowercase{#1}}}
 \newcommand{\ayr}[1]{{\Tagati #1}}
 \newcommand{\xayr}[3]{{\Tagati #1} \emph{#2} \enquote*{#3}}
 
@@ -227,19 +227,22 @@
 \section{Lorem ipsum}
 \lipsum[1]
 
-\begin{exe}
-    \ex \textcite[17]{blah}:
-    \gll Ang kama    -yan           para daga   -as      vala,   baha  -u         ca! \\
-    \mor{AT} be.more \mor{-3PL.M.T} fast turtle \mor{-P} pretty, shout \mor{-IMP} \mor{3PL.M.LOC}! \\
-    \glt \enquote{If they're faster than a pretty turtle, shout at them!}
-\end{exe}
+\ex
+\begingl
+    \glpreamble \textcite[17]{blah}: //
+    \gla Ang     kama    -yan                para daga   -as      vala,   baha  -u      ca! //
+    \glb \AgtT{} be.more -\Tpl{}.\M{}.\Top{} fast turtle -\Parg{} pretty, shout -\Imp{} \Tpl{}.\M{}.\Loc{}! //
+    \glft \enquote{If they're faster than a pretty turtle, shout at them!} //
+\endgl
+\xe
 
-\begin{exe}
-    \ex 
-    \gll Da= baha  -tang,          sa       aka     -ya          para    vaga -Ø       lama       -na. \\
-         so= shout \mor{-3PL.M.A}, \mor{PT} swallow \mor{-3SG.M} quickly pig  \mor{-T} restaurant \mor{-GEN}\\
-    \glt \enquote{So they shouted that the the restaurant’s pig was quickly swallowed.}\footnote{\lipsum[10]}
-\end{exe}
+\ex
+\begingl
+    \gla Da= baha  -tang,               sa      aka     -ya         para    vaga -Ø      lama       -na. //
+    \glb so= shout \Tpl{}.\M{}.\Aarg{}, \PatT{} swallow \Tsg{}.\M{} quickly pig  -\Top{} restaurant -\Gen{} //
+    \glft \enquote{So they shouted that the the restaurant’s pig was quickly swallowed.}\footnote{\lipsum[10]} //
+\endgl
+\xe
 
 \xayr{AdreNF liMkaanFlej}{Adareng linkānley}{This is a test}.
 
