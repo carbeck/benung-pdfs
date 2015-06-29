@@ -1,0 +1,350 @@
+\documentclass[12pt,paper=a4]{scrartcl}
+
+% Author, Title, Subtitle etc.
+\author{Carsten Becker}
+\title{The Lord's Prayer in Ayeri}
+\subtitle{An Updated Translation}
+
+% Handle language and quotation marks
+\usepackage[ngerman,english]{babel}
+\usepackage{csquotes} % Put quotations in \enquote{}!
+\SetBlockEnvironment{quotation}
+\renewcommand*{\mkccitation}[1]{ (#1)}
+
+% Set all margins to 2.54 cm
+\usepackage[margin=1in]{geometry}
+\widowpenalty10000 % Avoid widows like the plague!
+\clubpenalty10000 % Avoid orphans like the plage, too!
+
+% Make multiple columns available in single-column document
+\usepackage{multicol}
+
+% Make text colors and color names available
+\usepackage[xetex]{xcolor}
+
+% Load font stuff for XeTeX
+\usepackage{xltxtra}
+\usepackage{fontspec}
+
+% Set main fonts
+\usepackage[config=mt-Junicode]{microtype}
+
+\newfontfamily{\Tagati}[
+    Renderer=Graphite,
+    Scale=1.1,
+    BoldFont={* Italic},
+    HyphenChar=·,
+]{Tagati Book G}
+
+\setmainfont[
+    Ligatures=TeX,
+    Numbers=Lowercase,
+]{Junicode}
+
+\setsansfont[
+    Ligatures=TeX,
+    Numbers=Lowercase,
+    Scale=MatchUppercase,
+    BoldFont={Open Sans Condensed Bold},
+]{Open Sans Condensed Light}
+
+\newfontfamily{\OSCLucno}[
+    Numbers=Uppercase,
+    Scale=MatchUppercase,
+]{Open Sans Condensed Light}
+
+% Load BibLaTeX (using Biber), configure citation styles
+% Uses <https://github.com/semprag/biblatex-sp-unified>
+\usepackage[
+    style=biblatex-sp-unified,
+    citestyle=sp-authoryear-comp,
+    maxnames=2,
+    backend=biber,
+    safeinputenc,
+]{biblatex}
+
+% To make \textcite look like "Doe (2014: 213)"
+\renewcommand*{\postnotedelim}{\addcolon\addspace}
+\DeclareFieldFormat{postnote}{#1}
+\DeclareFieldFormat{multipostnote}{#1}
+
+% Enable generating files from this .tex file (for the bibliography) 
+\usepackage{filecontents}
+
+% Date etc.
+\usepackage{datetime}
+\renewcommand{\dateseparator}{/}
+
+% Clickable links in footnotes, TOC, etc.
+\usepackage[
+    xetex,
+    bookmarks=true,
+    colorlinks=false,
+    linktoc=section,
+    hidelinks,
+    pdfusetitle,
+]{hyperref}
+
+\usepackage{url}
+\urlstyle{rm}
+
+% Ability to include graphics and dealing with footnotes in descriptions
+\usepackage{graphicx}
+\usepackage[font={small,sf},labelfont={small,sf},format=plain]{caption}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\setlength{\columnsep}{2\baselineskip}
+
+% General headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead[L]{} % empty
+\fancyhead[C]{} % empty
+\fancyhead[R]{\thepage}
+
+\fancyfoot[L]{} % empty
+\fancyfoot[C]{} % empty
+\fancyfoot[R]{} % empty
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% First page headers and footers are different
+\fancypagestyle{firstpage}{
+    \fancyhead[L]{\sffamily \footnotesize \textbf{Benung. The Ayeri Language Resource}}
+    \fancyhead[C]{} % empty
+    \fancyhead[R]{\sffamily \footnotesize Carsten Becker · \yyyymmdddate\today}
+    
+    \fancyfoot[L]{} % empty
+    \fancyfoot[C]{} % empty
+    \fancyfoot[R]{\sffamily \footnotesize 
+	\href{http://benung.nfshost.com}{http://benung.nfshost.com} · 
+	\href{https://github.com/carbeck/benung-pdfs}{https://github.com/carbeck/benung-pdfs} · 
+	\href{https://creativecommons.org/licenses/by-sa/4.0/}{CC~BY-SA~4.0}
+    }
+    
+    \renewcommand{\headrulewidth}{0.5pt}
+    \setlength\footskip{0.5in}
+}
+
+\usepackage{ifthen}
+\ifthenelse{\value{page}=1}{\thispagestyle{firstpage}{\pagestyle{fancy}}}
+
+% Line spacing
+\usepackage{setspace}
+\onehalfspacing
+
+% Line numbering
+\usepackage[left, modulo]{lineno}
+\renewcommand\linenumberfont{\normalfont\tiny\OSCLucno}
+
+% Things for tables
+% \usepackage{longtable}
+% \usepackage{tabu}
+% \usepackage{rotating}
+
+% Formatting of glosses
+\usepackage{expex}
+\usepackage{leipzig}
+
+\newleipzig{AgtT}{at}{agent topic}
+\newleipzig{PatT}{pt}{patient topic}
+\newleipzig{DatT}{datt}{dative topic}
+\newleipzig{GenT}{gent}{genitive topic}
+\newleipzig{LocT}{loct}{locative topic}
+\newleipzig{InsT}{inst}{instrumentative topic}
+\newleipzig{CauT}{caut}{causative topic}
+\newleipzig{An}{an}{animate}
+\newleipzig{Inan}{inan}{inanimate}
+
+% Nicer footnotes
+\usepackage[bottom]{footmisc}
+\deffootnote{0em}{1.5em}{\textsuperscript\thefootnotemark\enskip}
+\renewcommand{\footnoterule}{\rule{0pt}{0pt}{\vspace*{-0pt}}}
+\setlength{\footnotesep}{1.5em}
+
+% Smaller font in block quotes
+\usepackage{relsize,etoolbox}
+\AtBeginEnvironment{quote}{\noindent\smaller}
+\AtBeginEnvironment{quotation}{\smaller}
+
+% Macros
+\newcommand{\fw}[1]{\textit{#1}} % Foreign Word
+\newcommand{\tit}[1]{\textit{#1}} % Title of a work
+\newcommand{\q}[1]{\enquote{#1}} % Context-aware quotation
+\newcommand{\qq}[1]{\enquote*{#1}} % Explicit sublevel quotation
+\newcommand{\tsup}[1]{\textsuperscript{#1}} % Superscript
+\newcommand{\markyellow}[1]{\colorbox{yellow}{#1}} % Yellow highlighter
+\newcommand{\ques}{\fakesuperscript{?}} % raised question mark
+
+\newcommand{\ayr}[1]{{\Tagati #1}}
+\newcommand{\xayr}[3]{{\Tagati #1} \emph{#2} \enquote*{#3}}
+
+\newenvironment{ayeri}{
+    %\hyphenpenalty=10000
+    %\hbadness=10000
+    %\doublespacing
+    %\begin{multicols}{2}
+    \Tagati
+}{
+    %\end{multicols} \par
+}
+
+\newenvironment{mytitle}{
+    \hfill
+    \begin{minipage}{0.667\textwidth}
+	\vspace{\baselineskip}
+	\begin{center}
+	    \Large
+	    \sffamily\bfseries
+	    \makeatletter
+}{
+	    \makeatother
+	\end{center}
+	\vspace{1em}
+    \end{minipage}
+    \hfill
+}
+
+% blah
+%\usepackage{lipsum}
+
+%% BIBLIOGRAPHY DATABASE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{filecontents*}{\jobname.bib}
+@article{becker2008,
+	author = {Carsten Becker},
+	title = {{The Lord's Prayer}},
+	pagination = {verse},
+	journaltitle = {Benung. The Ayeri Language Resource},
+	date = {2008-07-05},
+	url = {http://benung.nfshost.com/wp-content/uploads/2011/06/xmp_lordsprayer.pdf},
+	urldate = {2015-06-29},
+}
+\end{filecontents*}
+
+\addbibresource{\jobname.bib}
+
+%% END OF PREAMBLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%% MAIN PART %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{mytitle}
+    \@title: \@subtitle
+\end{mytitle}
+
+\section{The Text}
+\begin{raggedright}
+\begin{multicols}{2}
+\textbf{Natran na Nahang} \\ [0.5\baselineskip]
+
+\begin{linenumbers*}
+
+Badan nana lenoya \\
+Sa mya hangyo ternu garan vana \\
+Ang mya sahayo lagasim vana \\
+Ang mya amangyo nōn vana \\
+Avanya ku-lenoya. \\ [0.5\baselineskip]
+
+Le ilu dabas vadisān diyan nana nyam \\
+Nay tatamu semānjas nana \\
+Ku-tatamnang adayam \\
+Si ang semayan nya ran \\
+Nay ya lantoyu nas nembang \\
+Nārya na madu nas nerau. \\ [0.5\baselineskip]
+
+Yanoyam vana lagasimas \\
+Nay litās nay vomayas asayam. \\ [0.5\baselineskip]
+
+Amen.
+
+\end{linenumbers*}
+
+%\end{multicols}
+\columnbreak
+%\begin{multicols}{2}
+
+\begin{ayeri}
+\textbf{ntFrnF n nhNF} \\ [0.5\baselineskip]
+
+\begin{linenumbers*}
+
+bdNF nn lenoy \\
+s mY hNYo terFnu grnF vn \\
+ANF mY shyo lgsimF vn \\
+ANF mY AmNYo noonF vn \\
+AvnY ku/lenoy~– \\ [0.5\baselineskip]
+
+le Ilu dbsF vdiːsnF diynF nn nYmF \\
+nj ttmu semaanYe\_asF nn \\
+ku/ ttmFnNF AdymF \\
+si ANF semynF nY rnF \\
+nj y lMtoyu nsF nemFbN \\
+naarY s pu nerau nnaa~— \\ [0.5\baselineskip]
+
+ynoymF vn lgsimsF \\
+nj litaasF nj vomysF AsymF~— \\ [0.5\baselineskip]
+
+AmenF
+
+\end{linenumbers*}
+
+\end{ayeri}
+\end{multicols}
+\end{raggedright}
+
+\section{Some Notes}
+The first time I translated the \tit{Lord's Prayer} was in 2008 
+\parencite[cf.][]{becker2008}, and the version then contained a few errors in 
+hindsight: for example, ll.~3--4 were translated with patient topics when there 
+are no patients there, according to Ayeri's grammar. I also updated the 
+vocabulary in places, as well as the spelling, e.g. \ayr{/ye\_asF} \fw{-yeas} 
+\qq{-\Pl{}-\Parg{}} was changed to \fw{-jas} to better reflect actual 
+pronunciation (cf. l.~7). Phrasings have also been simplified in a few places, 
+e.g. \ayr{AvnY ku/lenoy} \fw{Avanya ku-lenoya} `On Earth as in Heaven' instead 
+of the wordier \ayr{ku/lenoy, Adaare y Arek njnj} \fw{ku-lenoya, adāre 
+ya Areka naynay} `as in Heaven, in the same way as well on Earth' (cf. 
+l.~5).\footnote{The word for `Earth' has also since changed from \ayr{Arek} 
+\fw{Areka} to \ayr{AvnF} \fw{Avan}, which simply means `bottom; ground, soil', 
+cf. German \fw{Erde} or French \fw{terre}.} Curiously, \ayr{rnF} \fw{ran} 
+`against' was treated like a preposition with a patient argument in my first 
+translation; custom has changed it into a postposition since then, with regular 
+locative marking on the prepositional object (cf. l.~9): it used to be 
+*\ayr{rnF nsF} *\fw{ran nas} `against us.\Parg{}', but it is \ayr{nY rnF} 
+\fw{nya ran} `us.\Loc{} against'.
+
+Because I have made efforts to digitalize Tahano Hikamu as well since my 
+original translation of the \tit{Lord's Prayer}, the text in Ayeri will also be 
+presented in its native script.
+
+\section{Interlinear Glossing}
+
+% \ex
+% \begingl
+%     \glpreamble Blah //
+%     \gla Ang     kama    -yan                para daga   -as      vala,   baha  -u      ca! //
+%     \glb \AgtT{} be.more -\Tpl{}.\M{}.\Top{} fast turtle -\Parg{} pretty, shout -\Imp{} \Tpl{}.\M{}.\Loc{}! //
+%     \glft \enquote{If they're faster than a pretty turtle, shout at them!} //
+% \endgl
+% \xe
+% 
+% \ex
+% \begingl
+%     \gla Da= baha  -tang,               sa      aka     -ya         para    vaga -Ø      lama       -na. //
+%     \glb so= shout \Tpl{}.\M{}.\Aarg{}, \PatT{} swallow \Tsg{}.\M{} quickly pig  -\Top{} restaurant -\Gen{} //
+%     \glft \enquote{So they shouted that the the restaurant’s pig was quickly swallowed.}\footnote{\lipsum[10]} //
+% \endgl
+% \xe
+% 
+% \xayr{AdreNF liMkaanFlej}{Adareng linkānley}{This is a test}.
+
+%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\vfill
+\printbibliography
+
+\end{document}
