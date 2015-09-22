@@ -1,0 +1,304 @@
+\documentclass[12pt,paper=a4]{scrartcl}
+
+% Author, Title, Subtitle etc.
+\author{Carsten Becker}
+\title{Fences and Gardens}
+\subtitle{An Ayeri Translation of a Medieval Neighborhood Dispute from the \enquote{Corpus der altdeutschen Originalurkunden bis zum Jahr 1300}}
+
+% Handle language and quotation marks
+\usepackage[ngerman,english]{babel}
+\usepackage{csquotes} % Put quotations in \enquote{}!
+\SetBlockEnvironment{quotation}
+\renewcommand*{\mkccitation}[1]{ (#1)}
+
+% Set all margins to 2.54 cm
+\usepackage[margin=1in]{geometry}
+\widowpenalty10000 % Avoid widows like the plague!
+\clubpenalty10000 % Avoid orphans like the plage, too!
+
+% Make multiple columns available in single-column document
+\usepackage{multicol}
+
+% Make text colors and color names available
+\usepackage[xetex]{xcolor}
+
+% Load font stuff for XeTeX
+\usepackage{xltxtra}
+\usepackage{fontspec}
+
+% Set main fonts
+\usepackage[config=mt-Junicode]{microtype}
+
+\newfontfamily{\Tagati}[
+    Renderer=Graphite,
+    Scale=1.1,
+    BoldFont={* Italic},
+    HyphenChar=·,
+]{Tagati Book G}
+
+\setmainfont[
+    Ligatures=TeX,
+    Numbers=Lowercase,
+]{Junicode}
+
+\setsansfont[
+    Ligatures=TeX,
+    Numbers=Lowercase,
+    Scale=MatchUppercase,
+    BoldFont={Open Sans Condensed Bold},
+]{Open Sans Condensed Light}
+
+% Load BibLaTeX (using Biber), configure citation styles
+% Uses <https://github.com/semprag/biblatex-sp-unified>
+\usepackage[
+    style=biblatex-sp-unified,
+    citestyle=sp-authoryear-comp,
+    maxnames=2,
+    backend=biber,
+    safeinputenc,
+]{biblatex}
+
+% To make \textcite look like "Doe (2014: 213)"
+\renewcommand*{\postnotedelim}{\addcolon\addspace}
+\DeclareFieldFormat{postnote}{#1}
+\DeclareFieldFormat{multipostnote}{#1}
+
+% Enable generating files from this .tex file (for the bibliography) 
+\usepackage{filecontents}
+
+% Date etc.
+\usepackage{datetime}
+\renewcommand{\dateseparator}{/}
+
+% Clickable links in footnotes, TOC, etc.
+\usepackage[
+    xetex,
+    bookmarks=true,
+    colorlinks=false,
+    linktoc=section,
+    hidelinks,
+    pdfusetitle,
+]{hyperref}
+
+\usepackage{url}
+\urlstyle{rm}
+
+% Ability to include graphics and dealing with footnotes in descriptions
+\usepackage{graphicx}
+\usepackage[font={small,sf},labelfont={small,sf},format=plain]{caption}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\setlength{\columnsep}{2\baselineskip}
+
+% General headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead[L]{} % empty
+\fancyhead[C]{} % empty
+\fancyhead[R]{\thepage}
+
+\fancyfoot[L]{} % empty
+\fancyfoot[C]{} % empty
+\fancyfoot[R]{} % empty
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% First page headers and footers are different
+\fancypagestyle{firstpage}{
+    \fancyhead[L]{\sffamily \footnotesize \textbf{Benung. The Ayeri Language Resource}}
+    \fancyhead[C]{} % empty
+    \fancyhead[R]{\sffamily \footnotesize Carsten Becker · \yyyymmdddate\today}
+    
+    \fancyfoot[L]{} % empty
+    \fancyfoot[C]{} % empty
+    \fancyfoot[R]{\sffamily \footnotesize 
+	\href{http://benung.nfshost.com}{http://benung.nfshost.com} · 
+	\href{https://github.com/carbeck/benung-pdfs}{https://github.com/carbeck/benung-pdfs} · 
+	\href{https://creativecommons.org/licenses/by-sa/4.0/}{CC~BY-SA~4.0}
+    }
+    
+    \renewcommand{\headrulewidth}{0.5pt}
+    \setlength\footskip{0.5in}
+}
+
+\usepackage{ifthen}
+\ifthenelse{\value{page}=1}{\thispagestyle{firstpage}{\pagestyle{fancy}}}
+
+% Line spacing
+\usepackage{setspace}
+\onehalfspacing
+
+% Things for tables
+% \usepackage{longtable}
+% \usepackage{tabu}
+% \usepackage{rotating}
+
+% Formatting of glosses
+\usepackage{expex}
+\usepackage{leipzig}
+
+\newleipzig{AgtT}{at}{agent topic}
+\newleipzig{PatT}{pt}{patient topic}
+\newleipzig{DatT}{datt}{dative topic}
+\newleipzig{GenT}{gent}{genitive topic}
+\newleipzig{LocT}{loct}{locative topic}
+\newleipzig{InsT}{inst}{instrumentative topic}
+\newleipzig{CauT}{caut}{causative topic}
+\newleipzig{An}{an}{animate}
+\newleipzig{Inan}{inan}{inanimate}
+
+% Nicer footnotes
+\usepackage[bottom]{footmisc}
+\deffootnote{0em}{1.5em}{\textsuperscript\thefootnotemark\enskip}
+\renewcommand{\footnoterule}{\rule{0pt}{0pt}{\vspace*{-0pt}}}
+\setlength{\footnotesep}{1.5em}
+
+% Smaller font in block quotes
+\usepackage{relsize,etoolbox}
+\AtBeginEnvironment{quote}{\noindent\smaller}
+\AtBeginEnvironment{quotation}{\smaller}
+
+% Macros
+\newcommand{\fw}[1]{\textit{#1}} % Foreign Word
+\newcommand{\tit}[1]{\textit{#1}} % Title of a work
+\newcommand{\q}[1]{\enquote{#1}} % Context-aware quotation
+\newcommand{\qq}[1]{\enquote*{#1}} % Explicit sublevel quotation
+\newcommand{\tsup}[1]{\textsuperscript{#1}} % Superscript
+\newcommand{\markyellow}[1]{\colorbox{yellow}{#1}} % Yellow highlighter
+\newcommand{\ques}{\fakesuperscript{?}} % raised question mark
+
+\newcommand{\ayr}[1]{{\Tagati #1}}
+\newcommand{\xayr}[3]{{\Tagati #1} \emph{#2} \enquote*{#3}}
+
+\newenvironment{ayeri}{
+    %\hyphenpenalty=10000
+    %\hbadness=10000
+    \doublespacing
+    \begin{multicols}{2}
+    \Tagati
+}{
+    \end{multicols} \par
+}
+
+\newenvironment{mytitle}{
+    \hfill
+    \begin{minipage}{0.667\textwidth}
+	\vspace{\baselineskip}
+	\begin{center}
+	    \Large
+	    \sffamily\bfseries
+	    \makeatletter
+}{
+	    \makeatother
+	\end{center}
+	\vspace{1em}
+    \end{minipage}
+    \hfill
+}
+
+% blah
+\usepackage{lipsum}
+
+%% BIBLIOGRAPHY DATABASE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{filecontents*}{\jobname.bib}
+@mvcollection{CAO,
+	editor = {Friedrich Wilhelm and Richard Newald and Helmut de Boor and Diether Haacke and Bettina Kirschstein},
+	gender = {pp},
+	title = {{C}orpus der altdeutschen {O}riginalurkunden bis zum {J}ahr 1300},
+	shorttitle = {CAO},
+	shorthand = {CAO},
+	% sortkey = {CAO0},
+	volumes = {5},
+	publisher = {Moritz Schauenburg and Erich Schmidt},
+	location = {Lahr/Schwarzwald and Berlin},
+	year = {1932--2004},
+}
+
+@collection{CAO1,
+	title = {1200--1282},
+	shorttitle = {CAO I},
+	shorthand = {CAO I},
+	volume = {1},
+	% sortkey = {CAO1},
+	editor = {Friedrich Wilhelm},
+	location = {Lahr (Baden)},
+	publisher = {Moritz Schauenburg},
+	year = {1932},
+	crossref = {CAO},
+}
+
+@collection{CAO5,
+	booktitle = {Nachtragsurkunden 1261--1297},
+	bookshorttitle = {CAO V},
+	shorthand = {CAO V},
+	volume = {5},
+	% sortkey = {CAO5},
+	editor = {Helmut de Boor and Diether Haacke and Bettina Kirschstein},
+	% titleaddon = {Begründet von Friedrich Wilhelm. Fortgeführt von Richard Newald},
+	founder = {Friedrich Wilhelm},
+	continuator = {Richard Newald},
+	gender = {pp},
+	location = {Berlin},
+	publisher = {Erich Schmidt},
+	year = {2004},
+	crossref = {CAO},
+}
+
+@incollection{n163,
+	title = {N~163~(381~a)},
+	origdate = {1279-03-19},
+	origyear = {1279},
+	pages = {127},
+	crossref = {CAO5},
+}
+
+\end{filecontents*}
+
+\addbibresource{\jobname.bib}
+
+%% END OF PREAMBLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%% MAIN PART %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{mytitle}
+    \@title: \@subtitle
+\end{mytitle}
+
+\section{Introduction}
+Part of the data basis for my upcoming master's thesis is formed by \citeauthor{CAO}'s \citetitle*{CAO} [\emph{Corpus of Old German Original Deeds up to the Year 1300}, henceforth \citetitle{CAO}]. This collection comprises over 4,000 legal documents in German language from the 13th century and was compiled by several generations of researchers for over 70 years. Friedrich Wilhelm himself made it a strong point in his forword to the first volume of the \citetitle{CAO} to render the documents as closely as possible to the originals in their transcription in a time when most scholars prefered normalized editions of medieval texts for literary criticism – he derided this notion as \enquote{Esperanto Middle High German} \autocite[see][VIII--IX]{CAO1}. Wilhelm's explicit goal, then, was to provide information to scholars beyond the mere contents of the texts. For the target audience of his research and publication efforts, he rather had linguists than literary critics in mind:
+
+\foreignblockquote{german}{\begin{multicols}{2}Es ergibt sich daher die weitere Notwendigkeit, diese urkundlichen Quellen in einer Ausgabe vor sich zu haben, die diese Orthographien nicht durch Normalisieren nach Lachmanns und seiner Nachfolger Art verwischt. Denn dieses Normalisieren macht zum guten Teil die modernen Urkundenveröffentlichungen, welche Urkunden in deutscher Sprache enthalten, […] für den Sprachforscher unbrauchbar […]. Gerade das \enquote{Normalisieren} also mußte bei diesem Corpus, das in erster Linie dem Sprachforscher dienen soll, vermieden werden. Ein möglichst genauer Abdruck, soweit ein solcher überhaupt das Original einer Urkunde ersetzen kann, war das erste Erfordernis, das erfüllt werden mußte. \autocite[LX]{CAO1}
+
+\columnbreak
+
+{\itshape Thus, the additional necessity arises to have these diplomatic sources laid out in an edition that does not blur these orthographies by means of normalization after the fashion of Lachmann and his followers. For this normalizing renders the better part of modern publications which contain deeds in German language […] useless for the language scholar […]. Especially this \enquote{normalizing} had to thus be avoided in this corpus, which is first and foremost geared towards language scholars. The first requirement that had to be met was a rendition of the text as closely as possible to the original, if such a rendition could ever be a replacement for the original document at all.}\end{multicols}}
+
+Most of the texts are firmly rooted in the everyday life of the time – the bulk is formed by such mundane things as sales and lease contracts, wills, and legal settlements. The texts are usually also not too long and not too complex either, in addtion, which made me think about whether it might be worth giving one of them a try as a translation challenge for my fictional language Ayeri. Due to the nature of legal texts, there is a fair amount of legal formulas in these documents, however, these are habitually rendered in very transparent native terms, which ought to make finding equivalents reasonably straightforward. Since medieval German is certainly not within everyone's scope, an English translation based on the annotations by the editors of the \citetitle{CAO} will be provided.
+
+\section{The Text}
+This is the text of the deed number \citefield{n163}{title} -- effectively dated Augsburg, March 19, 1279 -- in Middle High German language as given in \textcite{n163}. Note that in spite of Wilhelm's self-professed belief in diplomatic editions, the version of this document as it is presented in the \citetitle{CAO} shows obvious signs of modern editing and is thus not a completely faithful rendition of the handwritten original. Namely, abbreviations are resolved – though this is documented – and punctuation is adjusted to modern norms, presumably to facilitate understanding.
+
+\blockquote{\textbf{J}nn\emph{omin}e d\emph{omi}n\emph{i} am\emph{en}!\footnote{The annotation to this reads \enquote{Original \emph{Jnnōîe dn̄j am̄}}.} Alle die, die diſen brief leſent, horent oder ſehent, die ſuln daz wizzen, daz her Vlrich frovn Engeln tohterman verkaufte herm Chvnrad dem Hafener einen halben garten mit ſogtaner beſcheidenheit, daz der her Chvnrat der Hafener vf den ſelben halben garten weder zvn noch hvſ bwen ſolte noch de cheinen bv dar vf tvͦn ſolte, der im ze ſchaden chomen mohte. Daz ſtvnt alſ lange, vnz der her Chvnrat der Hafener dar fvr vnde wolte gezvnet haben den ſelben garten. Do deſ her Vlrich innan wart, do fvr er fvr gerih\-te vnde clagte hinze dem Hafener, daz er da zvnen wolte, da erſ niht tvn ſolte, wande er ez mit gedingede im alſo geben hete, daz er weder zvn noh hvſ da bwen ſolte noh nihteſ deſ, daz im ze ſchaden chomen mohte. Deſ laugent im der Hafener, daz er mit im alſo iht kauft hete. Dar vber wart erteilt, daz der Hafener bereite, daz er mit im alſo iht kauft hete, in bezivgte danne her Vlrich, daz ez alſo wæ̂re. Da wolte her Vlrich ſinſ rehteſ niht vmbe vnde gerte einſ tageſ vmbe ſinen gezivk. Do der tak chom, do gie her Vlrich fvr vnde erzivgte ſelbe dritte, alſ reht waſ, daz er vf den ſelben garten chein den bv tvn ſolte, der im ze ſchaden chomen mohte, alſ da vor geſchriben ſtat. Vnde do er daz erzivgte, do gert er vrteil, wande die lvte tôtlich wæren vnde auh vergæzzen, man ſolte im wol der stet\footnote{To this, the annotation reads: \enquote{\label{fn:2} Erster Buchstabe dieses Wortes im Original Majuskel} (First letter of this word originally majuscule).} brief dar vber geben. Daz wart im erteilt mit geſamenter vrteil. Vnde da von, daz zwiſchen in chein kriech mer gewahſen mvge vmbe die ſache, dar vmbe wart geben dirre brief verſigelt mit der stet\footref{fn:2} jnſigel\footref{fn:2} ze Auſpurk, daz dar an hanget. Vnde ſint deſ ge\-ziu\-ge her Volkwin, her Sibot der Stolzhirz, her Vlrich Fundan, her Livpolt der Schroter, her Livpolt der Stolzhirz, her Chvnrat Reinbot, meiſter Chvnrat von Schoenegge, her Chvnrat Notkauf, her Chvnrat der Bart vnde ander genvge. Do daz geſchach vnde auh dirre brief geben wart, do waſ von goteſ\footref{fn:2} geburte tuſent\footref{fn:2} iar zwej hvndert iar in dem nivn\footref{fn:2} vnde sibenzigoſten iare an dem ſvnnetage vor dem balm tage.
+\begin{center}
+S[iegel]
+\end{center}}
+
+The text runs about like this in English:
+
+\blockquote{\emph{\textbf{I}n nomine domini amen.} Everyone who reads this writ, by hearing or seeing it, shall know that Mr.\,Ulrich, Mrs.\,Engel's son-in-law,\footnote{More specifically, her daughter's husband.} sold Mr.\,Chunrat der Hafener half a garden under the provision that Mr.\,Chunrat der Hafener build neither fence nor house into this same garden, nor put any other building into it which would cause damage to the other. This was set up until Mr.\,Chunrat der Hafener went and surrounded the same garden with a fence. As Mr.\,Ulrich became aware of this, he went to court and and sued Hafener about his wanting to set up a fence even though he was not supposed to, since he had pledged by contract that he would neither build a fence nor a house into it, nor anything else that would cause damage to the other. Hafener denied this: he had not contracted with Ulrich to this effect. The court assessed that Hafener explicitly denied that he had contracted with Ulrich to this effect, unless Mr.\,Ulrich could prove that he had. Mr.\,Ulrich did not want to forfeit his rights, then, and asked for an appointment to testify. When that day came, Mr.\,Ulrich appeared and testified together with two witnesses, as was the law, that Hafener was not supposed to build anything into this same garden that would cause damage to him, as written above. And after giving his testimony, he demanded a judgement and a municipal writ, since people are mortal and forgetful. This was awarded to him unanimously. And so that there may not spring any more disputes between them from this issue, this writ was issued, sealed with the city of Augsburg's seal which is attached. To this this are witness Mr.\,Volkwin, Mr.\,Sibot der Stolzhirz, Mr.\,Ulrich Fundan, Mr.\,Liupolt der Schroter, Mr.\,Liupolt der Stolzhirz, Mr.\,Chunrat Reinbot, Master Chunrat von Schoenegge, Mr.\,Chunrat Notkauf, Mr.\,Chunrat der Bart and others enough. As this took place and also this writ was issued, the count from God's birth was one thousand years, two hundred years, in the seventy-ninth year on the Sunday before Palm Sunday.
+
+\begin{center}
+Seal
+\end{center}}
+
+%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\printbibliography
+
+\end{document}
