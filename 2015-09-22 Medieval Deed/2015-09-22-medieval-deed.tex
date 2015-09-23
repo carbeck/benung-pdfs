@@ -56,6 +56,7 @@
     maxnames=2,
     backend=biber,
     safeinputenc,
+    hyperref,
 ]{biblatex}
 
 % To make \textcite look like "Doe (2014: 213)"
@@ -248,13 +249,24 @@
 }
 
 @incollection{n163,
-	title = {N~163~(381~a)},
+	title = {N~163 (381~a)},
 	origdate = {1279-03-19},
 	origyear = {1279},
 	pages = {127},
 	crossref = {CAO5},
 }
 
+@incollection{n163-online,
+	title = {N~163 (381~a) 1279 März 19},
+	editor = {Kurt Gärtner and Andrea Rapp and Andreas Gniffke},
+	url = {http://tcdh01.uni-trier.de/cgi-bin/iCorpus/CorpusIndex.tcl?hea=qf&for=qfcoraltdu&cnt=qfcoraltdu&xid=CW50172},
+	urldate = {2015-09-23},
+	maintitle = {{<CORPUS>}},
+	mainsubtitle = {{Corpus der altdeutschen Originalurkunden bis zum Jahr 1300}},
+	publisher = {University of Trier},
+	location = {Trier},
+	year = {2007},
+}
 \end{filecontents*}
 
 \addbibresource{\jobname.bib}
@@ -270,9 +282,9 @@
 \end{mytitle}
 
 \section{Friedrich Wilhelm and His Diplomatic Dream}
-Part of the data basis for my upcoming master's thesis is formed by \citeauthor{CAO}'s \citetitle*{CAO} (\enquote*{Corpus of Old German Original Deeds up to the Year 1300}, henceforth \citetitle{CAO}). This collection comprises over 4,000 legal documents in German language from the 13th century and was compiled by several generations of researchers over the course of over 70 years. Most of the deeds come from the southwestern corner of the German-speaking area, with centers in Strasbourg, Basel, Zurich and Constance. A steady increase in activity over the last quarter of the 13th century can be observed in general, however, not only in Alemannic-speaking areas.
+Part of the data basis for my upcoming master's thesis is formed by \citeauthor{CAO}'s \citetitle*{CAO} (\enquote*{Corpus of Old German Original Deeds up to the Year 1300}, henceforth \citetitle{CAO}). This collection comprises over 4,000 legal documents in German language from the 13th century and was compiled by several generations of researchers over the course of over 70 years. Most of the deeds come from the southwestern corner of the German-speaking area, with centers in Strasbourg, Basel, Zurich and Constance. A steady increase in activity over the last quarter of the 13th century can generally be observed, however.
 
-In his foreword to the first volume of the \citetitle{CAO}, Wilhelm made a strong argument for rendering the modern transcriptions of the handwritten documents as closely as possible to the medieval originals in a time when most scholars in the field prefered normalized editions of medieval texts for literary criticism – he harshly derided the notion of normalized texts as \enquote{Esperanto-Mittelhochdeutsch} \autocite[see][VIII--IX]{CAO1}. Wilhelm's intended target audience was we call linguists today, rather than literary critics:
+In his foreword to the first volume of the \citetitle{CAO}, Wilhelm made a strong argument for rendering the modern transcriptions of the handwritten documents as closely as possible to the medieval originals in a time when most scholars in the field prefered normalized editions of medieval texts for literary criticism – he harshly derided the notion of normalized texts as \enquote{Esperanto-Mittelhochdeutsch} \autocite[see][VIII--IX]{CAO1}. Wilhelm's intended target audience was what we call linguists today, rather than literary critics, as he explains:
 
 \foreignblockquote{german}{\begin{multicols}{2}Es ergibt sich daher die weitere Notwendigkeit, diese urkundlichen Quellen in einer Ausgabe vor sich zu haben, die diese Orthographien nicht durch Normalisieren nach Lachmanns und seiner Nachfolger Art verwischt. Denn dieses Normalisieren macht zum guten Teil die modernen Urkundenveröffentlichungen, welche Urkunden in deutscher Sprache enthalten, […] für den Sprachforscher unbrauchbar […]. Gerade das \enquote{Normalisieren} also mußte bei diesem Corpus, das in erster Linie dem Sprachforscher dienen soll, vermieden werden. Ein möglichst genauer Abdruck, soweit ein solcher überhaupt das Original einer Urkunde ersetzen kann, war das erste Erfordernis, das erfüllt werden mußte. \autocite[LX]{CAO1}
 
@@ -282,10 +294,10 @@ In his foreword to the first volume of the \citetitle{CAO}, Wilhelm made a stron
 
 The bulk of the texts contained in the \citetitle{CAO} is formed by such mundane things as sales and lease contracts, wills, legal settlements, and regulations concerning trade and construction. Moreover, the texts are usually not too long and not too complex either, which makes some of them suitable for translation challenges, I suppose.
 
-Due to the nature of the deeds, there is a fair amount of legal formulas in these documents, however, these use very transparent native terms, which ought to make finding equivalents reasonably straightforward. Since medieval German is certainly not within everyone's scope, even though I tried picking a rather tame example, an English translation based on the annotations by the editors of the \citetitle{CAO} and my own understanding will be provided.
+Due to the nature of the deeds, there is a fair amount of legal formulas in these documents, however, these use very transparent native terms, which ought to make finding equivalents reasonably straightforward. An English translation based on the annotations by the editors of the \citetitle{CAO} will be provided \autocite[see][]{n163-online}.
 
 \section{\enquote{Alle die, die disen brief lesent, hœrent oder sehent}}
-In the following, I will present the text of the deed number \citefield{n163}{title} -- effectively dated Augsburg, March 19, 1279 -- in Middle High German language as given in \textcite{n163}. Note that in spite of Wilhelm's self-professed firm belief in diplomatic editions, the version of this document as it is presented in the \citetitle{CAO} shows signs of modern editing, that is, abbreviations are resolved and punctuation is adjusted to modern norms.
+In the following, I will present the text of the deed number \citefield{n163}{title} -- effectively dated Augsburg, March 19, 1279 -- in Middle High German language as given in \textcites{n163}{n163-online}. In spite of Wilhelm's self-professed firm belief in diplomatic editions, the version of this document as it is presented in the \citetitle{CAO} shows signs of modern editing, that is, abbreviations are resolved and punctuation is adjusted to modern standards.
 
 \blockquote{\textbf{J}nn\emph{omin}e d\emph{omi}n\emph{i} am\emph{en}!\footnote{\enquote{Original \emph{Jnnōîe dn̄j am̄}}.} Alle die, die diſen brief leſent, horent oder ſehent, die ſuln daz wizzen, daz her Vlrich frovn Engeln tohterman verkaufte herm Chvnrad dem Hafener einen halben garten mit ſogtaner beſcheidenheit, daz der her Chvnrat der Hafener vf den ſelben halben garten weder zvn noch hvſ bwen ſolte noch de cheinen bv dar vf tvͦn ſolte, der im ze ſchaden chomen mohte. Daz ſtvnt alſ lange, vnz der her Chvnrat der Hafener dar fvr vnde wolte gezvnet haben den ſelben garten. Do deſ her Vlrich innan wart, do fvr er fvr gerih\-te vnde clagte hinze dem Hafener, daz er da zvnen wolte, da erſ niht tvn ſolte, wande er ez mit gedingede im alſo geben hete, daz er weder zvn noh hvſ da bwen ſolte noh nihteſ deſ, daz im ze ſchaden chomen mohte. Deſ laugent im der Hafener, daz er mit im alſo iht kauft hete. Dar vber wart erteilt, daz der Hafener bereite, daz er mit im alſo iht kauft hete, in bezivgte danne her Vlrich, daz ez alſo wæ̂re. Da wolte her Vlrich ſinſ rehteſ niht vmbe vnde gerte einſ tageſ vmbe ſinen gezivk. Do der tak chom, do gie her Vlrich fvr vnde erzivgte ſelbe dritte, alſ reht waſ, daz er vf den ſelben garten chein den bv tvn ſolte, der im ze ſchaden chomen mohte, alſ da vor geſchriben ſtat. Vnde do er daz erzivgte, do gert er vrteil, wande die lvte tôtlich wæren vnde auh vergæzzen, man ſolte im wol der stet\footnote{\enquote{\label{fn:2} Erster Buchstabe dieses Wortes im Original Majuskel} (First letter of this word originally majuscule).} brief dar vber geben. Daz wart im erteilt mit geſamenter vrteil. Vnde da von, daz zwiſchen in chein kriech mer gewahſen mvge vmbe die ſache, dar vmbe wart geben dirre brief verſigelt mit der stet\footref{fn:2} jnſigel\footref{fn:2} ze Auſpurk, daz dar an hanget. Vnde ſint deſ ge\-ziu\-ge her Volkwin, her Sibot der Stolzhirz, her Vlrich Fundan, her Livpolt der Schroter, her Livpolt der Stolzhirz, her Chvnrat Reinbot, meiſter Chvnrat von Schoenegge, her Chvnrat Notkauf, her Chvnrat der Bart vnde ander genvge. Do daz geſchach vnde auh dirre brief geben wart, do waſ von goteſ\footref{fn:2} geburte tuſent\footref{fn:2} iar zwej hvndert iar in dem nivn\footref{fn:2} vnde sibenzigoſten iare an dem ſvnnetage vor dem balm tage.
 \begin{center}
