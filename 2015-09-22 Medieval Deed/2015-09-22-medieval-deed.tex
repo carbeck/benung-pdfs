@@ -134,7 +134,7 @@
 % Things for tables
 \usepackage{longtable}
 \usepackage{tabu}
-\extrarowsep=2.5pt
+%\extrarowsep=2pt
 % \usepackage{rotating}
 
 % Formatting of glosses
@@ -150,6 +150,11 @@
 \newleipzig{CauT}{caut}{causative topic}
 \newleipzig{An}{an}{animate}
 \newleipzig{Inan}{inan}{inanimate}
+
+\newleipzig{PGmc}{pgmc}{Proto Germanic}
+\newleipzig{Gmc}{gmc}{Germanic}
+\newleipzig{Mhg}{mhg}{Middle High German}
+\newleipzig{Gk}{gk}{Greek}
 
 % Nicer footnotes
 \usepackage[bottom]{footmisc}
@@ -506,35 +511,35 @@ Ayeri, I permitted myself to do so here as well and came up with the following:
 	% FIXME: Look into an actual name dictionary, not Wikipedia or behindthename.com!
 	
 	Chunrad (Conrad)
-		& PGmc \fw{*kōniz} `bold, brave', \newline
-			PGmc \fw{*rēdą} `counsel'
+		& \PGmc{} \fw{*kōniz} `bold, brave', \newline
+			\PGmc{} \fw{*rēdą} `counsel'
 		& \ayr{sik\_o\_MteMdo} \fw{Sikontendo}
 		& \xayr{sikoNF}{sikong}{advice}, \newline
-			\xayr{teMdo}{tendo}{courageous} \\
+			\xayr{teMdo}{tendo}{courageous} \\ [2pt]
 	
 	Hafener (Potter)
-		& MHG \fw{havenære} `potter'\newline
-			(cf. MHG \fw{haven} `pot')
+		& \Mhg{} \fw{havenære} `potter'\newline
+			(cf. \Mhg{} \fw{haven} `pot')
 		& \ayr{birtyti} \fw{Biratayati}
 		& \xayr{birtj}{biratay}{pot}, \newline
-			\xayr{/Ati}{-ati}{maker} \\ [2.5pt]
+			\xayr{/Ati}{-ati}{maker} \\ [2pt]
 	
-	\hline
-	
-	Ulrich (Ulric)
-		& Gmc \fw{odal} `heritage, prosperity', \newline
-			Gmc \fw{ric} `power'
-		& \ayr{litidYnF} \fw{Litijan}
-		& \xayr{lito}{lito}{power}, \newline
-			\xayr{IdYn}{ijan}{rich} \\
-	
-	\hline
+	\tabucline[]{-}
 	
 	Engel (Angel)
-		& Gk ἄγγελος \fw{ángelos} `messenger'
+		& \Gk{} ἄγγελος \fw{ángelos} `messenger'
 		& \ayr{ninvj} \fw{Ninavay}
 		& \xayr{niny}{ninaya}{messenger} \newline
-			\xayr{/vy}{-vaya}{fem. occupation} \\
+			\xayr{/vy}{-vaya}{fem. occupation} \\ [2pt]
+	
+	\tabucline[]{-}
+	
+	Ulrich (Ulric)
+		& \Gmc{} \fw{odal} `heritage, prosperity', \newline
+			\Gmc{} \fw{ric} `power'
+		& \ayr{litidYnF} \fw{Litijan}
+		& \xayr{lito}{lito}{power}, \newline
+			\xayr{IdYn}{ijan}{rich} \\ [2pt]
 	
 \end{longtabu}
 
