@@ -132,8 +132,9 @@
 \onehalfspacing
 
 % Things for tables
-% \usepackage{longtable}
-% \usepackage{tabu}
+\usepackage{longtable}
+\usepackage{tabu}
+\extrarowsep=2.5pt
 % \usepackage{rotating}
 
 % Formatting of glosses
@@ -306,7 +307,7 @@ Notwendigkeit, diese urkundlichen Quellen in einer Ausgabe vor sich zu haben,
 die diese Orthographien nicht durch Normalisieren nach Lachmanns und seiner 
 Nachfolger Art verwischt. Denn dieses Normalisieren macht zum guten Teil die 
 modernen Urkundenveröffentlichungen, welche Urkunden in deutscher Sprache 
-enthalten, […] für den Sprachforscher unbrauchbar […]. Gerade das 
+enthalten, [...] für den Sprachforscher unbrauchbar [...]. Gerade das 
 \enquote{Normalisieren} also mußte bei diesem Corpus, das in erster Linie dem 
 Sprachforscher dienen soll, vermieden werden. Ein möglichst genauer Abdruck, 
 soweit ein solcher überhaupt das Original einer Urkunde ersetzen kann, war das 
@@ -318,7 +319,7 @@ erste Erfordernis, das erfüllt werden mußte. \autocite[LX]{CAO1}
 be laid out in an edition that does not blur these orthographies by means of 
 normalization after the fashion of Lachmann and his followers. For this 
 normalizing renders the better part of modern publications of deeds which 
-contain deeds in German language […] useless to the language scholar […]. 
+contain deeds in German language [...] useless to the language scholar [...]. 
 Especially this \enquote{normalizing} thus had to be avoided in this corpus, 
 which is first and foremost catering to language scholars. The first requirement 
 that had to be met was a rendition of the text as close as possible to the 
@@ -415,6 +416,8 @@ Seal
 
 \section{Ayeri Translation}
 
+% In nomine domini amen.
+
 \ex \begingl
 	\glpreamble Garāneri na Nahang, āmen! //
 	\gla garān -eri na Nahang, āmen! //
@@ -426,95 +429,167 @@ Seal
 	now, but since I don't, I decided to also translate this Latin phrase 
 	into Ayeri.
 
+% Alle die, die 
+% diſen brief leſent, horent oder ſehent, die ſuln daz wizzen, daz her Vlrich 
+% frovn Engeln tohterman verkaufte herm Chvnrad dem Hafener einen halben garten 
+% mit ſogtaner beſcheidenheit, daz der her Chvnrat der Hafener vf den ſelben 
+% halben garten weder zvn noch hvſ bwen ſolte noch de cheinen bv dar vf tvͦn 
+% ſolte, der im ze ſchaden chomen mohte.
+
+\pex
+	\glpreamble Ang mya koronyan keynam-hen si ang layayan eda-tahang 
+		nivayēri soyang tangyēri tan, sa lataya mondo mesam yam 
+		Sikontendo Biratayati tiga ang Litijan tiga si samyanang na 
+		Ninavay tiga, dilengeri, ya mya vehoyya ang Sikontendo 
+		Biratayati tiga kong eda-mondo mesam lahanley soyang nangās 
+		soyang vehanley palung siley eng ming nupisongara yās. //
+	\a \begingl
+		\gla ang mya koron -yan keynam =hen si ang laya -yan eda= tahang 
+			-ley niva -ye -eri soyang tang -ye -eri tan, ... //
+		\glb \AgtT{} be.supposed.to know -\Tpl{}.\M{} people =all \Rel{} 
+			\AgtT{} read -\Tpl{}.\M{}.\Top{} this= writ 
+			-\Parg{}.\Inan{} eye -\Pl{} -\Ins{} or ear -\Pl{} 
+			-\Ins{} \Tpl{}.\Gen{}, ... //
+		\glft \enquote{All people who read this writ with their eyes or 
+			their ears shall know that ...} //
+	\endgl
+	\a \begingl
+		\gla sa lata -ya mondo mesam yam= Sikontendo Biratayati tiga 
+			ang= Litijan tiga si samyan -ang na= Ninavay tiga, 
+			dileng -eri, ... //
+		\glb \PatT{} sell -\Tsg{} garden.\Top{} half \Dat{}= Conrad 
+			Potter honorable \Aarg{}= Ulric honorable \Rel{} 
+			son.in.law -\Aarg{} \Gen{}= Angelica honorable, rule 
+			-\Ins{}, ... //
+		\glft \enquote{the honorable Ulrich, son-in-law of the honorable 
+			Engel, sold half a garden to the honorable Chunrad der 
+			Hafener, under the rule that ...} //
+	\endgl
+	\a \begingl
+		\gla ya mya veh -oy -ya ang= Sikontendo Biratayati tiga kong 
+			eda= mondo mesam lahan -ley soyang nanga -as soyang 
+			vehan -ley palung si -ley eng ming nupa -isa -ong -ara 
+			yās. //
+		\glb \LocT{} be.supposed.to build -\Neg{} -\Tsg{}.\M{} \Aarg{}= 
+			Conrad Potter honorable inside this= garden.\Top{} half 
+			fence -\Parg{}.\Inan{} or house -\Parg{} or building 
+			-\Parg{}.\Inan{} \Rel{} -Parg{}.\Inan{} can hurt 
+			-\Caus{} -\Irr{} -\Tsg{}.\Inan{} \Tsg{}.\M{}.\Parg{}. //
+		\glft \enquote{Chunrad der Hafener is not supposed to build into 
+		the garden either fence or house or another building that could 
+		damage him.} //
+	\endgl
+\xe
+
+This is one hell of a long sentence, which I nonetheless did not split up into several ones in order to keep the legalese spirit of the original. Since it is always fun looking up the etymologies of names and trying to calque them into Ayeri, I permitted myself to do so here as well and came up with the following:
+
+\begin{longtabu} to \textwidth {X[37] X[63] | X[40] X[60]}
+	\rowfont {\bfseries\upshape\footnotesize}
+	\everyrow{\rowfont{\footnotesize}}
+	\multicolumn2{c|}{German}					& \multicolumn2{c}{Ayeri} \\ \hline %\endhead
+	
+	Chunrad (Conrad)	& Gmc \fw{kuoni} `brave', \newline
+				  Gmc \fw{rad} `counsel'		& \ayr{sikoMteMdo} \fw{Sikontendo}	& \xayr{sikoNF}{sikong}{advice}, \newline
+														  \xayr{teMdo}{tendo}{courageous} \\
+	Hafener (Potter)	& MHG \fw{havenære} `potter'		& \ayr{birtyti} \fw{Biratayati}		& \xayr{birtj}{biratay}{pot}, \newline
+														  \xayr{/Ati}{-ati}{maker} \\ [2.5pt]
+	\hline
+	Ulrich (Ulric)		& Gmc \fw{odal} `heritage, prosperity', \newline
+				  Gmc \fw{ric} `power'			& \ayr{litidYnF} \fw{Litijan}		& \xayr{lito}{lito}{power}, \newline
+														  \xayr{IdYn}{idyan}{rich} \\
+	\hline
+	Engel (Angel)		& Gk ἄγγελος \fw{ángelos} `messenger'	& \ayr{ninvj} \fw{Ninavay}		& \xayr{niny}{ninaya}{messenger} \newline
+														  \xayr{/vy}{-vaya}{fem. occupation} \\
+\end{longtabu}
+
+Another choice I made is translating the titles \fw{herre} `lord' and 
+\fw{vrouwe} `lady' equally as \xayr{tig}{tiga}{honorable}. In the case of this 
+deed, I \emph{assume} that the participants in the sale and their families are 
+not noble as the titles would suggest, but more or less wealthy townspeople. 
+Thus, \fw{herre} and \fw{vrouwe}, respectively, have probably already assumed 
+their modern meanings as generic respectful terms of address comparable to 
+English \fw{Mr.} and \fw{Mrs.} here.
+
 \ex \begingl
-	\glpreamble … //
-	\gla … //
-	\glb … //
-	\glft \enquote{…} //
+	\glpreamble ... //
+	\gla ... //
+	\glb ... //
+	\glft \enquote{...} //
 \endgl \xe
 
-…
+...
 
 \ex \begingl
-	\glpreamble … //
-	\gla … //
-	\glb … //
-	\glft \enquote{…} //
+	\glpreamble ... //
+	\gla ... //
+	\glb ... //
+	\glft \enquote{...} //
 \endgl \xe
 
-…
+...
 
 \ex \begingl
-	\glpreamble … //
-	\gla … //
-	\glb … //
-	\glft \enquote{…} //
+	\glpreamble ... //
+	\gla ... //
+	\glb ... //
+	\glft \enquote{...} //
 \endgl \xe
 
-…
+...
 
 \ex \begingl
-	\glpreamble … //
-	\gla … //
-	\glb … //
-	\glft \enquote{…} //
+	\glpreamble ... //
+	\gla ... //
+	\glb ... //
+	\glft \enquote{...} //
 \endgl \xe
 
-…
+...
 
 \ex \begingl
-	\glpreamble … //
-	\gla … //
-	\glb … //
-	\glft \enquote{…} //
+	\glpreamble ... //
+	\gla ... //
+	\glb ... //
+	\glft \enquote{...} //
 \endgl \xe
 
-…
+...
 
 \ex \begingl
-	\glpreamble … //
-	\gla … //
-	\glb … //
-	\glft \enquote{…} //
+	\glpreamble ... //
+	\gla ... //
+	\glb ... //
+	\glft \enquote{...} //
 \endgl \xe
 
-…
+...
 
 \ex \begingl
-	\glpreamble … //
-	\gla … //
-	\glb … //
-	\glft \enquote{…} //
+	\glpreamble ... //
+	\gla ... //
+	\glb ... //
+	\glft \enquote{...} //
 \endgl \xe
 
-…
+...
 
 \ex \begingl
-	\glpreamble … //
-	\gla … //
-	\glb … //
-	\glft \enquote{…} //
+	\glpreamble ... //
+	\gla ... //
+	\glb ... //
+	\glft \enquote{...} //
 \endgl \xe
 
-…
+...
 
 \ex \begingl
-	\glpreamble … //
-	\gla … //
-	\glb … //
-	\glft \enquote{…} //
+	\glpreamble ... //
+	\gla ... //
+	\glb ... //
+	\glft \enquote{...} //
 \endgl \xe
 
-…
-
-\ex \begingl
-	\glpreamble … //
-	\gla … //
-	\glb … //
-	\glft \enquote{…} //
-\endgl \xe
-
-…
+...
 
 %% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
