@@ -170,6 +170,7 @@
 \newcommand{\tsup}[1]{\textsuperscript{#1}} % Superscript
 \newcommand{\markyellow}[1]{\colorbox{yellow}{#1}} % Yellow highlighter
 \newcommand{\ques}{\fakesuperscript{?}} % raised question mark
+\newcommand{\norm}[1]{⸢\textit{#1}⸣} % Normalized spelling
 
 \newcommand{\ayr}[1]{{\Tagati #1}}
 \newcommand{\xayr}[3]{{\Tagati #1} \emph{#2} \enquote*{#3}}
@@ -200,16 +201,13 @@
     \hfill
 }
 
-% blah
-\usepackage{lipsum}
-
 %% BIBLIOGRAPHY DATABASE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{filecontents*}{\jobname.bib}
 @mvcollection{CAO,
 	editor = {Friedrich Wilhelm and Richard Newald and Helmut de Boor and Diether Haacke and Bettina Kirschstein},
 	gender = {pp},
-	title = {{C}orpus der altdeutschen {O}riginalurkunden bis zum {J}ahr 1300},
+	title = {{Corpus der altdeutschen Originalurkunden bis zum Jahr 1300}},
 	shorttitle = {CAO},
 	shorthand = {CAO},
 	% sortkey = {CAO0},
@@ -267,6 +265,20 @@
 	publisher = {University of Trier},
 	location = {Trier},
 	year = {2007},
+}
+
+@reference{lexer,
+	title = {{Mittelhochdeutsches Handwörterbuch von Matthias Lexer}},
+	editor = {Matthias Lexer},
+	volumes = {3},
+	origplace = {Leipzig},
+	origpublisher = {Hirzel},
+	origyear = {1872--1878},
+	publisher = {University of Trier},
+	place = {Trier},
+	year = {1998--2015},
+	url = {http://woerterbuchnetz.de/Lexer/},
+	urldate = {2015-10-08},
 }
 \end{filecontents*}
 
@@ -425,16 +437,14 @@ Seal
 	\glft \enquote{In the name of the Lord, amen!} //
 \endgl \xe
 
-	I really wish I had another language besides Ayeri to draw from right 
-	now, but since I don't, I decided to also translate this Latin phrase 
-	into Ayeri.
+I really wish I had another language besides Ayeri to draw from right now, but 
+since I don't, I decided to also translate this Latin phrase into Ayeri.
 
-% Alle die, die 
-% diſen brief leſent, horent oder ſehent, die ſuln daz wizzen, daz her Vlrich 
-% frovn Engeln tohterman verkaufte herm Chvnrad dem Hafener einen halben garten 
-% mit ſogtaner beſcheidenheit, daz der her Chvnrat der Hafener vf den ſelben 
-% halben garten weder zvn noch hvſ bwen ſolte noch de cheinen bv dar vf tvͦn 
-% ſolte, der im ze ſchaden chomen mohte.
+% Alle die, die diſen brief leſent, horent oder ſehent, die ſuln daz wizzen, daz 
+% her Vlrich frovn Engeln tohterman verkaufte herm Chvnrad dem Hafener einen 
+% halben garten mit ſogtaner beſcheidenheit, daz der her Chvnrat der Hafener vf 
+% den ſelben halben garten weder zvn noch hvſ bwen ſolte noch de cheinen bv dar 
+% vf tvͦn ſolte, der im ze ſchaden chomen mohte.
 
 \pex
 	\glpreamble Ang mya koronyan keynam-hen si ang layayan eda-tahang 
@@ -473,42 +483,74 @@ Seal
 		\glb \LocT{} be.supposed.to build -\Neg{} -\Tsg{}.\M{} \Aarg{}= 
 			Conrad Potter honorable inside this= garden.\Top{} half 
 			fence -\Parg{}.\Inan{} or house -\Parg{} or building 
-			-\Parg{}.\Inan{} \Rel{} -\Parg{}.\Inan{} can hurt 
-			-\Caus{} -\Irr{} -\Tsg{}.\Inan{} \Tsg{}.\M{}.\Parg{}. //
+			-\Parg{}.\Inan{} other \Rel{} -\Parg{}.\Inan{} 
+			\Aarg{}.\Inan{} can hurt -\Caus{} -\Irr{} 
+			-\Tsg{}.\Inan{} \Tsg{}.\M{}.\Parg{}. //
 		\glft \enquote{Chunrad der Hafener is not supposed to build into 
 		the garden either fence or house or another building that could 
-		damage him.} //
+		cause him harm.} //
 	\endgl
 \xe
 
-This is one hell of a long sentence, which I nonetheless did not split up into several ones in order to keep the legalese spirit of the original. Since it is always fun looking up the etymologies of names and trying to calque them into Ayeri, I permitted myself to do so here as well and came up with the following:
+This is one hell of a long sentence, which I nonetheless didn't split up into 
+several ones in order to keep the legalese spirit of the original. Since it's 
+always fun looking up the etymologies of names and trying to calque them into 
+Ayeri, I permitted myself to do so here as well and came up with the following:
 
 \begin{longtabu} to \textwidth {X[37] X[63] | X[40] X[60]}
 	\rowfont {\bfseries\upshape\footnotesize}
 	\everyrow{\rowfont{\footnotesize}}
-	\multicolumn2{c|}{German}					& \multicolumn2{c}{Ayeri} \\ \hline %\endhead
+	\multicolumn2{c|}{German}
+		& \multicolumn2{c}{Ayeri} \\ \hline \endhead
 	
-	Chunrad (Conrad)	& Gmc \fw{kuoni} `brave', \newline
-				  Gmc \fw{rad} `counsel'		& \ayr{sikoMteMdo} \fw{Sikontendo}	& \xayr{sikoNF}{sikong}{advice}, \newline
-														  \xayr{teMdo}{tendo}{courageous} \\
-	Hafener (Potter)	& MHG \fw{havenære} `potter'		& \ayr{birtyti} \fw{Biratayati}		& \xayr{birtj}{biratay}{pot}, \newline
-														  \xayr{/Ati}{-ati}{maker} \\ [2.5pt]
+	% FIXME: Look into an actual name dictionary, not Wikipedia or behindthename.com!
+	
+	Chunrad (Conrad)
+		& PGmc \fw{*kōniz} `bold, brave', \newline
+			PGmc \fw{*rēdą} `counsel'
+		& \ayr{sik\_o\_MteMdo} \fw{Sikontendo}
+		& \xayr{sikoNF}{sikong}{advice}, \newline
+			\xayr{teMdo}{tendo}{courageous} \\
+	
+	Hafener (Potter)
+		& MHG \fw{havenære} `potter'\newline
+			(cf. MHG \fw{haven} `pot')
+		& \ayr{birtyti} \fw{Biratayati}
+		& \xayr{birtj}{biratay}{pot}, \newline
+			\xayr{/Ati}{-ati}{maker} \\ [2.5pt]
+	
 	\hline
-	Ulrich (Ulric)		& Gmc \fw{odal} `heritage, prosperity', \newline
-				  Gmc \fw{ric} `power'			& \ayr{litidYnF} \fw{Litijan}		& \xayr{lito}{lito}{power}, \newline
-														  \xayr{IdYn}{ijan}{rich} \\
+	
+	Ulrich (Ulric)
+		& Gmc \fw{odal} `heritage, prosperity', \newline
+			Gmc \fw{ric} `power'
+		& \ayr{litidYnF} \fw{Litijan}
+		& \xayr{lito}{lito}{power}, \newline
+			\xayr{IdYn}{ijan}{rich} \\
+	
 	\hline
-	Engel (Angel)		& Gk ἄγγελος \fw{ángelos} `messenger'	& \ayr{ninvj} \fw{Ninavay}		& \xayr{niny}{ninaya}{messenger} \newline
-														  \xayr{/vy}{-vaya}{fem. occupation} \\
+	
+	Engel (Angel)
+		& Gk ἄγγελος \fw{ángelos} `messenger'
+		& \ayr{ninvj} \fw{Ninavay}
+		& \xayr{niny}{ninaya}{messenger} \newline
+			\xayr{/vy}{-vaya}{fem. occupation} \\
+	
 \end{longtabu}
 
-Another choice I made is translating the titles \fw{herre} `lord' and 
-\fw{vrouwe} `lady' equally as \xayr{tig}{tiga}{honorable}. In the case of this 
-deed, I \emph{assume} that the participants in the sale and their families are 
-not noble as the titles would suggest, but more or less wealthy townspeople. 
-Thus, \fw{herre} and \fw{vrouwe}, respectively, have probably already assumed 
-their modern meanings as generic respectful terms of address comparable to 
-English \fw{Mr.} and \fw{Mrs.} here.
+Another choice I made is translating the titles \norm{herre} `lord' and 
+\norm{vrouwe} `lady' equally as \xayr{tig}{tiga} {honorable}.\footnote{
+Normalized spellings follow the headwords in \textcite{lexer} and are 
+indicated by ⸢…⸣ brackets.} In the case of this deed, I \emph{assume} that the 
+participants in the sale and their families are not noble as the titles would 
+suggest, but more or less wealthy townspeople. Thus, \norm{herre} and 
+\norm{vrouwe}, respectively, have probably already assumed their modern meanings 
+as generic respectful terms of address comparable to English \fw{Mr.} and 
+\fw{Mrs.} here, which I used in the English translation of the deed above as 
+well for the same reason.\footnote{The dictionary has entries for \ayr{tyon} 
+\fw{Tayon} and \ayr{tenFvnF} \fw{Tenvan}, but I've never actually used these 
+since I dropped the modifier \ayr{tj} \fw{tay} that these are supposed to be 
+based on again soon after adding it.}
 
 % Daz ſtvnt alſ lange, vnz der her Chvnrat der Hafener dar fvr vnde wolte 
 % gezvnet haben den ſelben garten.
@@ -522,10 +564,10 @@ English \fw{Mr.} and \fw{Mrs.} here.
 
 ...
 
-% Do deſ her Vlrich innan wart, do fvr er fvr 
-% gerihte vnde clagte hinze dem Hafener, daz er da zvnen wolte, da erſ niht tvn 
-% ſolte, wande er ez mit gedingede im alſo geben hete, daz er weder zvn noh hvſ 
-% da bwen ſolte noh nihteſ deſ, daz im ze ſchaden chomen mohte.
+% Do deſ her Vlrich innan wart, do fvr er fvr gerihte vnde clagte hinze dem 
+% Hafener, daz er da zvnen wolte, da erſ niht tvn ſolte, wande er ez mit 
+% gedingede im alſo geben hete, daz er weder zvn noh hvſ da bwen ſolte noh 
+% nihteſ deſ, daz im ze ſchaden chomen mohte.
 
 \ex \begingl
 	\glpreamble ... //
@@ -536,10 +578,9 @@ English \fw{Mr.} and \fw{Mrs.} here.
 
 ...
 
-% Deſ laugent im 
-% der Hafener, daz er mit im alſo iht kauft hete. Dar vber wart erteilt, daz 
-% der Hafener bereite, daz er mit im alſo iht kauft hete, in bezivgte danne her 
-% Vlrich, daz ez alſo wæ̂re.
+% Deſ laugent im der Hafener, daz er mit im alſo iht kauft hete. Dar vber wart 
+% erteilt, daz der Hafener bereite, daz er mit im alſo iht kauft hete, in 
+% bezivgte danne her Vlrich, daz ez alſo wæ̂re.
 
 \ex \begingl
 	\glpreamble ... //
@@ -550,8 +591,8 @@ English \fw{Mr.} and \fw{Mrs.} here.
 
 ...
 
-% Da wolte her Vlrich ſinſ rehteſ niht vmbe vnde 
-% gerte einſ tageſ vmbe ſinen gezivk.
+% Da wolte her Vlrich ſinſ rehteſ niht vmbe vnde gerte einſ tageſ vmbe ſinen 
+% gezivk.
 
 \ex \begingl
 	\glpreamble ... //
@@ -562,9 +603,9 @@ English \fw{Mr.} and \fw{Mrs.} here.
 
 ...
 
-% Do der tak chom, do gie her Vlrich fvr 
-% vnde erzivgte ſelbe dritte, alſ reht waſ, daz er vf den ſelben garten chein 
-% den bv tvn ſolte, der im ze ſchaden chomen mohte, alſ da vor geſchriben ſtat.
+% Do der tak chom, do gie her Vlrich fvr vnde erzivgte ſelbe dritte, alſ reht 
+% waſ, daz er vf den ſelben garten chein den bv tvn ſolte, der im ze ſchaden 
+% chomen mohte, alſ da vor geſchriben ſtat.
 
 \ex \begingl
 	\glpreamble ... //
@@ -598,9 +639,9 @@ English \fw{Mr.} and \fw{Mrs.} here.
 
 ...
 
-% Vnde da von, daz zwiſchen in chein kriech mer 
-% gewahſen mvge vmbe die ſache, dar vmbe wart geben dirre brief verſigelt mit 
-% der stet jnſigel ze Auſpurk, daz dar an hanget.
+% Vnde da von, daz zwiſchen in chein kriech mer gewahſen mvge vmbe die ſache, 
+% dar vmbe wart geben dirre brief verſigelt mit der stet jnſigel ze Auſpurk, daz 
+% dar an hanget.
 
 \ex \begingl
 	\glpreamble ... //
@@ -611,10 +652,10 @@ English \fw{Mr.} and \fw{Mrs.} here.
 
 ...
 
-% Vnde ſint deſ geziuge her 
-% Volkwin, her Sibot der Stolzhirz, her Vlrich Fundan, her Livpolt der Schroter, 
-% her Livpolt der Stolzhirz, her Chvnrat Reinbot, meiſter Chvnrat von 
-% Schoenegge, her Chvnrat Notkauf, her Chvnrat der Bart vnde ander genvge.
+% Vnde ſint deſ geziuge her Volkwin, her Sibot der Stolzhirz, her Vlrich Fundan, 
+% her Livpolt der Schroter, her Livpolt der Stolzhirz, her Chvnrat Reinbot, 
+% meiſter Chvnrat von Schoenegge, her Chvnrat Notkauf, her Chvnrat der Bart vnde 
+% ander genvge.
 
 \ex \begingl
 	\glpreamble ... //
@@ -625,10 +666,9 @@ English \fw{Mr.} and \fw{Mrs.} here.
 
 ...
 
-% Do 
-% daz geſchach vnde auh dirre brief geben wart, do waſ von goteſ geburte tuſent 
-% iar zwej hvndert iar in dem nivn vnde sibenzigoſten iare an dem ſvnnetage vor 
-% dem balm tage.
+% Do daz geſchach vnde auh dirre brief geben wart, do waſ von goteſ geburte 
+% tuſent iar zwej hvndert iar in dem nivn vnde sibenzigoſten iare an dem 
+% ſvnnetage vor dem balm tage.
 
 \ex \begingl
 	\glpreamble ... //
