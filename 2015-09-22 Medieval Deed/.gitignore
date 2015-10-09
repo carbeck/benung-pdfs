@@ -1,3 +1,6 @@
 # We don't want .bib files in this 
 *.bib
 mt-Junicode.cfg
+
+# We also don't want copyrighted stuff here :O
+CAO5-N163-681a.pdf
