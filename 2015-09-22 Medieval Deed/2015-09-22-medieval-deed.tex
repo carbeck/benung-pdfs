@@ -135,7 +135,7 @@
 \usepackage{longtable}
 \usepackage{tabu}
 \usepackage{booktabs}
-%\extrarowsep=2pt
+% \extrarowsep=2pt
 % \usepackage{rotating}
 
 % Formatting of glosses
@@ -152,8 +152,10 @@
 \newleipzig{An}{an}{animate}
 \newleipzig{Inan}{inan}{inanimate}
 
+\newleipzig{Np}{np}{nominal phrase}
+\newleipzig{Pp}{pp}{prepositional phrase}
+
 \newleipzig{PGmc}{pgmc}{Proto Germanic}
-\newleipzig{Gmc}{gmc}{Germanic}
 \newleipzig{Ohg}{ohg}{Old High German}
 \newleipzig{Mhg}{mhg}{Middle High German}
 \newleipzig{Gk}{gk}{Greek}
@@ -509,9 +511,9 @@ variations.
 
 Since it's always fun to look up the etymologies of names and trying to calque 
 them into Ayeri, I permitted myself to do that here as well and came up with the 
-following:
+translations you can see in \autoref{tab:names1}:
 
-\begin{table}[h]
+\begin{table}[ht]
 \centering
 \begin{tabu} to \textwidth {X[40] X[60] X[40] X[60]}
 	\rowfont {\bfseries\upshape\footnotesize}
@@ -556,7 +558,7 @@ following:
 		& \xayr{hsNF}{hasang}{origin}, \newline
 			\xayr{IdYnF}{ijan}{rich} \\
 \end{tabu}
-	\caption{Some names calqued into Ayeri}
+	\caption{The negotiating parties' names calqued into Ayeri}
 	\label{tab:names1}
 \end{table}
 
@@ -601,13 +603,51 @@ to build a fence, which of course runs counter their agreement.
 % nihteſ deſ, daz im ze ſchaden chomen mohte.
 
 \ex \begingl
-	\glpreamble … //
-	\gla … //
-	\glb … //
-	\glft \enquote{…} //
+	\glpreamble Tadayya si kengya ang Hasanjan tiga, ang sahaya tagātiya
+		nay sa tirayyāng Biratayati, ang no vehya lahanley nārya mya
+		da-vehoyyāng yanoyam ang tonisaya narāneri ban yana, ang 
+		vehoyongya adaya lahanley soyang nangās soyang vehanley palung 
+		siley eng ming nupisongara yās. //
+	\gla taday @ -ya si keng @ -ya ang= Hasanjan tiga, ang saha @ -ya 
+		tagāti @ -ya nay sa tiray @ -yāng Ø= @ Biratayati, ang no veh @ 
+		-ya lahan @ -ley nārya mya da= @ veh @ -oy @ -yāng yanoyam ang 
+		tonisa @ -ya narān @ -eri ban yana, ang veh @ -oy @ -ong @ -ya 
+		adaya lahan @ -ley soyang nanga @ -as soyang vehan @ -ley palung 
+		si @ -ley eng ming nupa @ -isa @ -ong @ -ara yās. //
+	\glb time -\Loc{} \Rel{} notice -\Tsg{}.\M{} \Aarg{}= Ulric 
+		honorable, \AgtT{} come -\Tsg{}.\M{}.\Top{} judge -\Loc{} and 
+		\PatT{} complain.about -\Tsg{}.\M{}.\Aarg{} \Top{}= Potter, 
+		\AgtT{} want build -\Tsg{}.\M{}.\Top{} fence -\Parg{}.\Inan{} 
+		although be.supposed.to such= build -\Neg{} -\Tsg{}.\M{}.\Aarg{}
+		because \AgtT{} assure -\Tsg{}.\M{}.\Top{} word -\Ins{} good 
+		\Tsg{}.\M{}.\Gen{}, \AgtT{} build -\Neg{} -\Irr{} 
+		-\Tsg{}.\M{}.\Top{} there fence -\Parg{}.\Inan{} or house 
+		-\Parg{} or building -\Parg{}.\Inan{} other \Rel{} 
+		-\Parg{}.\Inan{} \AgtT{}.\Inan{} can hurt -\Caus{} -\Irr{} 
+		-\Tsg{}.\Inan{}.\Top{} \Tsg{}.\M{}.\Parg{}. 
+		//
+	\glft \enquote{When the honorable Ulrich noticed that, he came to a 
+		judge and complained about der Hafener that he wants to build 
+		a fence although he was not supposed to do so because he had 
+		assured with his good word that he would not build there either 
+		fence or house or another building that could cause him harm.} //
 \endgl \xe
 
-…
+I was a little stumped at first about how to translate that \fw{do} `when' 
+there, since Ayeri uses its equivalent question word \xayr{sitdj}{sitaday}{when} 
+only in questions but usually not as a relative pronoun. If my mind is not 
+playing tricks at me, the sentence should have a headless relative clause in 
+both German and English here, leaving out something like \norm{ze der zît} or 
+`at the time', respectively. This realization brought me to remember that I 
+could just translate it as that, which is how we get \ayr{tdjy si}
+\fw{tadayya si} here.
+
+I translated \norm{clagen} `sue' as \xayr{tirj/}{tiray-}{complain, bemoan} here 
+since I thought that this fits the general situation and action -- maybe also 
+since the German word \fw{klagen} covers both meanings, `complain' and `sue'.
+What is interesting here, though, is that the verb \ayr{tirj/} \fw{tiray-} takes 
+a direct object/patient \Np{} as an argument, not a \Pp{}, which is why I gave 
+the translation in the gloss as `complain about'.
 
 % Deſ laugent im der Hafener, daz er mit im alſo iht kauft hete. Dar vber wart 
 % erteilt, daz der Hafener bereite, daz er mit im alſo iht kauft hete, in 
@@ -709,7 +749,7 @@ the names -- especially the surnames -- are transparent enough to venture a
 reasonable guess. For \fw{Chonrat} and \fw{Ulrich}, see 
 page~\pageref{tab:names1} above.
 
-\begin{table}[h]
+\begin{table}[ht]
 \centering
 \begin{tabu} to \textwidth {X[40] X[60] X[40] X[60]}
 	\rowfont {\bfseries\upshape\footnotesize}
