@@ -134,6 +134,7 @@
 % Things for tables
 \usepackage{longtable}
 \usepackage{tabu}
+\usepackage{booktabs}
 %\extrarowsep=2pt
 % \usepackage{rotating}
 
@@ -318,7 +319,7 @@ scholars in the field prefered normalized editions of medieval texts for
 literary criticism – he harshly derided the notion of normalized texts as 
 \enquote{Esperanto-Mittelhochdeutsch} \autocite[see][VIII--IX]{CAO1}. Wilhelm's 
 intended target audience was what we call linguists today, rather than literary 
-critics, as he explains:
+critics. He explains in his own words:
 
 \foreignblockquote{german}{\begin{multicols}{2}Es ergibt sich daher die weitere 
 Notwendigkeit, diese urkundlichen Quellen in einer Ausgabe vor sich zu haben, 
@@ -334,7 +335,7 @@ erste Erfordernis, das erfüllt werden mußte. \autocite[LX]{CAO1}
 \columnbreak
 
 {\itshape Thus, the additional necessity arises to have these diplomatic sources 
-be laid out in an edition that does not blur these orthographies by means of 
+be laid out in an edition that does not smudge these orthographies by means of 
 normalization after the fashion of Lachmann and his followers. For this 
 normalizing renders the better part of modern publications of deeds which 
 contain deeds in German language […] useless to the language scholar […]. 
@@ -362,8 +363,8 @@ In the following, I will present the text of the deed number
 Middle High German language as given in \textcites{n163}{n163-online}. In spite 
 of Wilhelm's self-professed firm belief in diplomatic editions, the version of 
 this document as it is presented in the \citetitle{CAO} shows signs of modern 
-editing, that is, abbreviations are resolved and punctuation is adjusted to 
-modern standards.
+editing, that is, abbreviations are resolved, non-names are changed to 
+consistent lower case, and punctuation is adjusted to modern standards.
 
 \blockquote{\textbf{J}nn\emph{omin}e d\emph{omi}n\emph{i} 
 am\emph{en}!\footnote{\enquote{Original \emph{Jnnōîe dn̄j am̄}}.} Alle die, die 
@@ -476,11 +477,11 @@ since I don't, I decided to also translate this Latin phrase into Ayeri.
 			dileng @ -eri, … //
 		\glb \PatT{} sell -\Tsg{} garden.\Top{} half \Dat{}= Conrad 
 			Potter honorable \Aarg{}= Ulric honorable \Rel{} 
-			son.in.law -\Aarg{} \Gen{}= Angelica honorable, rule 
+			son.in.law -\Aarg{} \Gen{}= Angela honorable, rule 
 			-\Ins{}, … //
 		\glft \enquote{the honorable Ulrich, son-in-law of the honorable 
 			Engel, sold half a garden to the honorable Chunrad der 
-			Hafener, under the rule that …} //
+			Hafener, by the rule that …} //
 	\endgl
 	\a \begingl
 		\gla ya mya veh @ -oy @ -ya ang= @ Sikontendo Biratayati tiga 
@@ -506,16 +507,19 @@ those who read this writ, by hearing or seeing it' is a rhetorical topos of the
 genre and the way basically all deeds in the \citetitle{CAO} begin, with minor 
 variations.
 
-Since it's always fun looking up the etymologies of names and trying to calque 
+Since it's always fun to look up the etymologies of names and trying to calque 
 them into Ayeri, I permitted myself to do that here as well and came up with the 
 following:
 
-\phantomsection\label{names1}
-\begin{longtabu} to \textwidth {X[40] X[60] | X[40] X[60]}
+\begin{table}[h]
+\centering
+\begin{tabu} to \textwidth {X[40] X[60] X[40] X[60]}
 	\rowfont {\bfseries\upshape\footnotesize}
 	\everyrow{\rowfont{\footnotesize}}
-	\multicolumn2{c|}{German}
-		& \multicolumn2{c}{Ayeri} \\ \hline \endhead
+	\multicolumn2{c}{German}
+		& \multicolumn2{c}{Ayeri} \\ %\endhead
+	
+	\midrule
 	
 	% FIXME: Look into an actual name dictionary, not Wikipedia or behindthename.com!
 	
@@ -524,7 +528,7 @@ following:
 			\Ohg{} \fw{rāt} `counsel'
 		& \ayr{sik\_o\_MteMdo} \fw{Sikontendo}
 		& \xayr{sikoNF}{sikong}{advice}, \newline
-			\xayr{teMdo}{tendo}{courageous} \\ [2pt]
+			\xayr{teMdo}{tendo}{courageous} \\
 	
 	Hafener (Potter)
 		& \Mhg{} \norm{havenære} `potter'\newline
@@ -533,26 +537,28 @@ following:
 			are indicated by ⸢…⸣ brackets.}
 		& \ayr{birtyti} \fw{Biratayati}
 		& \xayr{birtj}{biratay}{pot}, \newline
-			\xayr{/Ati}{-ati}{-maker} \\ [2pt]
+			\xayr{/Ati}{-ati}{-maker} \\
 	
-	\tabucline[]{-}
+	\midrule
 	
 	Engel (Angel)
 		& \Gk{} ἄγγελος \fw{ángelos} `messenger'
 		& \ayr{ninvj} \fw{Ninavay}
 		& \xayr{niny}{ninaya}{messenger}, \newline
-			\xayr{/vy}{-vaya}{fem. occupation} \\ [2pt]
+			\xayr{/vy}{-vaya}{fem. occupation} \\
 	
-	\tabucline[]{-}
+	\midrule
 	
 	Ulrich (Ulric)
 		& \Ohg{} \fw{uodil} `heritage', \newline
 			\Ohg{} \fw{rīhhi} `noble, rich, powerful'
 		& \ayr{hsMdYnF} \fw{Hasanjan}
 		& \xayr{hsNF}{hasang}{origin}, \newline
-			\xayr{IdYnF}{ijan}{rich} \\ [2pt]
-	
-\end{longtabu}
+			\xayr{IdYnF}{ijan}{rich} \\
+\end{tabu}
+	\caption{Some names calqued into Ayeri}
+	\label{tab:names1}
+\end{table}
 
 Another choice I made is translating the titles \norm{herre} `lord' and 
 \norm{vrouwe} `lady' equally as \xayr{tig}{tiga} {honorable}. In the case of 
@@ -561,11 +567,10 @@ are not noble as the titles would suggest, but more or less wealthy townspeople.
 Thus, \norm{herre} and \norm{vrouwe}, respectively, have probably already 
 assumed their modern meanings as generic respectful terms of address comparable 
 to English \fw{Mr.} and \fw{Mrs.} in this context, which I used in the English 
-translation of the deed above as well for the same reason.\footnote{The 
-dictionary has entries for \xayr{tyon}{Tayon}{mister} and 
-\xayr{tenFvnF}{Tenvan}{misses}, but I've never actually used these since I 
-dropped the modifier \ayr{tj} \fw{tay} that these are supposed to be based on 
-again soon after adding it.}
+translation of the deed above as well for the same reason. The dictionary still 
+has entries for \xayr{tyonF}{Tayon}{Mr.} and \xayr{tenFvnF}{Tenvan}{Mrs.} 
+at the time of writing this, but I've never actually used these since I dropped 
+the modifier \ayr{tj} \fw{tay} that these are supposed to be based on.
 
 % Daz ſtvnt alſ lange, vnz der her Chvnrat der Hafener dar fvr vnde wolte 
 % gezvnet haben den ſelben garten.
@@ -573,7 +578,7 @@ again soon after adding it.}
 \ex \begingl
 	\glpreamble Adareng tono, ang no vehya Sikontendo Biratayati tiga
 		lahanley miday eda-mondoya pesan. //
-	\gla Ada @ -reng tono, ang sara @ -ya Ø @ Sikontendo Biratayati tiga
+	\gla Ada @ -reng tono, ang sara @ -ya Ø= @ Sikontendo Biratayati tiga
 		adaya pesan nay ang no veh @ -ya lahan @ -ley miday eda= @ mondo 
 		@ -ya. //
 	\glb that -\Aarg{}.\Inan{} certain, \AgtT{} go -\Tsg{}.\M{} \Top{}= 
@@ -585,7 +590,8 @@ again soon after adding it.}
 \endgl \xe
 
 Literally, \fw{Daz ſtvnt alſ lange} means `this stood so long', which is 
-quite idiomatic, so I didn't want to translate it literally. What is expressed 
+quite idiomatic, so I didn't want to translate it literally and decided to go 
+with \xayr{AdreNF tono}{adareng tono}{this was certain}. What is expressed 
 here is that the deal between Chunrat and Ulrich was well until Chunrat wanted 
 to build a fence, which of course runs counter their agreement.
 
@@ -700,84 +706,91 @@ At this point, I wonder if I better shouldn't have calqued the names. The
 problem is that names like \fw{Reinbot}, \fw{Sibot} and \fw{Volkwin} aren't 
 common German names anymore. Also, I have no clue about \fw{Fundan}. The rest of 
 the names -- especially the surnames -- are transparent enough to venture a 
-reasonable guess. For \fw{Chonrat} and \fw{Ulrich}, see page~\pageref{names1} 
-above.
+reasonable guess. For \fw{Chonrat} and \fw{Ulrich}, see 
+page~\pageref{tab:names1} above.
 
-\begin{longtabu} to \textwidth {X[40] X[60] | X[40] X[60]}
+\begin{table}[h]
+\centering
+\begin{tabu} to \textwidth {X[40] X[60] X[40] X[60]}
 	\rowfont {\bfseries\upshape\footnotesize}
 	\everyrow{\rowfont{\footnotesize}}
-	\multicolumn2{c|}{German}
-		& \multicolumn2{c}{Ayeri} \\ \hline \endhead
+	\multicolumn2{c}{German}
+		& \multicolumn2{c}{Ayeri} \\ %\endhead
+	
+	\midrule
 	
 	Bart (Beard)
 		& \Mhg{} \fw{bart} `beard'
 		& \ayr{piku} \fw{Piku}
-		& \xayr{piku}{piku}{beard} \\ [2pt]
+		& \xayr{piku}{piku}{beard} \\
 	
-	\tabucline[]{-}
+	\midrule
 	
 	Liupolt (Leopold)
 		& \Ohg{} \fw{liut} `people', \newline
 			…
 		& \ayr{kejnMteMdo} \fw{Keynantendo}
 		& \xayr{kejnmF}{keynam}{people}, \newline
-			\xayr{teMdo}{tendo}{courageous} \\ [2pt]
+			\xayr{teMdo}{tendo}{courageous} \\
 	
 	Schroter (Taylor)
 		& \Mhg{} \norm{schrôtære} `taylor'
 		& \ayr{vehimti} \fw{Vehimati}
 		& \xayr{vehimF}{vehim}{dress}, \newline
-			\xayr{/Ati}{-ati}{-maker} \\ [2pt]
+			\xayr{/Ati}{-ati}{-maker} \\
 	
-	\tabucline[]{-}
+	\midrule
 	
 	Notkauf
 		& \Mhg{} \norm{nôt} `hardship, trouble', \newline
 			\Mhg{} \norm{kouf} `trade, bargain'
 		& \ayr{IMtmrFknF} \fw{Intamarkan}
 		& \xayr{IMtnF}{intan}{purchase}, \newline
-			\xayr{marFknF}{markan}{trouble} \\ [2pt]
+			\xayr{marFknF}{markan}{trouble} \\
 	
-	\tabucline[]{-}
+	\midrule
 	
 	Reinbot
 		& …
 		& \ayr{…} \fw{…}
-		& \xayr{…}{…}{…} \\ [2pt]
+		& \xayr{…}{…}{…} \\
 	
-	\tabucline[]{-}
+	\midrule
 	
 	von Schoenegge \newline (of Prettycorner)
 		& \Mhg{} \norm{schœne} `beautiful', \newline
 			\Mhg{} \norm{ecke} `corner'
 		& \ayr{hinYnFveno} \fw{Hinyanveno}
 		& \xayr{hinYnF}{hinyan}{corner}, \newline
-			\xayr{veno}{veno}{beautiful} \\ [2pt]
+			\xayr{veno}{veno}{beautiful} \\
 	
-	\tabucline[]{-}
+	\midrule
 	
 	Sibot
 		& …
 		& \ayr{…} \fw{…}
-		& \xayr{…}{…}{…} \\ [2pt]
+		& \xayr{…}{…}{…} \\
 	
 	Stolzhirz \newline (Superbdeer)
 		& \Mhg{} \fw{stolz} `foolish, superb', \newline
 			\Mhg{} \fw{hirz} `deer'
 		& \ayr{IkMdesj} \fw{Ikandesay}
 		& \xayr{IkmF}{ikam}{deer}, \newline
-			\xayr{desj}{desay}{noble, distinguished} \\ [2pt]
+			\xayr{desj}{desay}{noble, distinguished} \\
 	
-	\tabucline[]{-}
+	\midrule
 	
 	Volkwin
 		& \Ohg{} \fw{folc} `people, folk', \newline
 			\Ohg{} \fw{wini} `friend'
 		& \ayr{ledjynF} \fw{Ledayyan}
 		& \xayr{lednF}{ledan}{friend}, \newline
-			\xayr{Ajye}{ayye}{people} \\ [2pt]
+			\xayr{Ajye}{ayye}{people} \\
 	
-\end{longtabu}
+\end{tabu}
+	\caption{The witnesses' names calqued into Ayeri}
+	\label{tab:names2}
+\end{table}
 
 …
 
