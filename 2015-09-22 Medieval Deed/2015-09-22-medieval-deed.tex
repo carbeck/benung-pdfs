@@ -156,6 +156,8 @@
 \newleipzig{Pp}{pp}{prepositional phrase}
 
 \newleipzig{PGmc}{pgmc}{Proto Germanic}
+\newleipzig{Gmc}{gmc}{Germanic}
+\newleipzig{Os}{os}{Old Saxon}
 \newleipzig{Ohg}{ohg}{Old High German}
 \newleipzig{Mhg}{mhg}{Middle High German}
 \newleipzig{Nhg}{nhg}{New High German}
@@ -281,14 +283,23 @@
 	title = {{Mittelhochdeutsches Handwörterbuch von Matthias Lexer}},
 	editor = {Matthias Lexer},
 	volumes = {3},
-	origplace = {Leipzig},
+	origlocation = {Leipzig},
 	origpublisher = {Hirzel},
 	origyear = {1872--1878},
 	publisher = {University of Trier},
-	place = {Trier},
+	location = {Trier},
 	year = {1998--2015},
 	url = {http://woerterbuchnetz.de/Lexer/},
 	urldate = {2015-10-08},
+}
+
+@reference{duden:vornamen,
+	title = {{Duden Lexikon Vornamen}},
+	editor = {Rosa Kohlheim and Volker Kohlheim},
+	edition = {6},
+	publisher = {Duden},
+	location = {Mannheim},
+	year = {2013}
 }
 \end{filecontents*}
 
@@ -524,8 +535,6 @@ translations you can see in \autoref{tab:names1}:
 	
 	\midrule
 	
-	% FIXME: Look into an actual name dictionary, not Wikipedia or behindthename.com!
-	
 	Chunrad (Conrad)
 		& \Ohg{} \fw{kuoni} `brave, strong', \newline
 			\Ohg{} \fw{rāt} `counsel'
@@ -535,9 +544,7 @@ translations you can see in \autoref{tab:names1}:
 	
 	Hafener (Potter)
 		& \Mhg{} \norm{havenære} `potter'\newline
-			(cf. \Mhg{} \norm{haven} `pot')\footnote{Normalized 
-			spellings follow the headwords in \textcite{lexer} and 
-			are indicated by ⸢…⸣ brackets.}
+			(cf. \Mhg{} \norm{haven} `pot')\footnotemark
 		& \ayr{birtyti} \fw{Biratayati}
 		& \xayr{birtj}{biratay}{pot}, \newline
 			\xayr{/Ati}{-ati}{-maker} \\
@@ -553,7 +560,7 @@ translations you can see in \autoref{tab:names1}:
 	\midrule
 	
 	Ulrich (Ulric)
-		& \Ohg{} \fw{uodil} `heritage', \newline
+		& \Ohg{} \fw{uodal} `heritage, home', \newline
 			\Ohg{} \fw{rīhhi} `noble, rich, powerful'
 		& \ayr{hsMdYnF} \fw{Hasanjan}
 		& \xayr{hsNF}{hasang}{origin}, \newline
@@ -562,6 +569,10 @@ translations you can see in \autoref{tab:names1}:
 	\caption{The negotiating parties' names calqued into Ayeri}
 	\label{tab:names1}
 \end{table}
+
+\footnotetext{Normalized spellings follow the headwords in \textcite{lexer} and 
+are indicated by ⸢…⸣ brackets when referring to the text using retrofitted 
+spellings.}
 
 Another choice I made is translating the titles \norm{herre} `lord' and 
 \norm{vrouwe} `lady' equally as \xayr{tig}{tiga} {honorable}. In the case of 
@@ -595,7 +606,7 @@ the modifier \ayr{tj} \fw{tay} that these are supposed to be based on.
 Literally, \fw{Daz ſtvnt alſ lange} means `this stood so long', which is 
 quite idiomatic, so I didn't want to translate it literally and decided to go 
 with \xayr{AdreNF tono}{adareng tono}{this was certain}. What is expressed 
-here is that the deal between Chunrat and Ulrich was well until Chunrat wanted 
+here is that the deal between Chunrat and Ulrich was good until Chunrat wanted 
 to build a fence, which of course runs counter their agreement.
 
 % Do deſ her Vlrich innan wart, do fvr er fvr gerihte vnde clagte hinze dem 
@@ -638,17 +649,18 @@ I was a little stumped at first about how to translate that \fw{do} `when'
 there, since Ayeri uses its equivalent question word \xayr{sitdj}{sitaday}{when} 
 only in questions but usually not as a relative pronoun. If my mind is not 
 playing tricks at me, the sentence should have a headless relative clause in 
-both German and English here, leaving out something like \norm{ze der zît} or 
+both German and English here, leaving out something like \fw{ze der zît} or 
 `at the time', respectively. This realization brought me to remember that I 
 could just translate it as that, which is how we get \ayr{tdjy si}
 \fw{tadayya si} here.
 
 I translated \norm{klagen} `sue' as \xayr{tirj/}{tiray-}{complain, bemoan} here 
 since I thought that this fits the general situation and action -- maybe also 
-not uninfluenced by the German word \fw{klagen}, which covers both meanings, 
-`complain' and `sue'. What is interesting here, though, is that the verb 
-\ayr{tirj/} \fw{tiray-} takes a direct object/patient \Np{} as an argument, not 
-a \Pp{}, which is why I gave the translation in the gloss as `complain about'.
+not uninfluenced by the German word \Nhg{} \fw{klagen}, which covers both 
+meanings, `complain' and `sue'. What is interesting here, though, is that the 
+verb \ayr{tirj/} \fw{tiray-} takes a direct object/patient \Np{} as an argument, 
+not a \Pp{}, which is why I gave the translation in the gloss as `complain 
+about'.
 
 % Deſ laugent im der Hafener, daz er mit im alſo iht kauft hete. Dar vber wart 
 % erteilt, daz der Hafener bereite, daz er mit im alſo iht kauft hete, in 
@@ -744,11 +756,29 @@ a \Pp{}, which is why I gave the translation in the gloss as `complain about'.
 …
 
 At this point, I wonder if I better shouldn't have calqued the names. The 
-problem is that names like \fw{Reinbot}, \fw{Sibot} and \fw{Volkwin} aren't 
+problem is that the names \fw{Reinbot}, \fw{Sibot} and \fw{Volkwin} aren't 
 common German names anymore. Also, I have no clue about \fw{Fundan}. The rest of 
 the names -- especially the surnames -- are transparent enough to venture a 
 reasonable guess. For \fw{Chonrat} and \fw{Ulrich}, see 
-page~\pageref{tab:names1} above.
+page~\pageref{tab:names1} above. While \fw{Chonrat}, \fw{Ulrich} and 
+\fw{Liupolt} simply can be looked up in a dictionary,\footnote{Such as 
+\textcite{duden:vornamen}, for example, though Wiktionary said the same things 
+in all cases.} the other three names I could only guess at indirectly by looking 
+up similar modern names.
+
+Both \fw{Reinbot} and \fw{Sibot} contain the element \fw{-bot}, which may be 
+related to the modern name \fw{Bodo}, which derives from \Os{} \fw{bodo} 
+`master, ruler' or \Ohg{} \fw{boto} `messenger'. \fw{Rein-} is probably related 
+to the \fw{Rein-} in similar surviving names like \fw{Reinfried}, \fw{Reinhard}, 
+\fw{Reinhold}, where it derives from \Gmc{} \fw{*ragina} `counsel, decision (of 
+the spirits), fate'. For the \fw{Si-} in \fw{Sibot} I assumed a contraction from 
+\fw{Sige-} (cf. \Mhg{} \fw{sige} `victory'), and thus a relation to 
+\fw{Siegfried}, \fw{Si(e)gmar}, \fw{Siegmund}, where the \fw{Sieg-} part is from 
+\Ohg{} \fw{sigu} `victory'. For \fw{Volkwin}, I assumed a relation to \Nhg{} 
+\fw{Volk} `people' (\Mhg{} \norm{volc}, \Ohg{} \fw{folc} `horde, people'), and 
+the \fw{-win} part may well be related to the \fw{-win} in \fw{Erwin}, where it 
+is from \Ohg{} \fw{wini} `friend'. \autoref{tab:names2} gives a summary of 
+these names and their calques.
 
 \begin{table}[ht]
 \centering
@@ -769,10 +799,10 @@ page~\pageref{tab:names1} above.
 	
 	Liupolt (Leopold)
 		& \Ohg{} \fw{liut} `people', \newline
-			…
+			\Ohg{} \fw{bald} `bold'
 		& \ayr{kejnMteMdo} \fw{Keynantendo}
 		& \xayr{kejnmF}{keynam}{people}, \newline
-			\xayr{teMdo}{tendo}{courageous} \\
+			\xayr{teMdo}{tendo}{courageous} \\ [0.5\baselineskip]
 	
 	Schroter (Taylor)
 		& \Mhg{} \norm{schrôtære} `taylor'
@@ -792,9 +822,12 @@ page~\pageref{tab:names1} above.
 	\midrule
 	
 	Reinbot
-		& …
-		& \ayr{…} \fw{…}
-		& \xayr{…}{…}{…} \\
+		& \Gmc{} \fw{*ragina} `counsel, fate'; \newline
+			\Os{} \fw{bodo} `master, ruler' or \newline
+			\Ohg{} \fw{boto} `messenger'
+		& \ayr{bjsaaru\_anF} \fw{Baysāruan}
+		& \xayr{bjhi}{bayhi}{ruler}, \newline
+			\xayr{shru\_anF}{saharuan}{fate, destiny} \\
 	
 	\midrule
 	
@@ -808,9 +841,12 @@ page~\pageref{tab:names1} above.
 	\midrule
 	
 	Sibot
-		& …
-		& \ayr{…} \fw{…}
-		& \xayr{…}{…}{…} \\
+		& \Ohg{} \fw{sigu} `victory'; \newline
+			\Os{} \fw{bodo} `master, ruler' or \newline
+			\Ohg{} \fw{boto} `messenger'
+		& \ayr{bjsikaanF} \fw{Baysikān}
+		& \xayr{bjhi}{bayhi}{ruler}, \newline
+			\xayr{siktu}{sikatu}{victorious} \\ [0.5\baselineskip]
 	
 	Stolzhirz \newline (Superbdeer)
 		& \Mhg{} \fw{stolz} `foolish, superb', \newline
@@ -833,7 +869,9 @@ page~\pageref{tab:names1} above.
 	\label{tab:names2}
 \end{table}
 
-…
+A problem with two-part Germanic given names is certainly that when calquing 
+them, they often become at least twice as long since nouns in Ayeri are very 
+commonly disyllabic already.
 
 % Do daz geſchach vnde auh dirre brief geben wart, do waſ von goteſ geburte 
 % tuſent iar zwej hvndert iar in dem nivn vnde sibenzigoſten iare an dem 
