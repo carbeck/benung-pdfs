@@ -131,6 +131,13 @@
 \usepackage{setspace}
 \onehalfspacing
 
+% Avoid linebreaks between section and gloss
+\usepackage{titlesec}
+\usepackage{needspace}
+\usepackage{etoolbox}
+\preto\section{\needspace{6\baselineskip}}
+\preto\subsection{\needspace{6\baselineskip}}
+
 % Things for tables
 \usepackage{longtable}
 \usepackage{tabu}
@@ -148,7 +155,7 @@
 \newleipzig{GenT}{gent}{genitive topic}
 \newleipzig{LocT}{loct}{locative topic}
 \newleipzig{InsT}{inst}{instrumentative topic}
-\newleipzig{CauT}{caut}{causațive topic}
+\newleipzig{CauT}{caut}{causative topic}
 \newleipzig{An}{an}{animate}
 \newleipzig{Inan}{inan}{inanimate}
 
@@ -170,7 +177,7 @@
 \setlength{\footnotesep}{1em}
 
 % Smaller font in block quotes
-\usepackage{relsize,etoolbox}
+\usepackage{relsize}
 \AtBeginEnvironment{quote}{\noindent\smaller}
 \AtBeginEnvironment{quotation}{\smaller}
 
