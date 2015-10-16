@@ -130,6 +130,12 @@
 \usepackage{setspace}
 \onehalfspacing
 
+% Avoid pagebreaks right after sections and subsections
+\usepackage{needspace}
+\usepackage{etoolbox}
+\preto\section{\needspace{6\baselineskip}}
+\preto\subsection{\needspace{6\baselineskip}}
+
 % Things for tables
 % \usepackage{longtable}
 % \usepackage{tabu}
@@ -157,7 +163,7 @@
 \setlength{\footnotesep}{1em}
 
 % Smaller font in block quotes
-\usepackage{relsize,etoolbox}
+\usepackage{relsize}
 \AtBeginEnvironment{quote}{\noindent\smaller}
 \AtBeginEnvironment{quotation}{\smaller}
 
