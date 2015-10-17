@@ -6,7 +6,7 @@ TeX sources for new PDFs on [_Benung. The Ayeri Language Resource_](http://benun
 Compiling
 =========
 
-Compile with `xelatex` and `biber`. Makes use of the [biblatex-sp-unified](https://github.com/semprag/biblatex-sp-unified) package by Kai von Fintel.
+Compile with `xelatex` and `biber`, possibly also with `makeglossaries`. Makes use of the [biblatex-sp-unified](https://github.com/semprag/biblatex-sp-unified) package by Kai von Fintel.
 
 Licensing
 =========
