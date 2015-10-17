@@ -142,6 +142,32 @@
 % \usepackage{booktabs}
 % \usepackage{rotating}
 
+% Formatting of table of glossing abbreviations from Leipzig package manual
+\usepackage[acronym,nomain,nonumberlist,nopostdot]{glossaries}
+\usepackage{glossary-inline}%
+
+\newglossarystyle{mysuper}{%
+	\glossarystyle{super}% based on super
+	\renewenvironment{theglossary}{%
+		\begin{tabbing}
+			ABCD \= ABCDEFGHIJKLMNOPQRSTUVWXYZ \kill
+	}{%
+		\end{tabbing}%
+	}%
+	\renewcommand*{\glossaryheader}{}%
+	\renewcommand*{\glsgroupheading}[1]{}%
+	\renewcommand*{\glossaryentryfield}[5]{%
+		\glsentryitem{##1}\glstarget{##1}{##2}
+		\> \makefirstuc{##3}\glspostdescription{}\\
+	}%
+	\renewcommand*{\glossarysubentryfield}[6]{%
+		\>
+		\glssubentryitem{##2}%
+		\glstarget{##2}{\strut}\makefirstuc{##4}\glspostdescription{}\\
+	}%
+	\renewcommand*{\glsgroupskip}{}%
+}%
+
 % Formatting of glosses
 \usepackage{expex}
 \usepackage{leipzig}
@@ -151,10 +177,13 @@
 \newleipzig{DatT}{datt}{dative topic}
 \newleipzig{GenT}{gent}{genitive topic}
 \newleipzig{LocT}{loct}{locative topic}
-\newleipzig{InsT}{inst}{instrumentative topic}
+\newleipzig{InsT}{inst}{instrumental topic}
 \newleipzig{CauT}{caut}{causative topic}
 \newleipzig{An}{an}{animate}
 \newleipzig{Inan}{inan}{inanimate}
+\newleipzig{Ayr}{ayr}{Ayeri}
+
+\makeglossaries
 
 % Nicer footnotes
 \usepackage[bottom]{footmisc}
@@ -261,8 +290,15 @@
 
 %% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\newpage
-\nocite{*} % gibt alle Einträge in der Bibliografiedatenbank aus
-\printbibliography
+%\vfill
+\pagebreak
+
+\addsec{Abbreviations}
+\begin{multicols}{3}
+\printglossary[style=mysuper,type=\leipzigtype]
+\end{multicols}
+
+%\nocite{*} % returns all entries from the bibliography database
+\printbibliography[heading=bibintoc]
 
 \end{document}
