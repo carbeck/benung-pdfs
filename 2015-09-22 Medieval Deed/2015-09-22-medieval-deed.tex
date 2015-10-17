@@ -144,6 +144,32 @@
 % \extrarowsep=2pt
 % \usepackage{rotating}
 
+% Formatting of table of glossing abbreviations from Leipzig package manual
+\usepackage[acronym,nomain,nonumberlist,nopostdot]{glossaries}
+\usepackage{glossary-inline}%
+
+\newglossarystyle{mysuper}{%
+	\glossarystyle{super}% based on super
+	\renewenvironment{theglossary}{%
+		\begin{tabbing}
+			ABCD \= ABCDEFGHIJKLMNOPQRSTUVWXYZ \kill
+	}{%
+		\end{tabbing}%
+	}%
+	\renewcommand*{\glossaryheader}{}%
+	\renewcommand*{\glsgroupheading}[1]{}%
+	\renewcommand*{\glossaryentryfield}[5]{%
+		\glsentryitem{##1}\glstarget{##1}{##2}
+		\> \makefirstuc{##3}\glspostdescription{}\\
+	}%
+	\renewcommand*{\glossarysubentryfield}[6]{%
+		\>
+		\glssubentryitem{##2}%
+		\glstarget{##2}{\strut}\makefirstuc{##4}\glspostdescription{}\\
+	}%
+	\renewcommand*{\glsgroupskip}{}%
+}%
+
 % Formatting of glosses
 \usepackage{expex}
 \usepackage{leipzig}
@@ -153,7 +179,7 @@
 \newleipzig{DatT}{datt}{dative topic}
 \newleipzig{GenT}{gent}{genitive topic}
 \newleipzig{LocT}{loct}{locative topic}
-\newleipzig{InsT}{inst}{instrumentative topic}
+\newleipzig{InsT}{inst}{instrumental topic}
 \newleipzig{CauT}{caut}{causative topic}
 \newleipzig{An}{an}{animate}
 \newleipzig{Inan}{inan}{inanimate}
@@ -161,6 +187,7 @@
 \newleipzig{Np}{np}{nominal phrase}
 \newleipzig{Pp}{pp}{prepositional phrase}
 
+\newleipzig{Ayr}{ayr}{Ayeri}
 \newleipzig{PGmc}{pgmc}{Proto Germanic}
 \newleipzig{Gmc}{gmc}{Germanic}
 \newleipzig{Os}{os}{Old Saxon}
@@ -168,6 +195,9 @@
 \newleipzig{Mhg}{mhg}{Middle High German}
 \newleipzig{Nhg}{nhg}{New High German}
 \newleipzig{Gk}{gk}{Greek}
+\newleipzig{Lat}{lat}{Latin}
+
+\makeglossaries
 
 % Nicer footnotes
 \usepackage[bottom]{footmisc}
@@ -453,7 +483,7 @@ years, in the seventy-ninth year on the Sunday before Palm Sunday.
 Seal
 \end{center}}
 
-\section{Discussion}
+\section{Inching our Way to an Ayeri Translation}
 
 \subsection*{In nomine domini …}
 
@@ -835,7 +865,9 @@ the annotation in \textcite{n163-online}.
 	\glft \enquote{This was granted to him by unanimous decision.} //
 \endgl \xe
 
-…
+\xayr{kdisu}{kadisu}{united} acquired a new shade of meaning here, namely, 
+`unanimous'. Furthermore, \xayr{kilis/}{kilis-}{allow, permit} can also mean 
+`grant' now.
 
 \subsection*{Unde da von …}
 
@@ -850,7 +882,10 @@ the annotation in \textcite{n163-online}.
 	\glft \enquote{…} //
 \endgl \xe
 
-…
+\Nhg{} \fw{Augsburg} ← \Mhg{} \fw{Auſpurk} ← \Lat{} \fw{Augusta (Vindelicum)} + 
+\Mhg{} \norm{burc}, \Ohg{} \fw{burg} `castle, city' → \Ayr{} 
+\xayr{vmuAj}{vamuay}{praiseworthy} + \xayr{/AreNF}{-areng}{fort, city} → 
+\ayr{vmreNF} \fw{Vamareng}.
 
 \subsection*{Unde sint des geziuge …}
 
@@ -1099,8 +1134,7 @@ In its native script, the complete translated text looks like this:
 	\end{ayeri}
 }
 
-And for completeness' sake, this is the complete text again in Roman 
-transcription:
+And for completeness' sake, this is the whole text again in Roman transcription:
 
 \blockquote{
 	\fw{\textbf{Ā}sti-n na Pāg ko saț, āmen!}\footnote{Alternatively:
@@ -1140,7 +1174,7 @@ transcription:
 	\end{center}
 }
 
-\section{Epilog}
+\section{A Few Final Words}
 At 365 words, the text of \citefield{n163}{title} is rather mid-length. It took 
 me over a week in total to translate it, in every sitting doing a sentence or 
 two, in spite of it not being especially difficult structurally. Since I've been 
@@ -1159,6 +1193,12 @@ concrete from those vague ideas at long last. Maybe something to expand on.
 %% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \vfill
-\printbibliography
+
+\addsec{Abbreviations}
+\begin{multicols}{3}
+\printglossary[style=mysuper,type=\leipzigtype]
+\end{multicols}
+
+\printbibliography[heading=bibintoc]
 
 \end{document}
