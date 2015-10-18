@@ -147,28 +147,24 @@
 % Formatting of table of glossing abbreviations from Leipzig package manual
 \usepackage[acronym,nomain,nonumberlist,nopostdot]{glossaries}
 \usepackage{glossary-inline}%
-\usepackage{glossary-mcols}
 
-\newglossarystyle{mysuper}{%
-	\glossarystyle{super}% based on super
+\newglossarystyle{mytable}{%
 	\renewenvironment{theglossary}{%
-		\begin{multicols}{3}
-		\begin{tabbing}
-			ABCD \= ABCDEFGHIJKLMNOPQRSTUVWXYZ \kill
+		\begin{multicols}{2}
+		\raggedright
 	}{%
-		\end{tabbing}%
 		\end{multicols}
 	}%
 	\renewcommand*{\glossaryheader}{}%
 	\renewcommand*{\glsgroupheading}[1]{}%
 	\renewcommand*{\glossaryentryfield}[5]{%
-		\glsentryitem{##1}\glstarget{##1}{##2}
-		\> \makefirstuc{##3}\glspostdescription{}\\
+		\noindent
+		\makebox[3em][l]{\glsentryitem{##1}\glstarget{##1}{##2}}
+		\makefirstuc{##3}\glspostdescription{}\par
 	}%
 	\renewcommand*{\glossarysubentryfield}[6]{%
-		\>
-		\glssubentryitem{##2}%
-		\glstarget{##2}{\strut}\makefirstuc{##4}\glspostdescription{}\\
+		\hspace{3em}\glssubentryitem{##2}%
+		\glstarget{##2}{\strut}\makefirstuc{##4}\glspostdescription{}\par
 	}%
 	\renewcommand*{\glsgroupskip}{}%
 }%
@@ -1304,11 +1300,10 @@ expand on.
 
 %% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\vfill
 \pagebreak
 
 \addsec{Abbreviations}
-\printglossary[style=mysuper,type=\leipzigtype]
+\printglossary[style=mytable,type=\leipzigtype]
 
 \printbibliography[heading=bibintoc]
 
