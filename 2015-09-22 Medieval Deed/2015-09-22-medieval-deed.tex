@@ -147,14 +147,17 @@
 % Formatting of table of glossing abbreviations from Leipzig package manual
 \usepackage[acronym,nomain,nonumberlist,nopostdot]{glossaries}
 \usepackage{glossary-inline}%
+\usepackage{glossary-mcols}
 
 \newglossarystyle{mysuper}{%
 	\glossarystyle{super}% based on super
 	\renewenvironment{theglossary}{%
+		\begin{multicols}{3}
 		\begin{tabbing}
 			ABCD \= ABCDEFGHIJKLMNOPQRSTUVWXYZ \kill
 	}{%
 		\end{tabbing}%
+		\end{multicols}
 	}%
 	\renewcommand*{\glossaryheader}{}%
 	\renewcommand*{\glsgroupheading}[1]{}%
@@ -183,6 +186,7 @@
 \newleipzig{CauT}{caut}{causative topic}
 \newleipzig{An}{an}{animate}
 \newleipzig{Inan}{inan}{inanimate}
+\newleipzig{Hab}{hab}{habitative}
 
 \newleipzig{noun}{n}{noun}
 \newleipzig{Np}{np}{noun phrase}
@@ -370,7 +374,8 @@ scholars in the field prefered normalized editions of medieval texts for
 literary criticism – he harshly derided the notion of normalized texts as 
 \enquote{Esperanto-Mittelhochdeutsch} \autocite[see][VIII--IX]{CAO1}. Wilhelm's 
 intended target audience was what we call linguists today, rather than literary 
-critics. He explains in his own words:
+critics -- back then, they didn't make the distinction. He explains in his own 
+words:
 
 \foreignblockquote{german}{\begin{multicols}{2}Es ergibt sich daher die weitere 
 Notwendigkeit, diese urkundlichen Quellen in einer Ausgabe vor sich zu haben, 
@@ -844,7 +849,7 @@ the annotation in \textcite{n163-online}.
 		vehoyongya ang Biratayati eda-mondo vehanley si eng ming 
 		nupisongara yās, ku-tahanrey marin edaya. //
 	\a \begingl
-		\gla girend @ -ara ada= @ bahis @ -reng and nim @ -ya ang= @ 
+		\gla girend @ -ara ada= @ bahis @ -reng nay nim @ -ya ang= @ 
 			Hasanjan tiga nay ang haka @ -ya kayvo ayon @ -ya sam 
 			palung, dileng @ -ya nasyam,~… //
 		\glb arrive -\Tsg{}.\Inan{} that= day -\Aarg{}.\Inan{} and 
@@ -874,18 +879,19 @@ the annotation in \textcite{n163-online}.
 Again a sentence starting with \fw{do} `when'.\footnote{See page~\pageref{ex:do},
 example (\ref{ex:do}).} I was really tempted here to break with the rule of not 
 using relativizers without syntactic antecedents since it's just so convenient 
-to recount the succession of events. However, I think the solution I came up 
-with here may work as well.
+in order to recount the logical succession of events. However, I think the 
+solution I came up with here works as well.
 
 The \Mhg{} original does not give the name of der Hafener here again, but I 
 still included it for greater clarity. The original also just says that there 
 were two others testifying along with Ulrich, but due to how Ayeri works -- 
 \xayr{pluNF}{palung}{other} is not typically a pronoun but rather an adjective
--- I specified that it would be men; women were not usually legal subjects at 
-the time. The construction used in \Mhg{} is interesting in this case, too, 
-since it says \fw{ſelbe dritte}, literally `self third'. Looking up \norm{selp} 
-in \textcite{lexer}, we find that \norm{selp} together with an ordinal refers to 
-the given number of people including the person who is acting themselves.
+-- I specified that it would be men; women were not usually independent legal 
+subjects at the time. The construction used in \Mhg{} is interesting in this 
+case, too, since it says \fw{ſelbe dritte}, literally `self third'. Looking up 
+\norm{selp} in \textcite{lexer}, we find that \norm{selp} together with an 
+ordinal refers to the given number of people including the person who is acting 
+themselves.
 
 \subsection*{Unde do er daz erziugte …}
 \addcontentsline{toc}{subsection}{Unde do er daz erziugte …}
@@ -894,23 +900,51 @@ the given number of people including the person who is acting themselves.
 % auh vergæzzen, man ſolte im wol der stet brief dar vber geben.
 
 \ex \begingl
-	\glpreamble … //
-	\gla … //
-	\glb … //
-	\glft \enquote{…} //
+	\glpreamble Nay lugaya si hakayāng, yam pinyayāng beratān, yanoyam 
+		tenyasayan keynamang, koronaryasayan naynay, kada le mya 
+		tavisongyāng māy tahang rimanena ran. //
+	\gla nay luga @ -ya si haka @ -yāng, yam pinya @ -yāng beratān, yanoyam 
+		tenya @ -asa @ -yan keynam @ -ang, koronarya @ -asa @ -yan 
+		naynay, kada le mya tavisa @ -ong @ -yāng māy tahang riman @ 
+		-ena ran. //
+	\glb and while -\Loc{} \Rel{} testify -\Tsg{}.\M{}.\Aarg{}, \DatT{} 
+		ask.for -\Tsg{}.\M{}.\Aarg{} verdict.\Top{}, because die 
+		-\Hab{} -\Tpl{}.\M{} people -\Aarg{}, forget -\Hab{} 
+		-\Tpl{}.\M{} also, so \PatT{} shall receive -\Irr{} 
+		-\Tsg{}.\M{}.\Aarg{} well writ city -\Gen{} 
+		\Tsg{}.\Inan{}.\Gen{}. //
+	\glft \enquote{And the while he testified, he asked for a verdict 
+		because people would die and also forget, so he should well 
+		receive the city's writ about it.} //
 \endgl \xe
 
 This part contains my favorite line in this text, \fw{wande die lvte tôtlich 
 wæren vnde auh vergæzzen}. I think it seems almost a little sarcastic to state 
-that people are mortal and forgetful in this case, as though Ulrich would not 
-trust his neighbor to not offend against their agreement again. Interpretations 
-aside, such justifications for documenting the proceedings or the outcome of 
-oral negotiations in writing are very common. The usual reason stated is that 
-the parties wish to keep written proof to reinforce their contracts, deals and 
-agreements. In the late 13th century, even common people seem to increasingly 
-become aware of the use of writing things down as a practical means to increase 
-legal certainty, but also to commemorate, since the written word is more 
-enduring and reliable than witnesses' memory.
+that people are mortal and forgetful in this case (I rendered these as a 
+habitative verbs in Ayeri), as though Ulrich would not trust his neighbor to not 
+offend against their agreement again. Interpretations aside, such justifications 
+for documenting the proceedings or the outcome of oral negotiations in writing 
+are very common. The usual reason stated is that the parties wish to keep 
+written proof to reinforce their contracts, deals and agreements. In the late 
+13th century, even common people seem to increasingly become aware of the use 
+of writing things down as a practical means to increase legal certainty, but 
+also to commemorate, since the written word is more enduring and reliable than 
+witnesses' memory.
+
+If you've ever studied German for a while, you know that in its spoken form it 
+has a lot of those little words like \fw{doch}, \fw{halt}, \fw{ja} and such 
+(which will probably have driven you crazy for a while, as an English speaker) 
+that indicate the attitude of the speaker but don't really change the meaning of 
+the utterance much. The \fw{wol} `well' in the \Mhg{} original text is one such 
+particle that indicates that the speaker deems it advisable in this case to 
+receive an attestation of the court's decision. Ayeri has a particle \ayr{maaj} 
+\fw{māy} that is used for `yes' but can also be used as an affirmative emphasis 
+on verbs, so I used that here. It usually occurs between the topic marker and 
+the verb, but since that position is already filled with the modal verb 
+\xayr{mY}{mya}{be supposed to, shall}, I decided to use it like an adverb and 
+place it after the verb. While I was at it, I also changed the original's 
+impersonal phrasing, \fw{man ſolte im […] geben} `one ought to give him', to 
+a more personal one, \xayr{mY tvisoNYaaNF}{mya tavisongyāng}{he should receive}.
 
 \subsection*{Daz wart im erteilt …}
 \addcontentsline{toc}{subsection}{Daz wart im erteilt …}
@@ -995,10 +1029,15 @@ enduring and reliable than witnesses' memory.
 
 At this point, I wonder if I better shouldn't have calqued the names. The 
 problem is that the names \fw{Reinbot}, \fw{Sibot} and \fw{Volkwin} aren't 
-common German names anymore. Also, I have no clue about \fw{Fundan}. The rest of 
-the names -- especially the surnames -- are transparent enough to venture a 
-reasonable guess. For \fw{Chunrat} and \fw{Ulrich}, see \autoref{tab:names1} 
-above.
+common German names anymore. Also, I have no clue about 
+\fw{Fundan}.\footnote{Since I've already made up something in Turayi above, 
+see page~\pageref{ex:innomine}, I could try to explain the oddity of not 
+translating this one by it being from the other language, but that also doesn't 
+make sense as Turayi lacks /f/, /v/ in the current draft. Whatever this name 
+would be from in-universe, then, the form \fw{Pundan} is permissible in Ayeri 
+in any case.} The rest of the names -- especially the surnames -- are 
+transparent enough to venture an educated guess. For \fw{Chunrat} and 
+\fw{Ulrich}, see \autoref{tab:names1} above.
 
 While \fw{Chunrat}, \fw{Ulrich}, \fw{Liupolt} and \fw{Volkwin} can simply 
 be looked up in a dictionary,\footnote{Such as \textcite{duden:vornamen}, for 
@@ -1131,7 +1170,7 @@ disyllabic already.
 		@ -ley, kuran @ -reng vesang @ -ya na= @ Pangal masahatay 
 		perican @ -ley menang hen, kong mallan @ .itan @ -ya perican @ 
 		-ena, bahis @ -ya perin marin bahis @ -ya adang. //
-	\glb time -\Loc{} \Rel{} such= come -\Tsg{}.\Inan{} and 
+	\glb time -\Loc{} \Rel{} such= come -\Tsg{}.\Inan{}.\Aarg{} and 
 		issue -\Tsg{}.\Inan{} this writ -\Parg{}.\Inan{}, count 
 		-\Aarg{}.\Inan{} birth -\Loc{} \Gen{}= God since year 
 		-\Parg{}.\Inan{} gross eight, within tenty .seven -\Loc{} year 
@@ -1174,7 +1213,7 @@ In its native script, the complete translated text looks like this:
 			lhnFlej soyNF nNaasF soyNF vehnFlej pluNF silej ENF miNF 
 			nupisoNr yaasF. %4
 		le grikY ANF birtyti AdnY, nryaaNF, rii IMtojyaaNF d/dileNF. %5
-		mritpY tgaati\_aNF, rnY ANF birtyti, rii IMtYaaNF d/dilenF,
+		mritpY tgaati\_aNF, rnY ANF birtyti, rii IMtYaaNF d/dileNF,
 			naarY ANF miNF puktoNY hsMdYnF tig pulujlej yym. %6
 		le no d/subFrojy ANF hsMdYnF tig kjtnF yn \& ANF d/pinYy bhisYmF 
 			siyaa miNF hkoNYaaNF. %7		
@@ -1182,7 +1221,9 @@ In its native script, the complete translated text looks like this:
 			AyonY pluNF smF, dileNY nsYmF, y mY vehoyoNy ANF 
 			birtyti Ed/moMdo vehnFlej si ENF miNF nupisoNr yaasF, 
 			ku/thnFrej mrinF Edy. %8
-		— %9
+		\& lugy si hkyaaNF, ymF pinYyaanF bertaanF, ynoymF tenYsynF 
+			kejnmNF, koronrYsynF \+, kd le mY tvisoNYaaNF maaj 
+			thNF rimnen rnF. %9
 		le kilisr AdnY yymF bertaa\-neri kdisu. %10
 		— %11
 		\& ANF beNYnF Ed/mMdnY AyonYe tig ledjynF, bjsikaanF IkMdesj, 
@@ -1227,7 +1268,9 @@ And for completeness' sake, this is the whole text again in Roman transcription:
 		ayonya palung sam, dilengya nasyam, ya mya vehoyongya ang 
 		Biratayati eda-mondo vehanley si eng ming nupisongara yās, 
 		ku-tahanrey marin edaya. %8
-	… %9
+	Nay lugaya si hakayāng, yam pinyayāng beratān, yanoyam 
+		tenyasayan keynamang, koronaryasayan naynay, kada le mya 
+		tavisongyāng māy tahang rimanena ran. %9
 	Le kilisara adanya yayam beratāneri kadisu. %10
 	… %11
 	Nay ang bengyan eda-mandanya ayonye tiga Ledayyan, Baysikān Ikandesay, 
@@ -1265,9 +1308,7 @@ expand on.
 \pagebreak
 
 \addsec{Abbreviations}
-\begin{multicols}{3}
 \printglossary[style=mysuper,type=\leipzigtype]
-\end{multicols}
 
 \printbibliography[heading=bibintoc]
 
