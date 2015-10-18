@@ -150,7 +150,8 @@
 
 \newglossarystyle{mytable}{%
 	\renewenvironment{theglossary}{%
-		\begin{multicols}{2}
+		\columnsep=1em
+		\begin{multicols}{3}
 		\raggedright
 	}{%
 		\end{multicols}
@@ -160,11 +161,11 @@
 	\renewcommand*{\glossaryentryfield}[5]{%
 		\noindent
 		\makebox[3em][l]{\glsentryitem{##1}\glstarget{##1}{##2}}
-		\makefirstuc{##3}\glspostdescription{}\par
+		\makefirstuc{##3}\glspostdescription{}\newline
 	}%
 	\renewcommand*{\glossarysubentryfield}[6]{%
 		\hspace{3em}\glssubentryitem{##2}%
-		\glstarget{##2}{\strut}\makefirstuc{##4}\glspostdescription{}\par
+		\glstarget{##2}{\strut}\makefirstuc{##4}\glspostdescription{}\newline
 	}%
 	\renewcommand*{\glsgroupskip}{}%
 }%
@@ -337,6 +338,17 @@
 	publisher = {Duden},
 	location = {Mannheim},
 	year = {2013}
+}
+
+@book{demske2001,
+	author = {Ulrike Demske},
+	title = {{Merkmale und Relationen}},
+	subtitle = {{Diachrone Studien zur Nominalphrase des Deutschen}},
+	location = {Berlin and New York},
+	year = {2001},
+	series = {Studia Linguistica Germanica},
+	number = {56},
+	keywords = {sekundaer},
 }
 \end{filecontents*}
 
@@ -904,7 +916,7 @@ themselves.
 		naynay, kada le mya tavisa @ -ong @ -yāng māy tahang riman @ 
 		-ena ran. //
 	\glb and while -\Loc{} \Rel{} testify -\Tsg{}.\M{}.\Aarg{}, \DatT{} 
-		ask.for -\Tsg{}.\M{}.\Aarg{} verdict.\Top{}, because die 
+		ask.for -\Tsg{}.\M{}.\Aarg{} decision.\Top{}, because die 
 		-\Hab{} -\Tpl{}.\M{} people -\Aarg{}, forget -\Hab{} 
 		-\Tpl{}.\M{} also, so \PatT{} shall receive -\Irr{} 
 		-\Tsg{}.\M{}.\Aarg{} well writ city -\Gen{} 
@@ -952,7 +964,7 @@ a more personal one, \xayr{mY tvisoNYaaNF}{mya tavisongyāng}{he should receive}
 	\gla le kilis @ -ara adanya yayam beratān @ -eri kadisu. //
 	\glb \PatT{}.\Inan{} grant -\Tsg{}.\Inan{} that.\Top{} 
 		\Tsg{}.\M{}.\Dat{} decision -\Ins{} unanimous. //
-	\glft \enquote{This was granted to him by unanimous decision.} //
+	\glft \enquote{This was granted to him by unanimous verdict.} //
 \endgl \xe
 
 \xayr{kdisu}{kadisu}{united} acquired a new shade of meaning here, namely, 
@@ -967,16 +979,38 @@ a more personal one, \xayr{mY tvisoNYaaNF}{mya tavisongyāng}{he should receive}
 % dar an hanget.
 
 \ex \begingl
-	\glpreamble … //
-	\gla … //
-	\glb … //
-	\glft \enquote{…} //
+	\glpreamble Nay na mya nakasoyyo kadāre peno sayling eda-mine luga tas,
+		le ilisanang eda-tahang si rī tonisanang melakam rimanena 
+		Vamareng si ikaparey adaya. //
+	\gla nay na mya nakas @ -oy @ -yo kadāre peno sayling eda= @ mine luga 
+		tas, le ilisa @ -nang eda= @ tahang si rī tonisa @ -nang 
+		melakam riman @ -ena Vamareng si ikapa @ -rey adaya. //
+	\glb and \GenT{} shall grow -\Neg{} -\Tsg{}.\N{} so.that strife further 
+		this= issue.\Top{} between \Tsg{}.\M{}.\Loc{}, \PatT{} issue 
+		-\Fpl{}.\Aarg{} this= writ.\Top{} \Rel{} \InsT{} ascertain 
+		-\Fpl{}.\Aarg{} seal.\Top{} city -\Gen{} Augsburg \Rel{}
+		attach -\Tsg{}.\Inan{}.\Parg{} there. //
+	\glft \enquote{And so that there grow no further strife from this issue, 
+		between them, we issued this writ which we ascertained with the 
+		city of Augsburg's seal, which is attached there.} //
 \endgl \xe
 
-\Nhg{} \fw{Augsburg} ← \Mhg{} \fw{Auſpurk} ← \Lat{} \fw{Augusta (Vindelicum)} + 
-\Mhg{} \norm{burc}, \Ohg{} \fw{burg} `castle, city' → \Ayr{} 
-\xayr{vmuAj}{vamuay}{praiseworthy} + \xayr{/AreNF}{-areng}{fort, city} → 
-\ayr{vmreNF} \fw{Vamareng}.
+The name of the city of Augsburg, \Mhg{} \fw{Auſpurk}, derives from its Latin 
+name \fw{Augusta Vindelicum} plus \Mhg{} \norm{burc}, \Ohg{} \fw{burg} `castle, 
+city'. In Ayeri, we thus get \xayr{vmuAj}{vamuay}{praiseworthy} + 
+\xayr{/AreNF}{-areng}{fort, city}, which is condensed into \fw{Vamareng}.
+
+Again, the Ayeri translation does not contain anything very noteworthy, though 
+the \Mhg{} text contains a phrase that is unusual in this way in modern German:
+\fw{mit der stet jnſigel ze Auſpurk}, literally `with [[the.\Gen{} city \emph{t}\fakesubscript{i}] seal] [to 
+Augsburg]\fakesubscript{i}'. This looks like a discontinuous genitive 
+phrase,\footnote{\textcite[224~ff.]{demske2001} wrote about it in her 
+dissertation on the historical development of the German \Np{}.} compare 
+the modern German \fw{mit dem Siegel der Stadt zu Augsburg}, literally `with 
+[the.\Dat{} seal [the.\Gen{} city [to Augsburg]]]', which does not put the 
+possessee into the position of a modifier but has it follow the possessor, while 
+not bracketing out the embedded \Pp{} \fw{zu Augsburg} either. The 
+bracketification of the Ayeri phrase should look the same as in \Nhg{}.
 
 \subsection*{Unde sint des geziuge …}
 \addcontentsline{toc}{subsection}{Unde sint des geziuge …}
@@ -1150,6 +1184,14 @@ disyllabic already.
 
 \subsection*{Do daz geschach …}
 
+The dating formula in the final sentence seems very convoluted with its 
+repetition of \fw{iar} `year', but this is the way it works in many of the 
+\citetitle{CAO}'s deeds. What is interesting, though not surprising since 
+literality was historically clerical, is that religious feasts or name days of 
+saints are used as reference points instead of modern calendar days numbered 1 
+through 31, and dates are given relative to those feast days. My translation 
+into Ayeri is as follows:
+
 % Do daz geſchach vnde auh dirre brief geben wart, do waſ von goteſ geburte 
 % tuſent iar zwej hvndert iar in dem nivn vnde sibenzigoſten iare an dem 
 % ſvnnetage vor dem balm tage.
@@ -1176,23 +1218,13 @@ disyllabic already.
 		the tenty-seventh year, on the Sunday before the Palm Day.} //
 \endgl \xe
 
-The dating formula seems very convoluted with its repetition of \fw{iar} `year', 
-but this is the way it works in many of the \citetitle{CAO}'s deeds. What is 
-interesting, though not surprising since literality was historically clerical, 
-is that religious feasts or name days of saints are used as reference points 
-instead of modern calendar days numbered 1 through 31, and dates are given 
-relative to those feast days. Ayeri itself uses a base 12 number system, so 
-1279 converts to \textsc{8a7}.
-
 This section introduces \ayr{Ilis/} \fw{ilisa-} with the additional meaning 
-`issue' and newly coins \xayr{AdNF}{adang}{palm tree}.
+`issue' and newly coins \xayr{AdNF}{adang}{palm tree}. Ayeri itself uses 
+a base 12 number system, so 1279 converts to \textsc{8a7}.
 
 \section{\enquote{Ang mya koronyan keynam-hen …}}
 
-In its native script, the complete translated text looks like this:
-
-\blockquote{
-
+\begin{quotation}
 	\begin{ayeri}
 		\fw{AAsFti/nF n paagF ko stJ\_F, AAmenF!} %1
 			ANF mY koronYnF kejnm/henF si ANF lyynF Ed/thNF nivyeeri 
@@ -1221,7 +1253,9 @@ In its native script, the complete translated text looks like this:
 			kejnmNF, koronrYsynF \+, kd le mY tvisoNYaaNF maaj 
 			thNF rimnen rnF. %9
 		le kilisr AdnY yymF bertaa\-neri kdisu. %10
-		— %11
+		\& n mY nksojyo kdaare peno sjliNF Ed/mine lug tsF, le IlisnNF
+			Ed/thNF si rii tonisnNF melkmF rimnen vmreNF si ikprej 
+			Ady. %11
 		\& ANF beNYnF Ed/mMdnY AyonYe tig ledjynF, bjsikaanF IkMdesj, 
 			hsMdYnF puMdnF, kej\-nM\-teMdo vehimti, kej\-nM\-teMdo 
 			IkMdesj, sik\_o\_MteMdo bjsaaru\_anF, sik\_o\_MteMdo n 
@@ -1234,11 +1268,9 @@ In its native script, the complete translated text looks like this:
 			melkmF
 		\end{center}
 	\end{ayeri}
-}
+\end{quotation}
 
-And for completeness' sake, this is the whole text again in Roman transcription:
-
-\blockquote{
+\begin{quotation}
 	\fw{\textbf{Ā}sti-n na Pāg ko saț, āmen!}\footnote{Alternatively:
 		\ayr{graaneri n nhNF, AAmenF!} \fw{Garāneri na Nahang, āmen!}
 		See page \pageref{ex:innomine} for details.} %1
@@ -1268,7 +1300,9 @@ And for completeness' sake, this is the whole text again in Roman transcription:
 		tenyasayan keynamang, koronaryasayan naynay, kada le mya 
 		tavisongyāng māy tahang rimanena ran. %9
 	Le kilisara adanya yayam beratāneri kadisu. %10
-	… %11
+	Nay na mya nakasoyyo kadāre peno sayling eda-mine luga tas, le ilisanang 
+		eda-tahang si rī tonisanang melakam rimanena Vamareng si 
+		ikaparey adaya. %11
 	Nay ang bengyan eda-mandanya ayonye tiga Ledayyan, Baysikān Ikandesay, 
 		Hasanjan Pundan, Keynantendo Vehimati, Keynantendo Ikandesay, 
 		Sikontendo Baysāruan, Sikontendo na Hinyanveno baykan, 
@@ -1279,7 +1313,7 @@ And for completeness' sake, this is the whole text again in Roman transcription:
 	\begin{center}
 		Melakam
 	\end{center}
-}
+\end{quotation}
 
 \section{A Few Final Words}
 At 365 words, the text of \citefield{n163}{title} is rather mid-length. It took 
@@ -1300,6 +1334,7 @@ expand on.
 
 %% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% \vfill
 \pagebreak
 
 \addsec{Abbreviations}
