@@ -1,0 +1,198 @@
+\documentclass[12pt,paper=a4]{scrartcl}
+
+% Author, Title, Subtitle etc.
+\author{Carsten Becker}
+\title{Fences and Gardens}
+\subtitle{A Postscript}
+
+% Handle language and quotation marks
+\usepackage[ngerman,english]{babel}
+\usepackage{csquotes} % Put quotations in \enquote{}!
+\SetBlockEnvironment{quotation}
+\renewcommand*{\mkccitation}[1]{ (#1)}
+
+% Set all margins to 2.54 cm
+\usepackage[margin=1in]{geometry}
+\widowpenalty10000 % Avoid widows like the plague!
+\clubpenalty10000 % Avoid orphans like the plage, too!
+
+% Make multiple columns available in single-column document
+\usepackage{multicol}
+
+% Make text colors and color names available
+\usepackage[xetex]{xcolor}
+
+% Load font stuff for XeTeX
+\usepackage{xltxtra}
+\usepackage{fontspec}
+
+% Set main fonts
+\usepackage[config=mt-Junicode]{microtype}
+
+\setmainfont[
+  Ligatures=TeX,
+  Numbers=Lowercase,
+]{Junicode}
+
+\setsansfont[
+  Ligatures=TeX,
+  Numbers=Lowercase,
+  Scale=MatchUppercase,
+  BoldFont={Open Sans Condensed Bold},
+]{Open Sans Condensed Light}
+
+% Date etc.
+\usepackage{datetime}
+\renewcommand{\dateseparator}{/}
+
+% Clickable links in footnotes, TOC, etc.
+\usepackage[
+  xetex,
+  bookmarks=true,
+  colorlinks=false,
+  linktoc=section,
+  hidelinks,
+  pdfusetitle,
+]{hyperref}
+
+\usepackage{url}
+\urlstyle{rm}
+
+% Ability to include graphics
+\usepackage{graphicx}
+
+% General headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead[L]{} % empty
+\fancyhead[C]{} % empty
+\fancyhead[R]{\thepage}
+
+\fancyfoot[L]{} % empty
+\fancyfoot[C]{} % empty
+\fancyfoot[R]{} % empty
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% First page headers and footers are different
+\fancypagestyle{firstpage}{
+  \fancyhead[L]{\sffamily \footnotesize \textbf{Benung. The Ayeri Language Resource}}
+  \fancyhead[C]{} % empty
+  \fancyhead[R]{\sffamily \footnotesize Carsten Becker · \yyyymmdddate\today}
+  
+  \fancyfoot[L]{} % empty
+  \fancyfoot[C]{} % empty
+  \fancyfoot[R]{\sffamily \footnotesize 
+	\href{http://benung.nfshost.com}{http://benung.nfshost.com} · 
+	\href{https://github.com/carbeck/benung-pdfs}{https://github.com/carbeck/benung-pdfs} · 
+	\href{https://creativecommons.org/licenses/by-sa/4.0/}{CC~BY-SA~4.0}
+  }
+  
+  \renewcommand{\headrulewidth}{0.5pt}
+  \setlength\footskip{0.5in}
+}
+
+\usepackage{ifthen}
+\ifthenelse{\value{page}=1}{\thispagestyle{firstpage}{\pagestyle{fancy}}}
+
+% Line spacing
+\usepackage{setspace}
+\onehalfspacing
+
+% Avoid pagebreaks right after sections and subsections
+\usepackage{needspace}
+\usepackage{etoolbox}
+\preto\section{\needspace{6\baselineskip}}
+\preto\subsection{\needspace{6\baselineskip}}
+
+% Nicer footnotes
+\usepackage[bottom]{footmisc}
+\deffootnote{0em}{1.5em}{\textsuperscript\thefootnotemark\enskip}
+\renewcommand{\footnoterule}{\rule{0pt}{0pt}{\vspace*{-0pt}}}
+\setlength{\footnotesep}{1em}
+
+% Smaller font in block quotes
+\usepackage{relsize}
+\AtBeginEnvironment{quote}{\noindent\smaller}
+\AtBeginEnvironment{quotation}{\smaller}
+
+% Macros
+\newcommand{\fw}[1]{\textit{#1}} % Foreign Word
+\newcommand{\tit}[1]{\textit{#1}} % Title of a work
+\newcommand{\q}[1]{\enquote{#1}} % Context-aware quotation
+\newcommand{\qq}[1]{\enquote*{#1}} % Explicit sublevel quotation
+\newcommand{\tsup}[1]{\textsuperscript{#1}} % Superscript
+\newcommand{\markyellow}[1]{\colorbox{yellow}{#1}} % Yellow highlighter
+
+% Initials
+\usepackage{lettrine}
+
+% Some hacking to make that diacritic in "In nomine domini" possible
+\usepackage{calc}
+\newlength{\charwidth}
+\newcommand{\innomdom}[3]{
+	\setlength{\charwidth}{\widthof{#2'}}#1#2\mbox{\makebox[-\charwidth]{\raisebox{1.6\depth}{\rotatebox{180}{\fontspec{FreeSerif}ⷹ}}}\hspace{\charwidth}#3}
+}
+\newcommand\ol[1]{{\setul{-0.9em}{}\ul{#1}}}
+
+\newenvironment{mytitle}{
+  \hfill
+  \begin{minipage}{0.667\textwidth}
+	\vspace{\baselineskip}
+	\begin{center}
+	  \Large
+	  \sffamily\bfseries
+	  \makeatletter
+}{
+	  \makeatother
+	\end{center}
+	\vspace{1em}
+  \end{minipage}
+  \hfill
+}
+
+\begin{document}
+
+%% MAIN PART %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{mytitle}
+  \@title: \@subtitle
+\end{mytitle}
+
+We actually have photos of all -- or at least a large number of -- the deeds from 
+Wilhelm's \tit{Corpus der altdeutschen Originalurkunden bis zum Jahr 1300} at my 
+university's Institute of Medieval German Philology, so I dug up the one for 
+the deed I tried translating earlier (N163 (381a), dated Augsburg, March 19, 
+1279) and transcribed it:
+
+\begin{quotation}
+\innomdom{\lettrine[lines=3,lraise=0.25]{J}{\upshape n}}{n}{}\innomdom{d}{n}{j} 
+a͞m. Alle die die diſen brief leſent hoꝛent od͛ ſehent die ſuln daʒ wiʒʒen / daʒ h͛ 
+Vlrich frovn Engeln toht͛man v͛kaufte h͛m Chvnrad dem hafener einen halben garten 
+mit ſogtaner beſcheidenheit / daʒ d͛ h͛ Chvnrat d͛ hafen͛ vf den ſelben halben garten wed͛ ʒvn noch hvſ bwen ſolte / noch 
+de cheinen bv darvf tvͦn ſolte d͛ im ʒe ſchaden chomen mohte. Daʒ ſtvnt alſ lange 
+/ vnʒ d͛ h͛ Chvnrat d͛ hafen͛ dar fvr vnde wolte geʒvnet haben den ſelben garten. 
+Do deſ h͛ Vlrich innan wart / do fvr er fvr gerihte. vnde chlagte hinʒe dem hafen͛ 
+daʒ er da ʒvnen wolte da erſ niht tvn ſolte wande er eʒ mit gedingede im alſo 
+geben hete / daʒ er wed͛ ʒvn noh hvſ / da bwen ſolte / noh nihteſ deſ / daʒ im ʒe 
+ſchaden chomen mohte. Deſ laugent im d͛ hafener / daʒ er mit im alſo iht kauft 
+hete. Darvb͛ wart erteilt / daʒ d͛ hafen͛ bereite daʒ er mit im alſo iht kauft hete 
+/ in beʒivte danne h͛ Vlrich daʒ eʒ alſo wæ̂re. Da wolte h͛ Vlrich ſinſ rehteſ niht 
+vmbe / vnde gerte einſ tageſ vmbe ſinen geʒivk. Do d͛ tak chom do gie h͛ Vlrich 
+fvr / vnde erʒivgte ſelbe dritte alſ reht waſ. daʒ er vf den ſelben garten chein 
+den bv tvn ſolte d͛ im ʒe ſchaden chomen mohte alſ da voꝛ geſchriben ſtat / vnde 
+do er daʒ erʒivgte / do gert er vrteil wande die lvte tôtlich wæren vnde auh 
+vergæʒʒen / man ſolte im wol d͛ Stet brief darvb͛ geben. Daʒ wart im erteilt mit 
+geſament͛ vrteil. Vnde da von daʒ ʒwischen in chein kriech mer gewahſen mvge vmbe 
+die ſache / dar vmbe wart geben dirre brief v͛ſigelt mit d͛ Stet Jnſigel ʒe Auſpurk 
+daʒ dar an hanget. Vnde ſint deſ geʒuige h͛ Volkwin. h͛ Sibot d͛ Stolʒhirʒ. her 
+Vlrich Fundan. h͛ Livpolt d͛ Stolʒhirʒ. her Chvnrat Reinbot. Meiſt͛ Chvnrat von 
+Schoenegge. her chvnrat notkauf. her Chvnrat d͛ bart / vnde and͛ genvge. Do daʒ 
+geſchach vnde auh dirre brief geben wart / do waſ von Goteſ geburte. Tuſent iar. 
+ʒwei hundert iar. in dem Nivn vnde Sibenʒigoſten iare / an dem ſvnnetage voꝛ dem 
+balmtage.
+\end{quotation}
+
+\end{document}
