@@ -49,14 +49,11 @@
 ]{Open Sans Condensed Light}
 
 % Load BibLaTeX (using Biber), configure citation styles
-% Uses <https://github.com/semprag/biblatex-sp-unified>
 \usepackage[
-    style=biblatex-sp-unified,
-    citestyle=sp-authoryear-comp,
-    maxnames=2,
+    authordate-trad,
     backend=biber,
     safeinputenc,
-]{biblatex}
+]{biblatex-chicago}
 
 % To make \textcite look like "Doe (2014: 213)"
 \renewcommand*{\postnotedelim}{\addcolon\addspace}
@@ -187,10 +184,7 @@
 \makeglossaries
 
 % Nicer footnotes
-\usepackage[bottom]{footmisc}
-\deffootnote{0em}{1.5em}{\textsuperscript\thefootnotemark\enskip}
-\renewcommand{\footnoterule}{\rule{0pt}{0pt}{\vspace*{-0pt}}}
-\setlength{\footnotesep}{1em}
+\usepackage[bottom,hang,norule]{footmisc}
 
 % Smaller font in block quotes
 \usepackage{relsize}
@@ -245,7 +239,7 @@
     title = {A Grammar of {Blah}},
     author = {Alfred E. Neuman and John X. Doe},
     publisher = {Maximegalon UP},
-    location = {Maximegalon, NW},
+    location = {Maximegalon},
     date = {1972},
     series = {Reference Grammars of Inexistent Languages},
     number = {4},
@@ -281,11 +275,13 @@
 \begingl
     \gla Da= baha  -tang,               sa      aka     -ya         para    vaga -Ø      lama       -na. //
     \glb so= shout \Tpl{}.\M{}.\Aarg{}, \PatT{} swallow \Tsg{}.\M{} quickly pig  -\Top{} restaurant -\Gen{} //
-    \glft \enquote{So they shouted that the the restaurant’s pig was quickly swallowed.}\footnote{\lipsum[10]} //
+    \glft \enquote{So they shouted that the the restaurant’s pig was quickly swallowed.}\footnotemark //
 \endgl
 \xe
 
-\xayr{AdreNF liMkaanFlej}{Adareng linkānley}{This is a test}.
+\footnotetext{\lipsum[10]}
+
+\xayr{AdreNF liMkaanFlej}{Adareng linkānley}{This is a test}.\footcites[100]{blah}[50]{blah}
 
 \lipsum[2-5]
 
