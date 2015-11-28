@@ -1,12 +1,12 @@
 benung-pdfs
 ===========
 
-TeX sources for new PDFs on [_Benung. The Ayeri Language Resource_](http://benung.nfshost.com).
+TeX sources for new PDFs on [Benung. The Ayeri Language Resource](http://benung.nfshost.com).
 
 Compiling
 =========
 
-Compile with `xelatex` and `biber`, possibly also with `makeglossaries`. Makes use of the [biblatex-sp-unified](https://github.com/semprag/biblatex-sp-unified) package by Kai von Fintel.
+Compile with `xelatex` and `biber`, possibly also with `makeglossaries`. Older projects make use of the [biblatex-sp-unified](https://github.com/semprag/biblatex-sp-unified) package by Kai von Fintel.
 
 Licensing
 =========
