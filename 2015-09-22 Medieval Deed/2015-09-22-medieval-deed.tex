@@ -131,7 +131,7 @@
 \usepackage{needspace}
 \usepackage{etoolbox}
 \preto\section{\needspace{6\baselineskip}}
-\preto\subsection{\needspace{6\baselineskip}}
+\preto\subsection{\needspace{3\baselineskip}}
 
 % Things for tables
 \usepackage{longtable}
@@ -198,7 +198,6 @@
 \makeglossaries
 
 % Nicer footnotes
-% Nicer footnotes
 \usepackage[bottom,hang,norule]{footmisc}
 \setlength{\footnotesep}{0.75\baselineskip}
 
@@ -264,8 +263,8 @@
 
 @collection{CAO1,
 	title = {1200--1282},
-	shorttitle = {{CAO I}},
-	shorthand = {{CAO I}},
+	%shorttitle = {{CAO~I}},
+	%shorthand = {{CAO~I}},
 	volume = {1},
 	% sortkey = {CAO1},
 	editor = {Friedrich Wilhelm},
@@ -276,9 +275,9 @@
 }
 
 @collection{CAO5,
-	booktitle = {Nachtragsurkunden 1261--1297},
-	bookshorttitle = {{CAO V}},
-	shorthand = {{CAO V}},
+	booktitle = {Nachtrags\-urkunden 1261--1297},
+	%bookshorttitle = {{CAO~V}},
+	%shorthand = {{CAO~V}},
 	volume = {5},
 	% sortkey = {CAO5},
 	editor = {Helmut de Boor and Diether Haacke and Bettina Kirschstein},
@@ -1352,7 +1351,7 @@ expand on.
 %% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % \vfill
-%\pagebreak
+\pagebreak
 
 \addsec{Abbreviations}
 \printglossary[style=mytable,type=\leipzigtype]
