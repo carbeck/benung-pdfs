@@ -49,15 +49,11 @@
 ]{Open Sans Condensed Light}
 
 % Load BibLaTeX (using Biber), configure citation styles
-% Uses <https://github.com/semprag/biblatex-sp-unified>
 \usepackage[
-    style=biblatex-sp-unified,
-    citestyle=sp-authoryear-comp,
-    maxnames=2,
+    authordate-trad,
     backend=biber,
     safeinputenc,
-    hyperref,
-]{biblatex}
+]{biblatex-chicago}
 
 % To make \textcite look like "Doe (2014: 213)"
 \renewcommand*{\postnotedelim}{\addcolon\addspace}
@@ -202,10 +198,9 @@
 \makeglossaries
 
 % Nicer footnotes
-\usepackage[bottom]{footmisc}
-\deffootnote{0em}{1.5em}{\textsuperscript\thefootnotemark\enskip}
-\renewcommand{\footnoterule}{\rule{0pt}{0pt}{\vspace*{-0pt}}}
-\setlength{\footnotesep}{1em}
+% Nicer footnotes
+\usepackage[bottom,hang,norule]{footmisc}
+\setlength{\footnotesep}{0.75\baselineskip}
 
 % Smaller font in block quotes
 \usepackage{relsize}
@@ -258,8 +253,8 @@
 	editor = {Friedrich Wilhelm and Richard Newald and Helmut de Boor and Diether Haacke and Bettina Kirschstein},
 	gender = {pp},
 	title = {{Corpus der altdeutschen Originalurkunden bis zum Jahr 1300}},
-	shorttitle = {CAO},
-	shorthand = {CAO},
+	shorttitle = {{CAO}},
+	shorthand = {{CAO}},
 	% sortkey = {CAO0},
 	volumes = {5},
 	publisher = {Moritz Schauenburg and Erich Schmidt},
@@ -269,8 +264,8 @@
 
 @collection{CAO1,
 	title = {1200--1282},
-	shorttitle = {CAO I},
-	shorthand = {CAO I},
+	shorttitle = {{CAO I}},
+	shorthand = {{CAO I}},
 	volume = {1},
 	% sortkey = {CAO1},
 	editor = {Friedrich Wilhelm},
@@ -282,8 +277,8 @@
 
 @collection{CAO5,
 	booktitle = {Nachtragsurkunden 1261--1297},
-	bookshorttitle = {CAO V},
-	shorthand = {CAO V},
+	bookshorttitle = {{CAO V}},
+	shorthand = {{CAO V}},
 	volume = {5},
 	% sortkey = {CAO5},
 	editor = {Helmut de Boor and Diether Haacke and Bettina Kirschstein},
@@ -493,7 +488,7 @@ from this issue, this writ was issued, sealed with the city of Augsburg's seal
 which is attached. To this are witness Mr.\,Volkwin, Mr.\,Sibot der Stolzhirz, 
 Mr.\,Ulrich Fundan, Mr.\,Liupolt der Schroter, Mr.\,Liupolt der Stolzhirz, 
 Mr.\,Chunrat Reinbot, Master Chunrat von Schoenegge, Mr.\,Chunrat Notkauf, 
-Mr.\,Chunrat der Bart and others enough. When this took place and also this 
+Mr.\,Chunrat der Bart and many others. When this took place and also this 
 writ was issued, the count from God's birth was one thousand years, two hundred 
 years, in the seventy-ninth year on the Sunday before Palm Sunday.
 
@@ -1044,7 +1039,7 @@ The bracketification of the Ayeri phrase should look the same as in \Nhg{}.
 	\glpreamble Nay ang bengyan eda-mandanya ayonye tiga Ledayyan, Baysikān 
 		Ikandesay, Hasanjan Pundan, Keynantendo Vehimati, Keynantendo 
 		Ikandesay, Sikontendo Baysāruan, Sikontendo na Hinyanveno 
-		baykan, Sikontendo Intamarkan, Sikontendo Piku nay keynam-ma 
+		baykan, Sikontendo Intamarkan, Sikontendo Piku nay keynam-ikan 
 		palung. //
 	
 	\a \begingl
@@ -1071,9 +1066,9 @@ The bracketification of the Ayeri phrase should look the same as in \Nhg{}.
 	\endgl
 	
 	\a \begingl
-		\gla nay keynam @ =ma palung. //
-		\glb and people.\Top{} =enough other. //
-		\glft \enquote{and enough other people.} //
+		\gla nay keynam @ =ikan palung. //
+		\glb and people.\Top{} =ikan other. //
+		\glft \enquote{and many other people.} //
 	\endgl
 \xe
 
@@ -1281,7 +1276,7 @@ The whole text looks like this in its native script:
 			hsMdYnF puMdnF, kej\-nM\-teMdo vehimti, kej\-nM\-teMdo 
 			IkMdesj, sik\_o\_MteMdo bjsaaru\_anF, sik\_o\_MteMdo n 
 			hinYnFveno bjknF, sik\_o\_MteMdo IMtmrFknF, 
-			sik\_o\_MteMdo piku \& kejnmF/m pluNF. %12
+			sik\_o\_MteMdo piku \& kejnmF/IknF pluNF. %12
 		tdjy si d/shreNF \& Ilisaar Ed/\-thNF\-lej, kurnreNF vesNY n 
 			pNlF mshtj perikYnFlej menNF henF, koNF mlFlnF/ItnY 
 			perikYnen, bhisY perinF mrinF bhisY AdNF. %13
@@ -1327,7 +1322,7 @@ The whole text looks like this in its native script:
 	Nay ang bengyan eda-mandanya ayonye tiga Ledayyan, Baysikān Ikandesay, 
 		Hasanjan Pundan, Keynantendo Vehimati, Keynantendo Ikandesay, 
 		Sikontendo Baysāruan, Sikontendo na Hinyanveno baykan, 
-		Sikontendo Intamarkan, Sikontendo Piku nay keynam-ma palung. %12
+		Sikontendo Intamarkan, Sikontendo Piku nay keynam-ikan palung. %12
 	Tadayya si da-sahareng nay ilisāra eda-tahangley, kuranreng vesangya na 
 		Pangal masahatay pericanley menang hen, kong mallan-itanya 
 		pericanena, bahisya perin marin bahisya adang. %13
@@ -1357,7 +1352,7 @@ expand on.
 %% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % \vfill
-\pagebreak
+%\pagebreak
 
 \addsec{Abbreviations}
 \printglossary[style=mytable,type=\leipzigtype]
