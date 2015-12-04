@@ -4,6 +4,13 @@
 \author{Carsten Becker}
 \title{TITLE}
 \subtitle{SUBTITLE}
+\date{0000/00/00} % Format: YYYY/MM/DD (rev. N, YYYY/MM/DD)
+
+% Provide running author and date
+\makeatletter
+\let\runauthor\@author
+\let\rundate\@date
+\makeatother
 
 % Handle language and quotation marks
 \usepackage[ngerman,english]{babel}
@@ -106,7 +113,7 @@
 \fancypagestyle{firstpage}{
     \fancyhead[L]{\sffamily \footnotesize \textbf{Benung. The Ayeri Language Resource}}
     \fancyhead[C]{} % empty
-    \fancyhead[R]{\sffamily \footnotesize Carsten Becker · \yyyymmdddate\today}
+    \fancyhead[R]{\sffamily \footnotesize \runauthor{} · \rundate{}}
     
     \fancyfoot[L]{} % empty
     \fancyfoot[C]{} % empty
