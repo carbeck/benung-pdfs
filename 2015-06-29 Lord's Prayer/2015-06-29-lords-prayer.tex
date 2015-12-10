@@ -4,6 +4,13 @@
 \author{Carsten Becker}
 \title{The ‘Lord's Prayer’ in Ayeri}
 \subtitle{An Updated Translation}
+\date{2015/06/29 (rev. 2, 2015/12/10)} % Format: YYYY/MM/DD (rev. N, YYYY/MM/DD)
+
+% Provide running author and date
+\makeatletter
+\let\runauthor\@author
+\let\rundate\@date
+\makeatother
 
 % Handle language and quotation marks
 \usepackage[ngerman,english]{babel}
@@ -54,14 +61,11 @@
 ]{Open Sans Condensed Light}
 
 % Load BibLaTeX (using Biber), configure citation styles
-% Uses <https://github.com/semprag/biblatex-sp-unified>
 \usepackage[
-    style=biblatex-sp-unified,
-    citestyle=sp-authoryear-comp,
-    maxnames=2,
+    authordate-trad,
     backend=biber,
     safeinputenc,
-]{biblatex}
+]{biblatex-chicago}
 
 % To make \textcite look like "Doe (2014: 213)"
 \renewcommand*{\postnotedelim}{\addcolon\addspace}
@@ -114,7 +118,7 @@
 \fancypagestyle{firstpage}{
     \fancyhead[L]{\sffamily \footnotesize \textbf{Benung. The Ayeri Language Resource}}
     \fancyhead[C]{} % empty
-    \fancyhead[R]{\sffamily \footnotesize Carsten Becker · \yyyymmdddate\today}
+    \fancyhead[R]{\sffamily \footnotesize \runauthor{} · \rundate{}}
     
     \fancyfoot[L]{} % empty
     \fancyfoot[C]{} % empty
@@ -144,6 +148,32 @@
 % \usepackage{tabu}
 % \usepackage{rotating}
 
+% Formatting of table of glossing abbreviations from Leipzig package manual
+\usepackage[acronym,nomain,nonumberlist,nopostdot]{glossaries}
+\usepackage{glossary-inline}%
+
+\newglossarystyle{mysuper}{%
+	\glossarystyle{super}% based on super
+	\renewenvironment{theglossary}{%
+		\begin{tabbing}
+			ABCD \= ABCDEFGHIJKLMNOPQRSTUVWXYZ \kill
+	}{%
+		\end{tabbing}%
+	}%
+	\renewcommand*{\glossaryheader}{}%
+	\renewcommand*{\glsgroupheading}[1]{}%
+	\renewcommand*{\glossaryentryfield}[5]{%
+		\glsentryitem{##1}\glstarget{##1}{##2}
+		\> \makefirstuc{##3}\glspostdescription{}\\
+	}%
+	\renewcommand*{\glossarysubentryfield}[6]{%
+		\>
+		\glssubentryitem{##2}%
+		\glstarget{##2}{\strut}\makefirstuc{##4}\glspostdescription{}\\
+	}%
+	\renewcommand*{\glsgroupskip}{}%
+}%
+
 % Formatting of glosses
 \usepackage{expex}
 \usepackage{leipzig}
@@ -153,10 +183,14 @@
 \newleipzig{DatT}{datt}{dative topic}
 \newleipzig{GenT}{gent}{genitive topic}
 \newleipzig{LocT}{loct}{locative topic}
-\newleipzig{InsT}{inst}{instrumentative topic}
+\newleipzig{InsT}{inst}{instrumental topic}
 \newleipzig{CauT}{caut}{causative topic}
 \newleipzig{An}{an}{animate}
 \newleipzig{Inan}{inan}{inanimate}
+\newleipzig{Hab}{hab}{habitative}
+\newleipzig{Ayr}{ayr}{Ayeri}
+
+\makeglossaries
 
 % Nicer footnotes
 \usepackage[bottom]{footmisc}
@@ -222,6 +256,7 @@
 	url = {http://benung.nfshost.com/wp-content/uploads/2011/06/xmp_lordsprayer.pdf},
 	urldate = {2015-06-29},
 }
+
 \end{filecontents*}
 
 \addbibresource{\jobname.bib}
@@ -257,8 +292,8 @@ Si ang semayan nya ran \\
 Nay lantoyu nas nembangya \\
 Nārya na madu nas nerau. \\ [0.5\baselineskip]
 
-Yanoyam vana lagasimas \\
-Nay litās nay vomayas asayam. \\ [0.5\baselineskip]
+\textit{Yanoyam vana lagasimas \\
+Nay litās nay vomayas asayam.} \\ [0.5\baselineskip]
 
 Amen.
 
@@ -286,8 +321,8 @@ si ANF semynF nY rnF \\
 nj lMtoyu nsF nemFbNY \\
 naarY n mdu nsF nerau~— \\ [0.5\baselineskip]
 
-ynoymF vn lgsimsF \\
-nj litaasF nj vomysF AsymF~— \\ [0.5\baselineskip]
+\textit{ynoymF vn lgsimsF \\
+nj litaasF nj vomysF AsymF~—} \\ [0.5\baselineskip]
 
 AmenF
 
@@ -299,27 +334,27 @@ AmenF
 
 \section{Some Notes}
 The first time I translated the \tit{Lord's Prayer} was in 2008 
-\parencite[cf.][]{becker2008}, and the version then contained a few errors in 
-hindsight: for example, ll.~3--4 were translated with patient topics when there 
-are no patients there, according to Ayeri's grammar. I also updated the 
-vocabulary in places, as well as the spelling, e.g. \ayr{/ye\_asF} \fw{-yeas} 
-\qq{-\Pl{}-\Parg{}} was changed to \fw{-jas} to better reflect actual 
-pronunciation (cf. l.~7). Phrasings have also been simplified in a few places, 
+\autocite[see][]{becker2008}, and the version then contained a few errors in 
+hindsight: for example, I had translated ll.~3--4 with patient topics when there 
+are no patients there, according to Ayeri's grammar. I have now updated the 
+vocabulary in places, as well as the spelling, e.g. I changed \ayr{/ye\_asF} 
+\fw{-yeas} \qq{-\Pl{}-\Parg{}} to \fw{-jas} to better reflect actual 
+pronunciation (l.~7). I also simplified phrasings in a few places, 
 e.g. \ayr{AvnY ku/lenoy} \fw{avanya ku-lenoya} `on earth as in heaven' instead 
 of the wordier \ayr{ku/lenoy, Adaare y Arek njnj} \fw{ku-lenoya, adāre 
 ya Areka naynay} `as in heaven, in the same way as well on Earth' 
 (l.~5).\footnote{The word for `earth' has also since changed from \ayr{Arek} 
 \fw{Areka} to \ayr{AvnF} \fw{avan}, which simply means `bottom; ground, soil', 
-cf. German \fw{Erde} or French \fw{terre}.} Curiously, I treated \ayr{rnF} 
-\fw{ran} `against' like a preposition with a patient NP dependent in my first 
-translation; custom has changed it into a postposition since then, with regular 
-locative marking on the postpositional object (cf. l.~9): it used to be 
-\ayr{rnF nsF} \fw{ran nas} `against us.\Parg{}', but it is \ayr{nY rnF} 
-\fw{nya ran} `us.\Loc{} against' now.
+cf. German \fw{Erde} or French \fw{terre}.} Curiously, I had earlier treated 
+\ayr{rnF} \fw{ran} `against' like a preposition with a patient NP dependent; 
+custom has changed it into a postposition since then, with regular locative 
+marking on the postpositional object (l.~9). It used to be \ayr{rnF nsF} 
+\fw{ran nas} `against us.\Parg{}', but it is \ayr{nY rnF} \fw{nya ran} 
+`us.\Loc{} against' now.
 
-Moreover, I have made efforts to digitalize Tahano Hikamu as well since my 
-original translation of the \tit{Lord's Prayer} seven years ago, so the text 
-in Ayeri can be presented here in its native script.
+Moreover, I have made efforts to digitalize Tahano Hikamu since my original 
+translation of the \tit{Lord's Prayer} seven years ago, so the text in Ayeri can 
+be presented here in its native script.
 
 \section{Interlinear Glossing}
 
@@ -422,6 +457,9 @@ in Ayeri can be presented here in its native script.
 \endgl
 \xe
 
+\noindent And since I grew up in the Protestant (that is, Lutheran) tradition 
+and am thus used to adding the doxology at the end:
+
 \ex % 12
 \begingl
     \glpreamble Yanoyam vana lagasimas //
@@ -442,8 +480,13 @@ in Ayeri can be presented here in its native script.
 
 %% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\addsec{Abbreviations}
+\begin{multicols}{3}
+\printglossary[style=mysuper,type=\leipzigtype]
+\end{multicols}
+
 %\newpage
-\vfill
+%\vfill
 \printbibliography
 
 \end{document}
