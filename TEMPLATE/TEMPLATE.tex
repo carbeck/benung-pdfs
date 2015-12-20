@@ -153,21 +153,15 @@
 \newglossarystyle{mysuper}{%
 	\glossarystyle{super}% based on super
 	\renewenvironment{theglossary}{%
-		\begin{tabbing}
-			ABCD \= ABCDEFGHIJKLMNOPQRSTUVWXYZ \kill
+		\begin{itemize}[align=left]
 	}{%
-		\end{tabbing}%
+		\end{itemize}%
 	}%
 	\renewcommand*{\glossaryheader}{}%
 	\renewcommand*{\glsgroupheading}[1]{}%
 	\renewcommand*{\glossaryentryfield}[5]{%
-		\glsentryitem{##1}\glstarget{##1}{##2}
-		\> \makefirstuc{##3}\glspostdescription{}\\
-	}%
-	\renewcommand*{\glossarysubentryfield}[6]{%
-		\>
-		\glssubentryitem{##2}%
-		\glstarget{##2}{\strut}\makefirstuc{##4}\glspostdescription{}\\
+		\item[\glsentryitem{##1}\glstarget{##1}{\sffamily\bfseries ##2}]
+		\makefirstuc{##3}\glspostdescription{}
 	}%
 	\renewcommand*{\glsgroupskip}{}%
 }%
