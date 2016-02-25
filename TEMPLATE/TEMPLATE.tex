@@ -38,7 +38,7 @@
 \usepackage{fontspec}
 
 % Set main fonts
-\usepackage[config=mt-Junicode]{microtype}
+%\usepackage[config=mt-Junicode]{microtype}
 
 \newfontfamily{\Tagati}[
     Renderer=Graphite,
@@ -50,7 +50,7 @@
 \setmainfont[
     Ligatures=TeX,
     Numbers=Lowercase,
-]{Junicode}
+]{EB Garamond}
 
 \setsansfont[
     Ligatures=TeX,
@@ -164,7 +164,7 @@
 	\renewcommand*{\glossaryheader}{}%
 	\renewcommand*{\glsgroupheading}[1]{}%
 	\renewcommand*{\glossaryentryfield}[5]{%
-		\item[\glsentryitem{##1}\glstarget{##1}{\sffamily\bfseries ##2}]
+		\item[\glsentryitem{##1}\glstarget{##1}{##2}]
 		\makefirstuc{##3}\glspostdescription{}
 	}%
 	\renewcommand*{\glsgroupskip}{}%
