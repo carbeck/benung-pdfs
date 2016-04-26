@@ -1,0 +1,335 @@
+\documentclass[12pt,paper=a4]{scrartcl}
+
+% Author, Title, Subtitle etc.
+\author{Carsten Becker}
+\title{The Northwind and the Sun}
+\subtitle{An Ayeri Translation, Revisited}
+\date{\today} % Format: YYYY/MM/DD (rev. N, YYYY/MM/DD)
+
+% Provide running author and date
+\makeatletter
+\let\runauthor\@author
+\let\rundate\@date
+\makeatother
+
+% Handle language and quotation marks
+\usepackage[american]{babel}
+\usepackage{csquotes} % Put quotations in \enquote{}!
+\SetBlockEnvironment{quote}
+\renewcommand*{\mkccitation}[1]{ (#1)}
+
+% Set all margins to 2.54 cm
+\usepackage[margin=1in]{geometry}
+\widowpenalty10000 % Avoid widows like the plague!
+\clubpenalty10000 % Avoid orphans like the plage, too!
+
+% Extended formatting of lists
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep}
+
+% Make multiple columns available in single-column document
+\usepackage{multicol}
+
+% Make text colors and color names available
+\usepackage[xetex]{xcolor}
+
+% Load font stuff for XeTeX
+\usepackage{xltxtra}
+\usepackage{fontspec}
+
+% Set main fonts
+%\usepackage[config=mt-Junicode]{microtype}
+
+\newfontfamily{\Tagati}[
+    Renderer=Graphite,
+    Scale=1.1,
+    BoldFont={* Italic},
+    HyphenChar=·,
+]{Tagati Book G}
+
+\setmainfont[
+    Ligatures=TeX,
+    Numbers=Lowercase,
+]{EB Garamond}
+
+\setsansfont[
+    Ligatures=TeX,
+    Numbers=Lowercase,
+    Scale=MatchUppercase,
+    BoldFont={Open Sans Condensed Bold},
+]{Open Sans Condensed Light}
+
+% Load BibLaTeX (using Biber), configure citation styles
+\usepackage[
+    authordate-trad,
+    backend=biber,
+    safeinputenc,
+]{biblatex-chicago}
+
+% To make \textcite look like "Doe (2014: 213)"
+\renewcommand*{\postnotedelim}{\addcolon\addspace}
+\DeclareFieldFormat{postnote}{#1}
+\DeclareFieldFormat{multipostnote}{#1}
+
+% Enable generating files from this .tex file (for the bibliography) 
+\usepackage{filecontents}
+
+% Date etc.
+\usepackage[
+	datesep={/},
+]{datetime2}
+
+% Clickable links in footnotes, TOC, etc.
+\usepackage[
+    xetex,
+    bookmarks=true,
+    colorlinks=false,
+    linktoc=section,
+    hidelinks,
+    pdfusetitle,
+]{hyperref}
+
+\usepackage{url}
+\urlstyle{rm}
+
+% Ability to include graphics and dealing with footnotes in descriptions
+\usepackage{graphicx}
+\usepackage[font={small,sf},labelfont={small,sf},format=plain]{caption}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\setlength{\columnsep}{2\baselineskip}
+
+% General headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead[L]{} % empty
+\fancyhead[C]{} % empty
+\fancyhead[R]{\thepage}
+
+\fancyfoot[L]{} % empty
+\fancyfoot[C]{} % empty
+\fancyfoot[R]{} % empty
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% First page headers and footers are different
+\fancypagestyle{firstpage}{
+    \fancyhead[L]{\sffamily \footnotesize \textbf{Benung. The Ayeri Language Resource}}
+    \fancyhead[C]{} % empty
+    \fancyhead[R]{\sffamily \footnotesize \runauthor{} · \rundate{}}
+    
+    \fancyfoot[L]{} % empty
+    \fancyfoot[C]{} % empty
+    \fancyfoot[R]{\sffamily \footnotesize 
+	\href{http://benung.nfshost.com}{http://benung.nfshost.com} · 
+	\href{https://github.com/carbeck/benung-pdfs}{https://github.com/carbeck/benung-pdfs} · 
+	\href{https://creativecommons.org/licenses/by-sa/4.0/}{CC~BY-SA~4.0}
+    }
+    
+    \renewcommand{\headrulewidth}{0.5pt}
+    \setlength\footskip{0.5in}
+}
+
+\usepackage{ifthen}
+\ifthenelse{\value{page}=1}{\thispagestyle{firstpage}{\pagestyle{fancy}}}
+
+% Line spacing
+\usepackage{setspace}
+\onehalfspacing
+
+% Avoid pagebreaks right after sections and subsections
+\usepackage{needspace}
+\usepackage{etoolbox}
+\preto\section{\needspace{6\baselineskip}}
+\preto\subsection{\needspace{6\baselineskip}}
+
+% Things for tables
+% \usepackage{longtable}
+% \usepackage{tabu}
+% \usepackage{booktabs}
+% \usepackage{rotating}
+
+% Formatting of table of glossing abbreviations from Leipzig package manual
+\usepackage[acronym,nomain,nonumberlist,nopostdot]{glossaries}
+\usepackage{glossary-inline}%
+
+\newglossarystyle{mysuper}{%
+	\glossarystyle{super}% based on super
+	\renewenvironment{theglossary}{%
+		\begin{itemize}[align=left]
+	}{%
+		\end{itemize}%
+	}%
+	\renewcommand*{\glossaryheader}{}%
+	\renewcommand*{\glsgroupheading}[1]{}%
+	\renewcommand*{\glossaryentryfield}[5]{%
+		\item[\glsentryitem{##1}\glstarget{##1}{##2}]
+		\makefirstuc{##3}\glspostdescription{}
+	}%
+	\renewcommand*{\glsgroupskip}{}%
+}%
+
+% Formatting of glosses
+\usepackage{expex}
+\usepackage{leipzig}
+
+\newleipzig{AgtT}{at}{agent topic}
+\newleipzig{PatT}{pt}{patient topic}
+\newleipzig{DatT}{datt}{dative topic}
+\newleipzig{GenT}{gent}{genitive topic}
+\newleipzig{LocT}{loct}{locative topic}
+\newleipzig{InsT}{inst}{instrumental topic}
+\newleipzig{CauT}{caut}{causative topic}
+\newleipzig{An}{an}{animate}
+\newleipzig{Inan}{inan}{inanimate}
+\newleipzig{Hab}{hab}{habitative}
+\newleipzig{Ayr}{ayr}{Ayeri}
+
+\makeglossaries
+
+% Nicer footnotes
+\usepackage[bottom,hang,norule]{footmisc}
+\setlength{\footnotesep}{0.75\baselineskip}
+
+% Smaller font in block quotes
+\usepackage{relsize}
+\AtBeginEnvironment{quote}{\noindent\smaller}
+\AtBeginEnvironment{quotation}{\smaller}
+
+% Macros
+\newcommand{\fw}[1]{\textit{#1}} % Foreign Word
+\newcommand{\tit}[1]{\textit{#1}} % Title of a work
+\newcommand{\q}[1]{\enquote{#1}} % Context-aware quotation
+\newcommand{\qq}[1]{\enquote*{#1}} % Explicit sublevel quotation
+\newcommand{\tsup}[1]{\textsuperscript{#1}} % Superscript
+\newcommand{\markyellow}[1]{\colorbox{yellow}{#1}} % Yellow highlighter
+\newcommand{\ques}{\fakesuperscript{?}} % raised question mark
+
+\newcommand{\ayr}[1]{{\Tagati #1}}
+\newcommand{\xayr}[3]{{\Tagati #1} \emph{#2} \enquote*{#3}}
+
+\newenvironment{ayeri}{
+    %\hyphenpenalty=10000
+    %\hbadness=10000
+    \doublespacing
+    \begin{multicols}{2}
+    \Tagati
+}{
+    \end{multicols} \par
+}
+
+\newenvironment{mytitle}{
+    \hfill
+    \begin{minipage}{0.667\textwidth}
+	\vspace{\baselineskip}
+	\begin{center}
+	    \Large
+	    \sffamily\bfseries
+	    \makeatletter
+}{
+	    \makeatother
+	\end{center}
+	\vspace{1em}
+    \end{minipage}
+    \hfill
+}
+
+% blah
+\usepackage{lipsum}
+
+%% BIBLIOGRAPHY DATABASE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{filecontents*}{\jobname.bib}
+@inbook{aesop:northwind,
+	crossref = {ipa2007},
+	author = {Aesop},
+	title = {{The North Wind and the Sun}},
+	pages = {???--???},
+}
+
+@article{becker2004,
+	author = {Carsten Becker},
+	title = {{Temihin nay perin}},
+	journaltitle = {{Benung. The Ayeri Language Resource}},
+	date = {2004-12-05},
+	url = {http://benung.nfshost.com/wp-content/uploads/2011/06/xmp_northwind.pdf},
+	urldate = {2016-04-26},
+}
+
+@article{cysouwwälchli2007,
+	author = {Michael Cysouw and Bernhard Wälchli},
+	title = {{Parallel Texts}},
+	subtitle = {{Using Translational Equivalents in Linguistic Typology}},
+	journaltitle = {Sprachtypologie und Universalienforschung},
+	volume = {60},
+	number = {2},
+	year = {2007},
+	pages = {95--99},
+	doi = {10.1524/stuf.2007.60.2.95},
+}
+
+@book{ipa2007,
+	title = {{Handbook of the International Phonetic Association}},
+	subtitle = {{A Guide to the Use of the International Phonetic Alphabet}},
+	edition = {9},
+	author = {{International Phonetic Association}},
+	location = {Cambridge},
+	publisher = {Cambridge University Press},
+	year = {2007},
+}
+\end{filecontents*}
+
+\addbibresource{\jobname.bib}
+
+%% END OF PREAMBLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%% MAIN PART %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{mytitle}
+    \@title:\\
+    \@subtitle
+\end{mytitle}
+
+\section{A Few Introductory Remarks}
+
+The Aesopian fable, \enquote{\citetitle{aesop:northwind},} was one of the first texts -- if not \emph{the} first text -- I translated into Ayeri, back in \citeyear{becker2004}. Ayeri was still very young then and looked a little different from today: 
+
+\begin{quote}
+Viarilea ang macubriyạn Temihin nusatyo nay Perinin, sang luga samnoea ang engongiyạnin numicyo, nay edauyiea loasanoin ang masahaiyẹ sasanoea, sang manaiconisaiyẹ cong metovaea eimato. (\cite[1]{becker2004})
+
+\textcquote[???]{ipa2007}{The North Wind and the Sun were disputing which was the stronger, when a traveler came along wrapped in a warm cloak.}
+\end{quote}
+
+\noindent Compare this with the current equivalent as elaborated below:
+
+\begin{quote}
+...
+\end{quote}
+
+The updated version of the text which I am presenting here has been translated completely from scratch. Whereas I used a rendering of the text in German as the basis for my \citeyear{becker2004} version, I am using an English translation as provided by the \citetitle{ipa2007} here, which has some notoriety as a parallel text in the linguistics community \autocite[see e.g.][97]{cysouwwälchli2007}.
+
+\section{The Text in English}
+
+\blockcquote[???]{ipa2007}{The North Wind and the Sun were disputing which was the stronger, when a traveler came along wrapped in a warm cloak. They agreed that the one who first succeeded in making the traveler take his cloak off should be considered stronger than the other. Then the North Wind blew as hard as he could, but the more he blew the more closely did the traveler fold his cloak around him; and at last the North Wind gave up the attempt. Then the Sun shined out warmly, and immediately the traveler took off his cloak. And so the North Wind was obliged to confess that the Sun was the stronger of the two.}
+
+\section{(Re-)Attempting an Ayeri Translation}
+...
+
+%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\vfill
+\pagebreak
+
+\addsec{Abbreviations}
+\begin{multicols}{3}
+\printglossary[style=mysuper,type=\leipzigtype]
+\end{multicols}
+
+%\nocite{*} % returns all entries from the bibliography database
+\printbibliography[heading=bibintoc]
+
+\end{document}
