@@ -4,7 +4,7 @@
 \author{Carsten Becker}
 \title{TITLE}
 \subtitle{SUBTITLE}
-\date{0000/00/00} % Format: YYYY/MM/DD (rev. N, YYYY/MM/DD)
+\date{\today} % Format: YYYY/MM/DD (rev. N, YYYY/MM/DD)
 
 % Provide running author and date
 \makeatletter
@@ -75,8 +75,9 @@
 \usepackage{filecontents}
 
 % Date etc.
-\usepackage{datetime}
-\renewcommand{\dateseparator}{/}
+\usepackage[
+	datesep={/},
+]{datetime2}
 
 % Clickable links in footnotes, TOC, etc.
 \usepackage[
