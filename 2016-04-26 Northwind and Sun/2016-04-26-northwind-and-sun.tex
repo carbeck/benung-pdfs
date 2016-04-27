@@ -25,7 +25,7 @@
 
 % Extended formatting of lists
 \usepackage{enumitem}
-\setlist[itemize]{noitemsep}
+\setlist[itemize]{noitemsep, leftmargin=3em, labelwidth=2.5em}%, labelsep=0em}
 
 % Make multiple columns available in single-column document
 \usepackage{multicol}
@@ -173,6 +173,10 @@
 
 % Formatting of glosses
 \usepackage{expex}
+\lingset{
+	aboveexskip=0em,
+	Everyex={\singlespacing},
+}
 \usepackage{leipzig}
 
 \newleipzig{AgtT}{at}{agent topic}
@@ -277,7 +281,7 @@
 	number = {2},
 	year = {2007},
 	pages = {95--99},
-	doi = {10.1524/stuf.2007.60.2.95},
+%	doi = {10.1524/stuf.2007.60.2.95},
 }
 
 @book{ipa2007,
@@ -311,15 +315,15 @@ The Aesopian fable, \enquote{\citetitle{aesop:northwind},} was one of the first 
 \ex[exno=i, belowexskip=0em]
 \begingl
 	\glpreamble \enquote{Viarilea ang macubriyạn Temihin nusatyo nay Perinin, sang luga samnoea ang engongiyạnin numicyo, nay edauyiea loasanoin ang masahaiyẹ sasanoea, sang manaiconisaiyẹ cong metovaea eimato.} (\cite[1]{becker2004}) //
-	\gla Viaril @ -ea ang ma- @ cubra @ -iy‹a›n Temihin nu- @ satyo nay Perin @ -in, sang luga sam @ -no @ -ea ang eng @ -ong @ -iy‹a›n @ -in nu- @ micyo, nay edauyi @ -ea lo- @ asano @ -in ang ma- @ saha @ -iy‹e› sasano @ -ea, sang ma- @ naiconisa @ -iy‹e› cong me- @ tova @ -ea ei- @ mato. //
-	\glb sometime -\Loc{} \AgtT{} \Pst{}- quarrel -\Tpl{}‹1› north.wind \Aarg{}- cold and sun -\Top{}, \Rel{}.\Aarg{} among two -\Nmlz{} -\Loc{} \AgtT{} be.more -\Irr{} -\Tpl{}‹1› -\Top{} \Aarg{}- strong, and this.time -\Loc{} \Indf{}.\Aarg{}- traveler -\Top{} \AgtT{} \Pst{}- come -\Tsg{}‹2› way -\Loc{}, \Rel{}.\Aarg{} \Pst{}- be.wrapped -\Tsg{}‹2› inside \Indf{}.\Parg{}- cloak -\Loc{} \Obl{}- warm. //
+	\gla Viaril @ -ea ang ma- @ cubra @ -iy‹a›n Temihin nu- @ satyo nay Perin @ -in, si @ -ang luga sam @ -no @ -ea ang eng @ -ong @ -iy‹a›n @ -in nu- @ micyo, nay edauyi @ -ea lo- @ asano @ -in ang ma- @ saha @ -iy‹e› sasano @ -ea, si @ -ang ma- @ naiconisa @ -iy‹e› cong me- @ tova @ -ea ei- @ mato. //
+	\glb sometime -\Loc{} \AgtT{} \Pst{}- quarrel -\Tpl{}‹1› north.wind \Aarg{}- cold and sun -\Top{}, \Rel{} -\Aarg{} among two -\Nmlz{} -\Loc{} \AgtT{} be.more -\Irr{} -\Tpl{}‹1› -\Top{} \Aarg{}- strong, and this.time -\Loc{} \Indf{}.\Aarg{}- traveler -\Top{} \AgtT{} \Pst{}- come -\Tsg{}‹2› way -\Loc{}, \Rel{} -\Aarg{} \Pst{}- be.wrapped -\Tsg{}‹2› inside \Indf{}.\Parg{}- cloak -\Loc{} \Obl{}- warm. //
 	\glft `Once upon a time the cold North Wind and the Sun quarreled, who among the two would be stronger, and at this time a traveler came on the way, who was wrapped into a warm cloak.' //
 \endgl\xe
 
 \ex[exno=ii]
 \begingl
-	\glpreamble Ang manga ranyon aduayi Pintemis nay Perin, engyo mico sinyāng ton, lingya si lugaya asāyāng si sitang-naykonyāng kong tovaya mato. //
-	\gla Ang manga ran @ -yon aduayi Ø Pintemis nay Ø Perin, eng @ -yo mico sinya @ -ang ton, ling @ -ya si luga @ -ya asāya @ -ang si sitang= @ naykon @ -yāng kong tova @ -ya mato. //
+	\glpreamble Ang manga ranyon adauyi Pintemis nay Perin, engyo mico sinyāng ton, lingya si lugaya asāyāng si sitang-naykonyāng kong tovaya mato. //
+	\gla Ang manga ran @ -yon adauyi Ø Pintemis nay Ø Perin, eng @ -yo mico sinya @ -ang ton, ling @ -ya si luga @ -ya asāya @ -ang si sitang= @ naykon @ -yāng kong tova @ -ya mato. //
 	\glb \AgtT{} \Prog{} argue -\Tpl{}.\N{} then \Top{} {North Wind} and \Top{} Sun, be.more -\Tsg{}.\N{} strong who -\Aarg{} \Tpl{}.\Gen{}, while -\Loc{} \Rel{} pass -\Tsg{}.\M{} traveler -\Aarg{} \Rel{} self= wrap -\Tsg{}.\M{}.\Aarg{} inside cloak -\Loc{} warm. //
 	\glft `The North Wind and the Sun were then arguing which of them is stronger, all the while a traveler passed by who had wrapped himself in a warm cloak.' //
 \endgl
@@ -337,24 +341,25 @@ We have already seen the newly translated version of the first sentence of the t
 
 \ex % The North Wind and the Sun were disputing ...
 \begingl
-	\glpreamble Ang manga ranyon aduayi Pintemis nay Perin, engyo mico sinyāng ton, lingya si lugaya asāyāng si sitang-naykonyāng kong tovaya mato. //
-	\gla Ang manga ran @ -yon aduayi Ø Pintemis nay Ø Perin, eng @ -yo mico sinya @ -ang ton, ling @ -ya si luga @ -ya asāya @ -ang si sitang= @ naykon @ -yāng kong tova @ -ya mato. //
+	\glpreamble Ang manga ranyon adauyi Pintemis nay Perin, engyo mico sinyāng ton, lingya si lugaya asāyāng si sitang-naykonyāng kong tovaya mato. //
+	\gla Ang manga ran @ -yon adauyi Ø Pintemis nay Ø Perin, eng @ -yo mico sinya @ -ang ton, ling @ -ya si luga @ -ya asāya @ -ang si sitang= @ naykon @ -yāng kong tova @ -ya mato. //
 	\glb \AgtT{} \Prog{} argue -\Tpl{}.\N{} then \Top{} {North Wind} and \Top{} Sun, be.more -\Tsg{}.\N{} strong who -\Aarg{} \Tpl{}.\Gen{}, while -\Loc{} \Rel{} pass -\Tsg{}.\M{} traveler -\Aarg{} \Rel{} self= wrap -\Tsg{}.\M{}.\Aarg{} inside cloak -\Loc{} warm. //
 	\glft `The North Wind and the Sun were then arguing which of them is stronger, all the while a traveler passed by who had wrapped himself in a warm cloak.' //
 \endgl
 \xe
 
-The \citeyear{becker2004} version here uses a verb in the first clause, \xayr{kubFr/}{kubra-}{quarrel}, which I rendered as \xayr{rnF/}{ran-}{argue} here. It may be noted that \ayr{kubFr/} \textit{kubra-} still exists, however the dictionary gives it as `get into a conflict' these days without further explanation. As in my translation of the medieval deed \autocite[9]{becker2015}, I rendered the \enquote{while} clause not just with the plain preposition \xayr{liNF}{ling}{on (top of), while} used as a temporal adverb, but as a noun phrase proper with the complement clause rendered as a relative clause, so literally this \ayr{liNFy si} \textit{lingya si} means `on top of which', though in context it might be better translated as `all the while (that)'.
+The \citeyear{becker2004} version here uses a verb in the first clause, \xayr{kubFr/}{kubra-}{quarrel}, which I rendered as \xayr{rnF/}{ran-}{argue} here. It may be noted that \ayr{kubFr/} \textit{kubra-} still exists, however, the dictionary gives it as `get into a conflict' these days, without further explanation. Like in my translation of a medieval deed \autocite[9]{becker2015}, I rendered the \enquote{when} clause not just with the plain preposition \xayr{liNF}{ling}{on (top of), while} used as a temporal adverb, but as a preposition proper with the complement rendered as a relative clause, so literally this \ayr{liNFy si} \textit{lingya si} means `on top, where ...', though in context it might be better translated as `all the while (that)'.
 
 \ex % They agreed that the one ...
 \begingl
-	\glpreamble \enquote{They agreed that the one who first succeeded in making the traveler take his cloak off should be considered stronger than the other.}\\
-		... //
-	\gla ... //
-	\glb ... //
-	\glft `...' //
+	\glpreamble Sakantong, engongyo mico danyās palung menanang sirī ang pahongya asāya tovaley yana. //
+	\gla Sakan @ -tong, eng @ -ong @ -yo mico danya @ -as palung menan @ -ang si @ -ri<i> ang pah @ -ong @ -ya asāya @ -Ø tova @ -ley yana. //
+	\glb Agree -\Tpl{}.\N{}, be.more -\Irr{} -\Tsg{}.\N{} strong one -\Parg{} other first -\Aarg{} \Rel{} <-\Aarg{}>-\Ins{} \AgtT{} remove -\Irr{} -\Tsg{}.\M{} traveler -\Top{} cloak -\Parg{}.\Inan{} \Tsg{}.\M{}.\Gen{}. //
+	\glft `They agreed that the first one due to whom the traveller would take off his cloak would be stronger than the other.' //
 \endgl
 \xe
+
+I think that this sentence at least counters the claim that stories like this one would \textcquote[97]{cysouwwälchli2007}{deliberately evade complex linguistic constructions}. In the English version, it is pretty complex in containing a subject noun phrase that contains a relative clause that in turn contains a causative construction which gets nominalized, which is then followed by a verb phrase containing a verb whose complement is formed by a predicative noun phrase which consists of a comparative construction. This combines all of the things that Ayeri is ridiculously baroque about, which is why I could not just translate the English sentence in a very straightforward way, but had to rephrase things a little. The success brought about by making the traveler take off his cloak is thus implied by context in my Ayeri translation.
 
 \ex % Then the North Wind blew ...
 \begingl
@@ -385,6 +390,17 @@ The \citeyear{becker2004} version here uses a verb in the first clause, \xayr{ku
 	\glft `...' //
 \endgl
 \xe
+
+\section{The Text in Ayeri}
+
+\begin{ayeri}
+\noindent ANF mN rnFyonF Adauyi piMtemisF nj perinF, ENFyo mikYo sinYaaNF tonF, liNFy si lugy AsaaːyNF si sitNF/njkonFyaaNF koNF tovy mto.
+skMtoNF, ENoNFyo mikYo dnYaasF pluNF mennNF sirii ANF phoNFy Asaay tovlej yn.
+\end{ayeri}
+
+\noindent Ang manga ranyon adauyi Pintemis nay Perin, engyo mico sinyāng ton, lingya si lugaya asāyāng si sitang-naykonyāng kong tovaya mato.
+Sakantong, engongyo mico danyās palung menanang sirī ang pahongya asāya tovaley yana.
+...
 
 %% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
