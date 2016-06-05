@@ -1,4 +1,6 @@
 # We don't want .bib files in this 
 *.bib
-mt-Junicode.cfg
+
+# We also don't want copyrighted materials
 Sources
+images
