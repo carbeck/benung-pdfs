@@ -13,7 +13,9 @@
 \makeatother
 
 % Handle language and quotation marks
-\usepackage[ngerman,english]{babel}
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+\setotherlanguage{german}
 \usepackage{csquotes} % Put quotations in \enquote{}!
 \SetBlockEnvironment{quotation}
 \renewcommand*{\mkccitation}[1]{ (#1)}
