@@ -1,9 +1,9 @@
-Readme
-======
+Musterlösungen
+==============
 
 Im Sommersemester 2016 findet unter der Leitung von [Armin Buch](http://www.sfs.uni-tuebingen.de/~abuch/) an der Universität Tübingen das Seminar "Kunst- und Plansprachen – von Esperanto bis Dothraki"<sup>[1](#fn1)</sup> statt. Da Ayeri eine der ausgewählten Beispielsprachen ist, dachte ich mir, ich mache spaßeshalber (und ungefragt) die Hausaufgaben mit, obwohl ich nicht am Kurs teilnehme (andere Uni). Es wäre vielleicht interessant, die Antworten der Kursteilnehmer mit meinen zu vergleichen. Dies besonders, da die formale Dokumentation selbst nach über zehn Jahren Arbeit am Projekt noch teils größere Lücken aufweist.<sup>[2](#fn2)</sup>
 
-Falls du also als Kursteilnehmer auf diese Seite bzw. dieses Repo stoßen solltest: Sei gegrüßt! Ich würde mich freuen, von dir zu hören, wie du mit meinem Zeug zurechtgekommen bist. Falls es bei der Beantwortung der Aufgaben irgendwo hakt oder du zu einem Thema weiterführende Fragen hast, kannst du mich gerne per Mail ansprechen; die Adresse steht auf der [Homepage](http://benung.nfshost.com/contact). Ich hoffe, du findest Ayeri interessant und auch, dass dir das Stöbern auf meinen Seiten Spaß macht!
+Falls du also als Kursteilnehmer auf diese Seite bzw. dieses Repo stoßen solltest: Sei gegrüßt! Ich würde mich freuen, von dir zu hören, wie du mit meinem Zeug zurechtgekommen bist. Falls es bei der Beantwortung der Aufgaben irgendwo hakt oder du zu einem Thema weiterführende Fragen hast, kannst du mich gerne per Mail ansprechen; die Adresse steht auf der [Homepage](http://benung.nfshost.com/contact). Direkte Lösungen werde ich nicht anbieten können (wo wäre denn sonst der Spaß am Rätseln?), aber Hinweise gebe ich gerne. Ich hoffe, du findest Ayeri interessant und auch, dass dir das Stöbern auf meinen Seiten Spaß macht!
 
 ***
 
