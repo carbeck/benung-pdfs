@@ -1,0 +1,355 @@
+\documentclass[12pt,paper=a4]{scrartcl}
+
+% Author, Title, Subtitle etc.
+\author{Carsten Becker}
+\title{SE Kunst- und Plansprachen -- von Esperanto bis Dothraki}
+\subtitle{Antworten zum 02.06.2016}
+\date{07.06.2016} % Format: YYYY/MM/DD (rev. N, YYYY/MM/DD)
+
+% Provide running author and date
+\makeatletter
+\let\runauthor\@author
+\let\rundate\@date
+\makeatother
+
+% Handle language and quotation marks
+\usepackage{polyglossia}
+\setdefaultlanguage{german}
+\usepackage{csquotes} % Put quotations in \enquote{}!
+\SetBlockEnvironment{quotation}
+\renewcommand*{\mkccitation}[1]{ (#1)}
+
+% Set all margins to 2.54 cm
+\usepackage[margin=1in]{geometry}
+\widowpenalty10000 % Avoid widows like the plague!
+\clubpenalty10000 % Avoid orphans like the plage, too!
+
+% Extended formatting of lists
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep}
+
+% Make multiple columns available in single-column document
+\usepackage{multicol}
+
+% Make text colors and color names available
+\usepackage[xetex]{xcolor}
+
+% Load font stuff for XeTeX
+\usepackage{xltxtra}
+\usepackage{fontspec}
+
+% Set main fonts
+\usepackage[config=mt-Junicode]{microtype}
+
+\newfontfamily{\Tagati}[
+    Renderer=Graphite,
+    Scale=1.1,
+    BoldFont={* Italic},
+    HyphenChar=·,
+]{Tagati Book G}
+
+\setmainfont[
+    Ligatures=TeX,
+    Numbers=Lowercase,
+]{Junicode}
+
+\setsansfont[
+    Ligatures=TeX,
+    Numbers=Lowercase,
+    Scale=MatchUppercase,
+    BoldFont={Open Sans Condensed Bold},
+]{Open Sans Condensed Light}
+
+% Load BibLaTeX (using Biber), configure citation styles
+\usepackage[
+    authordate-trad,
+    backend=biber,
+    safeinputenc,
+]{biblatex-chicago}
+\addbibresource{bibliografie.bib}
+
+% To make \textcite look like "Doe (2014: 213)"
+\renewcommand*{\postnotedelim}{\addcolon\addspace}
+\DeclareFieldFormat{postnote}{#1}
+\DeclareFieldFormat{multipostnote}{#1}
+
+% Enable generating files from this .tex file (for the bibliography) 
+\usepackage{filecontents}
+
+% Clickable links in footnotes, TOC, etc.
+\usepackage[
+    xetex,
+    bookmarks=true,
+    colorlinks=false,
+    linktoc=section,
+    hidelinks,
+    pdfusetitle,
+]{hyperref}
+
+\usepackage{url}
+\urlstyle{rm}
+
+% Ability to include graphics and dealing with footnotes in descriptions
+\usepackage{graphicx}
+\usepackage[font={small,sf},labelfont={small,sf},format=plain]{caption}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\setlength{\columnsep}{2\baselineskip}
+
+% General headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead[L]{} % empty
+\fancyhead[C]{} % empty
+\fancyhead[R]{\thepage}
+
+\fancyfoot[L]{} % empty
+\fancyfoot[C]{} % empty
+\fancyfoot[R]{} % empty
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% First page headers and footers are different
+\fancypagestyle{firstpage}{
+    \fancyhead[L]{\sffamily \footnotesize \textbf{Benung. The Ayeri Language Resource}}
+    \fancyhead[C]{} % empty
+    \fancyhead[R]{\sffamily \footnotesize \runauthor{} · \rundate{}}
+    
+    \fancyfoot[L]{} % empty
+    \fancyfoot[C]{} % empty
+    \fancyfoot[R]{\sffamily \footnotesize 
+	\href{http://benung.nfshost.com}{http://benung.nfshost.com} · 
+	\href{https://github.com/carbeck/benung-pdfs}{https://github.com/carbeck/benung-pdfs} · 
+	\href{https://creativecommons.org/licenses/by-sa/4.0/}{CC~BY-SA~4.0}
+    }
+    
+    \renewcommand{\headrulewidth}{0.5pt}
+    \setlength\footskip{0.5in}
+}
+
+\usepackage{ifthen}
+\ifthenelse{\value{page}=1}{\thispagestyle{firstpage}{\pagestyle{fancy}}}
+
+% Line spacing
+\usepackage{setspace}
+\onehalfspacing
+
+% Avoid pagebreaks right after sections and subsections
+\usepackage{needspace}
+\usepackage{etoolbox}
+\preto\section{\needspace{6\baselineskip}}
+\preto\subsection{\needspace{6\baselineskip}}
+
+% Things for tables
+% \usepackage{longtable}
+% \usepackage{tabu}
+% \usepackage{booktabs}
+% \usepackage{rotating}
+
+% Formatting of table of glossing abbreviations from Leipzig package manual
+\usepackage[acronym,nomain,nonumberlist,nopostdot]{glossaries}
+\usepackage{glossary-inline}%
+
+\newglossarystyle{mysuper}{%
+	\glossarystyle{super}% based on super
+	\renewenvironment{theglossary}{%
+		\begin{itemize}[align=left]
+	}{%
+		\end{itemize}%
+	}%
+	\renewcommand*{\glossaryheader}{}%
+	\renewcommand*{\glsgroupheading}[1]{}%
+	\renewcommand*{\glossaryentryfield}[5]{%
+		\item[\glsentryitem{##1}\glstarget{##1}{##2}]
+		\makefirstuc{##3}\glspostdescription{}
+	}%
+	\renewcommand*{\glsgroupskip}{}%
+}%
+
+% Formatting of glosses
+\usepackage{expex}
+\usepackage{leipzig}
+
+\newleipzig{AgtT}{at}{agent topic}
+\newleipzig{PatT}{pt}{patient topic}
+\newleipzig{DatT}{datt}{dative topic}
+\newleipzig{GenT}{gent}{genitive topic}
+\newleipzig{LocT}{loct}{locative topic}
+\newleipzig{InsT}{inst}{instrumental topic}
+\newleipzig{CauT}{caut}{causative topic}
+\newleipzig{An}{an}{animate}
+\newleipzig{Inan}{inan}{inanimate}
+\newleipzig{Hab}{hab}{habitative}
+\newleipzig{Ayr}{ayr}{Ayeri}
+
+\makeglossaries
+
+% Section formatting
+\usepackage{titlesec}
+\usepackage{needspace}
+
+\titleformat{\section}{
+	\needspace{4\baselineskip}\sffamily\bfseries
+}{
+	\noindent\thesection
+}{
+	0.5\baselineskip
+}{
+}
+
+% Nicer footnotes
+\usepackage[bottom,hang,norule]{footmisc}
+\setlength{\footnotesep}{0.75\baselineskip}
+
+% Smaller font in block quotes
+\usepackage{relsize}
+\AtBeginEnvironment{quote}{\noindent\smaller}
+\AtBeginEnvironment{quotation}{\smaller}
+
+% Date and time
+\usepackage[
+	datesep=.,
+	style=ddmmyyyy,
+]{datetime2}
+
+% Macros
+\newcommand{\fw}[1]{\textit{#1}} % Foreign Word
+\newcommand{\tit}[1]{\textit{#1}} % Title of a work
+\newcommand{\q}[1]{\enquote{#1}} % Context-aware quotation
+\newcommand{\qq}[1]{\enquote*{#1}} % Explicit sublevel quotation
+\newcommand{\tsup}[1]{\textsuperscript{#1}} % Superscript
+\newcommand{\markyellow}[1]{\colorbox{yellow}{#1}} % Yellow highlighter
+\newcommand{\ques}{\fakesuperscript{?}} % raised question mark
+
+\newcommand{\ayr}[1]{{\Tagati #1}}
+\newcommand{\xayr}[3]{{\Tagati #1} \emph{#2} `#3'}
+
+\newenvironment{ayeri}{
+    %\hyphenpenalty=10000
+    %\hbadness=10000
+    \doublespacing
+    \begin{multicols}{2}
+    \Tagati
+}{
+    \end{multicols} \par
+}
+
+\newenvironment{mytitle}{
+    \hfill
+    \begin{minipage}{0.667\textwidth}
+	\vspace{\baselineskip}
+	\begin{center}
+	    \Large
+	    \sffamily\bfseries
+	    \makeatletter
+}{
+	    \makeatother
+	\end{center}
+	\vspace{1em}
+    \end{minipage}
+    \hfill
+}
+
+% blah
+\usepackage{lipsum}
+
+%% END OF PREAMBLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%% MAIN PART %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{mytitle}
+    \@title: \@subtitle\footnotemark
+\end{mytitle}
+\footnotetext{\cite[Vgl.][]{buch2016ss}.}
+
+\section{Aufgabe 1}
+`voll sein (von)' --- \ayr{deNF} \textit{deng} (Adj.)
+
+\section{Aufgabe 2}
+`Boot' --- \ayr{tFrpsF} \textit{trapas} (N., unbelebt)
+
+\section{Aufgabe 3}
+`Aal':
+
+\begin{enumerate}[label={(\alph*)}]
+	\item z.\,B. Kompositum aus bestehenden Lexemen:
+	
+		\ayr{InunFsegsF} \textit{inunsegas} (\ayr{InunF/ segsF} 
+		\textit{inun- segas}) `Schlangenfisch' (N., belebt) ← 
+		\xayr{InunF}{inun}{Fisch} + \xayr{segsF}{segas}{Schlange}
+
+	\item z.\,B. neues Lexem:
+	
+		\ayr{bmNF} \textit{bamang} (N., belebt)
+		
+\end{enumerate}
+
+\section{Aufgabe 4}
+`Luftkissenboot':
+
+\begin{enumerate}[label={(\alph*)}]
+	
+	\item z.\,B. Entlehnung aus Engl. \textit{hovercraft}:
+	
+		\ayr{hvkFraafF} \textit{havakrāf} (N., unbelebt)
+		
+		Der Laut /f/ kommt in Ayeri nativ nicht vor, sollte aber kein 
+		Problem für Sprecher sein, da /v/ vorhanden ist. Das /t/ am Ende 
+		muss entfallen, da \textsc{-cc} nicht zulässig ist.
+		
+		\item Native Neuschöpfung:
+		
+		z.\,B. \ayr{tFrpsvitnF} \textit{trapasavitan} 
+		(\ayr{tFrps/ svitnF} \textit{trapas- savitan})
+		`Schwebeboot' (N., unbelebt) ← \xayr{tFrpsF}{trapas}{Boot} + 
+		\xayr{svit/}{savit-}{schweben} + \xayr{/AnF}{-an}{\Nmlz{}}
+		
+	\end{enumerate}
+
+\section{Aufgabe 5}
+Ayeri hat weitgehend agglutinierende Morphologie; durch Krasis kommt es 
+unter Umständen zu Allomorphie. Beispiele für fusionale Morphologie sind die 
+Pronomen bzw. ans Verb angehängten Pronominalendungen.\footnote{\xayr{yaaNF}{yāng}{er}
+ist sehr transparent \xayr{y}{ya}{\Tsg{}.\M{}} + \xayr{/ANF}{-ang}{-\Aarg{}}; 
+für \xayr{naa}{nā}{mein} funktioniert das allerdings nicht: Die Form 
+wäre sonst *\ayr{Ayen} *\textit{ayena} < \xayr{Aj}{ay}{\Fsg{}} + 
+\xayr{/En}{-ena}{\Gen{}}.}
+	
+\ex \begingl
+	\glpreamble \ayr{le koMdsojyaaNF nikye bennFyaanFy.}\\
+		\textit{Le kondasoyyāng nikaye benanyānya.} //
+	\gla Le \textbf{kond} @ \textbf{-asa} @ \textbf{-oy} @ \textbf{-yāng} 
+		nika @ -ye @ -Ø benan @ -ya @ -an @ -ya //
+	\glb \PatT{}.\Inan{} \textbf{essen} \textbf{-\Hab}{} \textbf{-\Neg}{} 
+		\textbf{-\Tsg{}.\M{}.\Aarg{}} Kartoffel -\Pl{} -\Top{} 
+		Morgen -\Loc{} -\Nmlz{} -\Loc{} //
+	\glft `Er isst normalerweise keine Kartoffeln zum 
+		Frühstück.' //
+\endgl \xe
+
+\ex \begingl
+	\glpreamble \ayr{tFrpsFreNF svitnF naa deNF bmNFyeri.} \\
+		\textit{Trapasreng savitan nā deng bamangyeri.} //
+	\gla Trapas @ -reng savit @ -an \textbf{nā} deng \textbf{bamang} @ 
+		\textbf{-ye} @ \textbf{-eri} //
+	\glb Boot -\Aarg{}.\Inan{} schweben -\Nmlz{} \textbf{\Fsg{}.\Gen{}} 
+		voll \textbf{Aal} \textbf{-\Pl{}} \textbf{-\Ins{}} //
+	\glft `Mein Luftkissenboot ist voller Aale.' //
+\endgl \xe
+
+%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vfill
+
+\addsec{Abkürzungen}
+\begin{multicols}{3}
+\printglossary[style=mysuper,type=\leipzigtype]
+\end{multicols}
+
+\printbibliography[heading=bibintoc]
+
+\end{document}
