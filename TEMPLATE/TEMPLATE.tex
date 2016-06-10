@@ -27,6 +27,8 @@
 
 % Extended formatting of lists
 \usepackage{enumitem}
+\newlist{glossdefs}{itemize}{1}
+\setlist[glossdefs]{nosep, leftmargin=3em, labelwidth=2.5em, align=left}
 \setlist[itemize]{noitemsep}
 
 % Make multiple columns available in single-column document
@@ -160,9 +162,9 @@
 \newglossarystyle{mysuper}{%
 	\glossarystyle{super}% based on super
 	\renewenvironment{theglossary}{%
-		\begin{itemize}[align=left]
+		\begin{glossdefs}%
 	}{%
-		\end{itemize}%
+		\end{glossdefs}%
 	}%
 	\renewcommand*{\glossaryheader}{}%
 	\renewcommand*{\glsgroupheading}[1]{}%
