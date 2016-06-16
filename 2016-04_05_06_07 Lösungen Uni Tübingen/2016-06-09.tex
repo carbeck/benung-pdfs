@@ -1,0 +1,411 @@
+\documentclass[12pt,paper=a4]{scrartcl}
+
+% Author, Title, Subtitle etc.
+\author{Carsten Becker}
+\title{SE Kunst- und Plansprachen -- von Esperanto bis Dothraki}
+\subtitle{Antworten zum 09.06.2016}
+\date{\today} % Format: YYYY/MM/DD (rev. N, YYYY/MM/DD)
+
+% Provide running author and date
+\makeatletter
+\let\runauthor\@author
+\let\rundate\@date
+\makeatother
+
+% Handle language and quotation marks
+\usepackage{polyglossia}
+\setdefaultlanguage{german}
+\usepackage{csquotes} % Put quotations in \enquote{}!
+\SetBlockEnvironment{quotation}
+\renewcommand*{\mkccitation}[1]{ (#1)}
+
+% Set all margins to 2.54 cm
+\usepackage[margin=1in]{geometry}
+\widowpenalty10000 % Avoid widows like the plague!
+\clubpenalty10000 % Avoid orphans like the plage, too!
+
+% Extended formatting of lists
+\usepackage{enumitem}
+\newlist{glossdefs}{itemize}{1}
+\setlist[glossdefs]{nosep, leftmargin=3em, labelwidth=2.5em, align=left}
+\setlist[itemize]{noitemsep}
+
+% Make multiple columns available in single-column document
+\usepackage{multicol}
+
+% Make text colors and color names available
+\usepackage[xetex]{xcolor}
+
+% Load font stuff for XeTeX
+\usepackage{xltxtra}
+\usepackage{fontspec}
+
+\newfontfamily{\Tagati}[
+    Renderer=Graphite,
+    Scale=1.1,
+    BoldFont={* Italic},
+    HyphenChar=·,
+]{Tagati Book G}
+
+\setmainfont[
+    Ligatures=TeX,
+    Numbers=Lowercase,
+]{EB Garamond}
+
+\setsansfont[
+    Ligatures=TeX,
+    Numbers=Lowercase,
+    Scale=MatchUppercase,
+    BoldFont={Open Sans Condensed Bold},
+]{Open Sans Condensed Light}
+
+% Load BibLaTeX (using Biber), configure citation styles
+\usepackage[
+    authordate-trad,
+    backend=biber,
+    safeinputenc,
+]{biblatex-chicago}
+\addbibresource{bibliografie.bib}
+
+% To make \textcite look like "Doe (2014: 213)"
+\renewcommand*{\postnotedelim}{\addcolon\addspace}
+\DeclareFieldFormat{postnote}{#1}
+\DeclareFieldFormat{multipostnote}{#1}
+
+% Enable generating files from this .tex file (for the bibliography) 
+\usepackage{filecontents}
+
+% Clickable links in footnotes, TOC, etc.
+\usepackage[
+    xetex,
+    bookmarks=true,
+    colorlinks=false,
+    linktoc=section,
+    hidelinks,
+    pdfusetitle,
+]{hyperref}
+
+\usepackage{url}
+\urlstyle{rm}
+
+% Ability to include graphics and dealing with footnotes in descriptions
+\usepackage{graphicx}
+\usepackage[font={small,sf},labelfont={small,sf},format=plain]{caption}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\setlength{\columnsep}{2\baselineskip}
+
+% General headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead[L]{} % empty
+\fancyhead[C]{} % empty
+\fancyhead[R]{\thepage}
+
+\fancyfoot[L]{} % empty
+\fancyfoot[C]{} % empty
+\fancyfoot[R]{} % empty
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% First page headers and footers are different
+\fancypagestyle{firstpage}{
+    \fancyhead[L]{\sffamily \footnotesize \textbf{Benung. The Ayeri Language Resource}}
+    \fancyhead[C]{} % empty
+    \fancyhead[R]{\sffamily \footnotesize \runauthor{} · \rundate{}}
+    
+    \fancyfoot[L]{} % empty
+    \fancyfoot[C]{} % empty
+    \fancyfoot[R]{\sffamily \footnotesize 
+	\href{http://benung.nfshost.com}{http://benung.nfshost.com} · 
+	\href{https://github.com/carbeck/benung-pdfs}{https://github.com/carbeck/benung-pdfs} · 
+	\href{https://creativecommons.org/licenses/by-sa/4.0/}{CC~BY-SA~4.0}
+    }
+    
+    \renewcommand{\headrulewidth}{0.5pt}
+    \setlength\footskip{0.5in}
+}
+
+\usepackage{ifthen}
+\ifthenelse{\value{page}=1}{\thispagestyle{firstpage}{\pagestyle{fancy}}}
+
+% Line spacing
+\usepackage{setspace}
+\onehalfspacing
+
+% Avoid pagebreaks right after sections and subsections
+\usepackage{needspace}
+\usepackage{etoolbox}
+\preto\section{\needspace{6\baselineskip}}
+\preto\subsection{\needspace{6\baselineskip}}
+
+% Things for tables
+\usepackage{longtable}
+\usepackage{tabu}
+\usepackage{booktabs}
+\usepackage{rotating}
+
+% Formatting of table of glossing abbreviations from Leipzig package manual
+\usepackage[acronym,nomain,nonumberlist,nopostdot]{glossaries}
+\usepackage{glossary-inline}%
+
+\newglossarystyle{mysuper}{%
+	\glossarystyle{super}% based on super
+	\renewenvironment{theglossary}{%
+		\begin{glossdefs}%
+	}{%
+		\end{glossdefs}%
+	}%
+	\renewcommand*{\glossaryheader}{}%
+	\renewcommand*{\glsgroupheading}[1]{}%
+	\renewcommand*{\glossaryentryfield}[5]{%
+		\item[\glsentryitem{##1}\glstarget{##1}{##2}]%
+		\makefirstuc{##3}\glspostdescription{}%
+	}%
+	\renewcommand*{\glsgroupskip}{}%
+}%
+
+% Tree diagrams
+\usepackage[linguistics]{forest}
+
+% Formatting of glosses
+\usepackage{expex}
+\usepackage{leipzig}
+
+\newleipzig{AgtT}{at}{agent topic}
+\newleipzig{PatT}{pt}{patient topic}
+\newleipzig{DatT}{datt}{dative topic}
+\newleipzig{GenT}{gent}{genitive topic}
+\newleipzig{LocT}{loct}{locative topic}
+\newleipzig{InsT}{inst}{instrumental topic}
+\newleipzig{CauT}{caut}{causative topic}
+\newleipzig{An}{an}{animate}
+\newleipzig{Inan}{inan}{inanimate}
+\newleipzig{Hab}{hab}{habitative}
+\newleipzig{Ayr}{ayr}{Ayeri}
+
+\makeglossaries
+
+% Section formatting
+% cf. http://tex.stackexchange.com/a/80114/60686
+\makeatletter
+\renewcommand\thesection{}
+\renewcommand\thesubsection{\@arabic\c@section.\@arabic\c@subsection}
+\makeatother
+
+% Nicer footnotes
+\usepackage[bottom,hang,norule]{footmisc}
+\setlength{\footnotesep}{0.75\baselineskip}
+
+% Smaller font in block quotes
+\usepackage{relsize}
+\AtBeginEnvironment{quote}{\noindent\smaller}
+\AtBeginEnvironment{quotation}{\smaller}
+
+% Date and time
+\usepackage[
+	datesep=.,
+	style=ddmmyyyy,
+]{datetime2}
+
+% Macros
+\newcommand{\fw}[1]{\textit{#1}} % Foreign Word
+\newcommand{\tit}[1]{\textit{#1}} % Title of a work
+\newcommand{\q}[1]{\enquote{#1}} % Context-aware quotation
+\newcommand{\qq}[1]{\enquote*{#1}} % Explicit sublevel quotation
+\newcommand{\tsup}[1]{\textsuperscript{#1}} % Superscript
+\newcommand{\tsub}[1]{\textsubscript{#1}} % Superscript
+\newcommand{\markyellow}[1]{\colorbox{yellow}{#1}} % Yellow highlighter
+\newcommand{\ques}{\fakesuperscript{?}} % raised question mark
+
+\newcommand{\ayr}[1]{{\Tagati #1}}
+\newcommand{\xayr}[3]{{\Tagati #1} \emph{#2} `#3'}
+
+\newenvironment{ayeri}{
+    %\hyphenpenalty=10000
+    %\hbadness=10000
+    \doublespacing
+    \begin{multicols}{2}
+    \Tagati
+}{
+    \end{multicols} \par
+}
+
+\newenvironment{mytitle}{
+    \hfill
+    \begin{minipage}{0.667\textwidth}
+	\vspace{\baselineskip}
+	\begin{center}
+	    \Large
+	    \sffamily\bfseries
+	    \makeatletter
+}{
+	    \makeatother
+	\end{center}
+	\vspace{1em}
+    \end{minipage}
+    \hfill
+}
+
+% blah
+\usepackage{lipsum}
+
+%% END OF PREAMBLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%% MAIN PART %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{mytitle}
+    \@title: \@subtitle\footnotemark
+\end{mytitle}
+\footnotetext{\cite[Vgl.][]{buch2016ss}.}
+
+\noindent Die direkteste Möglichkeit, den Satz \q{Mein Luftkissenboot ist 
+voller Aale} zu übersetzen, ist diese:
+
+\ex\label{ex:predicative} \begingl
+	\glpreamble \ayr{tFrpsFreNF svitnF naa deNF bmNFyeri.} 
+		\textit{Trapasreng savitan nā deng bamangyeri.} //
+	\gla Trapas @ -reng savit @ -an nā deng bamang @ 
+		-ye @ -eri //
+	\glb Boot -\Aarg{}.\Inan{} schweben -\Nmlz{} \Fsg{}.\Gen{} 
+		voll Aal -\Pl{} -\Ins{} //
+	\glft `Mein Luftkissenboot ist voller Aale.' //
+\endgl \xe
+
+\noindent Alternativ ist jedoch auch diese Möglichkeit denkbar:
+
+\ex\label{ex:regular} \begingl
+	\glpreamble \ayr{le suytonF bmNFye\_aNF tFrpsFvitnF naa.} 
+		\textit{Le suyaton bamangjang trapasavitan nā.} //
+	\gla Le suya @ -ton bamang @ -j @ -ang trapasavitan @ -Ø nā //
+	\glb \PatT{} füllen -\Tpl{}.\N{} Aal -\Pl{} -\Aarg{} Luftkissenboot 
+		-\Top{} \Fsg{}.\Gen{} //
+	\glft `Mein Luftkissenboot, Aale füllen es.' //
+\endgl \xe
+
+\noindent Informationen zur Konstruktion der Sätze können entnommen werden aus:
+
+\begin{itemize}
+	\item Wortstämme: Wörterbucheinträge zu `boat', `glide', `my', `full',
+		`fill' \parencite{benung};
+	\item Satzstellung: \cite[27]{becker2011}, 
+		\cite[§~2.1]{benung:flickingswitches};
+	\item Nachstellung von Modifikatoren: \cite[20--21, 28--29]{becker2011};
+	\item Kasusmarkierungen: \cite[36, 39]{becker2011};
+	\item Prädikative NPs und Existenzialsätze: \cite[43--44]{becker2011}.
+\end{itemize}
+
+Ein Phrasenstrukturbaum für (\ref{ex:predicative}) könnte vielleicht 
+folgendermaßen aussehen, ohne dabei allzu sehr ins Detail (und in favorisierte 
+Syntaxtheorien) zu gehen; daneben außerdem ein Dependenzbaum:
+
+\ex\scriptsize
+\vspace{-1.75\baselineskip}
+\begin{multicols}{2}
+\begin{forest}
+where n children=0{tier=word,font=\itshape}{}
+[S
+	[NP
+		[N [{Trapasreng savitan},roof]]
+		[Det [nā]]
+	]
+	[VP
+		[V [Ø]]
+		[AP
+			[Adj [deng]]
+			[NP
+				[N [bamangyeri]]
+			]
+		]
+	]
+]
+\end{forest}
+
+\scriptsize
+\begin{forest}
+where n children=0{tier=word,edge=dotted,font=\itshape}{}
+[Ø, calign=child, calign child=2
+	[trapasreng, for tree={calign=first}
+		[Trapasreng]
+		[savitan
+			[savitan]
+		]
+		[nā
+			[nā]
+		]
+	]
+	[Ø]
+	[deng, for tree={calign=first}
+		[deng]
+		[bamangyeri
+			[bamangyeri]
+		]
+	]
+]
+\end{forest}
+\end{multicols}
+\xe
+
+Beide Analysen gehen davon aus, dass Ayeri bei Sätzen mit prädikativen NPs die 
+Konstituentenfolge SV statt -- wie sonst üblich -- VS benutzt. Für 
+(\ref{ex:regular}) sieht der Dependenzbaum folgendermaßen aus:
+
+\ex\scriptsize
+\begin{forest}
+where n children=0{tier=word,edge=dotted,font=\itshape}{}
+[{le suyaton}, for tree={calign=first}
+	[{Le suyaton}]
+	[bamangjang
+		[bamangjang]
+	]
+	[trapasavitan
+		[trapasavitan]
+		[nā
+			[nā]
+		]
+	]
+]
+\end{forest}
+\xe
+
+Beim Phrasenstrukturbaum stellt sich die Frage, wie mit der VP verfahren wird, 
+da diese diskontinuierlich ist, wenn man wie gewöhnlich annimmt, dass die 
+Objekt-NP ein Komplement der VP ist. Aufschluss könnte eventuell 
+\cite{benung:verbagreement} geben. Unter der Annahme, dass VSO eine von SVO 
+abgeleitete Satzstellung ist, wäre vielleicht folgende Analyse möglich:
+
+\ex\label{ex:movement}\scriptsize
+\begin{forest}
+where n children=0{tier=word,font=\itshape}{}
+[S
+	[V [{Le suyaton}, roof, name=verb]]
+	[NP [N [bamangjang]]]
+	[VP
+		[V [\textup{t}, name=verbtrace]]
+		[NP
+			[N [trapasavitan]]
+			[Det [nā]]
+		]
+	]
+]
+\draw[->, dotted] (verbtrace) to[out=south west,in=south east] (verb);
+\end{forest}
+\xe
+
+%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vfill
+
+\addsec{Abkürzungen}
+\begin{multicols}{3}%
+\printglossary[style=mysuper,type=\leipzigtype]
+\end{multicols}
+
+\addsec{Literaturverzeichnis}
+\printbibliography[heading=none]
+
+\end{document}
