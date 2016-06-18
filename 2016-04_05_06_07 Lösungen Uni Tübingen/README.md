@@ -7,6 +7,31 @@ Falls du also als Kursteilnehmer auf diese Seite bzw. dieses Repo stoßen sollte
 
 ***
 
+<table>
+  <tr>
+    <th>Datum</th>
+    <th>Link</th>
+  </tr>
+  <tr>
+    <td>12.05.2016</td>
+    <td>[Musterlösung zur 4. Sitzung](https://github.com/carbeck/benung-pdfs/raw/master/2016-04_05_06_07%20L%C3%B6sungen%20Uni%20T%C3%BCbingen/2016-05-12.pdf)</td>
+  </tr>
+  <tr>
+    <td>02.06.2016</td>
+    <td>[Musterlösung zur 5. Sitzung](https://github.com/carbeck/benung-pdfs/raw/master/2016-04_05_06_07%20L%C3%B6sungen%20Uni%20T%C3%BCbingen/2016-06-02.pdf)</td>
+  </tr>
+  <tr>
+    <td>09.06.2016</td>
+    <td>[Musterlösung zur 6. Sitzung](https://github.com/carbeck/benung-pdfs/raw/master/2016-04_05_06_07%20L%C3%B6sungen%20Uni%20T%C3%BCbingen/2016-06-09.pdf)</td>
+  </tr>
+  <!--<tr>
+    <td>16.06.2016</td>
+    <td>[Musterlösung zur 7. Sitzung](https://github.com/carbeck/benung-pdfs/raw/master/2016-04_05_06_07%20L%C3%B6sungen%20Uni%20T%C3%BCbingen/2016-06-16.pdf)</td>
+  </tr>-->
+</table>
+
+***
+
 <a name="fn1">1</a>: Vgl. <http://www.sfs.uni-tuebingen.de/~abuch/16ss/conlang.html> (Zugriff: 05.06.2016). [↩](#fn1)
 
 <a name="fn2">2</a>: Mit der Suchfunktion und der Verschlagwortung auf der [Homepage](http://benung.nfshost.com) sowie den zahlreichen [Beispieltexten](http://benung.nfshost.com/examples) sollte man aber dennoch relativ weit kommen. [↩](#fn2)
