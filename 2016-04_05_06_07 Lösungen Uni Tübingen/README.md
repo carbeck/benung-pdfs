@@ -1,7 +1,7 @@
 Musterlösungen
 ==============
 
-*These are sample solutions for homework assignments from a class on fictional languages taught at the University of Tübingen, Germany, in the summer semester of 2016 which I did not attend but still found fun enough to try myself. The materials provided here are provided entirely in German.*
+*These are sample solutions for homework assignments from a class on fictional languages taught at the University of Tübingen, Germany, in the summer semester of 2016. Ayeri was chosen as an example language for this class. I did not attend it myself, but still found the assignments fun enough. The materials provided here are written entirely in German.*
 
 Im Sommersemester 2016 findet unter der Leitung von [Armin Buch](http://www.sfs.uni-tuebingen.de/~abuch/) am Seminar für Sprachwissenschaft der Universität Tübingen das Seminar "Kunst- und Plansprachen – von Esperanto bis Dothraki"<sup>[1](#fn1)</sup> statt. Da meine fiktionale Sprache, Ayeri, eine der ausgewählten Beispielsprachen ist, dachte ich mir, ich mache spaßeshalber (und ungefragt) die Hausaufgaben mit, sofern sie Ayeri betreffen. Die "Musterlösungen" lade ich selbstverständlich erst nach dem Abgabetermin hoch. Eine Vergleichsmöglichkeit ist vielleicht insofern interessant, da die formale Dokumentation meiner Sprache selbst nach über zehn Jahren Arbeit am Projekt noch teils größere Lücken aufweist oder relativ verstreut ist.<sup>[2](#fn2)</sup>
 
