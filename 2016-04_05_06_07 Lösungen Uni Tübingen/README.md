@@ -30,6 +30,10 @@ Falls du also als Kursteilnehmer/in auf diese Seite bzw. dieses Repo stoßen sol
     <td>16.06.2016</td>
     <td><a href="https://github.com/carbeck/benung-pdfs/raw/master/2016-04_05_06_07%20L%C3%B6sungen%20Uni%20T%C3%BCbingen/2016-06-16.pdf">Musterlösung zur 7. Sitzung</a></td>
   </tr>-->
+  <!--<tr>
+    <td>23.06.2016</td>
+    <td><a href="https://github.com/carbeck/benung-pdfs/raw/master/2016-04_05_06_07%20L%C3%B6sungen%20Uni%20T%C3%BCbingen/2016-06-23.pdf">Musterlösung zur 8. Sitzung</a></td>
+  </tr>-->
 </table>
 
 ***
