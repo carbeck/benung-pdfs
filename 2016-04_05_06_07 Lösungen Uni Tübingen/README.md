@@ -16,19 +16,19 @@ Falls du also als Kursteilnehmer/in auf diese Seite bzw. dieses Repo stoßen sol
   </tr>
   <tr>
     <td>12.05.2016</td>
-    <td><a href="https://github.com/carbeck/benung-pdfs/raw/master/2016-04_05_06_07%20L%C3%B6sungen%20Uni%20T%C3%BCbingen/2016-05-12.pdf">Musterlösung zur 4. Sitzung</a></td>
+    <td><a href="https://cdn.rawgit.com/carbeck/benung-pdfs/master/2016-04_05_06_07%20L%C3%B6sungen%20Uni%20T%C3%BCbingen/2016-05-12.pdf">Musterlösung zur 4. Sitzung</a></td>
   </tr>
   <tr>
     <td>02.06.2016</td>
-    <td><a href="https://github.com/carbeck/benung-pdfs/raw/master/2016-04_05_06_07%20L%C3%B6sungen%20Uni%20T%C3%BCbingen/2016-06-02.pdf">Musterlösung zur 5. Sitzung</a></td>
+    <td><a href="https://cdn.rawgit.com/carbeck/benung-pdfs/master/2016-04_05_06_07%20L%C3%B6sungen%20Uni%20T%C3%BCbingen/2016-06-02.pdf">Musterlösung zur 5. Sitzung</a></td>
   </tr>
   <tr>
     <td>09.06.2016</td>
-    <td><a href="https://github.com/carbeck/benung-pdfs/raw/master/2016-04_05_06_07%20L%C3%B6sungen%20Uni%20T%C3%BCbingen/2016-06-09.pdf">Musterlösung zur 6. Sitzung</a></td>
+    <td><a href="https://cdn.rawgit.com/carbeck/benung-pdfs/master/2016-04_05_06_07%20L%C3%B6sungen%20Uni%20T%C3%BCbingen/2016-06-09.pdf">Musterlösung zur 6. Sitzung</a></td>
   </tr>
   <tr>
     <td>16.06.2016</td>
-    <td><a href="https://github.com/carbeck/benung-pdfs/raw/master/2016-04_05_06_07%20L%C3%B6sungen%20Uni%20T%C3%BCbingen/2016-06-16.pdf">Musterlösung zur 7. Sitzung</a></td>
+    <td><a href="https://cdn.rawgit.com/carbeck/benung-pdfs/master/2016-04_05_06_07%20L%C3%B6sungen%20Uni%20T%C3%BCbingen/2016-06-16.pdf">Musterlösung zur 7. Sitzung</a></td>
   </tr>
 </table>
 
