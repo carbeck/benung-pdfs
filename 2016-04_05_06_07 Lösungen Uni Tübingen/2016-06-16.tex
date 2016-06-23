@@ -1,0 +1,475 @@
+\documentclass[12pt,paper=a4]{scrartcl}
+
+% Author, Title, Subtitle etc.
+\author{Carsten Becker}
+\title{SE Kunst- und Plansprachen -- von Esperanto bis Dothraki}
+\subtitle{Antworten zum 16.06.2016}
+\date{\today} % Format: YYYY/MM/DD (rev. N, YYYY/MM/DD)
+
+% Provide running author and date
+\makeatletter
+\let\runauthor\@author
+\let\rundate\@date
+\makeatother
+
+% Handle language and quotation marks
+\usepackage{polyglossia}
+\setdefaultlanguage{german}
+\setotherlanguage{english}
+\usepackage{csquotes} % Put quotations in \enquote{}!
+\SetBlockEnvironment{quotation}
+\renewcommand*{\mkccitation}[1]{ (#1)}
+
+% Set all margins to 2.54 cm
+\usepackage[margin=1in]{geometry}
+\widowpenalty10000 % Avoid widows like the plague!
+\clubpenalty10000 % Avoid orphans like the plage, too!
+
+% Extended formatting of lists
+\usepackage{enumitem}
+% \newlist{glossdefs}{itemize}{1}
+% \setlist[glossdefs]{nosep, leftmargin=3em, labelwidth=2.5em, align=left}
+\setlist[itemize]{noitemsep}
+
+% Make multiple columns available in single-column document
+\usepackage{multicol}
+
+% Make text colors and color names available
+\usepackage[xetex]{xcolor}
+
+% Load font stuff for XeTeX
+\usepackage{xltxtra}
+\usepackage{fontspec}
+
+\newfontfamily{\Tagati}[
+    Renderer=Graphite,
+    Scale=1.1,
+    BoldFont={* Italic},
+    HyphenChar=·,
+]{Tagati Book G}
+
+\setmainfont[
+    Ligatures=TeX,
+    Numbers=Lowercase,
+]{EB Garamond}
+
+\setsansfont[
+    Ligatures=TeX,
+    Numbers=Lowercase,
+    Scale=MatchUppercase,
+    BoldFont={Open Sans Condensed Bold},
+]{Open Sans Condensed Light}
+
+% Load BibLaTeX (using Biber), configure citation styles
+\usepackage[
+    authordate-trad,
+    backend=biber,
+    safeinputenc,
+]{biblatex-chicago}
+\addbibresource{bibliografie.bib}
+
+% To make \textcite look like "Doe (2014: 213)"
+\renewcommand*{\postnotedelim}{\addcolon\addspace}
+\DeclareFieldFormat{postnote}{#1}
+\DeclareFieldFormat{multipostnote}{#1}
+
+% Enable generating files from this .tex file (for the bibliography) 
+\usepackage{filecontents}
+
+% Clickable links in footnotes, TOC, etc.
+\usepackage[
+    xetex,
+    bookmarks=true,
+    colorlinks=false,
+    linktoc=section,
+    hidelinks,
+    pdfusetitle,
+]{hyperref}
+
+\usepackage{url}
+\urlstyle{rm}
+
+% Ability to include graphics and dealing with footnotes in descriptions
+% \usepackage{graphicx}
+% \usepackage[font={small,sf},labelfont={small,sf},format=plain]{caption}
+% \usepackage{subcaption}
+% \usepackage{wrapfig}
+% \setlength{\columnsep}{2\baselineskip}
+
+% General headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead[L]{} % empty
+\fancyhead[C]{} % empty
+\fancyhead[R]{\thepage}
+
+\fancyfoot[L]{} % empty
+\fancyfoot[C]{} % empty
+\fancyfoot[R]{} % empty
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% First page headers and footers are different
+\fancypagestyle{firstpage}{
+    \fancyhead[L]{\sffamily \footnotesize \textbf{Benung. The Ayeri Language Resource}}
+    \fancyhead[C]{} % empty
+    \fancyhead[R]{\sffamily \footnotesize \runauthor{} · \rundate{}}
+    
+    \fancyfoot[L]{} % empty
+    \fancyfoot[C]{} % empty
+    \fancyfoot[R]{\sffamily \footnotesize 
+	\href{http://benung.nfshost.com}{http://benung.nfshost.com} · 
+	\href{https://github.com/carbeck/benung-pdfs}{https://github.com/carbeck/benung-pdfs} · 
+	\href{https://creativecommons.org/licenses/by-sa/4.0/}{CC~BY-SA~4.0}
+    }
+    
+    \renewcommand{\headrulewidth}{0.5pt}
+    \setlength\footskip{0.5in}
+}
+
+\usepackage{ifthen}
+\ifthenelse{\value{page}=1}{\thispagestyle{firstpage}{\pagestyle{fancy}}}
+
+% Line spacing
+\usepackage{setspace}
+\onehalfspacing
+
+% Avoid pagebreaks right after sections and subsections
+\usepackage{needspace}
+\usepackage{etoolbox}
+\preto\section{\needspace{6\baselineskip}}
+\preto\subsection{\needspace{6\baselineskip}}
+
+% % Things for tables
+\usepackage{longtable}
+\usepackage{tabu}
+\usepackage{booktabs}
+\usepackage{rotating}
+
+% Column types
+\newcolumntype{S}{>{\scshape}X}
+
+% Formatting of table of glossing abbreviations from Leipzig package manual
+% \usepackage[acronym,nomain,nonumberlist,nopostdot]{glossaries}
+% \usepackage{glossary-inline}%
+% 
+% \newglossarystyle{mysuper}{%
+% 	\glossarystyle{super}% based on super
+% 	\renewenvironment{theglossary}{%
+% 		\begin{glossdefs}%
+% 	}{%
+% 		\end{glossdefs}%
+% 	}%
+% 	\renewcommand*{\glossaryheader}{}%
+% 	\renewcommand*{\glsgroupheading}[1]{}%
+% 	\renewcommand*{\glossaryentryfield}[5]{%
+% 		\item[\glsentryitem{##1}\glstarget{##1}{##2}]%
+% 		\makefirstuc{##3}\glspostdescription{}%
+% 	}%
+% 	\renewcommand*{\glsgroupskip}{}%
+% }%
+
+% Tree diagrams
+% \usepackage[linguistics]{forest}
+
+% Formatting of glosses
+% \usepackage{expex}
+% \usepackage{leipzig}
+% 
+% \newleipzig{AgtT}{at}{agent topic}
+% \newleipzig{PatT}{pt}{patient topic}
+% \newleipzig{DatT}{datt}{dative topic}
+% \newleipzig{GenT}{gent}{genitive topic}
+% \newleipzig{LocT}{loct}{locative topic}
+% \newleipzig{InsT}{inst}{instrumental topic}
+% \newleipzig{CauT}{caut}{causative topic}
+% \newleipzig{An}{an}{animate}
+% \newleipzig{Inan}{inan}{inanimate}
+% \newleipzig{Hab}{hab}{habitative}
+% \newleipzig{Ayr}{ayr}{Ayeri}
+% 
+% \makeglossaries
+
+% Nicer footnotes
+\usepackage[bottom,hang,norule]{footmisc}
+\setlength{\footnotesep}{0.75\baselineskip}
+
+% Smaller font in block quotes
+\usepackage{relsize}
+\AtBeginEnvironment{quote}{\noindent\smaller}
+\AtBeginEnvironment{quotation}{\smaller}
+
+% Date and time
+\usepackage[
+	datesep=.,
+	style=ddmmyyyy,
+]{datetime2}
+
+% Macros
+\newcommand{\fw}[1]{\textit{#1}} % Foreign Word
+\newcommand{\tit}[1]{\textit{#1}} % Title of a work
+\newcommand{\q}[1]{\enquote{#1}} % Context-aware quotation
+\newcommand{\qq}[1]{\enquote*{#1}} % Explicit sublevel quotation
+\newcommand{\tsup}[1]{\textsuperscript{#1}} % Superscript
+\newcommand{\tsub}[1]{\textsubscript{#1}} % Superscript
+\newcommand{\markyellow}[1]{\colorbox{yellow}{#1}} % Yellow highlighter
+\newcommand{\ques}{\fakesuperscript{?}} % raised question mark
+
+% \newcommand{\ayr}[1]{{\Tagati #1}}
+% \newcommand{\xayr}[3]{{\Tagati #1} \emph{#2} `#3'}
+% 
+% \newenvironment{ayeri}{
+%     %\hyphenpenalty=10000
+%     %\hbadness=10000
+%     \doublespacing
+%     \begin{multicols}{2}
+%     \Tagati
+% }{
+%     \end{multicols} \par
+% }
+
+\newenvironment{mytitle}{
+    \hfill
+    \begin{minipage}{0.667\textwidth}
+	\vspace{\baselineskip}
+	\begin{center}
+	    \Large
+	    \sffamily\bfseries
+	    \makeatletter
+}{
+	    \makeatother
+	\end{center}
+	\vspace{1em}
+    \end{minipage}
+    \hfill
+}
+
+% blah
+\usepackage{lipsum}
+
+%% END OF PREAMBLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%% MAIN PART %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{mytitle}
+    \@title: \@subtitle\footnotemark
+\end{mytitle}
+\footnotetext{\cite[Vgl.][]{buch2016ss}.}
+
+\section{Quellen zur Satzkonstruktion}
+
+\noindent Informationen zur Konstruktion der Sätze und Wörter aus den letzten 
+beiden Hausaufgaben können zu den jeweiligen Punkten den aufgelisteten Quellen 
+entnommen werden:
+
+\begin{itemize}
+\item Wortstämme: Einträge zu `boat', `float', `my', `full', `fill' 
+	\parencite[Dictionary]{benung};
+\item Silbenstruktur von Wortstämmen: \cite{becker2010}; \cite[5]{becker2011}, 
+	dazu ausführlicher \cite{benung:syllablestress};
+\item Satzstellung: \cites[27]{becker2011}[§~2.1]{benung:flickingswitches};
+\item Wortstellung: \cite[20--21, 28--29]{becker2011};
+\item Kasusmarkierungen: \cite[36--37, 39]{becker2011};
+\item Konjugation von Verben: \cites[17--20]{becker2011}{benung:verbagreement};
+\item Prädikative NPs und Existenzialsätze: 
+	\cite[43--44]{becker2011};
+\item Topikalisierung: \cite[27--28]{becker2011} (hier noch als \qq{Fokus}), 
+	dazu aktualisierend \cite[§§~1 und 2.1]{benung:flickingswitches};
+\item Schrift: \cites[Alphabet]{benung}{tagatibookg:readme}.
+\end{itemize}
+
+\section{Bewertung}
+
+Die folgende Bewertung richtet sich nach \cite{sai:conlangeval}. Obwohl 
+\citeauthor{sai:conlangeval} um objektive Kriterien bemüht ist, ist die 
+Einschätzung des Ausprägungsgrades des jeweiligen Kriteriums trotz allem relativ 
+subjektiv.\footnote{Daher würde mich die Einschätzung der Kursteilnehmer, die 
+Ayeri bearbeitet haben, umso mehr interessieren!}
+
+{\singlespacing
+\begin{longtabu} to \textwidth {X[7] S[3] X[12]}
+\toprule
+\rowfont{\normalfont\sffamily\bfseries}
+Kriterium
+	& Code
+	& Begründung
+\\* \toprule
+\endhead
+
+Naturalness
+	& nat+
+	& Im Großen und Ganzen relativ normal, dürfte als natürliche Sprache 
+	  durchgehen, wenn Regel- und Unregelmäßigkeiten etwas natürlicher 
+	  verteilt wären.\phantom{p} Das Topik-System und die 
+	  Adjektiv\-steigerung sind etwas eigen.\phantom{p}
+\\* \midrule
+
+Completeness
+	& cpl+(++)
+	& Zahlreiche auch komplexe Beispieltexte, zumindest Versuche zur 
+	  Versform (\q{Ozymandias}, \q{LCC4 Relay})
+\\* \midrule
+
+Complexity
+	& cpx+(++)
+	& Im Großen und Ganzen \fw{copy-and-paste}-ag\-glu\-tinierend, aber 
+	  Pronomen und Zahlwörter haben es in sich.\phantom{p}
+\\* \midrule
+
+Personal Innovation
+	& pin++
+	& Relationale Typologie (Anleihen an \fw{Austronesian align\-ment}) 
+	  findet sich so in Europa nicht.\phantom{p}
+\\* \midrule
+
+Global Innovation
+	& gin-
+	& Relativ wiedererkennbar, was Kunstsprachen angeht, versucht aber 
+	  vielleicht etwas zu sehr, stereotyp südostasiatisch 
+	  auszusehen.\phantom{p}
+\\* \midrule
+
+Coherence
+	& chr+(++)
+	& Die Morphosyntax ist relativ aus einem Guss, nur hat der Kontrast 
+	  zwischen belebten und unbelebten Substantiven keine prägenden 
+	  Aus\-wirkungen.\phantom{p}
+\\* \midrule
+
+Cultural Expressiveness
+	& clt
+	& Spezifische kulturelle Bezüge wurden größtenteils vermieden, aber 
+	  Entwicklungsmöglichkeiten angedeutet.\phantom{p}
+\\* \midrule
+
+Liberalness
+	& lib-{}-
+	& Sexus-basierte Trennung in der 3.~Person belebt bei Pronomen und 
+	Verbkongruenz; maskulin als Resolutionspräferenz.\phantom{p}
+\\* \midrule
+
+Mellifluousness
+	& mlf++
+	& Schimpf- und sonstige \qq{dreckigen} Wörter hören sich aufgrund der 
+	  Silben- und Lautstruktur der Sprache harmlos an.\phantom{p}
+\\* \midrule
+
+Sapir-Whorf
+	& !spw
+	& Erfordert keine besondere Weltsicht.\phantom{p}
+\\* \midrule
+
+Ease of Learning
+	& eas++
+	& Relativ hohe Regelmäßigkeit dürfte das Lernen leicht machen.\phantom{p}
+\\* \midrule
+
+Documentation
+	& doc++
+	& Detailliert beschreibende Materialien sind verfügbar, wenn auch etwas 
+	  verstreut (Blog, Kommentar zu Beispieltexten). Eine Grammatik ist 
+	  vorhanden, aber seit Jahren unvollständig.\phantom{p}
+\\* \midrule
+
+Corpus
+	& crp++
+	& Zahlreiche kürzere Beispieltexte.\phantom{p}
+\\* \midrule
+
+Finishedness
+	& fin++
+	& Ziemlich stabil, hin und wieder kleine Än\-de\-rungen oder 
+	  Variationsmöglichkeiten.\phantom{p}
+\\* \midrule
+
+Fidelity
+	& fid
+	& Keine besonderen Strategien, die die Dinge entweder sehr leicht 
+	  oder sehr schwer verständlich machen.\phantom{p}
+\\* \midrule
+
+Effort
+	& eff++
+	& Durch die im Vergleich mit den meisten europäischen Sprachen 
+	  ungewöhnliche Satzstellung braucht es etwas Überlegung.\phantom{p}
+\\* \midrule
+
+Density
+	& dns
+	& Information ist etwa genauso dicht wie Englisch oder Deutsch;
+	  Übersetzungen sind nicht signifikant länger oder kürzer.\phantom{p}
+\\* \midrule
+
+Clarity
+	& clr
+	& Nicht mehr oder weniger ambig als natürliche Sprachen.\phantom{p}
+\\* \midrule
+
+Noise Resistance
+	& nse
+	& Vielleicht etwas schwierig zu verstehen bei größerem Lärm, aber 
+	  nicht außergewöhnlich.\phantom{p}
+\\* \midrule
+
+Form/Concept Complexity
+	& fcc
+	& \qq{Einfache} Wörter haben meist 1--2 Silben; Komposita (≥~3 Silben) 
+	  drücken komplexere Dinge aus.\phantom{p}
+\\* \midrule
+
+Family
+	& fam-{}-{}-{}-
+	& Bisher alleinstehend.\phantom{p} Sprachfamilie angedacht, aber nie in 
+	  Angriff genommen.\phantom{p}
+\\* \midrule
+
+Modalities
+	& mod
+	& Eine eigene Schrift ist vorhanden, diese spiegelt jedoch die 
+	  gesprochene Sprache wider.\phantom{p}
+\\* \midrule
+
+Directness
+	& !dct
+	& Es gibt nicht viele idiomatische Ausdrücke, da der kulturelle Bezug 
+	  nicht ausgearbeitet ist.\phantom{p}
+\\* \midrule
+
+Overall rating
+	& tlt+
+	& Ayeri ist vermutlich eine der komplexeren, detailreicheren 
+	  persönlichen Kunstsprachen im Internet. Lobend erwähnt in 
+	  \cite[15, 249]{peterson2015}.\phantom{p}
+\\* \midrule
+
+Ambition
+	& amb++
+	& Man ist im Grunde nie fertig damit, eine naturalistische Kunstsprache 
+	  zu schaffen.\phantom{p}
+\\* \midrule
+
+Success
+	& suc++
+	& Ziel/Wertung: \textsc{clt}~2/0; \textsc{cpl}~2/1,5; \textsc{doc}~3/2; 
+	  \textsc{fam}~2/–4 = 2,4.\footnotemark
+\\
+\bottomrule
+\end{longtabu}
+}
+\footnotetext{Hier sind nur die Kriterien in die Berechnung eingeflossen, bei 
+denen meiner Einschätzung nach meine Ziele und die hier angegebene Bewertung zur 
+realen Ausführung auseinanderfallen. Ansonsten dürften sich Ziel und Bewertung 
+relativ decken. Sich selbst realistisch zu bewerten ist allerdings schwierig.}
+
+%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vfill
+
+\addsec{Literaturverzeichnis}
+\printbibliography[heading=none]
+
+\end{document}
