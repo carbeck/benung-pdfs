@@ -211,8 +211,10 @@
 \newcommand{\markyellow}[1]{\colorbox{yellow}{#1}} % Yellow highlighter
 \newcommand{\ques}{\fakesuperscript{?}} % raised question mark
 
-\newcommand{\ayr}[1]{{\Tagati #1}}
-\newcommand{\xayr}[3]{{\Tagati #1} \emph{#2} \enquote*{#3}}
+\newcommand{\ayr}[1]{\smash{{\Tagati #1}}} % Plain Ayeri orthography
+\newcommand{\rayr}[2]{\smash{{\Tagati #1}} \emph{#2}} % Ayeri orthography + *r*omanization
+\newcommand{\tayr}[2]{#1 `#2'} % Romanization + *t*ranslation
+\newcommand{\xayr}[3]{\smash{\Tagati #1} \emph{#2} `#3'} % Ayeri orthography + romanization + translation
 
 \newenvironment{ayeri}{
     %\hyphenpenalty=10000
