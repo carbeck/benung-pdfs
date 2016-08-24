@@ -210,11 +210,12 @@
 \newcommand{\tsup}[1]{\textsuperscript{#1}} % Superscript
 \newcommand{\markyellow}[1]{\colorbox{yellow}{#1}} % Yellow highlighter
 \newcommand{\ques}{\fakesuperscript{?}} % raised question mark
+\newcommand{\zwsp}{\mbox{​}} % Zero-width space (ZWSP)
 
-\newcommand{\ayr}[1]{\smash{{\Tagati #1}}} % Plain Ayeri orthography
-\newcommand{\rayr}[2]{\smash{{\Tagati #1}} \emph{#2}} % Ayeri orthography + *r*omanization
+\newcommand{\ayr}[1]{\zwsp\smash{{\Tagati #1}}} % Plain Ayeri orthography
+\newcommand{\rayr}[2]{\zwsp\smash{{\Tagati #1}} \emph{#2}} % Ayeri orthography + *r*omanization
 \newcommand{\tayr}[2]{#1 `#2'} % Romanization + *t*ranslation
-\newcommand{\xayr}[3]{\smash{\Tagati #1} \emph{#2} `#3'} % Ayeri orthography + romanization + translation
+\newcommand{\xayr}[3]{\zwsp\smash{\Tagati #1} \emph{#2} `#3'} % Ayeri orthography + romanization + translation
 
 \usepackage{suffix}
 \WithSuffix\newcommand{\ayr}*[1]{{\Tagati #1}} % Plain Ayeri orthography
