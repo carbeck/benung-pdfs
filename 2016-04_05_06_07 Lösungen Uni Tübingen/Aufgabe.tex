@@ -171,7 +171,8 @@
 	\renewcommand*{\glsgroupheading}[1]{}%
 	\renewcommand*{\glossaryentryfield}[5]{%
 		\item[\glsentryitem{##1}\glstarget{##1}{##2}]%
-		\makefirstuc{##3}\glspostdescription{}%
+		%\makefirstuc{##3}\glspostdescription{}%
+		##3\glspostdescription{}%
 	}%
 	\renewcommand*{\glsgroupskip}{}%
 }%
@@ -203,19 +204,22 @@
 \newleipzig{First}{1}{erste Person}
 \newleipzig{Second}{2}{zweite Person}
 \newleipzig{Third}{3}{dritte Person}
-\newleipzig{M}{m}{maskulin}
-\newleipzig{F}{f}{feminin}
-\newleipzig{N}{n}{neutrum}
-\newleipzig{An}{an}{belebt}
+\newleipzig{M}{m}{Maskulinum}
+\newleipzig{F}{f}{Femininum}
+\newleipzig{N}{n}{Neutrum}
+\newleipzig{Sg}{sg}{Singular}
+\newleipzig{Pl}{pl}{Plural}
 \newleipzig{Inan}{inan}{unbelebt}
 
 \newleipzig{Hab}{hab}{Habitativ}
 \newleipzig{Neg}{neg}{Negativ}
 \newleipzig{Irr}{irr}{Irrealis}
 \newleipzig{Imp}{imp}{Imperativ}
+\newleipzig{Prog}{prog}{Progressiv}
 \newleipzig{Dyn}{dyn}{dynamisch}
-
 \newleipzig{NPst}{npst}{nahe Vergangenheit}
+
+\newleipzig{Rel}{rel}{Relativ}
 
 \makeglossaries
 
@@ -373,15 +377,17 @@ Bisher gab es keine expliziten Regeln zur Kongruenz bei Koordination, aber sagen
 \endgl
 
 \a\begingl
-	\gla Ang kəpahya runay aguyanas nana! //
-	\glb Ang kə-pah-ya runay-Ø aguyan-as nana //
-	\glc \AgtT{} \NPst{}-wegnehmen-\TsgM{} Fuchs-\Top{} Hahn-\Parg{} \Fsg{}.\Gen{} //
-	\glft \enquote{Der Fuchs hat gerade unseren Hahn fortgenommen!} //
+	\gla Ang manga pahya runay aguyanas nana! //
+	\glb Ang manga pah-ya runay-Ø aguyan-as nana //
+	\glc \AgtT{} \Prog{} wegnehmen-\TsgM{} Fuchs-\Top{} Hahn-\Parg{} \Fsg{}.\Gen{} //
+	\glft \enquote{Der Fuchs nimmt gerade unseren Hahn fort!} //
 \endgl
 
 \xe
 
-Bei diesem Satz ist des Weiteren anzumerken, dass Ayeri, anders als zum Beispiel das Deutsche, nur sehr wenige um Präpositionen erweiterte Verben kennt. Dies äußert sich zum einen darin, dass `wegnehmen' und `nehmen' verschiedene (allerdings wahrscheinlich verwandte) Verben sind: \rayr{phF/}{pah-} und \rayr{p/}{pa-}. Zum anderen mag der Ausdruck für `jemandem hinterherlaufen' zwar gebräuchlich sein als \rayr{niMpF/— mN pNF ArilinFy}{nimp-... manga pang arilinya} (wörtlich läuft man `im Rücken von'), Verb und Präpositionalphrase sind dabei aber weniger fest gefügt als im Deutschen.
+Bei diesem Satz ist des Weiteren anzumerken, dass Ayeri, anders als zum Beispiel das Deutsche, nur sehr wenige um Präpositionen erweiterte Verben kennt. Dies äußert sich zum einen darin, dass `wegnehmen' und `nehmen' verschiedene (allerdings wahrscheinlich verwandte) Verben sind: \rayr{phF/}{pah-} und \rayr{p/}{pa-}. Zum anderen mag der Ausdruck für `jemandem hinterherlaufen' zwar gebräuchlich sein als \rayr{niMpF/— mN pNF ArilinFy}{nimp-... manga pang arilinya} (wörtlich läuft man `im Rücken von'), Verb und Präpositionalphrase sind dabei aber tendenziell weniger fest gefügt als im Deutschen.
+
+\rayr{mN}{manga} bei Verben und bei Präpositionen sind miteinander verwandt und fügen beiden eine dynamische Bedeutung zu, die beim Verb als Progressiv grammatikalisiert ist. Das Progressiv ist aber nicht generell obligatorisch, sondern dient mehr der Betonung des Vorgangs zum gegenwärtigen Zeitpunkt, ähnlich der Verlaufsform mit \fw{am} im Deutschen.
 
 \pex % 4 Da sprach der Hahn zum Fuchs: \enquote{Sag ihnen: \enquote{Ich trage meinen Hahn und nicht euren!}}
 \a\begingl
