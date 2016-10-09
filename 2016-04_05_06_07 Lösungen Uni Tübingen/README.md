@@ -16,20 +16,23 @@ Falls du also als Kursteilnehmer/in im Nachhinein auf diese Seite bzw. dieses Re
   </tr>
   <tr>
     <td>12.05.2016</td>
-    <td><a href="https://cdn.rawgit.com/carbeck/benung-pdfs/master/2016-04_05_06_07%20L%C3%B6sungen%20Uni%20T%C3%BCbingen/2016-05-12.pdf">Musterlösung zur 4. Sitzung</a></td>
+    <td><a href="https://rawgit.com/carbeck/benung-pdfs/master/2016-04_05_06_07%20L%C3%B6sungen%20Uni%20T%C3%BCbingen/2016-05-12.pdf">Musterlösung zur 4. Sitzung</a></td>
   </tr>
   <tr>
     <td>02.06.2016</td>
-    <td><a href="https://cdn.rawgit.com/carbeck/benung-pdfs/master/2016-04_05_06_07%20L%C3%B6sungen%20Uni%20T%C3%BCbingen/2016-06-02.pdf">Musterlösung zur 5. Sitzung</a></td>
+    <td><a href="https://rawgit.com/carbeck/benung-pdfs/master/2016-04_05_06_07%20L%C3%B6sungen%20Uni%20T%C3%BCbingen/2016-06-02.pdf">Musterlösung zur 5. Sitzung</a></td>
   </tr>
   <tr>
     <td>09.06.2016</td>
-    <td><a href="https://cdn.rawgit.com/carbeck/benung-pdfs/master/2016-04_05_06_07%20L%C3%B6sungen%20Uni%20T%C3%BCbingen/2016-06-09.pdf">Musterlösung zur 6. Sitzung</a></td>
+    <td><a href="https://rawgit.com/carbeck/benung-pdfs/master/2016-04_05_06_07%20L%C3%B6sungen%20Uni%20T%C3%BCbingen/2016-06-09.pdf">Musterlösung zur 6. Sitzung</a></td>
   </tr>
   <tr>
     <td>16.06.2016</td>
-    <td><a href="https://cdn.rawgit.com/carbeck/benung-pdfs/master/2016-04_05_06_07%20L%C3%B6sungen%20Uni%20T%C3%BCbingen/2016-06-16.pdf">Musterlösung zur 7. Sitzung</a></td>
+    <td><a href="https://rawgit.com/carbeck/benung-pdfs/master/2016-04_05_06_07%20L%C3%B6sungen%20Uni%20T%C3%BCbingen/2016-06-16.pdf">Musterlösung zur 7. Sitzung</a></td>
   </tr>
+  <tr>
+    <td>Hausarbeit</td>
+    <td><a href="https://rawgit.com/carbeck/benung-pdfs/master/2016-04_05_06_07%20L%C3%B6sungen%20Uni%20T%C3%BCbingen/Aufgabe.pdf">Musterlösung zur abschließenden Übersetzungsaufgabe</a></td>
 </table>
 
 ***
