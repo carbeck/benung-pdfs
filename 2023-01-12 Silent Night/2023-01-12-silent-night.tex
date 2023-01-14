@@ -77,20 +77,20 @@
 	BoldFont={Open Sans Condensed Bold},
 ]{Open Sans Condensed Light}
 
-% Load BibLaTeX (using Biber), configure citation styles
-\usepackage[
-	authordate-trad,
-	backend=biber,
-	safeinputenc,
-]{biblatex-chicago}
+% % Load BibLaTeX (using Biber), configure citation styles
+% \usepackage[
+% 	authordate-trad,
+% 	backend=biber,
+% 	safeinputenc,
+% ]{biblatex-chicago}
 
-% To make \textcite look like "Doe (2014: 213)"
-\renewcommand*{\postnotedelim}{\addcolon\addspace}
-\DeclareFieldFormat{postnote}{#1}
-\DeclareFieldFormat{multipostnote}{#1}
+% % To make \textcite look like "Doe (2014: 213)"
+% \renewcommand*{\postnotedelim}{\addcolon\addspace}
+% \DeclareFieldFormat{postnote}{#1}
+% \DeclareFieldFormat{multipostnote}{#1}
 
-% Enable generating files from this .tex file (for the bibliography) 
-\usepackage{filecontents}
+% % Enable generating files from this .tex file (for the bibliography) 
+% \usepackage{filecontents}
 
 % Date etc.
 \usepackage[
@@ -99,23 +99,6 @@
 
 % Verse
 \usepackage{verse}
-
-% Clickable links in footnotes, TOC, etc.
-\usepackage[
-% 	xetex,
-	bookmarks=true,
-	colorlinks=false,
-	linktoc=section,
-	hidelinks,
-	pdfusetitle,
-]{hyperref}
-
-% We want URLs to be italic and with regular uppercase numerals
-\renewcommand{\UrlFont}{%
-	\normalfont%
-	\itshape%
-	\addfontfeature{RawFeature=-onum}%
-}
 
 % Ability to include graphics and dealing with footnotes in descriptions
 \usepackage{graphicx}
@@ -226,6 +209,32 @@
 
 \makeglossaries
 
+% Nicer footnotes
+\usepackage[bottom,hang,norule]{footmisc}
+\setlength{\footnotesep}{0.75\baselineskip}
+
+% Smaller font in block quotes
+\usepackage{relsize}
+\AtBeginEnvironment{quote}{\noindent\smaller}
+\AtBeginEnvironment{quotation}{\smaller}
+
+% Clickable links in footnotes, TOC, etc.
+\usepackage[
+% 	xetex,
+	bookmarks=true,
+	colorlinks=false,
+	linktoc=section,
+	hidelinks,
+	pdfusetitle,
+]{hyperref}
+
+% We want URLs to be italic and with regular uppercase numerals
+\renewcommand{\UrlFont}{%
+	\normalfont%
+	\itshape%
+	\addfontfeature{RawFeature=-onum}%
+}
+
 % In-text references
 % cf. https://tex.stackexchange.com/a/139051
 % Since German plural formation is not as regular as in English (-e, -en for
@@ -246,14 +255,6 @@
 { and~(#3\arabic{xnumi}#1#4--#5#2#6)}{, (#3\arabic{xnumi}#1#4--#5#2#6)}
 { and~(#3\arabic{xnumi}#1#4--#5#2#6)}
 
-% Nicer footnotes
-\usepackage[bottom,hang,norule]{footmisc}
-\setlength{\footnotesep}{0.75\baselineskip}
-
-% Smaller font in block quotes
-\usepackage{relsize}
-\AtBeginEnvironment{quote}{\noindent\smaller}
-\AtBeginEnvironment{quotation}{\smaller}
 
 % Macros
 \newcommand{\fw}[1]{\textit{#1}} % Foreign Word
@@ -739,6 +740,6 @@ lines. Replacing \xayr{njnj}{naynay}{as well, too} with a wrongly stressed
 \endgroup
 
 %\nocite{*} % returns all entries from the bibliography database
-\printbibliography[heading=bibintoc]
+% \printbibliography[heading=bibintoc]
 
 \end{document}
