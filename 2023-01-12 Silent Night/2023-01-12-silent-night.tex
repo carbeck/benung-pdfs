@@ -51,15 +51,23 @@
 
 \newfontfamily{\Tagati}[
 	Renderer=Graphite,
-	Scale=1.1,
+	Scale=1.0,
 	BoldFont={* Italic},
 	HyphenChar=·,
 ]{Tagati Book G}
 
+% \setmainfont[
+% 	Ligatures=TeX,
+% 	Numbers=Lowercase,
+% ]{Junicode}
+
 \setmainfont[
 	Ligatures=TeX,
-	Numbers=Lowercase,
-]{Junicode}
+	Numbers={OldStyle,Proportional},
+	BoldFont=*-Bold,
+	ItalicFont=*-Italic,
+	BoldItalicFont=*-BoldItalic,
+]{Junicode Two Beta}
 
 \setsansfont[
 	Ligatures=TeX,
@@ -212,9 +220,30 @@
 \newleipzig{Inan}{inan}{inanimate}
 \newleipzig{Hab}{hab}{habitative}
 \newleipzig{Sup}{sup}{superlative}
+\newleipzig{St}{st}{strong}
 \newleipzig{Ayr}{ayr}{Ayeri}
 
 \makeglossaries
+
+% In-text references
+% cf. https://tex.stackexchange.com/a/139051
+% Since German plural formation is not as regular as in English (-e, -en for
+% Beispiel), we will define the label as empty
+\usepackage[sort&compress,noabbrev]{cleveref}
+\newcommand{\crefrangeconjunction}{--}
+\crefname{xnumi}{}{}
+\creflabelformat{xnumi}{(#2#1#3)}
+\crefname{xnumii}{}{}
+\creflabelformat{xnumii}{(#2#1#3)}
+\crefname{xnumiii}{}{}
+\creflabelformat{xnumiii}{(#2#1#3)}
+\crefname{xnumiv}{}{}
+\creflabelformat{xnumiv}{(#2#1#3)}
+\crefrangeformat{xnumi}{(#3#1#4)--(#5#2#6)}
+\crefrangeformat{xnumii}{(#3#1#4--#5\crefstripprefix{#1}{#2}#6)}
+\crefrangemultiformat{xnumii}{(#3\arabic{xnumi}#1#4--#5#2#6)}
+{ and~(#3\arabic{xnumi}#1#4--#5#2#6)}{, (#3\arabic{xnumi}#1#4--#5#2#6)}
+{ and~(#3\arabic{xnumi}#1#4--#5#2#6)}
 
 % Nicer footnotes
 \usepackage[bottom,hang,norule]{footmisc}
@@ -489,19 +518,47 @@ vesy s yesu mdjF\\!
 \section{Analysis of the translation}
 
 Let us now analyze the translation in tried-and-tested fashion, sentence by
-sentence. I will start with the verse that begins every stanza and sets the
+sentence. I will start with the verse that heads every stanza to evoke a
 peaceful and solemn atmosphere.
 
 % - FIRST STANZA --------------------------------------------------------------
 
 \begin{exe}
-\ex \gll Ah sirutay ternu kaluy!\\
-	Oh night holy silent\\
-	\trans \wdef{Oh holy, silent night!}\\
+\ex \label{ex:ln01}
+	\gll Ah sirutay ternu kaluy!\\
+	oh night holy silent\\
+	\trans \wdef{Oh silent, holy night!}\\
 \end{exe}
 
+Here already, concessions had to be made for a more natural stress pattern and
+to fit the words. The German text as well as the melody prescribes the stress
+pattern     |    . \fw{Nacht} \wdef{night} is conveniently a
+single-syllable word while the adjectives \fw{stille}
+\wdef{silent-\Nom.\Sg.\F.\St{}} and \fw{heilige} \wdef{holy-\Nom.\Sg.\F.\St{}}
+each occupy three beats. It is apparent from \cref{ex:ln01} that
+\xayr{sirutj}{sirutay}{night} alone already contains three syllables while the
+adjectives are each disyllabic. Repetition of \rayr{sirutj}{sirutay} is thus
+out of the question. Moreover, \rayr{sirutj}{sirutay} and \rayr{kluj}{kaluy}
+both have final-syllable stress due to diphthongs being heavy in terms of
+syllable weight. To keep the translation in line with the original pattern,
+\rayr{sirutj}{sirutay} and \rayr{kluj}{kaluy} need to end on the fourth and
+eighth beat. Thus, \xayr{terFnu}{ternu}{silent} needs to precede
+\rayr{kluj}{kaluy} and there is an unoccupied stressed beat before
+\rayr{sirutj}{sirutay}. I decided not to stretch \rayr{sirutj}{sirutay} over
+all four beats in the same way the German text stretches the two syllables of
+\fw{stille} over the first three beats. Instead, I opted to introduce the
+vocative particle \xayr{AH}{ah}{oh}, which fits the function of this line and
+is appropriately solemn.
+
+Since \rayr{sirutj}{sirutay} is addressed here, I decided not to give it a case
+marker as with names. Besides, this would have increased the syllable count by
+at least one syllable. The order of the adjectives, even though reversed from
+the original, is natural in Ayeri due to its rather consistent head-first
+nature.
+
 \begin{exe}
-\ex \gll Torya enyāng, nārya-nama\\
+\ex \label{ex:ln02}
+	\gll Torya enyāng, nārya-nama\\
 		sleep-\Tsg.\M{} everyone-\Aarg{} but=only\\
 \sn \gll sānang sitang-setim ternu-vā.\\
 		couple-\Aarg{} self=familiar holy=\Sup{}\\
@@ -510,7 +567,8 @@ peaceful and solemn atmosphere.
 \end{exe}
 
 \begin{exe}
-\ex \gll Yanang val' mitrangeri gura,\\
+\ex \label{ex:ln04}
+	\gll Yanang val' mitrangeri gura,\\
 		boy-\Aarg{} lovely hair-\Ins{} curly \\
 
 \sn \gll toru tarānya aray.\\
@@ -521,7 +579,8 @@ peaceful and solemn atmosphere.
 % - SECOND STANZA -------------------------------------------------------------
 
 \begin{exe}
-\ex \gll Yampangal, sā d'-apayo\\
+\ex \label{ex:ln08}
+	\gll Yampangal, sā d'-apayo\\
 		Son.God \CauT= thus=laugh-\Tsg.\M{} \\
 
 \sn \gll cān bantāng van'.\\
@@ -530,7 +589,8 @@ peaceful and solemn atmosphere.
 \end{exe}
 
 \begin{exe}
-\ex \gll Eng yomara pidim madānena nana,\\
+\ex \label{ex:ln09}
+	\gll Eng yomara pidim madānena nana,\\
 		\AgtT.\Inan= be.there-\Tsg.\Inan{} hour.\Top{} rescue-\Gen{}
 		\Fpl.\Gen \\
 \sn \gll Yesu, vesang'ri vana\\
@@ -542,7 +602,8 @@ peaceful and solemn atmosphere.
 % - THIRD STANZA --------------------------------------------------------------
 
 \begin{exe}
-\ex \gll Ang tangyan nantongye\\
+\ex \label{ex:ln14}
+	\gll Ang tangyan nantongye\\
 		\AgtT= hear-\Tpl.\M{} shepherd-\Pl.\Top{} \\
 
 \sn \gll aleluyās kelangyena.\\
@@ -551,7 +612,8 @@ peaceful and solemn atmosphere.
 \end{exe}
 
 \begin{exe}
-\ex \gll Edauyi tangnang baho naynay:\\
+\ex \label{ex:ln16}
+	\gll Edauyi tangnang baho naynay:\\
 		now hear=\Fpl.\Aarg{} loud as\_well \\
 
 \sn \gll vesaya sa Yesu Maday'!\\
