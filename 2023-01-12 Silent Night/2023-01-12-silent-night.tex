@@ -19,6 +19,7 @@
 \usepackage{csquotes} % Put quotations in \enquote{}!
 \SetBlockEnvironment{quotation}
 \renewcommand*{\mkccitation}[1]{ (#1)}
+\let\q\textquote
 
 % Quotation style for word definitions
 \DeclareQuoteStyle{wdef}
@@ -257,8 +258,6 @@
 % Macros
 \newcommand{\fw}[1]{\textit{#1}} % Foreign Word
 \newcommand{\tit}[1]{\textit{#1}} % Title of a work
-\newcommand{\q}[1]{\enquote{#1}} % Context-aware quotation
-\newcommand{\qq}[1]{\enquote*{#1}} % Explicit sublevel quotation
 \newcommand{\tsup}[1]{\textsuperscript{#1}} % Superscript
 \newcommand{\markyellow}[1]{\colorbox{yellow}{#1}} % Yellow highlighter
 \newcommand{\ques}{\fakesuperscript{?}} % raised question mark
@@ -423,7 +422,7 @@ Christ, with your birth.\\!
 Silent night, holy night!\\
 First announced to shepherds,\\
 per the angels' hallelujah\\
-loudly is sounding from near and far:\\
+loudly it sounds from near and far:\\
 Christ, the Savior, is here,\\
 Christ, the Savior, is here!\\!
 \end{patverse}
@@ -465,8 +464,8 @@ Ah sirutay ternu kaluy!\\
 Yampangal, sā d'-apayo\\
 cān bantāng van'. Eng yomara\\
 pidim madānena nana,\\
-Yesu, vesang'ri vana,\\
-Yesu, vesang'ri vana.\\!
+Yesu, vesangeri vana,\\
+Yesu, vesangeri van'.\\!
 \end{patverse}
 
 \begin{patverse}
@@ -474,8 +473,8 @@ Ah sirutay ternu kaluy!\\
 Ang tangyan nantongye\\
 aleluyās kelangyena.\\
 Edauyi tangnang baho naynay:\\
-Vesaya sa Yesu Maday',\\
-vesaya sa Yesu Maday'!\\!
+Yomaya ang Yesu Madaya,\\
+yomaya ang Yesu Maday'!\\!
 \end{patverse}
 \end{verse}
 \end{minipage}
@@ -499,8 +498,8 @@ AH sirutj terFnu kluj!\\
 yMpNlF, saa dF/Apyo\\
 tYaanF bMtaaNF vnF/. ENF yomr\\
 pidimF mdaanen nn,\\
-yesu, vesNF/ri vn,\\
-yesu, vesNF/ri vn.\\!
+yesu, vesNeri vn,\\
+yesu, vesNeri vnF/.\\!
 \end{patverse}
 
 \begin{patverse}
@@ -508,8 +507,8 @@ AH sirutj terFnu kluj!\\
 ANF tNFynF nMtoNFye\\
 AleluyaasF kelNFyen.\\
 Edauyi tNFnNF bho njnj –\\
-vesy s yesu mdjF,\\
-vesy s yesu mdjF\\!
+yomy ANF yesu mdy,\\
+yomy ANF yesu mdj/!\\!
 \end{patverse}
 \end{verse}
 \end{minipage}
@@ -616,6 +615,9 @@ instrumental form, \xayr{nibaanF/ri}{nibān'ri}{with rest}.
 
 \subsection{Second stanza}
 
+Verse 7, the first line of the second stanza, is the same as the first verse,
+compare \cref{ex:ln01}.
+
 \begin{exe}
 \ex \label{ex:ln08}
 	\gll Yampangal, sā d'-apayo\\
@@ -626,20 +628,53 @@ instrumental form, \xayr{nibaanF/ri}{nibān'ri}{with rest}.
 	\trans \wdef{God-son, how love makes your mouth laugh.}
 \end{exe}
 
+The German text corresponding to the couplet in \cref{ex:ln08} describes
+baby Jesus as literally \wdef{laughing} love from his divine mouth in
+connection with the next two verses about the prospect of salvation. I suppose,
+the overall image is one of looking at a baby beaming with love and happiness.
+Due to limitations in the available number of syllables,
+\xayr{pNFr}{pangra}{divine} didn't fit anywhere. Making a compound
+\xayr{yMpNlF}{Yampangal}{God-son} instead of literally adapting \fw{Gottes
+Sohn} \wdef{son of God} as \xayr{ynF pNlen}{yan pangalena}{son God-\Gen} saves
+two syllables.
+
+Verses 10 to 12 in German give the theological reason for baby Jesus' joy: the
+birth of Christ heralds human salvation---which is consummated on Easter,
+except according to the carol, Jesus' birth is already the key moment. In
+ignorance of further theological details and ramifications I shrugged and
+translated this more or less literally.
+
 \begin{exe}
 \ex \label{ex:ln09}
 	\gll Eng yomara pidim madānena nana,\\
 		\AgtT.\Inan= be.there-\Tsg.\Inan{} hour.\Top{} rescue-\Gen{}
 		\Fpl.\Gen \\
-\sn \gll Yesu, vesang'ri vana\\
+\sn \gll Yesu, vesangeri vana.\\
 		Jesus birth-\Ins{} \Second.\Gen{} \\
 	\trans \wdef{The hour of our salvation is here, Jesus, by means of your
 		birth.}
 \end{exe}
 
+The text in \cref{ex:ln09} actually already begins in verse 9, creating an
+enjambment because it was convenient given the syllable count. What is
+unfortunately lost is the logical correlation to the previous two verses
+implied by \fw{da} \wdef{as} in German, also due to meeting the syllable count.
+
+Furthermore, I chose to use \xayr{yesu}{Yesu}{Jesus} here instead of trying to
+adapt \fw{Christ} in some way---whether borrowing it as \rayr{kFrisFto}{Kristo}
+or \rayr{kFrisF}{Kris} or attempting to loan-translate Greek \fw{Khrīstós}
+\wdef{the anointed one}. The stress pattern dictated by the melody (    
+  ) goes completely counter to the natural pattern of \rayr{pidimF mdaanen
+nn}{pidim madānena nana} (       ).
+
 % - THIRD STANZA --------------------------------------------------------------
 
 \subsection{Third stanza}
+
+The third stanza is the most challenging yet because in German, \fw{durch der
+Engel Halleluja} \wdef{per the angles' hallelujah} (v.~15) can be read as
+referring to both the previous and the next line. Moreover, a rather literal
+translation is too long.
 
 \begin{exe}
 \ex \label{ex:ln14}
@@ -651,15 +686,45 @@ instrumental form, \xayr{nibaanF/ri}{nibān'ri}{with rest}.
 	\trans \wdef{The shepherds heard the angels' hallelujah.}
 \end{exe}
 
+Instead of the shepherds being announced to as in the German \fw{Hirten erst
+kundgemacht} \wdef{first announced to shepherds}, in \cref{ex:ln14}, I
+rephrased the text rather neutrally as the shepherds hearing the angels'
+jubilation. Anyone familiar with the story will know the context anyway, so I
+only slightly regretted also dropping \fw{first} for exceeding the syllable
+count. I suppose \xayr{mennFy}{menanya}{one-\Nmlz-\Loc}, literally \wdef{at
+first}, could be a viable translation due to the peculiarity of how ordinals
+are formed in Ayeri as nouns. The corresponding dative form,
+\rayr{mennFymF}{menanyam}, means \wdef{once} as a multiplicative.
+
+Translating Greek \fw{ángelos} \wdef{messenger}, from which English gets
+\fw{angel}, literally as \rayr{niny}{ninaya} would have yielded the rather
+tongue-twisty form \rayr{ninyyen}{ninayayena} in Ayeri's iotaphile fashion. It
+would also have been too long. Thus, I decided to extend the meaning of
+\xayr{kelNF}{kelang}{chain, garland} with \wdef{angel}. The common denominator
+is the corresponding verb \xayr{kelNF/}{kelang-}{connect}, which otherwise
+gives \xayr{kelNnF}{kelangan}{connection}, and possibly
+\xayr{kelNy}{kelangaya}{connector}---likewise too long with \rayr{/yen}{-yena}
+added for genitive plural.
+
+The remaining verses 16 to 18 in \cref{ex:ln16} differ from the German text as
+well. I tried to compensate for the missing temporal aspect in the previous two
+lines by extending German's \fw{tönt es laut von fern und nah} \wdef{loudly it
+sounds from near and far} with \q{us now, too} as recipients of the message.
+
 \begin{exe}
 \ex \label{ex:ln16}
 	\gll Edauyi tangnang baho naynay:\\
-		now hear=\Fpl.\Aarg{} loud as\_well \\
+		now hear=\Fpl.\Aarg{} loudly as\_well \\
 
-\sn \gll vesaya sa Yesu Maday'!\\
-		birth-\Tsg.\M{} \Parg= Jesus Savior \\
-	\trans \wdef{Jesus the Savior is born.}
+\sn \gll yomaya ang Yesu Madaya!\\
+		be.there-\Tsg.\M{} \Aarg= Jesus Savior \\
+	\trans \wdef{Now we hear loudly as well: Jesus the Savior is here.}
 \end{exe}
+
+The difference in translation omits the \fw{fern und nah} \wdef{near and far}
+aspect completely, again because there was no space to fit anything along those
+lines. Replacing \xayr{njnj}{naynay}{as well, too} with a wrongly stressed
+\xayr{ynenF}{yanen}{everywhere} seemed comparably more awkward to me.
 
 %% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
