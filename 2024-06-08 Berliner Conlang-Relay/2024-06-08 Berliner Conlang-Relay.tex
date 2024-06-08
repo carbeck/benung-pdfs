@@ -1,0 +1,2120 @@
+\documentclass[
+	12pt,
+	ngerman,
+]{scrartcl}
+
+% Author, Title, Subtitle etc.
+\author{Carsten Becker}
+\title{Eine hundsgemeine Geschichte}
+\subtitle{Beitrag zum Relay des Berliner Conlang-Stammtischs 2024}
+\date{\DTMdate{2024-06-08}} % Format: YYYY/MM/DD (rev. N, YYYY/MM/DD)
+
+% Provide running author and date
+\makeatletter
+\let\runauthor\@author
+\let\rundate\@date
+\makeatother
+
+% Preferences of float placement
+% cf. https://tex.stackexchange.com/a/167864/60686
+\makeatletter
+\renewcommand\fps@figure{htbp}
+\renewcommand\fps@table{htbp}
+\def \@floatboxreset {%
+        \reset@font
+        \normalsize
+        \@setminipage
+		\centering
+}
+\makeatother
+
+
+% Handle language and quotation marks
+\usepackage{babel}
+\usepackage{csquotes} % Put quotations in \enquote{}!
+\SetBlockEnvironment{quotation}
+\renewcommand*{\mkccitation}[1]{ (#1)}
+\let\q\textquote
+
+% Quotation style for word definitions
+\DeclareQuoteStyle{wdef}
+	{\textquoteleft}{\textquoteright}
+	{\textquotedblleft}{\textquotedblright}
+\newcommand{\wdef}[1]{{\setquotestyle{wdef}\enquote{#1}}}
+
+% Set all margins to 2.54 cm
+\usepackage[margin=1in]{geometry}
+\widowpenalty10000 % Avoid widows like the plague!
+\clubpenalty10000 % Avoid orphans like the plage, too!
+
+% Extended formatting of lists
+\usepackage{enumitem}
+\newlist{glossdefs}{itemize}{1}
+\setlist[glossdefs]{nosep, leftmargin=3em, labelwidth=2.5em, align=left}
+\setlist[itemize]{noitemsep}
+
+% Make multiple columns available in single-column document
+\usepackage{multicol}
+
+% Make text colors and color names available
+\usepackage{xcolor}
+
+% Load font stuff for XeTeX
+\usepackage{fontspec}
+
+% Set main fonts
+\usepackage{microtype}
+
+\newfontfamily{\Tagati}[
+	Renderer=Graphite,
+	Scale=1.0,
+	BoldFont={* Italic},
+% 	HyphenChar=·,
+]{Tagati Book G}
+
+\setmainfont[
+	Ligatures=TeX,
+	Numbers={OldStyle,Proportional},
+	BoldFont=*-Bold,
+	ItalicFont=*-Italic,
+	BoldItalicFont=*-BoldItalic,
+]{Junicode}
+
+\setsansfont[
+	Ligatures=TeX,
+	Numbers=Lowercase,
+	Scale=MatchUppercase,
+	ItalicFont={Open Sans Condensed Light Italic},
+	BoldFont={Open Sans Condensed Bold},
+	BoldItalicFont={Open Sans Condensed Bold Italic},
+]{Open Sans Condensed Light}
+
+% Load BibLaTeX (using Biber), configure citation styles
+\usepackage[
+	authordate-trad,
+	backend=biber,
+	alldates=terse,
+	safeinputenc,
+]{biblatex-chicago}
+
+% To make \textcite look like "Doe (2014: 213)"
+\renewcommand*{\postnotedelim}{\addcolon\addspace}
+\DeclareFieldFormat{postnote}{#1}
+\DeclareFieldFormat{multipostnote}{#1}
+\addbibresource{bibliography.bib}
+
+% Date etc.
+\usepackage[
+	useregional=numeric,
+]{datetime2}
+
+% % Verse
+% \usepackage{verse}
+
+% Ability to include graphics and dealing with footnotes in descriptions
+\usepackage{graphicx}
+\usepackage[font={small,sf},labelfont={small,sf},format=plain]{caption}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\setlength{\columnsep}{2\baselineskip}
+
+% General headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead[L]{} % empty
+\fancyhead[C]{} % empty
+\fancyhead[R]{\thepage}
+
+\fancyfoot[L]{} % empty
+\fancyfoot[C]{} % empty
+\fancyfoot[R]{} % empty
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% First page headers and footers are different
+\fancypagestyle{firstpage}{
+	\fancyhead[L]{\sffamily \footnotesize \textbf{Benung. The Ayeri Language Resource}}
+	\fancyhead[C]{} % empty
+	\fancyhead[R]{\sffamily \footnotesize \runauthor{} · \rundate{}}
+	
+	\fancyfoot[L]{} % empty
+	\fancyfoot[C]{} % empty
+	\fancyfoot[R]{\sffamily \footnotesize 
+	\href{https://ayeri.de}{https://ayeri.de} · 
+	\href{https://github.com/carbeck/benung-pdfs}{https://github.com/carbeck/benung-pdfs} · 
+	\href{https://creativecommons.org/licenses/by-sa/4.0/}{CC~BY-SA~4.0}
+	}
+	
+	\renewcommand{\headrulewidth}{0.5pt}
+	\setlength\footskip{0.5in}
+}
+
+\usepackage{ifthen}
+\ifthenelse{\value{page}=1}{\thispagestyle{firstpage}{\pagestyle{fancy}}}
+
+% Line spacing
+\usepackage{setspace}
+\onehalfspacing
+
+% Avoid pagebreaks right after sections and subsections
+\usepackage{needspace}
+\usepackage{etoolbox}
+\preto\section{\needspace{6\baselineskip}}
+\preto\subsection{\needspace{6\baselineskip}}
+
+% Things for tables
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{makecell}
+% \usepackage{rotating}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+% Formatting of table of glossing abbreviations from Leipzig package manual
+\usepackage[
+	acronym,
+	nomain,
+	nonumberlist,
+	nopostdot,
+	numberedsection=nameref,
+	toc=true,
+	xindy={codepage=utf8}, % language=english,
+]{glossaries}
+\usepackage{glossary-inline}
+
+\newglossarystyle{threecolumn}{%
+	\renewenvironment{theglossary}{%
+		\begin{multicols}{3}
+		\begin{glossdefs}%
+	}{%
+		\end{glossdefs}%
+		\end{multicols}%
+	}%
+	\renewcommand*{\glossaryheader}{}%
+	\renewcommand*{\glsgroupheading}[1]{}%
+	\newcommand*{\glossaryentryfield}[5]{%
+		\item[\glsentryitem{##1}\glstarget{##1}{##2}]
+		% \makefirstuc{##3}\glspostdescription{}
+		##3\glspostdescription{}
+	}%
+	\renewcommand*{\glsgroupskip}{}%
+}%
+
+% Formatting of glosses
+\usepackage{langsci-gb4e}
+\usepackage[glosses]{leipzig}
+\renewcommand{\eachwordone}{\itshape}
+\renewcommand{\eachwordtwo}{\rule[-.5\baselineskip]{0pt}{0pt}}
+\input{leipzig.def}
+
+% Trees
+\usepackage[linguistics]{forest}
+
+% Underline, strikeout
+\usepackage{soul}
+
+% Nicer footnotes
+\usepackage[bottom,hang,norule]{footmisc}
+\setlength{\footnotesep}{0.75\baselineskip}
+
+% Smaller font in block quotes
+\usepackage{relsize}
+\AtBeginEnvironment{quote}{\noindent\smaller}
+\AtBeginEnvironment{quotation}{\smaller}
+
+% Clickable links in footnotes, TOC, etc.
+\usepackage[
+% 	xetex,
+	bookmarks=true,
+	colorlinks=false,
+	linktoc=section,
+	hidelinks,
+	pdfusetitle,
+]{hyperref}
+
+% We want URLs to be italic and with regular uppercase numerals
+\renewcommand{\UrlFont}{%
+	\normalfont%
+	\itshape%
+	\addfontfeature{RawFeature=-onum}%
+}
+
+% In-text references
+% cf. https://tex.stackexchange.com/a/139051
+% Since German plural formation is not as regular as in English (-e, -en for
+% Beispiel), we will define the label as empty
+\usepackage[sort&compress,noabbrev]{cleveref}
+\newcommand{\crefrangeconjunction}{--}
+\crefname{xnumi}{}{}
+\creflabelformat{xnumi}{(#2#1#3)}
+\crefname{xnumii}{}{}
+\creflabelformat{xnumii}{(#2#1#3)}
+\crefname{xnumiii}{}{}
+\creflabelformat{xnumiii}{(#2#1#3)}
+\crefname{xnumiv}{}{}
+\creflabelformat{xnumiv}{(#2#1#3)}
+\crefrangeformat{xnumi}{(#3#1#4)--(#5#2#6)}
+\crefrangeformat{xnumii}{(#3#1#4--#5\crefstripprefix{#1}{#2}#6)}
+\crefrangemultiformat{xnumii}{(#3\arabic{xnumi}#1#4--#5#2#6)}
+{ and~(#3\arabic{xnumi}#1#4--#5#2#6)}{, (#3\arabic{xnumi}#1#4--#5#2#6)}
+{ and~(#3\arabic{xnumi}#1#4--#5#2#6)}
+
+% Subsubsubsection
+% cf. https://tex.stackexchange.com/a/356574
+\DeclareNewSectionCommand[
+  style=section,
+  counterwithin=subsubsection,
+  afterskip=1.5ex plus .2ex,
+  beforeskip=3.25ex plus 1ex minus .2ex,
+  afterindent=false,
+  level=\paragraphnumdepth,
+  tocindent=10em,
+  tocnumwidth=5em
+]{subsubsubsection}
+\setcounter{secnumdepth}{\subsubsubsectionnumdepth}
+\setcounter{tocdepth}{\subparagraphtocdepth}
+\addto\extrasngerman{%
+  \let\subsubsubsectionautorefname\subsubsectionautorefname
+}
+\crefalias{subsubsubsection}{subsubsection}
+
+% Make glossaries
+\makeglossaries
+
+% Macros
+\newcommand{\fw}[1]{\textit{#1}} % Foreign Word
+\newcommand{\til}{\char`\~} % Literal tilde in text mode % {$\sim$}
+\newcommand{\tit}[1]{\textit{#1}} % Title of a work
+\newcommand{\tsub}[1]{\textsubscript{#1}} % Subscript
+\newcommand{\tsup}[1]{\textsuperscript{#1}} % Superscript
+\newcommand{\markyellow}[1]{\colorbox{yellow}{#1}} % Yellow highlighter
+\newcommand{\ques}{\textsuperscript{?}} % raised question mark
+\newcommand{\zwsp}{\mbox{​}} % Zero-width space (ZWSP)
+
+\newcommand{\ayr}[1]{\zwsp\smash{{\Tagati #1}}} % Plain Ayeri orthography
+\newcommand{\rayr}[2]{\zwsp\smash{{\Tagati #1}} \emph{#2}} % Ayeri orthography + *r*omanization
+\newcommand{\tayr}[2]{#1 `#2'} % Romanization + *t*ranslation
+\newcommand{\xayr}[3]{\zwsp\smash{\Tagati #1} \emph{#2} `#3'} % Ayeri orthography + romanization + translation
+
+\newenvironment{mytitle}{
+	\hfill
+	\begin{minipage}{0.667\textwidth}
+	\vspace{\baselineskip}
+	\begin{center}
+		\Large
+		\sffamily\bfseries
+		\makeatletter
+}{
+		\makeatother
+	\end{center}
+	\vspace{1em}
+	\end{minipage}
+	\hfill
+}
+
+% Change abstract font
+\AtBeginEnvironment{abstract}{\small\sffamily}
+
+%% END OF PREAMBLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%% MAIN PART %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{mytitle}
+	\@title: \@subtitle
+\end{mytitle}
+
+\begin{abstract}
+A conlang relay was held in May and June 2024 by conlang enthusiasts at the
+Department of German studies and Linguistics at Humboldt University of Berlin
+in association with a few non-Humboldtian friends, together comprising the
+informal Berlin Conlangers Regulars' Table. Documentation here is on analyzing
+my forerunner Dominique's torch in \tit{Hoan} and notes on translating the text
+into \tit{Ayeri} as the fourth runner, as well as what lexical and grammatical
+information I provided for my successor Henrik, who in turn translated the
+Ayeri text into \tit{Pfupf} based on those brief notes. Due to this round's
+small and very local scope of five active participants, all of which are German
+speakers, it was naturally run in German.
+\end{abstract}
+
+In der Vorweihnachtszeit 2023 kam unter den Conlangern am Institut für deutsche
+Sprache und Linguistik der Humboldt-Universität zu Berlin die Idee auf, ein
+Relay durchzuführen: Ein Staffellauf mit Übersetzungen zwischen konstruierten
+Sprachen (\fw{constructed languages}). Umgesetzt wurde der Plan allerdings erst
+im Mai 2024. Insgesamt gab es fünf Teilnehmer, wobei ich mit \tit{Ayeri} den
+vierten Platz in der Runde einnahm. Mein Vorgänger war Dominique mit
+\tit{Hoan},%
+%
+	\footnote{Die Sprache der \q{Gehörnten} aus der auf Wolfgang und Heike
+	Holbeins Roman \tit{Der Greif} (1989) basierten, gleichnamigen Serie auf
+	Amazon Prime (2023). Den Text auf Hoan drucke ich hier mit Genehmigung des
+	Autors ab (pers.~Mittlg., \DTMDate{2024-06-08}), welcher die Sprache für
+	die Serie entwickelt hat.}
+%
+mein Nachfolger Henrik mit \tit{Pfupf}. Als Basis dienten die Spielregeln der
+sechsten Language Creation Conference (2015).%
+%
+	\footnote{Siehe
+	\url{https://conlang.org/language-creation-conference/lcc6/lcc6-relay/}
+	(\DTMdate{2024-06-08}).}
+%
+Jeder Teilnehmer hatte allerdings statt zwei Tagen mindestens fünf Tage Zeit,
+weil das Relay mitten im Semester stattfand. Das Spiel wurde außerdem aufgrund
+des kleinen, lokalen Teilnehmerkreises auf Deutsch statt auf Englisch
+durchgeführt.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Analyse der Vorlage auf Hoan}
+\label{sec:hoanalys}
+
+Der im Folgenden zitierte Text auf Hoan wurde von Dominique an mich
+weitergereicht. Meine Aufgabe bestand darin, ihn anhand einer beigegebenen
+Skizze zur Grammatik und einer Wortliste im gleichen Umfang wie die Materialien
+in \cref{sec:suppl} zu entschlüsseln und ins Deutsche zu übersetzen.
+
+\begin{quote}
+\textsc{\MakeLowercase{Φutliqe ma Φerm}}
+
+Ḥooq \tsup{ə}nt’ekšaqkask č'oaqa zim, šentuʀ Φerm. Likuʀ ɸutliqe ʀlat'. Φutliq
+qairam prenšaqkar. Iš ḥooq \tsup{ə}z'leetšankas hu sabaḥḥol, quumar te naqanat
+\tsup{ə}xraqmu nšerik' iš \tsup{ə}nšer. K'uškark eax ma iičaq, iš tilqu
+t'rikušam iš kaspos sxengam mat. Iš ɸutliq ʀamkar \tsup{ə}xraqmu nšerik' iš
+\tsup{ə}nšer hu ḥooq, man ḥooq p'a ʀamšat'kasač \tsup{ə}nšer hu ɸutliq.
+
+Roošu Luter \tsup{ə}z'leetšankask ɸutliq hu sabaḥḥol ma ralšu kʀai. Φutliq
+xeksampkar hauku šar: \enquote{Z'om se xoɸa ma rangč'as ralšu kʀai.} Sabaḥḥol
+qaraazat tilqu t'rikušam qun nšerik'u haukušam ku šar ma eaxu ka, iš qeem
+troqšat'kas sikas ɸutliq. Hiɸ pʀuuruk'kas sika ma eaxu ku ɸutliq. Iš karkas:
+\enquote{Xoɸa haa likuɸ \tsup{ə}nšer!}
+
+Φutliqe ʀlat' \tsup{ə}knoštošam ta eax auškark \tsup{ə}nt'ekenu ku akraq.
+\tsup{a}Rɸeem iš \tsup{ə}kzuš\tsup{u}m. Hiɸ hoanu ma č'oaq \tsup{ə}xp'aanšaq.
+Se xo ʀtuklas t'rikkas z'almu ɸutle kil sika.
+\end{quote}
+
+Zunächst folgt die satzweise Glossierung mit kurzer Diskussion von Fragen, die
+sich beim Versuch ergeben haben, das Übermittelte zu verstehen und sinnvoll zu
+übersetzen sowie mit Kommentaren zu grammatischen und inhaltlichen
+Auf"|fälligkeiten diesbezüglich. Los geht es mit der Überschrift in
+\cref{ex:hoan1}, zu der nichts weiter anzumerken ist.%
+%
+	\footnote{Der grammatischen Annotation der Beispiele liegen die
+	\tit{\citetitle{lgr}} \autocite{lgr} zugrunde, vgl.~außerdem den
+	\namecref{leipzig} \tit{\nameref{leipzig}}. Übersetzungen und
+	Bedeutungsangaben stehen in Hochkommata.}
+
+\begin{exe}
+\ex \label{ex:hoan1}
+	\gll Φutliq-e ma Φerm \\
+		Hündchen-\Cls{2} in Fērm \\
+	\trans \wdef{Das Hündchen zu Fērm}
+\end{exe}
+
+Der erste Satzteil in \cref{ex:hoan2} ist interessant, weil er im Perfektiv
+steht und daher ergativ aligniert ist. Das syntaktische Subjekt des Satzes ist
+also \fw{č'oaqa} \wdef{Stadt}, was anhand des verbalen Kongruenzsuf"|fixes
+\fw{-kas} sichtbar wird. Dennoch steht \fw{ḥooq} \wdef{Mensch} als Agens in der
+Topikposition, es geht also im Folgenden um ihn. Die Markierung der
+reportativen Evidenz (\fw{-k}) habe ich im Deutschen unübersetzt gelassen, da
+durch den Kontext klar ist, dass es sich um eine Erzählung handelt.
+
+\begin{exe}
+\ex \label{ex:hoan2}
+	\gll Ḥooq \tsup{ə}nt’ek-šaq-kas-k č'oaq-a zim, šent-u-ʀ Φerm. \\
+		Mensch leben-\Pfv.\Cls{1}.\Abs-\Pfv.\Cls{1}.\Erg-\Hrs{} Stadt-\Cls{1a}
+		klein Name-\Cls{1b}-\Cls{1}.\Pert{} Fērm \\
+	\trans \wdef{Ein Mensch bewohnte eine kleine Stadt namens Fērm.}
+\end{exe}
+
+Die Form \fw{šentuʀ} im zweiten Satzteil von \cref{ex:hoan2} hat mich zunächst
+verwirrt, weil die Endung \fw{-uʀ} wie eine imperfektive Verbendung aussieht,
+dann allerdings mit \q{falschem} Themavokal. Tatsächlich aber müssen gemäß
+Grammatiknotizen Köpfe nach ihrer Nominalklasse markiert werden, wenn sie ein
+Attribut besitzen.%
+%
+	\footnote{Da diese Funktion relativ häufig vorkommt, habe ich bei der
+	Glossierung auf ihre explizite Bezeichnung verzichtet, außer bei der
+	Attributivmarkierung mit \fw{-s}, weil dieses Suf"|fix alle Nominalklassen
+	ohne Unterschied betrifft. Um die Glossierung nicht unnötig in die Länge zu
+	treiben, habe ich außerdem bei der Kongruenzmarkierung von Verben die
+	explizite Bezeichnung der dritten Person (\Third) ausgespart. Die
+	Markierung der Nominalklasse (\Cls{\#}) impliziert diese also immer.}
+%
+Da Hoan kopfmarkierend ist, besitzt es statt einem Genitiv
+einen Pertensiv, der hier durch das imperfektive Objekt-Pronominalsuf"|fix
+\fw{-ʀ} ausgedrückt wird.
+
+Der Satz in \cref{ex:hoan3} enthält prädikative Possession, bei welcher die
+Präposition \fw{liku} \wdef{bei} im Prinzip als imperfektives Verb fungiert.
+Die Grammatik unterscheidet kaum zwischen Adjektiven und Substantiven, der Satz
+bedeutet wörtlich also in etwa \wdef{Bei ihm ist ein Hündchen von Treue}. Da
+der Mensch, \fw{ḥooq}, aus \cref{ex:hoan2} lediglich durch die pronominale
+Endung \fw{-ʀ} repräsentiert ist, gehe ich davon aus, dass Hoan eine
+\fw{Pro-Drop}-Sprache ist.
+
+\begin{exe}
+\ex \label{ex:hoan3}
+	\gll Liku-ʀ ɸutliq-e ʀlat'. \\
+		bei.sein-\Ipfv.\Cls{1} Hündchen-\Cls{2} treu \\
+	\trans \wdef{Er hatte ein treues Hündchen.}
+\end{exe}
+
+Auch im nächsten Satz \cref{ex:hoan4} ist der Mensch nur durch das perfektive
+Pronominalsuf"|fix \fw{-šaq} vertreten, das ihn als Subjekt im Absolutiv
+markiert. Das Hündchen steht jetzt in der Topikposition. Im Folgenden ist also
+damit zu rechnen, dass es lediglich durch ein Pronominalsuf"|fix am Verb
+vertreten erscheint.
+
+\begin{exe}
+\ex \label{ex:hoan4}
+	\gll Φutliq qairam pren-šaq-kar. \\
+		Hündchen stets gehorchen-\Pfv.\Cls{1}.\Abs-\Pfv.\Cls{2}.\Erg{} \\
+	\trans \wdef{Das Hündchen gehorchte ihm stets.}
+\end{exe}
+
+Diese Annahme wird in \cref{ex:hoan5a} auch direkt bestätigt, insofern das
+Hündchen dort mit \fw{-šan} als Subjektsuf"|fix referenziert wird. Durch den
+Wechsel zu einer imperfektiven Handlung erscheinen am Verb in \cref{ex:hoan5b}
+andere Kongruenzaffixe als zuvor, weil Hoan im Imperfekt akkusatives Alignment
+aufweist. Entsprechend wird das Hündchen, \fw{ɸutliq}, jetzt mit dem
+pronominalen Präfix \fw{na-} im Nominativ aufgenommen. Der Quantor
+\fw{\tsup{ə}xraqmu} \wdef{eine kleine Menge} zeigt ein Attributivsuf"|fix
+\fw{-u}, da er vom Quantifizierten komplementiert wird. Den Ausdruck \fw{quumar
+te}, der Obligation ausdrückt, habe ich sowohl in der Glossierung als auch in
+der Übersetzung durch \wdef{auf dass} mit Konjunktiv Präsens wiedergegeben.
+Diese Lösung schien mir am elegantesten.
+
+\begin{exe}
+\ex \label{ex:hoan5}
+	\begin{xlist}
+	\ex \label{ex:hoan5a}
+		\gll Iš ḥooq \tsup{ə}z'leet-šan-kas hu sabaḥḥol, \\
+			und Mensch schicken-\Pfv.\Cls{2}.\Abs-\Pfv.\Cls{1}.\Erg{}
+			zu Metzger, \\
+	\ex \label{ex:hoan5b}
+		\gll {quumar te} na-qan-at \tsup{ə}xraqm-u nšerik' iš \tsup{ə}nšer. \\
+			{auf dass} \Ipfv.\Cls{2}.\Nom-kaufen-\Ipfv.\Cls{3}.\Acc{}
+			etwas-\Cls{3} Wurst und Fleisch \\
+	\end{xlist}
+	\trans \wdef{Und der Mensch schickte es zum Metzger, auf dass es etwas
+		Wurst und Fleisch kaufe.}
+\end{exe}
+
+In \cref{ex:hoan6a} tritt auf"|fälligerweise auch innerhalb eines Absatzes das
+Reportativsuf"|fix \fw{-k} auf. Dies ist den Notizen zur Grammatik nach dem
+Topikwechsel vom Menschen zum Hündchen geschuldet, bei dem diese Möglichkeit
+besteht. Auf"|fällig ist weiterhin, dass das Verb nicht für das Subjekt \fw{eax}
+\wdef{Korb} markiert ist, sondern nur für die Topik beziehungsweise das Objekt,
+\fw{-kar} \wdef{es}. Laut der Grammatikskizze ist das Subjektsuf"|fix
+\fw{-šat'} (3.~Pers.~Kl.~3~Abs.~Pfv.), das in diesem Kontext erscheinen müsste,
+optional.
+
+\begin{exe}
+\ex \label{ex:hoan6}
+	\begin{xlist}
+	\ex \label{ex:hoan6a}
+		\gll K'uš-kar-k eax ma iičaq, \\
+			nehmen-\Pfv.\Cls{2}.\Erg-\Hrs{} Korb in Maul \\
+	\ex \label{ex:hoan6b}
+		\gll iš tilq-u t'rik-uš-am iš kasp-o-s sxeng-am ma-t. \\
+			und Wort-\Cls{3} ritzen-\Antip-\Ptcp{} und Silber-\Sgv-\Attr{}
+			genug-\Ptcp{} in-\Cls{3} \\
+	\end{xlist}
+	\trans \wdef{Es nahm den Korb ins Maul, und darin war ein Schriftstück
+		 sowie ausreichend Geld.}
+\end{exe}
+
+Das Suf"|fix \fw{-uš} in \cref{ex:hoan6b} habe ich als (verbalisierenden)
+Antipassivmarker interpretiert. Den Grammatiknotizen zufolge lautet dieser
+\fw{-aš}. Ich vermute also, dass der Vokal sich in seiner Höhe an den Verbstamm
+anpasst (\fw{u} \til{} \fw{u}), wie auch bei den Endungen der imperfektiven
+Objektkongruenz.%
+%
+	\footnote{Wenn im ergativen Alignment \emph{x}\tsub{i} (O\tsub{A}, \Erg{})
+	\emph{ein Wort}\tsub{j} (S\tsub{P}, \Abs) \emph{ritzt}\tsub{j}, wird im
+	entsprechenden antipassiven Satz \emph{x} zum intransitiven Subjekt:
+	\emph{x}\tsub{i} (S\tsub{A},
+	\Abs) \emph{ritzt}\tsub{i}. Normalerweise müsste ein antipassives Partizip
+	also mit einer imperfektiven Lesart einhergehen (\wdef{ritzend},
+	\wdef{befehlend}; vgl.~\cite[{316 und die Referenzen dort}]{polinsky2017}),
+	was im Gegensatz zu meiner aus dem Kontext abgeleiteten Annahme steht, dass
+	die Partizipformen hier perfektiv im Sinne eines Zustandspassivs
+	aufzufassen sind (\wdef{geritzt sein}, \wdef{befohlen sein}).
+	% Möglicherweise ist auch ein \q{unechtes} Antipassiv intendiert, bei dem
+	% das weniger belebte Argument eines transitiven Verbs als Agens auftritt,
+	% aber keine Demotion des transitiven Subjekts erfolgt
+	% \autocite[vgl.][{327--328 und Referenzen dort}]{polinsky2017}?
+}
+%
+Die Präposition \fw{mat} am Ende des Halbsatzes wird wohl am besten als
+\wdef{darin} zu interpretieren sein. Zunächst hatte sie mich sehr verwirrt,
+weil mir nicht klar war, welche \textsc{np} der Klasse~3 sie im Kontext
+modifiziert. \fw{Eax} \wdef{Korb} stellt diesbezüglich aber eine sinnvolle
+Referenz dar; \cref{ex:hoan12} weist dieses Lexem explizit als zur Klasse~3
+gehörig aus. Da Präpositionen als Adverbiale ganze Sätze modifizieren können,
+bietet sich eine Interpretation als prädikative Konstruktion an. Hoan besitzt
+keine overte Kopula, daher stehen Subjekt und Prädikat nebeneinander.
+
+Der nächste Satz in \cref{ex:hoan7} bereitete keine Probleme beim Übersetzen.
+Allein, dass der Mensch kein Fleisch für das Hündchen erhält, erscheint an
+dieser Stelle inhaltlich auf"|fällig. Durch den weiteren Verlauf der Geschichte
+wird deutlich, warum der Mensch kein Fleisch bekommt -- \emph{vom} Hündchen.
+
+\begin{exe}
+\ex \label{ex:hoan7}
+	\begin{xlist}
+	\ex \label{ex:hoan7a}
+		\gll Iš ɸutliq ʀam-kar \tsup{ə}xraqm-u nšerik' iš \tsup{ə}nšer hu
+			ḥooq, \\
+			und Hündchen erhalten-\Pfv.\Cls{2}.\Erg{} etwas-\Cls{3}
+			Wurst und Fleisch für Mensch \\
+	\ex \label{ex:hoan7b}
+		\gll man ḥooq p'a ʀam-šat'-kas=ač \tsup{ə}nšer hu ɸutliq. \\
+			aber Mensch
+			\Neg{} erhalten-\Pfv.\Cls{3}.\Abs-\Pfv.\Cls{1}.\Erg=\Neg{}
+			Fleisch für Hündchen \\
+	\end{xlist}
+	\trans \wdef{Und das Hündchen erhielt etwas Wurst und Fleisch für den
+	Menschen, doch der Mensch erhielt kein Fleisch \textins{vom} Hündchen.}
+\end{exe}
+
+Mit \cref{ex:hoan8} beginnt ein neuer Absatz, entsprechend findet sich hier
+wieder das Reportativsuf"|fix \fw{-k} am Verb. Was es mit dem fehlenden Fleisch
+auf sich hat, wird hier noch nicht erklärt, jedoch scheint der Herr des
+Hündchens Luther zu heißen. Das Glossar gibt seinen Namen als \q{(Martin)
+Luther} an; handelt es sich beim ursprünglichen Text also um eine Parabel des
+oder über den Reformations\-theologen? Dass es sich bei \fw{ralšu kʀai}
+\wdef{sechster Tag} um den Freitag handelt, ist aus dem Glossar zu entnehmen.%
+%
+	\footnote{Vgl. auch lat. \fw{fēria sexta}, port. \fw{sexta-feira}
+	\wdef{Freitag}.}
+
+\begin{exe}
+\ex \label{ex:hoan8}
+	\gll Rooš-u Luter \tsup{ə}z'leet-šan-kas-k ɸutliq hu sabaḥḥol ma ralš-u
+		kʀai. \\
+		Herr-\Cls{1b} Luther
+		schicken-\Pfv.\Cls{2}.\Abs-\Pfv.\Cls{1}.\Erg-\Hrs{} Hündchen zu Metzger
+		an Tag-\Cls{3} sechs \\
+	\trans \wdef{Herr Luther schickte das Hündchen an einem Freitag zum
+		Metzger.}
+\end{exe} 
+
+Wie zuvor bei \cref{ex:hoan6a} beobachtet, enthält auch das Verb in
+\cref{ex:hoan9} keine Markierung für das Subjekt \fw{hauku šar} \wdef{Befehl
+des Vaters/des Greifen/des Papstes}. Das optionale Suf"|fix würde auch in diesem
+Fall \fw{-šat'} lauten.%
+%
+	\footnote{Warum \fw{hauku} \wdef{Befehl} anders als \fw{šentuʀ}
+	\wdef{Name} in \cref{ex:hoan2} nur für ein Attribut markiert ist, nicht
+	jedoch für den Possessor \fw{šar} \wdef{Papst}, geht aus den Notizen zur
+	Grammatik augenscheinlich nicht hervor. Die Form *\fw{haukuʀ} wäre ohne
+	tiefere Kenntnis der Sprache zu erwarten gewesen. Wörtlich müsste \fw{hauku
+	šar} also dem Kontext nach wohl mit \wdef{Papstbefehl} zu übersetzen sein.}
+
+\begin{exe}
+\ex \label{ex:hoan9}
+	\gll Φutliq xeksamp-kar hauk-u šar: \\
+		Hündchen bringen-\Pfv.\Cls{2}.\Erg{} Befehl-\Cls{3} Papst \\
+	\trans \wdef{Das Hündchen brachte den Befehl des Papstes: \dots}
+\end{exe}
+
+Auch \cref{ex:hoan10} ließ sich problemlos übersetzen. Die unmarkierte Verbform
+\fw{z'om} \wdef{fasten} ist hier als Imperativ \wdef{faste(t)!} aufzufassen. Da
+eine solche Anordnung des Papstes ihrer Intention nach an die ganze
+Christenheit gerichtet ist, bin ich bei der Übersetzung ins Deutsche vom Plural
+ausgegangen. Numerus wird in Hoan nicht obligatorisch markiert.
+
+\begin{exe}
+\ex \label{ex:hoan10}
+	\gll Z'om se xoɸa ma rangč'a-s ralš-u kʀai. \\
+		fasten.\Imp{} von jetzt an Gesamtheit-\Attr{} Tag-\Cls{3} sechs \\
+	\trans \wdef{Fastet ab jetzt den ganzen Freitag lang.}
+\end{exe}
+
+In \cref{ex:hoan11a} wechselt der Modus zum Imperfektiv, sodass dieser Teilsatz
+wieder akkusativ aligniert ist. Der Teilsatz enthält zwei Partizipien,
+\fw{t'rikušam} \wdef{geritzt}, und \fw{haukušam} \wdef{befohlen}. Auch hier
+scheint sich beim Vergleich mit \cref{ex:hoan6} der Vokal im Suf"|fix \fw{-aš}
+in beiden Fällen dem Öffnungsgrad des vorhergehenden Vokals anzupassen (\fw{i,
+u} \til{} \fw{u}).
+
+\begin{exe}
+\ex \label{ex:hoan11}
+	\begin{xlist}
+	\ex \label{ex:hoan11a}
+		\gll Sabaḥḥol qa-raaz-at tilq-u t'rik-uš-am qun nšerik'-u hauk-uš-am ku
+			šar ma eax-u ka, \\
+			Metzger \Ipfv.\Cls{2}.\Nom-erblicken-\Ipfv.\Cls{3}.\Acc{}
+			Wort-\Cls{3} ritzen-\Antip-\Ptcp{} betreffs Wurst-\Cls{3}
+			Befehl-\Antip-\Ptcp{} von Papst in Korb-\Cls{3} \Hrs{} \\
+	\ex \label{ex:hoan11b}
+		\gll iš qeem troq-šat'-kas sika-s ɸutliq. \\
+			und \Mir{} abhauen-\Pfv.\Cls{3}.\Abs-\Pfv.\Cls{1}.\Erg{}
+			Schwanz-\Attr{} Hündchen \\
+	\end{xlist}
+	\trans \wdef{Der Metzger erblickte das Schriftstück darüber, was der
+	Papst zur Wurst befohlen hatte, im Korb und hieb doch dem Hündchen den
+	Schwanz ab!}
+\end{exe}
+
+Für die Mirativpartikel \fw{qeem} in \cref{ex:hoan11b} gibt es keine direkte
+deutsche Entsprechung, am ehesten übernimmt \fw{doch} diese Funktion. Daher
+habe ich sie gemäß der Grammatikskizze ihrer Funktion nach mit \Mir{} glossiert
+und diesen Satzteil in der Übersetzung als Ausrufesatz formuliert.
+
+Die letzten beiden Sätze des Absatzes, \cref{ex:hoan12} und \cref{ex:hoan13},
+waren vollkommen problemlos übersetzbar und beinhalten keine weiteren
+Auf"|fälligkeiten, abgesehen vielleicht von der Possessivkonstruktion in
+\cref{ex:hoan13}, welche der in \cref{ex:hoan3} gleicht.
+
+\begin{exe}
+\ex \label{ex:hoan12}
+	\gll Hiɸ pʀuuruk'-kas sika ma eaxu ku ɸutliq. \\
+		dann put-\Pfv.\Cls{1}.\Erg{} Schwanz in Korb-\Cls{3} von Hündchen \\
+	\trans \wdef{Dann legte er den Schwanz in den Korb des Hündchens.}
+\end{exe}
+
+\begin{exe}
+\ex \label{ex:hoan13}
+	\gll Iš kar-kas: Xoɸa haa liku-ɸ \tsup{ə}nšer! \\
+		und sagen-\Pfv.\Cls{1}.\Erg{} jetzt \Prsv{} bei-\Second{} Fleisch \\
+	\trans \wdef{Und er sprach: Da hast du das Fleisch!}
+\end{exe}
+
+Die Annahme zu \cref{ex:hoan11}, dass sich das Antipassivsuf"|fix \fw{-aš} nach
+dem Öffnungsgrad des vorhergehenden Vokals richtet, bestätigt sich in
+\cref{ex:hoan14}, wo es in \fw{\tsup{ə}knošt-oš-am} \wdef{verletzt} die Form
+\fw{-oš} aufweist (\fw{o} \til{} \fw{o}). Das Partizip ist dem Kontext dieses
+Satzes nach unmissverständlich mit perfektiver Bedeutung zu verstehen: Der
+boshafte Metzger hat dem Hündchen den Schwanz abgehauen \cref{ex:hoan11}; nun
+ist es verletzt. Die Formulierung \fw{\tsup{ə}nt'eken-u ku akraq}
+\wdef{Behausung(en) der Straße(n)} mit alienabler Possession ist mir nicht ganz
+klar. Ich vermute, dass damit allgemein Häuser an der Straße gemeint sind.
+Weiterhin ist interessant, dass das Ziel des Laufens als direktes Objekt
+ausgedrückt wird; die Grammatikskizze weist explizit auf diese Möglichkeit hin.
+
+\begin{exe}
+\ex \label{ex:hoan14}
+	\gll Φutliq-e ʀlat' \tsup{ə}knošt-oš-am ta eax auš-kar-k \tsup{ə}nt'eken-u
+		ku akraq. \\
+		Hündchen-\Cls{2} treu verletzen-\Antip-\Ptcp{} mit Korb
+		laufen-\Pfv.\Cls{2}.\Erg{}-\Hrs{} Behausung-\Cls{3} von Straße \\
+	\trans \wdef{Das verletzte treue Hündchen mit dem Korb lief zu den Häusern
+		\textins{an der} Straße.}
+\end{exe}
+
+Die unflektierten Verbformen in \cref{ex:hoan15} weisen zunächst auf Imperative
+hin, die hier jedoch nicht in den Kontext von Figurenrede eingebunden sind.
+Dass der Erzähler, der vorher noch mit dem Hündchen sympathisiert, ihm
+plötzlich den Tod wünscht, ist unwahrscheinlich. Im Kontext werden diese Verben
+wohl am besten als Verbalabstrakta in einem Nominalsatz zu übersetzen sein,
+welche die weitere Handlung stichwortartig raffen.
+
+\begin{exe}
+\ex \label{ex:hoan15}
+	\gll \tsup{a}Rɸeem iš \tsup{ə}kzuš\tsup{u}m. \\
+		stürzen und verenden \\
+	\trans \wdef{Sturz und Tod.}
+\end{exe}
+
+Auch die allerletzten zwei Sätze in \cref{ex:hoan16} und \cref{ex:hoan17} sind
+unauf"|fällig und leicht zu übersetzen. Da in \cref{ex:hoan17} eine allgemeine
+Aussage gemacht wird, habe ich mich entschieden, für das Subjekt des Satzes,
+\fw{z'almu ɸutle kil sika} \wdef{Bilder von Hunden ohne Schwanz} den Plural zu
+benutzen.
+
+\begin{exe}
+\ex \label{ex:hoan16}
+	\gll Hiɸ hoan-u ma č'oaq \tsup{ə}xp'aan-šaq. \\
+		dann Leute-\Cls{1b} in Stadt weinen-\Pfv.\Cls{1}.\Abs{} \\
+	\trans \wdef{Da weinten die Leute in der Stadt.}
+\end{exe}
+
+\begin{exe}
+\ex \label{ex:hoan17}
+	\gll Se xo ʀtuklas t'rik-kas z'alm-u ɸutl-e kil sika. \\
+		von \Dem.\Cls{3b} Grund meißeln-\Pfv.\Cls{1}.\Erg{} Bild-\Cls{3}
+		Hund-\Cls{2} ohne Schwanz \\
+	\trans \wdef{Darum fertigten sie Statuen von Hunden ohne Schwanz an.}
+\end{exe}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Gegenüberstellung der Übersetzungen ins Deutsche}
+\label{sec:dtuebers}
+
+Der folgende deutschsprachige Text resultiert aus meiner Interpretation von
+Dominiques Text auf Hoan (\cref{sec:hoanalys}). Der Text ist teilweise etwas
+inkohärent, wahrscheinlich, weil er bereits drei Übersetzungen durchlaufen hat:
+Deutsch~-- Sal Qīnaion~-- Kèramkaq~-- Hoan.
+
+\begin{quote}
+\textsc{\MakeLowercase{Das Hündchen zu Fērm}}
+
+Ein Mensch bewohnte eine kleine Stadt namens Fērm. Er hatte ein treues
+Hündchen. Das Hündchen gehorchte ihm stets. Und der Mensch schickte es zum
+Metzger, auf dass es etwas Wurst und Fleisch kaufe. Es nahm den Korb ins Maul,
+und darin war ein Schriftstück sowie ausreichend Geld. Und das Hündchen erhielt
+etwas Wurst und Fleisch für den Menschen, doch der Mensch erhielt kein Fleisch
+vom Hündchen.%
+%
+	\footnote{\fw{vom Hündchen}] wörtlich: \fw{für das Hündchen}.}
+
+Herr Luther schickte das Hündchen an einem Freitag zum Metzger. Das Hündchen
+brachte den Befehl des Papstes: \q{Fastet ab jetzt den ganzen Freitag lang.}
+Der Metzger erblickte das Schriftstück darüber, was der Papst zur Wurst
+befohlen hatte, im Korb und hieb doch dem Hündchen den Schwanz ab! Dann legte
+er den Schwanz in den Korb des Hündchens. Und er sprach: \q{Da hast du das
+Fleisch!}
+
+Das verletzte treue Hündchen mit dem Korb lief zu den Häusern an der Straße.%
+%
+	\footnote{\fw{Häusern an der Straße}] wörtlich: \fw{Behausung(en) der
+	Straße(n)}.}
+%
+Sturz und Tod. Da weinten die Leute in der Stadt. Darum fertigten sie Statuen
+von Hunden ohne Schwanz an.
+\end{quote}
+
+Auf Grundlage des obigen Textes habe ich die Übersetzung auf Ayeri angefertigt
+(\cref{sec:ayruebers}) und die nachstehende Rückübersetzung ins Deutsche
+vorgenommen. Ich habe versucht, den Textsinn etwas zu verbessern, ohne aber zu
+große Eingriffe vorzunehmen. Der Text sollte nun also wieder an Kohärenz
+gewonnen haben, freilich ohne das Original zu kennen. Ich konnte mir nicht
+verkneifen, die Namen anzupassen beziehungsweise zu übersetzen: \fw{Fērm} wird
+also zu \fw{Peram} und aus \fw{Herrn Luther} wird \fw{Apitschan dijan}.%
+%
+	\footnote{\rayr{ApitYnF}{Apican}, \rayr{Apitu}{Apitu}, zu
+	\xayr{Apitu}{apitu}{rein}, \xayr{ApitF/}{apit-}{reinigen};
+	vgl.~mittelhochdeutsch \fw{lūter} \wdef{hell, rein, klar, lauter}
+	\autocite[{s.\,v.~\textit{lûter}}]{lexer:mhdhwb}, neuhochdeutsch
+	\fw{lauter}.}
+
+\begin{quote}
+\textsc{\MakeLowercase{Das Hündchen zu Peram}}
+
+Ein Mann wohnte in einer kleinen Stadt mit Namen Peram. Er besaß ein treues
+Hündchen, das ihm immer zu gehorchen pflegte. Eines Tages schickte der Mann das
+Hündchen zum Metzger, auf dass es ein wenig Wurst und Fleisch kaufe. Da packte
+es mit dem Maul den Korb, worin sich ausreichend Geld sowie ein Schriftstück
+befanden, und machte sich auf den Weg. Und das Hündchen bekam etwas Wurst und
+Fleisch für den Mann, doch der Mann bekam nichts vom Hündchen zurück.
+
+An einem Freitag nämlich hatte Apitschan dijan das Hündchen zum Metzger
+geschickt. Das Hündchen brachte den Befehl des Hohepriesters: \q{Fastet ab
+heute regelmäßig den ganzen Freitag.} Der Metzger erblickte im Korb den Brief
+darüber, was der Hohepriester bezüglich der Wurst befohlen hatte, und hieb dem
+Hündchen den Schwanz ab! Dann legte er den Schwanz in den Korb des Hündchens.
+Und er sprach: \q{Da ist dein Fleisch!}
+
+Das verletzte treue Hündchen lief mit dem \mbox{Korb} zurück zur Straße, doch
+es stürzte und kam zu Tode. Da vergossen die Leute in der Stadt zehntausend
+Tränen. Seither werden dort Statuen von Hunden ohne Schwanz
+angefertigt.
+\end{quote}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Übersetzung auf Ayeri}
+\label{sec:ayruebers}
+
+Nach der eingehenden Analyse des Textes auf Hoan (\cref{sec:hoanalys}) und der
+Rückübersetzung ins Deutsche (\cref{sec:dtuebers}) habe ich versucht, den so
+gewonnenen Text Satz für Satz auf Ayeri zu übersetzen. Der komplette Text ist
+unten sowohl in lateinischer Schrift als auch in Tahano abgedruckt und bildete
+die Grundlage für Henriks Übersetzung auf Pfupf. Der Text ist vergleichsweise
+lang, sodass es durchaus von Vorteil war, fünf Tage Zeit zu haben. Andererseits
+ist er lang genug, um einige der interessanteren grammatischen Merkmale der
+Sprache unterzubringen und zur Schau zu stellen.
+
+\begin{quote}
+\textsc{\MakeLowercase{Veney-veney ya Peram}}
+
+Ang mitanya ayon ayronya kivo garaneri Peram. Ang tahisaya veney-veneyas nasi
+si yam rodasa\-yong ya tadayen. Sa turaya bahisya men ayonang veney-veney
+baryatiyam, kadāre ang mya inco tubayley nay bariley-kay. Ang da-kacisayo
+bantari yona kasuley, siyā yomāran pangisreng-ma, pan\-yanreng naynay, nay ang
+sitang-payo sasānya. Nay ang tavyo veney-veney tubayley nay bariley-kay
+ayonyam, nārya ang ta-tavya ayon ranyaley veney-veneyena.
+
+Ya turaya mayisa ang Apican diyan veney-veneyas baryatiyam Miyan da-cuyam. Ang
+anlyo veney-veney nosānas natrayonena visam: \q{Cunu dabas gutasayam ya Miyan
+ikan.} Ang silvya baryati kasuya tamanley minena si ang nosaya mayisa natrayon
+visam barina nay ang hayarya māy sitramas veney-veneyena. Ang tapyya epang
+sitramas kasuya veney-veneyena. Da-narayāng: \q{Adaya barireng vana!}
+
+Ang sa-sarayo veney-veney nasi nupisa kirinya kayvo kasuya, nārya lesayong nay
+ang pen\-gal\-yo tenyanas. Ang da-teryon keynam ayronya simbeyley samang. Sa
+tiyasayo masahatay adaya gebisanye yelang veneyyeri si sitramya kayvay.
+\end{quote}
+
+\begin{quote}
+\hyphenpenalty=10000
+\small\Tagati
+\begin{multicols}{2}[\textbf{venej/venej y permF}]
+ANF mitnFy AyonF AjronFy kivo grneri permF. ANF thisy venej/veneysF nsi si ymF
+rodsyoNF y tdyenF. s tury bhisFy menF AyonNF venej/venej brFytiymF, kdaare ANF
+mY IMtFyo tubjlej nj brilej/kj. ANF d/ktYisyo bMtri yon ksulej, siyaa yomaarnF
+pNisFreNF/m, pnFynFreNF njnj, nj ANF sitNF/pyo ssaanFy. nj ANF tvFyo
+venej/venej tubjlej nj brilej/kj AyonFymF, naarFy ANF t/tvFy AyonF rnFylej
+venej/veneyen.
+
+y tury myis ANF ApitYnF diynF venej/veneysF brFytiymF miynF d/kYuymF. ANF
+AnFlFyo venej/venej nosaansF ntFryonen vismF~– kYunu dbsF gutsymF y miynF IknF.
+ANF silvFy brFyti ksuy tmnFlej minen si ANF nosy myis ntFryon vismF brin nj ANF
+hyrFy maaj sitFrmsF venej/veneyen. ANF tpYFy EpNF sitFrmsF ksuy venej/veneyen.
+d/nryaanF~– Ady brireNF vn!
+
+ANF s/sryo venej/venej nsi nupis kirinFy kjvo ksuy, naarFy lesyoNF nj ANF
+peNlFyo tenFynsF. ANF d/terFyonF kejnmF AjronFy siMbejlej smNF. s tiysyo
+mshtj Ady gebisFnFye yelNF venejyeri si sitFrmFy kjvj.
+\end{multicols}
+\end{quote}
+
+Analog zu \cref{sec:hoanalys} werde ich im Folgenden eine kommentierte Analyse
+meiner Übersetzung auf Ayeri geben. Dies half auch dabei, die Notizen zur
+Grammatik für meinen Nachfolger vorzubereiten, indem daraus deutlich wurde,
+welche grammatischen Phänomene neben den absoluten Grundlagen der Flexion und
+Syntax zu erklären sind. Auch hier soll der Kommentar chronologisch mit der
+Überschrift in \cref{ex:ayr1} beginnen.
+
+Anders als in Hoan spielt Kasusmarkierung in Ayeri eine große Rolle. Wo
+\textsc{np}s nicht in Sätze eingebettet sind, erfolgt keine explizite
+Markierung von Subjekten, wie \xayr{venej/venej}{veney-veney}{das Hündchen}
+illustriert. Der Lokativ bei der Ortsangabe \xayr{y permF}{ya Peram}{in Peram}
+ist hingegen semantisch motiviert und darum auch in diesem Kontext notwendig.
+Die Kasusmarkierung erscheint bei Namen als Proklitikum, bei Appellativa
+dagegen als Suf"|fix. Ayeri besitzt keine Markierung von Definitheit; eine
+unspezifische Lesart (\wdef{irgend-}) kann allerdings optional durch ein Präfix
+markiert werden, das in diesem Text jedoch nicht vorkommt.
+
+\begin{exe}
+\ex \label{ex:ayr1}
+	\gll Veney\til{}veney ya=Peram \\
+		Hund-\Dim{} \Loc=Peram \\
+	\trans \wdef{Das Hündchen zu Peram}
+\end{exe}
+
+Weitere Besonderheiten der Kasusmarkierung in Ayeri werden in \cref{ex:ayr2}
+deutlich. Auch \xayr{AyonF}{\mbox{ayon}}{Mann} ist oberflächlich unflektiert.
+Der Kasusmarker befindet sich in seiner klitischen Form stattdessen links vom
+Verb, um anzuzeigen, dass diese \textsc{np} die Topik des Satzes bildet.
+Topikmarkierung ist obligatorisch in transitiven Sätzen, Tempusmarkierung
+dagegen fakultativ.
+
+\begin{exe}
+\ex \label{ex:ayr2}
+	\gll Ang=mitan-ya ayon ayron-ya kivo garan-eri Peram. \\
+		\AgtT=wohnen-\Tsg.\M{} Mann[\Top] Stadt-\Loc{} klein Name-\Ins{}
+		Peram \\
+	\trans \wdef{Ein Mann wohnte in einer kleinen Stadt mit Namen Peram.}
+\end{exe}
+
+Überdies beschreibt \xayr{grneri}{garaneri}{mit Namen} natürlich nicht das
+Mittel, mit dem gewohnt wird, sondern stellt den Kopf des Komplements von
+\xayr{AjronFy}{ayronya}{in der Stadt} dar. Der Instrumentalis ist in diesem
+Kontext also Strukturkasus, der Komplementierung anzeigt. Beinhaltet die
+übergeordnete \textsc{np} ein Adjektiv, wird das Komplement zur Desambiguierung
+der Modifikationsrelation rechtsversetzt. Daher erscheint das auf
+\rayr{Ajrony}{ayronya} bezogene Adjunkt
+\xayr{kivo}{kivo}{klein} hier vor dem Komplement \rayr{grneri permF}{garaneri
+Peram} statt hinter \rayr{permF}{Peram}, das es so explizit nicht modifiziert.
+
+% \begin{figure}
+% \begin{forest}
+% [DP
+% 	[D′
+% 		[NP
+% 			[N′
+% 				[N⁰
+% 					[ayronya]
+% 				]
+% 				[$t$]
+% 			]
+% 			[AP
+% 				[A⁰
+% 					[kivo]
+% 				]
+% 			]
+% 		]
+% 	]
+% 	[S
+% 		[NP
+% 			[N⁰
+% 				[garaneri]
+% 			]
+% 		]
+% 		[NP
+% 			[N⁰
+% 				[Peram]
+% 			]
+% 		]
+% 	]
+% ]
+% \end{forest}
+% \caption{Konstituentenstruktur von \fw{ayronya kivo garaneri Peram}}
+% \label{fig:konststructayron}
+% \end{figure}
+
+Die Markierung der Topik durch Kongruenz betrifft nicht nur Nomen, sondern auch
+Pronomen, wie die Verbform \xayr{ANF thisy}{ang tahisaya}{er besaß} in
+\cref{ex:ayr3a} zeigt. Ayeri ist insofern eine \fw{Pro-Drop}-Sprache, als
+Subjektpronomen enklitisch an die Verbform treten und die Kongruenzmarkierung
+ersetzen. Topikalisierte Subjektpronomen haben allerdings die gleiche Form wie
+reguläre Kongruenz\-endungen.%
+%
+	\footnote{Das Adjektiv \xayr{nsi}{nasi}{treu, loyal} wurde für diesen Zweck
+	neu gebildet, nämlich als Ableitung vom Verbstamm
+	\xayr{nsFyF/}{nasy-}{folgen}.}
+\begin{exe}
+\ex \label{ex:ayr3}
+	\begin{xlist}
+	\ex \label{ex:ayr3a}
+		\gll Ang=tahisa=ya veney\til{}veney-as nasi \\
+			\AgtT=besitzen=\Tsg.\M.\Top{} Hund-\Dim{}-\Parg{} treu \\
+	\ex \label{ex:ayr3b}
+		\gll si yam=roda-asa=yong ya tadayen. \\
+			\Rel{} \DatT=gehorchen-\Hab=\Tsg.\N.\Aarg{} \Tsg.\M.\Top{} immer \\
+	\end{xlist}
+	\trans \wdef{Er besaß ein treues Hündchen, das ihm immer zu gehorchen
+		pflegte.}
+\end{exe}
+
+Das Verb im Relativsatz in \cref{ex:ayr3b} hat als Subjekt das Hündchen, das im
+Matrixsatz eingeführt wurde, wechselt aber hier im abhängigen Satz noch nicht
+die Topik, weshalb das Verb \xayr{rodsyoNF}{rodasayong}{es gehorcht
+(gewöhnlich)} Topikmarkierung für das Pronomen im Dativ mit Referenz auf den
+Mann zeigt. Eine Besonderheit beim Habitativsuf"|fix \rayr{/As}{-asa} ist, dass
+das erste \fw{-a} einen vorhergehenden Vokal tilgt. Daher erscheint
+\rayr{rodsyoNF}{rodasayong} zu \xayr{rod/}{roda-}{gehorchen} mit kurzem \fw{a}
+trotz der phonotaktischen Regel, dass zwei aufeinander folgende Vokale mit
+gleicher Qualität einen Langvokal dieser Qualität bilden. Darüber hinaus ist
+anzumerken, dass Relativsätze, die mit einfachem \rayr{si}{si} ohne sekundäre
+Kasusmarkierung eingeleitet werden, einen inneren Kopf enthalten, wenn eine
+overte Verbform vorhanden ist. Daher weist das Verb das Pronominalklitikum
+\xayr{/yoNF}{-yong}{es} auf; \rayr{si}{si} ist also eher als Subjunktion
+(\textsc{c⁰}) mit attribuierender Funktion denn als Relativpronomen
+(\textsc{d⁰} in \textsc{spec-cp}) zu verstehen.
+
+Nachdem das Hündchen, \rayr{venej/venej}{veney-veney}, nun vollständig
+eingeführt ist und die weiteren Sätze vom Hündchen handeln, wechselt in
+\cref{ex:ayr5a} auch die Topikmarkierung entsprechend.
+
+\begin{exe}
+\ex \label{ex:ayr5}
+	\begin{xlist}
+	\ex \label{ex:ayr5a}
+		\gll Sa=tura-ya bahis-ya men ayon-ang veney\til{}veney baryati-yam, \\
+			\PatT=schicken-\Tsg.\M{} Tag-\Loc{} ein Mann-\Aarg{}
+			Hund-\Dim{}[\Top] Metzger-\Dat{} \\
+	\ex \label{ex:ayr5b}
+		\gll kadāre ang=mya=int=yo tubay-ley nay bari-ley=kay. \\
+			sodass \AgtT=\Oblig=kaufen=\Tsg.\N.\Top{} Wurst-\Parg.\Inan{} und
+			Fleisch-\Parg.\Inan=wenig \\
+	\end{xlist}
+	\trans \wdef{Eines Tages schickte der Mann das Hündchen zum Metzger, auf
+	dass es ein wenig Wurst und Fleisch kaufe.}
+\end{exe}
+
+Da der \xayr{AyonNF}{ayonang}{der Mann} als handelnde Instanz trotzdem das
+syntaktische Subjekt darstellt, handelt es sich bei der vorliegenden
+Satzkonstruktion um ein \q{Pseudopassiv}. Die Dativmarkierung bei
+\xayr{brFytiymF}{baryatiyam}{zum Metzger} ist semantisch. Ob das Hündchen
+\fw{dem Metzger} oder \fw{zum Metzger} geschickt wird, ist als Ambiguität in
+diesem Kontext vernachlässigbar.%
+%
+	\footnote{Das belebte Nomen \xayr{brFyti}{baryati}{Metzger, Fleischer}
+	wurde neu eingeführt. Es ist eine Tätigkeitsbildung zu
+	\xayr{bri}{bari}{Fleisch}. Wollte man wirklich eindeutig sein, könnte man
+	auch die Formulierung \xayr{mNsh brFytiy}{mangasaha baryatiya}{zum Metzger
+	hin} (hin.zu Metzger-\Loc) verwenden.}
+
+Dass es sich beim Verb \xayr{IMtFyo}{inco}{(es) kauft} im Nebensatz
+\cref{ex:ayr5b} um eine zu erfüllende Pflicht oder eine Anweisung handelt,
+markiert die Modalpartikel \rayr{mY}{mya}, die ich als Konjunktiv Präsens ins
+Deutsche übertragen habe. Grammatikalisierte Modalpartikeln sind in der Regel
+von Modalverben abgeleitet, hier von \xayr{mY/}{mya-}{sollen}, und stehen im
+präverbalen Klitikcluster zwischen Topikpartikel und Verbstamm. Des Weiteren
+beinhaltet der Satz ein quantifizierendes Klitikum \xayr{/kj}{kay}{ein wenig,
+ein bisschen}, das als solches an eine \textsc{np} oder \textsc{vp} angehängt
+wird.
+
+Der nächste Hauptsatz in \cref{ex:ayr6a} enthält eine weitere Modalpartikel im
+Klitikcluster, nämlich \xayr{d/}{da-}{so}, das hier eine präsentative Funktion
+ausübt, ähnlich wie französisch \fw{voilà} \wdef{da (ist)}. Daher habe ich
+\rayr{d/ktYisyo}{da-kacisayo} mit \wdef{da packte (es)} übersetzt. Ayeri
+unterscheidet im Grunde nicht zwischen alienabler und inalienabler Possession,
+daher erscheint \xayr{bMtri}{bantari}{mit dem Maul} hier mit dem Possessivum
+\xayr{yon}{yona}{sein}. Mit \xayr{ksulej}{kasuley}{den Korb} ist nun auch ein
+als solches markiertes Inanimatum in den Text eingeführt.%
+%
+	\footnote{Da Inanimata im Text seltener vorkommen, habe ich nur diese in der
+	Glossierung explizit markiert. Fehlende Bezeichnung der Kategorie impliziert
+	also Belebtheit.}
+
+\begin{exe}
+\ex \label{ex:ayr6}
+	\begin{xlist}
+	\ex \label{ex:ayr6a}
+		\gll Ang=da=kacisa=yo banta-ri yona kasu-ley, \\
+			\AgtT=so=packen=\Tsg.\N.\Top{} Maul-\Ins{} \Tsg.\N.\Gen{}
+			Korb-\Parg.\Inan{} \\
+	\ex \label{ex:ayr6b}
+		\gll si-ya<a> yoma-aran pangis-reng=ma, panyan-reng naynay, \\
+			\Rel<\Parg.\Inan>-\Loc{} sein-\Tsg.\Inan{} Geld-\Aarg.\Inan{}=genug
+			Schriftstück-\Aarg.\Inan{} außerdem \\
+	\ex \label{ex:ayr6c}
+		\gll nay ang=sitang=pa=yo sasān-ya. \\
+			und \AgtT=\Refl=nehmen=\Tsg.\N.\Top{} Weg-\Loc{} \\
+	\end{xlist}
+	\trans \wdef{Da packte es mit dem Maul den Korb, worin sich ausreichend
+		 Geld sowie ein Schriftstück befanden, und machte sich auf den Weg.}
+\end{exe}
+
+Der Relativsatz in \cref{ex:ayr6b} wird mit \rayr{siyaa}{siyā} nun durch ein
+\q{echtes} Relativpronomen (\textsc{d⁰}) eingeführt, insofern die sekundäre
+Markierung mit dem Lokativ \rayr{/y}{-ya} pronominalisierende Wirkung hat. Das
+Relativpronomen hat im Relativsatz also die korrelative Bedeutung \wdef{worin}.
+Dass es sich um eine Kurzform des Pronomens mit sekundärer Kasusmarkierung
+handelt, wird durch den Langvokal im Kasussuf"|fix explizit gemacht. Die
+Langform lautet \rayr{silejy}{sileyya}. In diesem Kontext fehlt
+\rayr{/lej}{-ley} als Kongruenzsuf"|fix wie üblich, weil der
+Relativsatz nicht rechtsversetzt ist. Obwohl \rayr{siyaa}{siyā} im Relativsatz
+Konstituentenstatus hat, ist es nicht für die Topikalisierung verfügbar, daher
+wird dieser Relativsatz wie ein intransitiver Satz behandelt. Das Verb
+\xayr{yomaarnF}{yomāran}{(sie) befanden sich} weist darum keine Topikmarkierung
+auf. Darüber hinaus enthält \cref{ex:ayr6c} einen idiomatischen Ausdruck,
+\rayr{sitNF/p– ssaanFy}{sitang-pa- sasānya}, der \fw{sich auf den Weg machen}
+entspricht. Die Partikel \rayr{sitNF/}{sitang-} gibt dem Verb hier eine
+reflexive Bedeutung. Wörtlich \q{nimmt} man sich auf den Weg.
+
+In \cref{ex:ayr7} erscheinen keine neuen grammatischen Merkmale oder
+Konstruktionen, abgesehen von der partiellen Reduplikation bei der Verbform
+\xayr{t/tvFy}{ta-tavya}{(er) bekommt wieder/zurück} in \cref{ex:ayr7b}.
+Reduplikation der ersten zwei Silbensegmente eines Verbstamms drückt eine
+iterative oder reversive Handlung aus, im Kontext des vorliegenden Satzes
+die Letztere.
+
+\begin{exe}
+\ex \label{ex:ayr7}
+	\begin{xlist}
+	\ex \label{ex:ayr7a}
+		\gll Nay ang=tav-yo veney\til{}veney tubay-ley nay
+			bari-ley=kay ayon-yam, \\
+			und \AgtT=bekommen-\Tsg.\N{} Hund-\Dim{}[\Top]
+			Wurst-\Parg.\Inan{} und Fleisch-\Parg.\Inan{}=etwas Mann-\Dat{} \\
+	\ex \label{ex:ayr7b}
+		\gll nārya ang=ta\til{}tav-ya ayon ranya-ley veney\til{}veney-ena. \\
+			aber \AgtT=bekommen-\Iter-\Tsg.\M{} Mann[\Top] nichts-\Parg.\Inan{}
+				Hund-\Dim-\Gen{} \\
+	\end{xlist}
+	\trans \wdef{Und das Hündchen bekam etwas Wurst und Fleisch für den
+	Mann, doch der Mann bekam nichts vom Hündchen zurück.}
+\end{exe}
+
+Der erste Satz des neuen Absatzes in \cref{ex:ayr8} wechselt die Topik zunächst
+zum Wochentag, \xayr{miynF}{Miyan}{der Sechste}, als Kontext für die Aussage.
+Betreffend des Adverbs \xayr{myis}{mayisa}{fertig} ist anzumerken, dass Ayeri
+keine obligatorische Tempusmarkierung besitzt, vergleiche auch \cref{ex:ayr2}.
+\rayr{myis}{mayisa} betont hier die Abgeschlossenheit der Handlung,
+\xayr{tury}{turaya}{(er) schickte, sandte}, und damit deren Vorzeitigkeit im
+Erzählkontext: \fw{(er) hatte geschickt}.%
+%
+	\footnote{Im Grunde also ähnlich wie zum Beispiel im afroamerikanischen
+	Englisch, wo die Aspektpartikel \fw{dən} (<~engl.~\fw{done} \wdef{getan,
+	erledigt, fertig}) typischerweise eine abgeschlossene Handlung kennzeichnet
+	\autocite[60--63]{green2002}.}
+%
+Um die initiale VP nicht mit Adjunkten zu überladen, habe ich das Adverb
+\xayr{d/kYuymF}{da-cuyam}{nämlich, und zwar} ans Ende gestellt.%
+%
+	\footnote{Das Adverb \xayr{d/kYuymF}{da-cuyam}{nämlich} wurde neu gebildet
+	aus \xayr{d/}{da-}{so} und \xayr{kYuymF}{cuyam}{tatsächlich}.}
+
+\begin{exe}
+\ex \label{ex:ayr8}
+	\gll Ya=tura-ya mayisa ang=Apican diyan veney\til{}veney-as baryati-yam
+		Miyan da-cuyam. \\
+		\LocT{}=schicken-\Tsg.\M{} \Pfv{} \Aarg=Apican ehrenwert
+		Hund-\Dim-\Parg{} Metzger-\Dat{} Sechster[\Top] nämlich \\
+	\trans \wdef{An einem Freitag nämlich hatte Apitschan dijan das Hündchen
+		zum Metzger geschickt.}
+\end{exe} 
+
+In \cref{ex:ayr9} kehrt die Topik wieder zum Hündchen als Protagonisten zurück.
+Im Text auf Hoan ist der Ursprung des Befehls der \fw{šar} \wdef{Vater, der
+Greif; Papst}. Da ich bisher nichts zur Kultur der Ayeri ausgearbeitet habe,
+habe ich diese Bezeichnung mit \xayr{ntFryonF vismF}{natrayon
+visam}{Oberpriester, Hohepriester} adaptiert.
+
+\begin{exe}
+\ex \label{ex:ayr9}
+	\gll Ang=anl-yo veney\til{}veney nosān-as natrayon-ena visam: \\
+		\AgtT=bringen-\Tsg.\N{} Hund-\Dim{}[\Top] Befehl-\Parg{}
+		Priester-\Gen{} oberster \\
+	\trans \wdef{Das Hündchen brachte den Befehl des Hohepriesters: \dots}
+\end{exe}
+
+Ein weiterer Kontext neben dem intransitiven in \cref{ex:ayr6b}, in dem regulär
+keine Topikmarkierung auftritt, ist in \cref{ex:ayr10} gegeben. Imperative wie
+\xayr{kYunu}{cunu}{beginne, fang an!} sind speziell markiert, weisen also trotz
+Referenz auf eine zweite Person keine Personenmarkierung auf. Das abhängige
+Verb \xayr{gutsymF}{gutasayam}{(regelmäßig) zu fasten} ist mit dem
+Partizipsuf"|fix \rayr{/ymF}{-yam} markiert, das seinen infiniten Status
+anzeigt.%
+%
+	\footnote{Das Verb \xayr{gut/}{guta-}{verzichten} wurde um die Bedeutung
+	\wdef{fasten} erweitert. Man hätte vielleicht einfacher, jedoch
+	langweiliger formulieren können: \xayr{gutsu y miynF IknF mNsr dbsF}{Gutasu
+	ya Miyan ikan mangasara dabas}{faste(t) ab heute (regelmäßig) den ganzen
+	Freitag} (fasten-\Hab-\Imp{} \Loc=Sechster komplett weg.von heute). Die
+	Verbform \rayr{gutsymF}{gutasayam} hat Aspektmarkierung, daher ist es
+	möglicherweise nicht ganz korrekt, hier von einer infiniten Form zu sprechen
+	-- oder von einem Partizip.}
+%
+Den Freitag mit \wdef{sechster Wochentag} zu übersetzen, habe ich aus der
+Vorlage entnommen, siehe \cref{ex:hoan8}. Dass es sich beim Fastengebot um eine
+regelmäßige Übung handelt, impliziert die Habitativmarkierung am Verb.
+
+\begin{exe}
+\ex \label{ex:ayr10}
+	\gll Cun-u dabas guta-asa-yam ya=Miyan ikan. \\
+		beginnen-\Imp{} heute fasten-\Hab-\Ptcp{} \Loc=Sechster komplett \\
+	\trans \wdef{Fastet ab heute regelmäßig den ganzen Freitag.}
+	% 
+\end{exe}
+
+Die Topik in \cref{ex:ayr11a} wandert zum Metzger, zu dem sich jetzt der
+narrative Fokus verschiebt. Relativsätze in Ayeri müssen immer attributiv
+gebunden sein, deshalb braucht der Satz in \cref{ex:ayr11b} ein semantisch mehr
+oder weniger leeres Antezedens, das es mit \xayr{minen}{minena}{Angelegenheit,
+Sache} erhält. Der Genitiv hat hier semantische Funktion und erzeugt die
+Bedeutung \wdef{über die Angelegenheit}. Ein weiteres Beispiel für einen
+solchen freien Genitiv ist \xayr{brin}{barina}{über das Fleisch}.
+\xayr{myis}{mayisa}{fertig} tritt hier wie zuvor in \cref{ex:ayr8} in
+perfektivierender Funktion auf. \xayr{maaj}{māy}{ja, doch} wird in
+\cref{ex:ayr11c} als Modalpartikel mit verstärkender oder bekräftigender
+Bedeutung eingesetzt.
+
+\begin{exe}
+\ex \label{ex:ayr11}
+	\begin{xlist}
+	\ex \label{ex:ayr11a}
+		\gll Ang=silv-ya baryati kasu-ya taman-ley mine-na \\
+			\AgtT=sehen-\Tsg.\M{} Metzger[\Top] Korb-\Loc{} Brief-\Parg.\Inan{}
+			Angelegenheit-\Gen{} \\
+	\ex \label{ex:ayr11b}
+		\gll si ang=nosa-ya mayisa natrayon visam bari-na \\
+			\Rel{} \AgtT=befehlen-\Tsg.\M{} \Pfv{} Priester[\Top] oberst
+			Fleisch-\Gen{} \\
+	\ex \label{ex:ayr11c}
+		\gll nay ang=hayar=ya māy sitram-as veney\til{}veney-ena. \\
+			und \AgtT=hauen=\Tsg.\Top{} \Ints{} Schwanz-\Parg{}
+			Hund-\Dim-\Gen{} \\
+	\end{xlist}
+	\trans \wdef{Der Metzger erblickte im Korb den Brief darüber, was der
+		Hohepriester bezüglich der Wurst befohlen hatte, und hieb dem Hündchen
+		den Schwanz ab!}
+\end{exe}
+
+Der Satz in \cref{ex:ayr12} bietet im Grunde nichts Neues. Der semantische
+Rahmen des Verbs \xayr{tpYFy}{tapyya}{(er) legte} beinhaltet die räumliche
+Verschiebung des Themas zum Ziel durch eine Agens, daher erscheint das Ziel,
+\xayr{ksuy}{kasuya}{in den Korb}, als einfache \textsc{np} im Lokativ, nicht als
+\textsc{pp}.%
+%
+	\footnote{Expliziter könnte man auch hier formulieren: \xayr{mN koNF
+	ksuy}{manga kong kasuya}{in den Korb hinein} (\Dir=in Korb-\Loc).}
+
+\begin{exe}
+\ex \label{ex:ayr12}
+	\gll Ang=tapy=ya epang sitram-as kasu-ya veney\til{}veney-ena. \\
+		\AgtT=legen=\Tsg.\M.\Top{} danach Schwanz-\Parg{} Korb-\Loc{}
+		Hund-\Dim-\Gen{} \\
+	\trans \wdef{Dann legte er den Schwanz in den Korb des Hündchens.}
+\end{exe}
+
+In der Inquitformel in \cref{ex:ayr13} hat \xayr{d/}{da-}{so} eine präsentative
+Funktion, wie oben in \cref{ex:ayr6}. Die wörtliche Rede zeigt, dass nicht nur
+Adjektive und Nomen, sondern auch Lokaladverbien prädikativ vorkommen können.
+Das Adverb \xayr{Ady}{adaya}{da, dort} ist zur Betonung nach vorne gezogen.
+Formeller wäre eine Konstruktion mit \xayr{yom/}{yoma-}{(da) sein, sich
+befinden}, was aber im Erzählkontext nicht zur verbalen Grobheit des Sprechers
+passen würde. Dass die Kasusmarkierung in Ayeri zwar eine semantische Grundlage
+hat, die Sprache es aber damit nicht zu genau nimmt, wenn es der Syntax
+dienlich ist, sieht man daran, dass \xayr{brireNF}{barireng}{das Fleisch} als
+explizit unbelebte Instanz als Agens markiert ist, da es ein Subjekt darstellt.
+
+\begin{exe}
+\ex \label{ex:ayr13}
+	\gll Da=nara=yāng: Adaya bari-reng vana! \\
+		so=sprechen=\Tsg.\M.\Top{} dort Fleisch-\Aarg.\Inan{}
+		\Second.\Gen{} \\
+	\trans \wdef{Und er sprach: Da ist dein Fleisch!}
+\end{exe}
+
+Der erste Halbsatz in \cref{ex:ayr14a} enthält mit
+\xayr{s/sryo}{sa-sarayo}{(es) geht zurück} wieder eine Iterativform mit
+reversiver Bedeutung, wie zuvor in \cref{ex:ayr7b} gezeigt. Dass Ayeri zwischen
+komitativem und instrumentalem \fw{mit} unterscheidet, wird hier durch die
+\textsc{pp} \xayr{kjvo ksuy}{kayvo kasuya}{mit dem Korb} deutlich, die erstere
+Funktion hat.
+
+\begin{exe}
+\ex \label{ex:ayr14}
+	\begin{xlist}
+		\ex \label{ex:ayr14a}
+		\gll Ang=sa\til{}sara-yo veney\til{}veney nasi nupisa kirin-ya kayvo
+			kasu-ya, \\
+			\AgtT=gehen-\Iter-\Tsg.\N{} Hund-\Dim{}[\Top] treu verletzt
+			Straße-\Loc{} mit Korb-\Loc{} \\
+		\ex \label{ex:ayr14b}
+		\gll nārya lesa=yong nay ang=pengal=yo tenyan-as. \\
+			doch fallen=\Tsg.\N.\Aarg{} und \AgtT=treffen=\Tsg.\N.\Top{}
+			Tod-\Parg{}	\\
+	\end{xlist}
+	\trans \wdef{Das verletzte treue Hündchen lief mit dem Korb
+		zurück zur Straße, doch es stürzte und kam zu Tode.}%
+		%
+			\footnote{Das Adjektiv \xayr{nupis}{nupisa}{verletzt} wurde neu
+			gebildet aus dem Verb \xayr{nup/}{nupa-}{verletzen, wehtun},
+			vergleiche auch die dazugehörige deverbale Substantivableitung
+			\xayr{nupaanF}{nupān}{Schaden, Mangel}.}
+\end{exe}
+
+Grammatisch ist \cref{ex:ayr16} unauf"|fällig. Lexikalisch interessant ist das
+Numeral \xayr{smNF}{samang}{zehntausend}, denn Ayeri verwendet Potenzen von
+Hundert, um höhere Zahlenstufen zu bilden: \rayr{smF}{sam} bedeutet
+\wdef{zwei}, \rayr{smNF}{samang} ist also das Quadrat von Hundert. Anzumerken
+ist, dass als Basis zwölf verwendet wird, \rayr{smNF}{samang} entspricht also
+eigentlich 20\,736. \q{Zehntausend} Tränen zu vergießen ist ein idiomatischer
+Ausdruck für große Trauer.
+
+\begin{exe}
+\ex \label{ex:ayr16}
+	\gll Ang=da=ter-yon keynam ayron-ya simbey-ley samang. \\
+		\AgtT=so=vergießen-\Tpl.\N{} Leute[\Top] Stadt-\Loc{}
+		Träne-\Parg.\Inan{} zehntausend \\
+	\trans \wdef{Da vergossen die Leute in der Stadt zehntausend Tränen.}
+\end{exe}
+
+Der Satz in \cref{ex:ayr17} enthält zu guter Letzt gleich mehrere syntaktische
+Auf"|fälligkeiten. \q{Echte} Passive werden gebildet, indem die
+Agens-\textsc{np} einfach wegfällt. Das Verb kongruiert dann stattdessen mit
+der Patiens-\textsc{np} als syntaktischem Subjekt.
+\xayr{tiysyo}{tiyasayo}{(sie) werden (gewöhnlich) gemacht} bezieht sich also
+auf \xayr{gebisnFy}{gebisanye}{Bildnisse}. Da es sich um eine markierte
+Konstruktion handelt, ist es meines Erachtens nicht angebracht, hier von
+Ergativität zu sprechen, wenn das Subjekt in diesem Kontext auch wie ein
+Absolutiv markiert sein mag.
+
+\begin{exe}
+\ex \label{ex:ayr17}
+	\gll Sa=tiya-asa-yo masahatay adaya gebisan-ye yelang veney-ye-ri si
+		sitram-ya kayvay. \\
+		\PatT=machen-\Hab-\Tpl.\N{} seither dort Bildnis-\Pl{}[\Top] Stein
+		Hund-\Pl-\Ins{} \Rel{} Schwanz-\Loc{} ohne \\
+	\trans \wdef{Seither werden dort Statuen von Hunden ohne Schwanz
+		angefertigt.}
+\end{exe}
+
+Eine weitere Auf"|fälligkeit ist das Kompositum \xayr{gebisnFy yelNF}{gebisanye
+yelang}{Steinbildnis, Statue}, das nicht univerbiert ist. Die Pluralmarkierung
+(und auch die overte Kasusmarkierung) tritt an den Kopf des Kompositums,
+während das modifizierende Nomen wie ein Adjektiv unmarkiert bleibt. Das
+nominale Komplement dazu, \xayr{venejyeri}{veneyyeri}{von Hunden} wird von
+einem Relativsatz modifiziert, welcher der Anbindung der \textsc{pp}
+\xayr{sitFrmFy kjvj}{sitramya kayvay}{ohne Schwanz} als komplexem Attribut von
+\rayr{venejyeri}{veneyeri} dient. Im Prinzip enthält der Relativsatz selbst
+einen Kopulasatz mit Subjektellipse. \xayr{kjvj}{kayvay}{ohne} ist eine der
+Handvoll Postpositionen, die Ayeri besitzt.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Beigegebenes Material}
+\label{sec:suppl}
+
+Hobbymäßig entwickelte Sprachen in der Regel nur der Person bekannt sind, die
+sie erfunden hat, deshalb ist es normalerweise notwendig, der Übersetzung ein
+Glossar und ein paar kurze Notizen zur Grammatik beizugeben, um der nächsten
+Person im Kreis eine Grundlage zur Interpretation des Erhaltenen zu geben.
+Neben der Grammatik und dem Wörterbuch auf der Webseite%
+%
+	\footnote{Siehe \url{https://ayeri.de} (\DTMdate{2024-06-08}).}
+%
+habe ich also folgende Informationen dem Text auf Ayeri in \cref{sec:ayruebers}
+hinzugefügt (kleine Fehler habe ich korrigiert und ein paar Formulierungen
+verbessert).
+
+\subsection{Glossar}
+
+% \setcounter{unbalance}{2}
+\begin{multicols}{2}
+\raggedright
+\begin{description}[nosep]
+	\item[adaya]
+		\ayr{Ady}
+		\emph{Adv.},
+		da, dort
+	\item[anl-]
+		\ayr{AnFlF/}
+		\emph{Vb.},
+		bringen, liefern
+	\item[Apican]
+		\ayr{ApitFynF}
+		\emph{N.~mask.},
+		\textins{Personenname (\q{der Reine})}
+	\item[ayon]
+		\ayr{AyonF}
+		\emph{N.~mask.},
+		Mann, Mensch
+	\item[ayron]
+		\ayr{AjronF}
+		\emph{N.~neut.},
+		Stadt, Burg
+	\item[bahis]
+		\ayr{bhisF}
+		\emph{N.~inan.},
+		Tag
+	\item[banta]
+		\ayr{bMt}
+		\emph{N.~neut.},
+		Mund, Maul
+	\item[bari]
+		\ayr{bri}
+		\emph{N.~inan.},
+		Fleisch (als Lebensmittel)
+	\item[baryati]
+		\ayr{brFyti}
+		\emph{N.~mask.},
+		Metzger, Fleischer
+	\item[cun-]
+		\ayr{kYunF/}
+		\emph{Vb.},
+		anfangen, beginnen
+	\item[dabas]
+		\ayr{dbsF}
+		\emph{Adv.},
+		heute
+	\item[da-cuyam]
+		\ayr{d/kYuymF}
+		\emph{Adv.}
+		nämlich, und zwar
+	\item[diyan]
+		\ayr{diynF}
+		\emph{Adj.},
+		wertvoll, lieb; üppig (Wuchs); höf"|licher Anredetitel
+	\item[epang]
+		\ayr{EpNF}
+		\emph{Adv.},
+		danach, dann, als nächstes
+	\item[garan]
+		\ayr{grnF}
+		\emph{N.~neut.},
+		Name
+	\item[gebisan]
+		\ayr{gebisnF}
+		\emph{N.~neut.},
+		Bild, Abbild, Bildnis
+	\item[gebisan yelang]
+		\ayr{gebisnF yelNF}
+		\emph{N.~neut.}
+		Statue
+	\item[guta-]
+		\ayr{gut/}
+		\emph{Vb.},
+		verzichten; fasten
+	\item[hayar-]
+		\ayr{hyrF/}
+		\emph{Vb.},
+		(ab)hacken, (ab)hauen, fällen
+	\item[-hen]
+		\ayr{/henF}
+		\emph{Qnt.},
+		alle, jeder
+	\item[ikan]
+		\ayr{IknF}
+		\emph{Adj.}
+		ganz, komplett
+	\item[int-]
+		\ayr{IMtF/}
+		\emph{Vb.},
+		kaufen
+	\item[kacisa-]
+		\ayr{ktFyis/}
+		\emph{Vb.},
+		ergreifen, packen
+	\item[kadāre]
+		\ayr{kdaare}
+		\emph{Konj.},
+		sodass, damit, auf dass
+	\item[kasu]
+		\ayr{ksu}
+		\emph{N.~inan.},
+		Korb
+	\item[-kay]
+		\ayr{/kj}
+		\emph{Qnt.},
+		etwas, wenig(er), ein bisschen
+	\item[kayvay]
+		\ayr{kjvj}
+		\emph{Adp.},
+		ohne
+	\item[kayvo]
+		\ayr{kjvo}
+		\emph{Adp.},
+		neben, mit, an der Seite von; entlang
+	\item[keynam]
+		\ayr{kejnmF}
+		\emph{N.~neut.},
+		Leute, Menschen
+	\item[kirin]
+		\ayr{kirinF}
+		\emph{N.~inan.},
+		Straße, breiter Weg
+	\item[kivo]
+		\ayr{kivo}
+		\emph{Adj.},
+		klein; kurz (Zeit)
+	\item[-ma]
+		\ayr{/m}
+		\emph{Qnt.},
+		ausreichend, genug
+	\item[masahatay]
+		\ayr{mshtj}
+		\emph{Adp., Adv.},
+		seit; seitdem, seither
+	\item[mayisa]
+		\ayr{myis}
+		\emph{Adj., Adv.},
+		fertig, abgeschlossen (Adj.); generell perfektivierende Bedeutung (Adv.)
+	\item[men]
+		\ayr{menF}
+		\emph{Num., Indef.},
+		eins; ein
+	\item[mine]
+		\ayr{mine}
+		\emph{N.~inan.},
+		Angelegenheit, Sache, Frage, Argument
+	\item[mitan-]
+		\ayr{mitnF/}
+		\emph{Vb.},
+		leben (an einem Ort), wohnen
+	\item[Miyan]
+		\ayr{miynF}
+		\emph{N.~inan.},
+		sechster Tag der Woche, Freitag
+	\item[māy]
+		\ayr{maaj}
+		\emph{Adv.},
+		ja, doch; generell verstärkende Bedeutung
+	\item[mya-]
+		\ayr{mY/}
+		\emph{Vb.} sollen; als Modalpartikel \rayr{mFy}{mya} mit obligativer
+		oder instruktiver Bedeutung
+	\item[nara-]
+		\ayr{nr/}
+		\emph{Vb.},
+		sprechen, reden, sagen
+	\item[nasi]
+		\ayr{nsi}
+		\emph{Adj.},
+		treu, loyal, ergeben
+	\item[natrayon]
+		\ayr{ntFryonF}
+		\emph{N.~mask.},
+		Priester, Mönch
+	\item[natrayon visam]
+		\ayr{ntFryonF vismF}
+		\emph{N.~mask.},
+		Hohepriester; Papst
+	\item[nay]
+		\ayr{nj}
+		\emph{Konj.},
+		und
+	\item[naynay]
+		\ayr{njnj}
+		\emph{Konj., Adv.},
+		auch, ebenfalls, darüber hinaus, und so weiter
+	\item[nosa-]
+		\ayr{nos/}
+		\emph{Vb.},
+		anordnen, befehlen, gebieten
+	\item[nosān]
+		\ayr{nosaanF}
+		\emph{N.~neut.},
+		Anordnung, Befehl, Gebot
+	\item[nupisa]
+		\ayr{nupis}
+		\emph{Adj.},
+		verletzt, verwundet
+	\item[nārya]
+		\ayr{naarFy}
+		\emph{Konj., Adv.},
+		aber, außer, doch, obwohl, trotzdem
+	\item[pa-]
+		\ayr{p/}
+		\emph{Vb.}
+		nehmen
+	\item[pangis]
+		\ayr{pNisF}
+		\emph{N.~inan.},
+		Geld, Zahlungsmittel
+	\item[panyan]
+		\ayr{pnFynF}
+		\emph{N.~inan.},
+		Notiz, Zettel
+	\item[Peram]
+		\ayr{permF}
+		\emph{N.~neut.},
+		\textins{Ortsname}
+	\item[ranya]
+		\ayr{rnFy}
+		\emph{Indef.},
+		niemand, nichts
+	\item[roda-]
+		\ayr{rod/}
+		\emph{Vb.},
+		gehorchen
+	\item[samang]
+		\ayr{smNF}
+		\emph{Num.},
+		zehntausend ($10_{12}^{2^2}$)
+	\item[sara-]
+		\ayr{sr/}
+		\emph{Vb.},
+		gehen, weggehen; aufhören
+	\item[sasān]
+		\ayr{ssaanF}
+		\emph{N.~inan.}
+		Weg, Straße
+	\item[silv-]
+		\ayr{silFvF/}
+		\emph{Vb.},
+		sehen; ansehen (+~Pat.), zusehen (+~Dat.); einsehen, erkennen
+	\item[simbey]
+		\ayr{siMbej}
+		\emph{N.~inan.},
+		Träne
+	\item[sitram]
+		\ayr{sitFrmF}
+		\emph{N.~inan.},
+		Schwanz
+	\item[tadayen]
+		\ayr{tdyenF}
+		\emph{Adv.},
+		immer, jedes Mal
+	\item[tahisa-]
+		\ayr{this/}
+		\emph{Vb.},
+		besitzen
+	\item[taman]
+		\ayr{tmnF}
+		\emph{N.~inan.},
+		Brief
+	\item[tapy-]
+		\ayr{tpFyF/}
+		\emph{Vb.},
+		setzen, stellen, legen
+	\item[tav-]
+		\ayr{tvF/}
+		\emph{Vb.},
+		bekommen
+	\item[ter-]
+		\ayr{terF/}
+		\emph{Vb.},
+		verschütten, vergießen; streuen, verstreuen
+	\item[tiya-]
+		\ayr{tiy/}
+		\emph{Vb.},
+		schaffen, erschaffen, machen, herstellen
+	\item[tubay]
+		\ayr{tubj}
+		\emph{N.~inan.},
+		Wurst
+	\item[tura-]
+		\ayr{tur/}
+		\emph{Vb.},
+		senden, übersenden, übermitteln
+	\item[veney]
+		\ayr{venej}
+		\emph{N.~neut.},
+		Hund
+	\item[visam]
+		\ayr{vismF}
+		\emph{Adj.},
+		Haupt-\dots, Ober-\dots{}
+	\item[yelang]
+		\ayr{yelNF}
+		\emph{N.~inan.},
+		Stein (auch als Material)
+	\item[yoma-]
+		\ayr{yom/}
+		\emph{Vb.},
+		(da) sein, sich befinden, existieren
+\end{description}
+\end{multicols}
+
+\subsection{Notizen zur Grammatik}
+\label{subsec:gramnot}
+
+\subsubsection{Allophonie}
+
+Bei den Konsonantenphonemen löst /j/ nach /t k/ und /d ɡ/ allophonisch
+Palatalisierung zu [t͡ʃ] und [d͡ʒ] aus, die in der Romanisierung mit ⟨c⟩ und
+⟨j⟩ wiedergegeben werden.
+% Außerdem resultiert [d͡ʒ] regelmäßig durch die
+% Kontraktion der nominalen Pluralendung \rayr{/ye}{-ye}, wenn das
+% darauf"|folgende Suf"|fix mit Vokal oder /j/ beginnt, beispielsweise
+% \rayr{/ye}{-ye}~+~\rayr{/AsF}{-as}~>~\rayr{/ye\_asF}{-jas}.
+Zwei adjazente Vokale der gleichen Qualität produzieren einen Langvokal, also
+zum Beispiel /a/~+ /a/~>~/aː/ ⟨ā⟩, mit Ausnahme der verbalen Aspekt- und
+Modussuf"|fixe, die einen vorangehenden Vokal typischerweise tilgen.
+% ; /uː/ ⟨ū⟩ existiert aber nur in wenigen Lexemen, zum Beispiel
+% \xayr{bbuu}{babū}{barbarisch}.
+
+\subsubsection{Syntax}
+
+Ayeri (\,\ayr{Ayeri}\,) verwendet Verberststellung (\textsc{vso}) als
+unmarkierte Konstituentenfolge. Da die Sprache eine Variante des
+\textsc{vo}-Typus darstellt, folgen Modifikatoren ihren Köpfen in der Regel.
+Dies bedeutet, dass Adjektive, Possessiva und Relativsätze ihrem Nomen folgen;
+genauso folgen Possessoren auch dem Possessum.
+
+Darüber hinaus ist Ayeri im Grunde eine Akkusativsprache (\textsc{s~=~a~≠~o}).
+\q{Echte} Passivsubjekte behalten allerdings ihre Patiensmarkierung, während
+das Agensargument dann fehlt; in diesen Fällen von Ergativität zu sprechen,
+würde die Beschreibung nur unnötig verkomplizieren. Obwohl Belebtheit sogar
+eine Flexionskategorie in der Sprache darstellt, bleibt diese Unterscheidung
+syntaktisch ungenutzt. Demotion der Agens zu einem obliquen Argument gibt es
+aufgrund der semantischen Kasusmarkierung nicht. Es ist aber möglich, ein
+\q{unechtes} Passiv zu bilden, bei welchem das Patiensargument logisch die
+Topik bildet aber das Verb weiterhin mit dem Agensargument als syntaktischem
+Subjekt kongruiert.
+% Auch bei kausativen Sätzen bildet der Auslöser, als solcher gesondert
+% markiert, logisch die Topik, wird aber ebenfalls nicht zum syntaktischen
+% Subjekt. Die anderen Argumente des Verbs werden entsprechend auch in diesem
+% Fall nicht herabgestuft.
+
+% In ditransitiven Sätzen wird der Donor als Agens markiert
+% (\textsc{s~=~a~=~d}), das Thema als Patiens (\textsc{o~=~t}). Der Rezipient
+% (\textsc{r}) erhält Dativmarkierung. Prädikative \textsc{np}s werden
+% abweichend als Patiens markiert, um Subjekt (Agens) und Prädikat
+% (\q{Patiens}) zu unterscheiden, da Ayeri keine overte Kopula besitzt und
+% doppelte Kernrollenmarkierung im gleichen Satz vermeidet.
+
+Neben regulären Verbalsätzen gibt es auch Kopulasätze, allerdings besitzt Ayeri
+eine Null-Kopula. Eine Besonderheit ist, dass das Prädikatsnomen in diesem Fall
+als Patiens markiert wird, obwohl es mit dem Subjekt (mit Agensmarkierung)
+gleichbedeutend ist. Das Prädikat kann zum Zweck der Betonung an die Spitze des
+Satzes gestellt werden.
+
+Ayeri macht keinen Unterschied zwischen restriktiven und nicht-restriktiven
+Relativsätzen. Relativsätze brauchen allerdings immer ein Antezedens, freie
+Relativsätze sind also nicht erlaubt. Relativsätze sind im Grunde eigenständige
+Sätze, insofern die Relativpartikel \rayr{si}{si} die Funktion einer
+Subjunktion hat, die ein komplexes Attribut an eine \textsc{np} bindet oder mit
+deren Hilfe Attribute in ihrem Bezug desambiguiert werden können. Relativsätze
+haben daher normalerweise einen internen Kopf. Wenn ein Relativsatz einen
+Kopulasatz enthält, kann dessen Subjekt ausfallen.
+
+Komplemente von \textsc{np}s werden zur Vermeidung von Ambiguität in der
+Modifikationsrelation rechtsversetzt, wenn die \textsc{np} ein Adjunkt enthält,
+welches das Kopfnomen modifiziert.
+
+\subsubsection{Morphosyntax}
+\label{subsubsec:morphsyn}
+
+Die Topik wird durch ein Proklitikum am Verb markiert, das im Grunde der
+Kasusendung der Topik-\textsc{np} entspricht, während die Topik-\textsc{np}
+selbst nullmarkiert ist. Es handelt sich bei Ayeri also um eine sogenannte
+\fw{trigger conlang}. Es bestehen nahezu keine Restriktionen für die Wahl der
+Topik-\textsc{np}. Pronomen können in gleicher Weise topikalisiert werden.
+Topikmarkierung ist obligatorisch in transitiven Sätzen, während intransitive
+Sätze normalerweise keine Topik markieren. Auch imperative Verben tragen
+normalerweise keine Topikmarkierung.
+
+Die Relativpartikel \rayr{si}{si} zeigt optional Kasuskongruenz mit der
+\textsc{np}, welche der Relativsatz modifiziert. Dies geschieht vor allem dann,
+wenn der Relativsatz rechtsversetzt ist.
+
+Neben den verschiedenen Pronomenarten ist die einzige Kongruenz zeigende
+Wortart das Verb. Grundsätzlich kongruieren Verben mit dem Agensargument, es
+sei denn, es fehlt durch echte Passivierung. Ersatzweise kongruiert das Verb
+dann mit dem Patiensargument als syntaktischem Subjekt.
+
+\subsubsection{Morphologie}
+
+Ayeri ist eine agglutinierende Sprache und dabei sehr regelmäßig. Entsprechend
+dem \textsc{vo}-Typus werden hauptsächlich Suf"|fixe zur Flexion benutzt.
+Darüber hinaus besitzt die Sprache etliche Klitika, die sich insbesondere bei
+finiten Verben in einem Klitikcluster vor dem Verb zeigen.
+
+\subsubsubsection{Nomen}
+\label{subsubsec:nom}
+
+Ayeri hat ein zweistufiges Genussystem: Nomen können entweder belebt (\Anim)
+oder unbelebt (\Inan) sein. Zu den belebten Nomen zählen zum Beispiel lebende
+Personen und Tiere, Personifizierungen, Gefühle und mentale Prozesse sowie
+Dinge, die Anzeichen von Leben zeigen (z.\,B.~Pflanzen) oder die eng mit
+Menschen assoziiert sind (z.\,B.~Wohnungen). Menschen sowie Haus- und Nutztiere
+können entsprechend ihrem sozialen respektive ihrem biologischen Geschlecht
+maskulin (\M) oder feminin (\F) sein; als belebt klassifizierte Dinge und
+Abstrakta sind dagegen neutral (\N). Genus ist dem Lexikon inhärent und kovert,
+darum gibt das Glossar es als Hilfsstellung explizit an. Es gibt keine
+Markierung von Definit- und Indefinitheit, doch existiert ein optionales Präfix,
+das Unspezifizität anzeigt (\xayr{me/}{mə-}{irgendein}), im Text aber nicht
+vorkommt.
+
+Nomen flektieren in der Regel nach Numerus und Kasus, können in bestimmten
+Kontexten aber auch ohne overte Kasusflexion auftreten. Der Singular ist
+unmarkiert, der Plural wird mit dem Suf"|fix \rayr{/ye}{-ye} gekennzeichnet.
+
+Ayeri unterscheidet sieben Kasus: Agens (\Aarg), Patiens (\Parg), Dativ (\Dat),
+Genitiv (\Gen), Lokativ (\Loc), Kausativ (\Caus) und Instrumentalis (\Ins),
+siehe~\cref{tab:decl}. Die Vokale in Klammern in der Tabelle fallen weg, wenn
+der Stamm auf einen Vokal endet, was also auch dann der Fall ist, wenn an die
+Wurzel ein Pluralsuf"|fix angehängt ist.
+
+\begin{table}
+\caption{Kasusmarkierung der Nomen}
+\begin{tabularx}{\linewidth}{l l l c c X}
+\toprule
+Kasus
+	& \multicolumn{2}{c}{Suf"|fixform}
+	& \multicolumn{2}{c}{proklitische Form}
+	& Funktion
+	\\
+
+\cmidrule(lr){2-3}
+\cmidrule(lr){4-5}
+
+%
+	& \multicolumn{1}{c}{\Anim}
+	& \multicolumn{1}{c}{\Inan}
+	& \multicolumn{1}{c}{\Anim}
+	& \multicolumn{1}{c}{\Inan}
+	\\
+
+\midrule
+
+\Aarg
+	& -ang
+	& -reng
+	& ang
+	& eng
+	& prototypische Agens (Agens, Experiencer, Force); transitive und intransitive Subjekte im Aktiv; Subjekt des \q{unechten} Passivs; Subjekt in Kopulasätzen
+	\\
+
+\Parg
+	& -as
+	& -ley
+	& sa
+	& le
+	& prototypische Patiens (Patiens, Thema); transitive und intransitive Objekte im Aktiv, direktes Objekt; Subjekt des \q{echten} Passivs; Prädikatsnomen in Kopulasätzen
+	\\
+
+\midrule
+
+\Dat
+	& \multicolumn{2}{c}{-yam}
+	& \multicolumn{2}{c}{yam}
+	& Rezipient; Ziel, Richtung; indirektes Objekt; sekundäres Prädikatsnomen
+	\\
+
+\Gen
+	& \multicolumn{2}{c}{-(e)na}
+	& \multicolumn{2}{c}{na}
+	& Possessor, Quelle; worüber etwas geht bzw. wovon etwas handelt
+	\\
+
+\Loc
+	& \multicolumn{2}{c}{-ya}
+	& \multicolumn{2}{c}{ya}
+	& Ort; typisch assoziiertes Ziel von Bewegungsverben
+	\\
+
+\Caus
+	& \multicolumn{2}{c}{-isa}
+	& \multicolumn{2}{c}{sā}
+	& Verursacher (nur adverbiale Verwendung)
+	\\
+
+\Ins
+	& \multicolumn{2}{c}{-(e)ri}
+	& \multicolumn{2}{c}{ri}
+	& Instrument, Helfer; Komplement einer \textsc{np}
+	\\
+
+\bottomrule
+\end{tabularx}
+\label{tab:decl}
+\end{table}
+
+Topikalisierte \textsc{np}s sind nullmarkiert; stattdessen wird der
+entsprechende Kasus mit der in \cref{tab:decl} angegebenen klitischen Form
+links vom Verb markiert. Eigennamen verwenden ebenfalls die klitische Form bei
+der Kasusmarkierung, zum Beispiel \xayr{n bliinF}{na Balīn}{von Berlin}.
+
+Der Diminutiv von Nomen wird durch vollständige Reduplikation angezeigt. Bei
+Komposita wird nur das Kopfnomen redupliziert und flektiert. Komposita sind in
+der Regel univerbiert, sodass grammatische Endungen an das letzte Element
+angehängt werden. Daneben gibt es losere Verbindungen von Nomen, bei denen
+ebenfalls nur das Kopfnomen flektiert wird und das modifizierende Nomen als
+Attribut folgt.
+
+\subsubsubsection{Pronomen}
+
+Ayeri besitzt durch die Menge an \st{Kazoos} Kasus und Genera eine Fülle von
+(ziemlich regelmäßig gebildeten) Personalpronomen, wobei für den Kontext des
+vorliegenden Textes nur ein Teil derjenigen in \cref{tab:persproagr} relevant
+ist, die ihrerseits nur einen Ausschnitt darstellt. Für dritte Personen werden
+auch häufig Demonstrativpronomen verwendet, allerdings kommt dieser Fall im
+Text nicht vor. Indefinitpronomen sind im Glossar aufgeführt, sofern sie im
+Text vorkommen.
+
+\begin{table}
+\caption{Personalpronomen und Personenendungen der Verben}
+\begin{tabularx}{\linewidth}{l l C C C C C C c c C C}
+\toprule
+%
+	& %
+	& \multicolumn{2}{c}{\makecell[tc]{Kongruenz-/\\Topikform}}
+	& \multicolumn{2}{c}{\Aarg}
+	& \multicolumn{2}{c}{\Parg}
+	& \multicolumn{2}{c}{\Dat}
+	& \multicolumn{2}{c}{\Gen}
+	\\
+
+\cmidrule(lr){3-4}
+\cmidrule(lr){5-6}
+\cmidrule(lr){7-8}
+\cmidrule(lr){9-10}
+\cmidrule(lr){11-12}
+
+%
+	& %
+	& \multicolumn{1}{c}{\Sg}
+	& \multicolumn{1}{c}{\Pl}
+	& \multicolumn{1}{c}{\Sg}
+	& \multicolumn{1}{c}{\Pl}
+	& \multicolumn{1}{c}{\Sg}
+	& \multicolumn{1}{c}{\Pl}
+	& \multicolumn{1}{c}{\Sg}
+	& \multicolumn{1}{c}{\Pl}
+	& \multicolumn{1}{c}{\Sg}
+	& \multicolumn{1}{c}{\Pl}
+	\\
+
+\midrule
+
+\First
+	& %
+	& ay
+	& ayn
+	& yang
+	& nang
+	& yas
+	& nas
+	& yām
+	& nyam
+	& nā
+	& nana
+	\\
+
+\Second
+	& %
+	& va
+	& va
+	& vāng
+	& vāng
+	& vās
+	& vās
+	& vayam
+	& vayam
+	& vana
+	& vana
+	\\
+
+\Third
+	& \M
+	& ya
+	& yan
+	& yāng
+	& tang
+	& yās
+	& tas
+	& yayam
+	& cam
+	& yana
+	& tan
+	\\
+
+%
+	& \F
+	& ye
+	& yen
+	& yeng
+	& teng
+	& yes
+	& tes
+	& yeyam
+	& teyam
+	& yena
+	& ten
+	\\
+
+%
+	& \N
+	& yo
+	& yon
+	& yong
+	& tong
+	& yos
+	& tos
+	& yoyam
+	& toyam
+	& yona
+	& ton
+	\\
+
+%
+	& \Inan
+	& ara
+	& aran
+	& reng
+	& teng
+	& rey
+	& tey
+	& rayam
+	& racam
+	& ran
+	& ten
+	\\
+
+\bottomrule
+\end{tabularx}
+\label{tab:persproagr}
+\end{table}
+
+% Demonstrativpronomen werden mit \rayr{d/}{da-} (indefinit), \rayr{Ed/}{eda-}
+% (proximal) und \rayr{Ad/}{ada-} (distal) gebildet. Gerade beim belebten
+% Agens- und Patiens-Demonstrativum tritt daran das Element \rayr{/nY}{-nya}
+% (z.\,B.~\xayr{AdnYaaNF}{adanyāng}{jener, der da};
+% vgl.~\xayr{nYaanF}{nyān}{Person}), in jedem Fall folgt am Schluss die
+% Kasusendung, die dieselbe wie bei der Deklination der Nomina ist
+% (\cref{tab:decl}).
+
+In \cref{subsubsec:morphsyn} wurde erklärt, dass Relativpartikeln keine
+Pronomen im engen Sinn darstellen, allerdings können sie durch sekundäre
+Kasusmarkierung pronominalisiert werden. Das Relativ\-pronomen trägt dann eine
+zweite Kasusendung, die seine grammatische Funktion als Konstituente innerhalb
+des Relativsatzes markiert. Wenn die Relativpartikel keine primäre
+Kasuskongruenz aufweist (z.\,B. \rayr{sin}{sina} mit Bezug auf eine
+Genitiv-\textsc{np}) und so die sekundäre Endung an das einfache \rayr{si}{si}
+tritt, wird der Vokal der sekundären Endung zur Desambiguierung gedehnt, zum
+Beispiel \xayr{sinaa}{sinā}{von welchem}. Sekundär markierte Relativa können
+jedoch innerhalb des Relativsatzes nicht selbst als Topiken fungieren, insofern
+sie ihre Kasusmarkierung nicht ans Verb abgeben können.
+
+\subsubsubsection{Verben}
+
+Verben kongruieren nach Person (\First, \Second, \Third) und Numerus (\Sg,
+\Pl) ihres Subjekts, siehe \cref{tab:persproagr}. Bei dritten Personen kommen
+noch Genus und Belebtheit (\M, \F, \N, \Inan) als Flexionskategorien hinzu. Bei
+pronominalen Subjekten ersetzt das Personalpronomen das Kongruenzsuf"|fix am
+Verb, indem es als Enklitikum ans Ende des Verbstamms tritt. Die
+Personenendungen der regulären Kongruenz mit dem Subjekt und die
+topikalisierten pronominalen Klitika sind homophon, zum Beispiel korrespondiert
+die Vollform \xayr{/yaaNF}{-yāng}{er} mit der topikalisierten Form
+\rayr{ANF—/y}{ang \dots\ -ya}; \rayr{/y}{-ya} ist gleichzeitig auch die
+Kongruenzendung für den Bezug auf eine Subjekt-\textsc{np} im Singular
+Maskulinum.
+
+Finite Verben weisen darüber hinaus optional Flexion für Tempus auf, ansonsten
+für Aspekt und Modus. Dafür werden verschiedene Markierungsstrategien
+verwendet. Im Rahmen des Texts sind habitualer und iterativer Aspekt sowie der
+Imperativ als Modus relevant. Der Imperativ der zweiten Person wird mit der
+Quasi-Personenendung \rayr{/U}{-u} markiert, die einen vorhergehenden Vokal
+tilgt. Habitualer Aspekt wird mit der Endung \rayr{/As}{-asa} markiert, die an
+den Verbstamm tritt und ebenfalls einen vorhergehenden Vokal tilgt. Aspekt kann
+darüber hinaus durch Adverbien ausgedrückt werden, zum Beispiel
+\xayr{myis}{mayisa}{fertig sein}, welches die Abgeschlossenheit einer Handlung
+betont.
+
+Iterativer Aspekt drückt aus, dass eine Handlung mehrfach geschieht, kann aber
+auch reversive Bedeutung haben, zum Beispiel
+\xayr{t/tpYnNF}{ta-tapyanang}{wir legen immer wieder} oder \wdef{wir legen
+wieder zurück}. Wie das Beispiel zeigt, wird iterativer Aspekt durch
+Reduplikation der ersten beiden Silbensegmente des Verbstamms angezeigt.
+
+Modalität wird in der Regel durch Modalpartikeln ausgedrückt, die im
+präverbalen Klitikcluster nach dem Topikmarker stehen. Diese haben
+typischerweise die Form von unflektierten Verbstämmen, zum Beispiel
+korrespondiert \xayr{miNF/}{ming-}{können} mit der Partikel \rayr{miNF}{ming}
+und \xayr{mY/}{mya-}{sollen} mit der Partikel \rayr{mY}{mya}.
+
+Bei \xayr{d/}{da-}{so} handelt es sich um eine Partikel, die zum einen
+pronominal verwendet werden kann, zum Beispiel \xayr{d/kilyNF}{da-kilayang}{ich
+darf das} oder \xayr{d/IMtYyeNF}{da-incyeng}{sie kauft eins}. Zum anderen kann
+sie auch präsentative Funktion haben, beispielsweise in
+\xayr{d/shyaaNF}{da-sahayāng}{da kommt er}.
+
+Eine weitere Partikel stellt \rayr{sitNF}{sitang-} dar, das anstelle eines
+vollständigen Reflexivpronomens auftreten kann.
+\xayr{sitNF/ketFtNF}{sitang-kettang}{sie waschen sich} ist also äquivalent zu
+\rayr{ANF ketFynF sitNF/tsF}{ang kecan sitang-tas}.
+
+Wenn ein Verb ein verbales Komplement besitzt, zum Beispiel bei Kontroll- und
+Raisingverben, weist das abhängige Verb eine im Prinzip infinite Form auf, die
+mit \rayr{/ymF}{-yam} gekennzeichnet und als \q{Partizip} bezeichnet wird. Mit
+\rayr{/AnF}{-an} nominalisiert kann diese Form als Gerundium verwendet werden.
+Infinite Verben dieser Art können trotzdem Modus- und Aspektmarkierung
+aufweisen.
+
+\subsubsubsection{Adjektive, Adverbien \& Co.}
+
+Adjektive weisen keine Kongruenz auf, können aber negiert und gesteigert
+werden, genauso wie auch Adverbien. Sie stehen immer direkt hinter ihrem Bezug.
+
+Neben Adjektiven im engeren Sinn besitzt Ayeri eine Reihe von Quantoren, die in
+der Regel am Ende der \textsc{np} (determinierende Quantoren), \textsc{vp} oder
+\textsc{ap} (adverbiale Quantoren) hängen. Der Text enthält mehrere solcher
+Partikeln, zum Beispiel \xayr{/kj}{-kay}{wenig, etwas, ein bisschen}.
+
+\subsubsubsection{Präpositionen}
+
+Freie Dative und Genitive kennzeichnen eine Bewegung zu etwas hin
+beziehungsweise von etwas her (vgl.~\cref{subsubsec:nom}). Freie Lokative
+kennzeichnen eine Position, vor allem eine, die prototypisch mit dem Verb im
+Satz assoziiert wird. Dies kommt insbesondere bei Positions- und
+Bewegungsverben zum Tragen.
+
+Ayeri verwendet darüber hinaus in der Regel Präpositionen, die größtenteils von
+Nomen abgeleitet sind. Daneben gibt es eine Reihe von Postpositionen, von denen
+die meisten jüngere, sekundäre Bildungen etwa aus Adverbialen darstellen. Das
+Präpositionalobjekt steht in der Regel im Lokativ. Steht es im Dativ,
+kennzeichnet dieser bei manchen Präpositionen eine Bewegung in Richtung des
+Objekts statt eines Ruhens an dem Ort, welchen das Objekt bezeichnet.
+
+%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \vfill
+% \pagebreak
+
+\begingroup\multicolsep=0pt
+\printglossary[
+	style=threecolumn,
+	type=leipzig,
+	title={Abkürzungen der Glossierung},
+]
+\endgroup
+
+% % \nocite{*} % returns all entries from the bibliography database
+\printbibliography[heading=bibintoc]
+
+\end{document}
