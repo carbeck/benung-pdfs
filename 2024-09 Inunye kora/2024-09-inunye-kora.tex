@@ -1,0 +1,505 @@
+\documentclass[12pt,paper=a4]{scrartcl}
+
+% Author, Title, Subtitle etc.
+\author{Carsten Becker}
+\title{Inunye kora}
+\subtitle{Arpeggiated fishes, weird}
+\date{2024/09} % Format: YYYY/MM/DD (rev. N, YYYY/MM/DD)
+
+% Provide running author and date
+\makeatletter
+\let\runauthor\@author
+\let\rundate\@date
+\makeatother
+
+% Handle language and quotation marks
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+\setotherlanguage{german}
+\usepackage{csquotes} % Put quotations in \enquote{}!
+\SetBlockEnvironment{quotation}
+\renewcommand*{\mkccitation}[1]{ (#1)}
+\let\q\textquote
+
+% Quotation style for word definitions
+\DeclareQuoteStyle{wdef}
+	{\textquoteleft}{\textquoteright}
+	{\textquotedblleft}{\textquotedblright}
+\newcommand{\wdef}[1]{{\setquotestyle{wdef}\enquote{#1}}}
+
+% Set all margins to 2.54 cm
+\usepackage[margin=1in]{geometry}
+\widowpenalty10000 % Avoid widows like the plague!
+\clubpenalty10000 % Avoid orphans like the plage, too!
+
+% Extended formatting of lists
+\usepackage{enumitem}
+\newlist{glossdefs}{itemize}{1}
+\setlist[glossdefs]{nosep, leftmargin=3em, labelwidth=2.5em, align=left}
+\setlist[itemize]{noitemsep}
+
+% Make multiple columns available in single-column document
+\usepackage{multicol}
+
+% Make text colors and color names available
+\usepackage{xcolor}
+
+% Load font stuff for XeTeX
+\usepackage{fontspec}
+
+% Set main fonts
+\newfontfamily{\Tagati}[
+	Renderer=Graphite,
+	Scale=1.0,
+	BoldFont={* Italic},
+	HyphenChar=·,
+]{Tagati Book G}
+
+\usepackage{ebgaramond}
+
+\setsansfont[
+	Ligatures=TeX,
+	Numbers=Lowercase,
+	Scale=MatchUppercase,
+	BoldFont={Open Sans Condensed Bold},
+]{Open Sans Condensed Light}
+
+% % Load BibLaTeX (using Biber), configure citation styles
+% \usepackage[
+% 	authordate-trad,
+% 	backend=biber,
+% 	safeinputenc,
+% ]{biblatex-chicago}
+
+% % To make \textcite look like "Doe (2014: 213)"
+% \renewcommand*{\postnotedelim}{\addcolon\addspace}
+% \DeclareFieldFormat{postnote}{#1}
+% \DeclareFieldFormat{multipostnote}{#1}
+
+% % Enable generating files from this .tex file (for the bibliography) 
+% \usepackage{filecontents}
+
+% Date etc.
+\usepackage[
+	datesep={/},
+]{datetime2}
+
+% Verse
+\usepackage{verse}
+
+% Ability to include graphics and dealing with footnotes in descriptions
+\usepackage{graphicx}
+\usepackage[font={small,sf},labelfont={small,sf},format=plain]{caption}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\setlength{\columnsep}{2\baselineskip}
+
+% General headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead[L]{} % empty
+\fancyhead[C]{} % empty
+\fancyhead[R]{\thepage}
+
+\fancyfoot[L]{} % empty
+\fancyfoot[C]{} % empty
+\fancyfoot[R]{} % empty
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% First page headers and footers are different
+\fancypagestyle{firstpage}{
+	\fancyhead[L]{\sffamily \footnotesize \textbf{Benung. The Ayeri Language Resource}}
+	\fancyhead[C]{} % empty
+	\fancyhead[R]{\sffamily \footnotesize \runauthor{} · \rundate{}}
+	
+	\fancyfoot[L]{} % empty
+	\fancyfoot[C]{} % empty
+	\fancyfoot[R]{\sffamily \footnotesize 
+	\href{https://ayeri.de}{https://ayeri.de} · 
+	\href{https://github.com/carbeck/benung-pdfs}{https://github.com/carbeck/benung-pdfs} · 
+	\href{https://creativecommons.org/licenses/by-sa/4.0/}{CC~BY-SA~4.0}
+	}
+	
+	\renewcommand{\headrulewidth}{0.5pt}
+	\setlength\footskip{0.5in}
+}
+
+\usepackage{ifthen}
+\ifthenelse{\value{page}=1}{\thispagestyle{firstpage}{\pagestyle{fancy}}}
+
+% Line spacing
+\usepackage{setspace}
+\onehalfspacing
+
+% Avoid pagebreaks right after sections and subsections
+\usepackage{needspace}
+\usepackage{etoolbox}
+\preto\section{\needspace{6\baselineskip}}
+\preto\subsection{\needspace{6\baselineskip}}
+
+% Things for tables
+\usepackage{tabularx}
+% \usepackage{booktabs}
+% \usepackage{rotating}
+
+% Formatting of table of glossing abbreviations from Leipzig package manual
+\usepackage[
+	acronym,
+	nomain,
+	nonumberlist,
+	nopostdot,
+	toc=true,
+	xindy={codepage=utf8}, % language=english,
+]{glossaries}
+\usepackage{glossary-inline}
+
+\newglossarystyle{threecolumn}{%
+	\renewenvironment{theglossary}{%
+		\begin{multicols}{3}
+		\begin{glossdefs}%
+	}{%
+		\end{glossdefs}%
+		\end{multicols}%
+	}%
+	\renewcommand*{\glossaryheader}{}%
+	\renewcommand*{\glsgroupheading}[1]{}%
+	\newcommand*{\glossaryentryfield}[5]{%
+		\item[\glsentryitem{##1}\glstarget{##1}{##2}]
+		% \makefirstuc{##3}\glspostdescription{}
+		##3\glspostdescription{}
+	}%
+	\renewcommand*{\glsgroupskip}{}%
+}%
+
+% Formatting of glosses
+\usepackage{langsci-gb4e}
+\usepackage[glosses]{leipzig}
+\renewcommand{\eachwordone}{\itshape}
+\renewcommand{\eachwordtwo}{\rule[-.5\baselineskip]{0pt}{0pt}}
+
+\newleipzig{AgtT}{at}{agent topic}
+\newleipzig{PatT}{pt}{patient topic}
+\newleipzig{DatT}{datt}{dative topic}
+\newleipzig{GenT}{gent}{genitive topic}
+\newleipzig{LocT}{loct}{locative topic}
+\newleipzig{InsT}{inst}{instrumental topic}
+\newleipzig{CauT}{caut}{causative topic}
+\newleipzig{An}{an}{animate}
+\newleipzig{Inan}{inan}{inanimate}
+\newleipzig{Hab}{hab}{habitative}
+\newleipzig{Sup}{sup}{superlative}
+\newleipzig{St}{st}{strong}
+\newleipzig{Wk}{wk}{weak}
+\newleipzig{Ayr}{ayr}{Ayeri}
+\newleipzig{Ints}{ints}{Intensifier}
+
+\makeglossaries
+
+% Nicer footnotes
+\usepackage[bottom,hang,norule]{footmisc}
+\setlength{\footnotesep}{0.75\baselineskip}
+
+% Smaller font in block quotes
+\usepackage{relsize}
+\AtBeginEnvironment{quote}{\noindent\smaller}
+\AtBeginEnvironment{quotation}{\smaller}
+
+% Clickable links in footnotes, TOC, etc.
+\usepackage[
+% 	xetex,
+	bookmarks=true,
+	colorlinks=false,
+	linktoc=section,
+	hidelinks,
+	pdfusetitle,
+]{hyperref}
+
+% We want URLs to be italic and with regular uppercase numerals
+\renewcommand{\UrlFont}{%
+	\normalfont%
+	\itshape%
+	\addfontfeature{RawFeature=-onum}%
+}
+
+% In-text references
+% cf. https://tex.stackexchange.com/a/139051
+% Since German plural formation is not as regular as in English (-e, -en for
+% Beispiel), we will define the label as empty
+\usepackage[sort&compress,noabbrev]{cleveref}
+\newcommand{\crefrangeconjunction}{--}
+\crefname{xnumi}{}{}
+\creflabelformat{xnumi}{(#2#1#3)}
+\crefname{xnumii}{}{}
+\creflabelformat{xnumii}{(#2#1#3)}
+\crefname{xnumiii}{}{}
+\creflabelformat{xnumiii}{(#2#1#3)}
+\crefname{xnumiv}{}{}
+\creflabelformat{xnumiv}{(#2#1#3)}
+\crefrangeformat{xnumi}{(#3#1#4)--(#5#2#6)}
+\crefrangeformat{xnumii}{(#3#1#4--#5\crefstripprefix{#1}{#2}#6)}
+\crefrangemultiformat{xnumii}{(#3\arabic{xnumi}#1#4--#5#2#6)}
+{ and~(#3\arabic{xnumi}#1#4--#5#2#6)}{, (#3\arabic{xnumi}#1#4--#5#2#6)}
+{ and~(#3\arabic{xnumi}#1#4--#5#2#6)}
+
+
+% Macros
+\newcommand{\fw}[1]{\textit{#1}} % Foreign Word
+\newcommand{\tit}[1]{\textit{#1}} % Title of a work
+\newcommand{\tsup}[1]{\textsuperscript{#1}} % Superscript
+\newcommand{\markyellow}[1]{\colorbox{yellow}{#1}} % Yellow highlighter
+\newcommand{\ques}{\textsuperscript{?}} % raised question mark
+\newcommand{\zwsp}{\mbox{​}} % Zero-width space (ZWSP)
+
+\newcommand{\ayr}[1]{\zwsp\smash{{\Tagati #1}}} % Plain Ayeri orthography
+\newcommand{\rayr}[2]{\zwsp\smash{{\Tagati #1}} \emph{#2}} % Ayeri orthography + *r*omanization
+\newcommand{\tayr}[2]{#1 `#2'} % Romanization + *t*ranslation
+\newcommand{\xayr}[3]{\zwsp\smash{\Tagati #1} \emph{#2} `#3'} % Ayeri orthography + romanization + translation
+
+\usepackage{suffix}
+\WithSuffix\newcommand{\ayr}*[1]{{\Tagati #1}} % Plain Ayeri orthography
+\WithSuffix\newcommand{\rayr}*[2]{{\Tagati #1} \emph{#2}} % Ayeri orthography + *r*omanization
+\WithSuffix\newcommand{\xayr}*[3]{{\Tagati #1} \emph{#2} `#3'} % Ayeri orthography + romanization + translation
+
+\newenvironment{ayeri}{
+	%\hyphenpenalty=10000
+	%\hbadness=10000
+	\doublespacing
+	\begin{multicols}{2}
+	\Tagati
+}{
+	\end{multicols} \par
+}
+
+\newenvironment{mytitle}{
+	\hfill
+	\begin{minipage}{0.667\textwidth}
+	\vspace{\baselineskip}
+	\begin{center}
+		\Large
+		\sffamily\bfseries
+		\makeatletter
+}{
+		\makeatother
+	\end{center}
+	\vspace{1em}
+	\end{minipage}
+	\hfill
+}
+
+%% BIBLIOGRAPHY DATABASE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{filecontents*}{\jobname.bib}
+% @book{blah,
+%     title = {A Grammar of {Blah}},
+%     author = {Alfred E. Neuman and John X. Doe},
+%     publisher = {Maximegalon UP},
+%     location = {Maximegalon},
+%     date = {1972},
+%     series = {Reference Grammars of Inexistent Languages},
+%     number = {4},
+%     pages = {123--145},
+% }
+% \end{filecontents*}
+
+% \addbibresource{\jobname.bib}
+
+%% END OF PREAMBLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%% MAIN PART %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{mytitle}
+	\@title: \@subtitle
+\end{mytitle}
+
+\begin{quote}
+\begin{minipage}[t]{.5\linewidth}
+\begin{verse}
+\renewcommand*{\vrightskip}{-2em}
+Karonya tasang-vā,\\
+tasangya makārya ---\\
+Sā tila-\\
+yang niva.\\
+Yamanreng sinyaley\\
+perisānena nā?\\!
+
+Nasyongoyya depangang-nama.\\
+Ya nasyyang iting vana.\\
+Sā tila-\\
+yang niva\\
+vana dimayjyam. (tinkānreng)\\
+Ya nasyyang vās lito (tinkānreng)\\
+mavayena, (tinkānreng)\\
+lesayang.\\
+Ang sagonya māy enya, (tinkānreng)\\
+ang sungya mimānley. (tinkānreng)\\
+Nay eda-(tinkānreng)\\
+da-nā.\\!
+
+Ang tavay kondanley\\
+limayena rina\\
+nay kimbisanas\\
+inunyena kora,\\
+inunyena kora,\\
+inunyena kora.\\!
+
+Māy, yang ---\\
+Ang grenay avanya,\\
+grenay avanya nay\\
+nimpyang.\\
+Yang ---\\
+Ang grenay avanya.\\
+grenay avanya nay\\
+nimpyang.\\!
+\end{verse}
+\end{minipage}
+~
+\begin{minipage}[t]{.5\linewidth}
+\Tagati % \smaller
+\begin{verse}
+kronFy tsNF/vaa\\
+tsNFy mkaarFy\\
+saa til—\\
+—yNF niv\\
+ymnFreNF sinFylej\\
+perisaanen naa?\\!
+
+nsYoNojy depNNF/nm\\
+y nsYFyNF ItiNF vn\\
+saa til—\\
+—yNF niv\\
+vn dimjyeymF — \textit{tiMkaanFreNF}\\
+y nsYyNF vaasF lito — \textit{tiMkaanFreNF}\\
+mvyen — \textit{tiMkaanFreNF}\\
+lesyNF\\
+ANF sgonFy maaj EnFy — \textit{tiMkaanFreNF}\\
+ANF suNFy mimaanFlej — \textit{tiMkaanFreNF}\\
+nj Ed/ — \textit{tiMkaanFreNF}\\
+d/naa\\!
+
+ANF tvj koMdnFlej\\
+limyen rin\\
+nj kiMbisnsF\\
+InunFyen kor\\
+InunFyen kor\\
+InunFyen kor\\!
+
+maaj, yNF\\
+Ang gFrenj AvanFy\\
+gFrenj AvnFy nj\\
+niMpFyNF\\
+yNF\\
+Ang gFrenj AvanFy\\
+gFrenj AvnFy nj\\
+niMpFyNF\\!
+\end{verse}
+\end{minipage}
+\end{quote}
+
+\section{Analysis of the translation}
+
+\begin{exe}
+\ex \begin{xlist}
+	\ex \label{ex:1a}
+		\gll Karonya tasang-vā, tasangya makārya --- \\
+			ocean-\Loc{} deep=\Sup{} abyss-\Loc{} black \\
+		\trans `In the deepest ocean, in the black abyss ---'
+
+	\ex \label{ex:1b}
+		\gll Sā tilayang niva.\normalfont\footnotemark{} \\
+			\CauT{}= change=\Fsg.\Aarg{} gaze \\
+		\trans `Your gaze makes me change.'
+
+	\ex \label{ex:1c}
+		\gll Yamanreng sinyaley perisānena nā? \\
+			reason-\Aarg.\Inan{} which-\Parg.\Inan{} hesitation-\Gen{}
+			\Fsg.\Gen{} \\
+		\trans `What's the reason for my hesitation?'
+\end{xlist}
+\footnotetext{\xayr{niv}{niva}{eye}, extended here to mean `gaze'.}
+\end{exe}
+
+\begin{exe}
+\ex \begin{xlist}
+	\ex \label{ex:2a}
+		\gll Nasyongoyya depangang-nama. \\
+			follow-\Irr-\Neg-\Tsg.\M{} fool-\Aarg=only \\
+		\trans `Only a fool wouldn't follow.'
+
+	\ex \label{ex:2b}
+		\gll Ya nasyyang iting vana. \\
+			\LocT= follow=\Fsg.\Aarg{} path-\Top{} \Second.\Gen{} \\
+		\trans `Your path, I'm following it.'
+
+	\ex \label{ex:2c}
+		\gll Sā tilayang niva vana dimayjyam. \\
+			\CauT= change=\Fsg.\Aarg{} gaze-\Top{} \Second.\Gen{}
+			phantom-\Pl-\Dat{} \\
+		\trans `Your gaze makes me turn into phantoms.'
+
+	\ex \label{ex:2d}
+		\gll Ya nasyyang vās lito mavayena, lesayang. \\
+			\LocT= follow-\Fsg.\Aarg{} \Second.\Parg{} edge-\Top{} world-\Gen{}
+			fall=\Fsg.\Aarg{} \\
+		\trans `To the edge of the world is where I'll follow you, and fall.'
+
+	\ex \label{ex:2e}
+		\gll Ang sagonya māy enya, ang sungya mimānley. \\
+			\AgtT= quit-\Tsg.\M{} \Ints{} everyone-\Top{} \AgtT= find-\Tsg.\M{}
+			opportunity-\Parg.\Inan{} \\
+		\trans `Yeah, everybody quits, if they find the opportunity.'
+
+	\ex \label{ex:2f}
+		\gll Nay eda-tinkānreng da-nā. \\
+			and this=opening-\Aarg.\Inan{} one=\Fsg.\Gen{} \\
+		\trans `And this opening is mine.'
+\end{xlist}
+\end{exe}
+
+\begin{exe}
+\ex \label{ex:3}
+	\gll Ang tavay kondanley limayena rina\normalfont\footnotemark{}
+		nay kimbisanas inunyena kora. \\
+		\AgtT= become=\Fsg.\Top{} food-\Parg.\Inan{} worm-\Pl-\Gen{} slithery
+		and prey-\Parg{} fish-\Pl-\Gen{} rare \\
+	\trans I become the food of slithery worms and the prey of rare fishes. \\
+	\footnotetext{\xayr{rin}{rina}{slippery}, extended here to mean `slithery'.}
+\end{exe}
+
+\begin{exe}
+\ex \begin{xlist}
+	\ex \label{ex:4a}
+		\gll Māy, yang --- \\
+			well \Fsg.\Aarg{} \\
+		\trans `Well, I ---'
+
+	\ex \label{ex:4b}
+		\gll Ang grenay avanya nay nimpyang. \\
+			\AgtT= reach=\Fsg.\Top{} ground-\Loc{} and run=\Fsg.\Aarg{} \\
+		\trans `I reach the bottom and run.'
+\end{xlist}
+\end{exe}
+
+\section{Conclusion}
+
+
+%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \vfill
+% \pagebreak
+
+\begingroup\multicolsep=0pt
+\printglossary[
+	style=threecolumn,
+	type=leipzig,
+]
+\endgroup
+
+%\nocite{*} % returns all entries from the bibliography database
+% \printbibliography[heading=bibintoc]
+
+\end{document}
