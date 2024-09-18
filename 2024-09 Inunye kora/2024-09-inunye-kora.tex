@@ -85,7 +85,10 @@
 ]{datetime2}
 
 % Verse
-\usepackage{verse}
+% \usepackage{verse}
+
+% Tabbing
+\usepackage{tabto}
 
 % Ability to include graphics and dealing with footnotes in descriptions
 \usepackage{graphicx}
@@ -321,39 +324,38 @@ on Radiohead's album \tit{In Rainbows} (2007). The lyrics are also very
 straightforward and the spheric soundscape affords one to not be too strict
 with the number of syllables. All things considered, it seemed like a
 worthwhile target for trying to translate the text into Ayeri. This is what
-I've come up with over the course of three days. Since the English lyrics are
-under copyright, I will not fully quote them here.
+I've come up with over the course of three days.
 
 \begin{quote}
-\begin{minipage}[t]{.5\linewidth}
-\begin{verse}
-\renewcommand*{\vrightskip}{-2em}
+\begin{multicols}{2}
 Karonya tasang-vā,\\
 tasangya makārya ---\\
 Sā tila-\\
 yang niva.\\
 Yamanreng sinyaley\\
-perisānena nā?\\!
+perisānena nā?
 
 Nasyoyya depāng-nama.\\
 Ya nasyyang iting vana.\\
 Sā tila-\\
 yang niva\\
-vana dimayjyam. (tinkānreng)\\
-Ya nasyyang vās lito (tinkānreng)\\
-na Mavay, (tinkānreng)\\
+vana dimayjyam.			\tab \textit{(tinkānreng)}\\
+Ya nasyyang vās lito	\tab \textit{(tinkānreng)}\\
+na Mavay,				\tab \textit{(tinkānreng)}\\
 nay lesayang.\\
-Ang sagonya enya māy, (tinkānreng)\\
-ang sungya mimānley. (tinkānreng)\\
-Nay eda-(tinkānreng)\\
-da-nā.\\!
+Ang sagonya enya māy,	\tab \textit{(tinkānreng)}\\
+ang sungya mimānley.	\tab \textit{(tinkānreng)}\\
+Nay eda-\dots			\tab \textit{(tinkānreng)}\\
+da-nā.
+
+\columnbreak
 
 Ang tavay kondanley\\
 limayena rina\\
 nay kimbisanas\\
 inunyena kora,\\
 inunyena kora,\\
-inunyena kora.\\!
+inunyena kora.
 
 Māy, yang ---\\
 Ang grenay avanya,\\
@@ -362,50 +364,47 @@ nimpyang.\\
 Yang ---\\
 Ang grenay avanya\\
 grenay avanya nay\\
-nimpyang.\\!
-\end{verse}
-\end{minipage}
-~
-\begin{minipage}[t]{.5\linewidth}
-\Tagati % \smaller
-\begin{verse}
-kronFy tsNF/vaa\\
-tsNFy mkaarFy\\
-saa til—\\
-—yNF niv.\\
-ymnFreNF sinFylej\\
-perisaanen naa?\\!
+nimpyang.
+\end{multicols}
 
-nsYojy depaaNF/nm.\\
-y nsYFyNF ItiNF vn.\\
-saa til—\\
-—yNF niv\\
-vn dimjyeymF. — \textit{tiMkaanFreNF}\\
-y nsYyNF vaasF lito — \textit{tiMkaanFreNF}\\
-n mvj — \textit{tiMkaanFreNF}\\
-lesyNF.\\
-ANF sgonFy EnFy maaj — \textit{tiMkaanFreNF}\\
-ANF suNFy mimaanFlej. — \textit{tiMkaanFreNF}\\
-nj Ed/ — \textit{tiMkaanFreNF}\\
-d/naa.\\!
+% \begin{multicols}{2}
+% \Tagati
+% kronFy tsNF/vaa\\
+% tsNFy mkaarFy\\
+% saa til—\\
+% —yNF niv.\\
+% ymnFreNF sinFylej\\
+% perisaanen naa?
 
-ANF tvj koMdnFlej\\
-limyen rin\\
-nj kiMbisnsF\\
-InunFyen kor\\
-InunFyen kor\\
-InunFyen kor\\!
+% nsYojy depaaNF/nm.\\
+% y nsYFyNF ItiNF vn.\\
+% saa til—\\
+% —yNF niv\\
+% vn dimjyeymF.			\tab \textit{tiMkaanFreNF}\\
+% y nsYyNF vaasF lito		\tab \textit{tiMkaanFreNF}\\
+% n mvj					\tab \textit{tiMkaanFreNF}\\
+% lesyNF.\\
+% ANF sgonFy EnFy maaj	\tab \textit{tiMkaanFreNF}\\
+% ANF suNFy mimaanFlej.	\tab \textit{tiMkaanFreNF}\\
+% nj Ed/—					\tab \textit{tiMkaanFreNF}\\
+% d/naa.
 
-maaj, yNF\\
-Ang gFrenj AvnFy\\
-gFrenj AvnFy nj\\
-niMpFyNF.\\
-yNF\\
-Ang gFrenj AvanFy\\
-gFrenj AvnFy nj\\
-niMpFyNF.\\!
-\end{verse}
-\end{minipage}
+% ANF tvj koMdnFlej\\
+% limyen rin\\
+% nj kiMbisnsF\\
+% InunFyen kor\\
+% InunFyen kor\\
+% InunFyen kor
+
+% maaj, yNF\\
+% Ang gFrenj AvnFy\\
+% gFrenj AvnFy nj\\
+% niMpFyNF.\\
+% yNF\\
+% Ang gFrenj AvanFy\\
+% gFrenj AvnFy nj\\
+% niMpFyNF.
+% \end{multicols}
 \end{quote}
 
 \section{Analysis of the translation}
@@ -420,12 +419,13 @@ translation part by part, commenting on each sentence.
 My translation of the first stanza is given in examples number
 \crefrange{ex:1a}{ex:1c}. I think that in English, the text corresponding to
 \cref{ex:1a,ex:1b} can be interpreted as a single sentence: \blockquote{In the
-deepest ocean, the bottom of the sea, your eyes, they turn me.} However, due to
-the requirements of the melody and syntax, as well as to keep up the
+deepest ocean, the bottom of the sea, your eyes, they turn me.} However, due
+to the requirements of the melody and syntax, as well as to keep up the
 parallelism with \cref{ex:2c}, it wouldn't have made sense to pull \cref{ex:1b}
 all the way to the front and have the location adverbials in \cref{ex:1a} act
 as modifiers to that. So, I decided to keep \cref{ex:1a} at the beginning and
-use it to establish the context and mood, as in English.
+use it to establish the context and mood, as in English, though at the expense
+of making the second line an anacoluthon.
 
 \begin{exe}
 \ex \label{ex:1a}
