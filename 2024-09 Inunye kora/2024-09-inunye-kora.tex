@@ -229,7 +229,7 @@
 % Since German plural formation is not as regular as in English (-e, -en for
 % Beispiel), we will define the label as empty
 \usepackage[sort&compress,noabbrev]{cleveref}
-\newcommand{\crefrangeconjunction}{--}
+% \newcommand{\crefrangeconjunction}{--}
 \crefname{xnumi}{}{}
 \creflabelformat{xnumi}{(#2#1#3)}
 \crefname{xnumii}{}{}
@@ -238,7 +238,7 @@
 \creflabelformat{xnumiii}{(#2#1#3)}
 \crefname{xnumiv}{}{}
 \creflabelformat{xnumiv}{(#2#1#3)}
-\crefrangeformat{xnumi}{(#3#1#4)--(#5#2#6)}
+\crefrangeformat{xnumi}{(#3#1#4) to~(#5#2#6)}
 \crefrangeformat{xnumii}{(#3#1#4--#5\crefstripprefix{#1}{#2}#6)}
 \crefrangemultiformat{xnumii}{(#3\arabic{xnumi}#1#4--#5#2#6)}
 { and~(#3\arabic{xnumi}#1#4--#5#2#6)}{, (#3\arabic{xnumi}#1#4--#5#2#6)}
@@ -316,6 +316,14 @@
 	\@title: \@subtitle
 \end{mytitle}
 
+At least in my opinion, \tit{Weird Fishes/Arpeggi} is the most fascinating song
+on Radiohead's album \tit{In Rainbows} (2007). The lyrics are also very
+straightforward and the spheric soundscape affords one to not be too strict
+with the number of syllables. All things considered, it seemed like a
+worthwhile target for trying to translate the text into Ayeri. This is what
+I've come up with over the course of three days. Since the English lyrics are
+under copyright, I will not fully quote them here.
+
 \begin{quote}
 \begin{minipage}[t]{.5\linewidth}
 \begin{verse}
@@ -333,8 +341,8 @@ Sā tila-\\
 yang niva\\
 vana dimayjyam. (tinkānreng)\\
 Ya nasyyang vās lito (tinkānreng)\\
-lito na Mavay, (tinkānreng)\\
-lesayang.\\
+na Mavay, (tinkānreng)\\
+nay lesayang.\\
 Ang sagonya enya māy, (tinkānreng)\\
 ang sungya mimānley. (tinkānreng)\\
 Nay eda-(tinkānreng)\\
@@ -374,7 +382,7 @@ saa til—\\
 —yNF niv\\
 vn dimjyeymF. — \textit{tiMkaanFreNF}\\
 y nsYyNF vaasF lito — \textit{tiMkaanFreNF}\\
-lito n mvj — \textit{tiMkaanFreNF}\\
+n mvj — \textit{tiMkaanFreNF}\\
 lesyNF.\\
 ANF sgonFy EnFy maaj — \textit{tiMkaanFreNF}\\
 ANF suNFy mimaanFlej. — \textit{tiMkaanFreNF}\\
@@ -402,66 +410,101 @@ niMpFyNF.\\!
 
 \section{Analysis of the translation}
 
+The song is divided into four parts, of which the first two form a unit in both
+text and melody. Then, the lush guitar arpeggi become more muted for the third.
+A concluding coda follows after an instrumental. I will go through my
+translation part by part, commenting on each sentence.
+
+\subsection{First part}
+
+My translation of the first stanza is given in examples number
+\crefrange{ex:1a}{ex:1c}. I think that in English, the text corresponding to
+\cref{ex:1a,ex:1b} can be interpreted as a single sentence: \blockquote{In the
+deepest ocean, the bottom of the sea, your eyes, they turn me.} However, due to
+the requirements of the melody and syntax, as well as to keep up the
+parallelism with \cref{ex:2c}, it wouldn't have made sense to pull \cref{ex:1b}
+all the way to the front and have the location adverbials in \cref{ex:1a} act
+as modifiers to that. So, I decided to keep \cref{ex:1a} at the beginning and
+use it to establish the context and mood, as in English.
+
 \begin{exe}
-\ex \begin{xlist}
-	\ex \label{ex:1a}
-		\gll Karonya tasang-vā, tasangya makārya --- \\
-			ocean-\Loc{} deep=\Sup{} abyss-\Loc{} black \\
-		\trans `In the deepest ocean, in the black abyss ---'
+\ex \label{ex:1a}
+	\gll Karonya tasang-vā, tasangya makārya --- \\
+		ocean-\Loc{} deep=\Sup{} abyss-\Loc{} black \\
+	\trans `In the deepest ocean, in the black abyss ---'
+\end{exe}
 
-	\ex \label{ex:1b}
-		\gll Sā tilayang niva.\normalfont\footnotemark{} \\
-			\CauT{}= change=\Fsg.\Aarg{} gaze \\
-		\trans `Your gaze makes me change.'
-		\footnotetext{\xayr{niv}{niva}{eye}, extended here to mean `gaze'.}
+Consequentially, the text in \cref{ex:1a} doesn't form a complete sentence.
+Since \rayr{kronF}{karon} can mean both `sea' and `ocean', I couldn't replicate
+the way the English lyrics use these two words for large bodies of water as
+basically synonyms. Instead, I played on the fact that \rayr{tsNF}{tasang} can
+mean either `deep' or `abyss, chasm' depending on whether it's used as an
+adjective or noun, and chose to use \xayr{mkaarFy}{makārya}{dark, black} as an
+accompanying adjective accordingly for near-parallelism with \rayr{kronY
+tsNF/vaa}{karonya tasang-vā}. The word used for `black' here,
+\rayr{mkaarFy}{makārya}, literally means `unwhite'. I don't remember why I
+chose to coin the word that way. There is also \xayr{gisu}{gisu}{dark} in the
+dictionary, but this is a worse fit considering both the number of syllables of
+the original line and assonance.
 
-	\ex \label{ex:1c}
-		\gll Yamanreng sinyaley perisānena nā? \\
-			reason-\Aarg.\Inan{} which-\Parg.\Inan{} hesitation-\Gen{}
-			\Fsg.\Gen{} \\
-		\trans `What's the reason for my hesitation?'
-\end{xlist}
+\begin{exe}
+\ex \label{ex:1b}
+	\gll Sā tilayang niva.\normalfont\footnotemark{} \\
+		\CauT{}= change=\Fsg.\Aarg{} gaze \\
+	\trans `Your gaze makes me change.'
+	\footnotetext{\xayr{niv}{niva}{eye}, extended here to mean `gaze'.}
+
 \end{exe}
 
 \begin{exe}
-\ex \begin{xlist}
-	\ex \label{ex:2a}
-		\gll Nasyoyya depāng-nama.\normalfont\footnotemark{} \\
-			follow-\Neg-\Tsg.\M{} fool-\Aarg=only \\
-		\trans `Only a fool doesn't follow.'
-		\footnotetext{\xayr{depaaNF}{depāng}{fool}, contraction of
-			\rayr{depNNF}{depangang} to make the line fit and because
-			\emph{-angang} is awkward.}
-
-	\ex \label{ex:2b}
-		\gll Ya nasyyang iting vana. \\
-			\LocT= follow=\Fsg.\Aarg{} path-\Top{} \Second.\Gen{} \\
-		\trans `Your path, I'm following it.'
-
-	\ex \label{ex:2c}
-		\gll Sā tilayang niva vana dimayjyam. \\
-			\CauT= change=\Fsg.\Aarg{} gaze-\Top{} \Second.\Gen{}
-			phantom-\Pl-\Dat{} \\
-		\trans `Your gaze makes me turn into phantoms.'
-
-	\ex \label{ex:2d}
-		\gll Ya nasyyang vās lito na Mavay, lesayang. \\
-			\LocT= follow-\Fsg.\Aarg{} \Second.\Parg{} edge-\Top{} \Gen= World
-			fall=\Fsg.\Aarg{} \\
-		\trans `To the edge of the Earth is where I'll follow you, and fall.'
-
-	\ex \label{ex:2e}
-		\gll Ang sagonya enya māy, ang sungya mimānley. \\
-			\AgtT= quit-\Tsg.\M{} everyone-\Top{} \Ints{} \AgtT= find-\Tsg.\M{}
-			opportunity-\Parg.\Inan{} \\
-		\trans `Yeah, everybody quits, if they find the opportunity.'
-
-	\ex \label{ex:2f}
-		\gll Nay eda-tinkānreng da-nā. \\
-			and this=opening-\Aarg.\Inan{} one=\Fsg.\Gen{} \\
-		\trans `And this opening is mine.'
-\end{xlist}
+\ex \label{ex:1c}
+	\gll Yamanreng sinyaley perisānena nā? \\
+		reason-\Aarg.\Inan{} which-\Parg.\Inan{} hesitation-\Gen{}
+		\Fsg.\Gen{} \\
+	\trans `What's the reason for my hesitation?'
 \end{exe}
+
+\subsection{Second part}
+
+\begin{exe}
+\ex \label{ex:2a}
+	\gll Nasyoyya depāng-nama.\normalfont\footnotemark{} \\
+		follow-\Neg-\Tsg.\M{} fool-\Aarg=only \\
+	\trans `Only a fool doesn't follow.'
+	\footnotetext{\xayr{depaaNF}{depāng}{fool}, contraction of
+		\rayr{depNNF}{depangang} to make the line fit and because
+		\emph{-angang} is awkward.}
+
+\ex \label{ex:2b}
+	\gll Ya nasyyang iting vana. \\
+		\LocT= follow=\Fsg.\Aarg{} path-\Top{} \Second.\Gen{} \\
+	\trans `Your path, I'm following it.'
+
+\ex \label{ex:2c}
+	\gll Sā tilayang niva vana dimayjyam. \\
+		\CauT= change=\Fsg.\Aarg{} gaze-\Top{} \Second.\Gen{}
+		phantom-\Pl-\Dat{} \\
+	\trans `Your gaze makes me turn into phantoms.'
+
+\ex \label{ex:2d}
+	\gll Ya nasyyang vās lito na Mavay, lesayang. \\
+		\LocT= follow-\Fsg.\Aarg{} \Second.\Parg{} edge-\Top{} \Gen= World
+		fall=\Fsg.\Aarg{} \\
+	\trans `To the edge of the Earth is where I'll follow you, and fall.'
+
+\ex \label{ex:2e}
+	\gll Ang sagonya enya māy, ang sungya mimānley. \\
+		\AgtT= quit-\Tsg.\M{} everyone-\Top{} \Ints{} \AgtT= find-\Tsg.\M{}
+		opportunity-\Parg.\Inan{} \\
+	\trans `Yeah, everybody quits, if they find the opportunity.'
+
+\ex \label{ex:2f}
+	\gll Nay eda-tinkānreng da-nā. \\
+		and this=opening-\Aarg.\Inan{} one=\Fsg.\Gen{} \\
+	\trans `And this opening is mine.'
+\end{exe}
+
+\subsection{Third part}
 
 \begin{exe}
 \ex \label{ex:3}
@@ -473,18 +516,18 @@ niMpFyNF.\\!
 	\footnotetext{\xayr{rin}{rina}{slippery}, extended here to mean `slithery'.}
 \end{exe}
 
-\begin{exe}
-\ex \begin{xlist}
-	\ex \label{ex:4a}
-		\gll Māy, yang --- \\
-			well \Fsg.\Aarg{} \\
-		\trans `Well, I ---'
+\subsection{Fourth part}
 
-	\ex \label{ex:4b}
-		\gll Ang grenay avanya nay nimpyang. \\
-			\AgtT= reach=\Fsg.\Top{} ground-\Loc{} and run=\Fsg.\Aarg{} \\
-		\trans `I reach the bottom and run.'
-\end{xlist}
+\begin{exe}
+\ex \label{ex:4a}
+	\gll Māy, yang --- \\
+		well \Fsg.\Aarg{} \\
+	\trans `Well, I ---'
+
+\ex \label{ex:4b}
+	\gll Ang grenay avanya nay nimpyang. \\
+		\AgtT= reach=\Fsg.\Top{} ground-\Loc{} and run=\Fsg.\Aarg{} \\
+	\trans `I reach the bottom and run.'
 \end{exe}
 
 \section{Conclusion}
