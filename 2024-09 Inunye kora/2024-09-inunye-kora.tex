@@ -65,20 +65,14 @@
 	BoldFont={Open Sans Condensed Bold},
 ]{Open Sans Condensed Light}
 
-% % Load BibLaTeX (using Biber), configure citation styles
-% \usepackage[
-% 	authordate-trad,
-% 	backend=biber,
-% 	safeinputenc,
-% ]{biblatex-chicago}
-
-% % To make \textcite look like "Doe (2014: 213)"
-% \renewcommand*{\postnotedelim}{\addcolon\addspace}
-% \DeclareFieldFormat{postnote}{#1}
-% \DeclareFieldFormat{multipostnote}{#1}
-
-% % Enable generating files from this .tex file (for the bibliography) 
-% \usepackage{filecontents}
+% Load BibLaTeX (using Biber), configure citation styles
+\usepackage[
+	style=langsci-unified,
+	backend=biber,
+	safeinputenc,
+	natbib,
+]{biblatex}
+\addbibresource{bibliography.bib}
 
 % Date etc.
 \usepackage[
@@ -293,23 +287,6 @@
 	\hfill
 }
 
-%% BIBLIOGRAPHY DATABASE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \begin{filecontents*}{\jobname.bib}
-% @book{blah,
-%     title = {A Grammar of {Blah}},
-%     author = {Alfred E. Neuman and John X. Doe},
-%     publisher = {Maximegalon UP},
-%     location = {Maximegalon},
-%     date = {1972},
-%     series = {Reference Grammars of Inexistent Languages},
-%     number = {4},
-%     pages = {123--145},
-% }
-% \end{filecontents*}
-
-% \addbibresource{\jobname.bib}
-
 %% END OF PREAMBLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -320,12 +297,19 @@
 	\@title: \@subtitle
 \end{mytitle}
 
-At least in my opinion, \tit{Weird Fishes/Arpeggi} is the most fascinating song
-on Radiohead's album \tit{In Rainbows} (2007) with its scintillating string
-sound. It recently occurred to me that the lyrics are very straightforward and
-the spheric soundscape affords one not to be overly strict with the number of
-syllables when translating it. All things considered, it seemed like a
-worthwhile target for making an Ayeri version.
+At least in my opinion, \citetitle{radiohead:weirdfishes} is the most
+fascinating song on
+\citeauthor{radiohead:weirdfishes}'s~(\citeyear{radiohead:weirdfishes}) album
+\citefield[][]{radiohead:weirdfishes}[booktitle]{booktitle} with its
+scintillating string sound. It recently occurred to me that the lyrics are very
+straightforward and the spheric soundscape affords one not to be overly strict
+with the meter when translating it. All things considered, it seemed like a
+worthwhile to try making an Ayeri adaptation, because translating poetic texts
+is always a fun challenge.%
+%
+	\footnote{This derivative fan work is neither endorsed nor licensed by
+	Radiohead or their legal representatives. It neither pursues nor implies
+	any intent of financial gain.}
 
 \begin{quote}
 \begin{multicols}{2}
@@ -605,12 +589,29 @@ differently and still make it fit the melody.
 	\trans `Yeah, everybody quits, if they find the opportunity.'
 \end{exe}
 
+The last two lines in the second part are given in the sentence in
+\cref{ex:2f}. The English lyrics are \blockquote{And this way out is my
+chance.} Part of the sentence is provided by the background vocals, and I
+replicated this peculiarity with \xayr{kunNFreNF}{kunangreng}{door}. I couldn't
+find a succinct way to translate \textquote{way out} literally, for instance as
+\xayr{ssaanFreNF AgonnFymF}{sasānreng agonanyam}{the way to the outside}, so I
+chose metonymy as \emph{my} way out. I also used \xayr{d/naa}{da-nā}{mine}
+instead of something more literal like \xayr{mimaanFlej naa}{mimānley nā}{my
+chance} in order not to exceed the length of the English text here either.
+
 \begin{exe}
 \ex \label{ex:2f}
 	\gll Nay eda-kunangreng da-nā. \\
 		and this=door-\Aarg.\Inan{} one=\Fsg.\Gen{} \\
 	\trans `And this door is mine.'
 \end{exe}
+
+From a morphosyntactic point of view, the construction
+\xayr{d/naa}{da-nā}{mine} in \cref{ex:2f} is a little peculiar since Ayeri
+normally marks predicative complements with the patient case. However, I
+determined in \citet[310--311]{becker:ayrgram} that this is not the case with
+predicative possessive pronouns. This rules out a form like
+*\rayr{d/naalej}{*da-nāley}.
 
 \subsection{Third part}
 
@@ -654,6 +655,6 @@ differently and still make it fit the melody.
 \endgroup
 
 %\nocite{*} % returns all entries from the bibliography database
-% \printbibliography[heading=bibintoc]
+\printbibliography[heading=bibintoc]
 
 \end{document}
