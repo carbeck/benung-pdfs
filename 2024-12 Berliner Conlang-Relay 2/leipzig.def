@@ -1,0 +1,67 @@
+% leipzig.def
+% Glossing abbreviations
+
+% German redefinitions
+\renewleipzig{Aarg}{a}{Agens}
+\renewleipzig{Abs}{abs}{Absolutiv}
+\renewleipzig{Acc}{acc}{Akkusativ}
+\renewleipzig{All}{all}{Allativ}
+\renewleipzig{Caus}{caus}{Kausativ}
+\renewleipzig{Dat}{dat}{Dativ}
+\renewleipzig{Dem}{dem}{Demonstrativ}
+\renewleipzig{First}{1}{erste Person}
+\renewleipzig{F}{f}{Femininum}
+\renewleipzig{Gen}{gen}{Genitiv}
+\renewleipzig{Imp}{imp}{Imperativ}
+\renewleipzig{Ins}{ins}{Instrumentalis}
+\renewleipzig{Loc}{loc}{Lokativ}
+\renewleipzig{M}{m}{Maskulinum}
+\renewleipzig{Neg}{neg}{Negativ}
+\renewleipzig{Nmlz}{nmlz}{Nominalisierer}
+\renewleipzig{Nom}{nom}{Nominativ}
+\renewleipzig{N}{n}{Neutrum}
+\renewleipzig{Parg}{p}{Patiens}
+\renewleipzig{Pl}{pl}{Plural}
+\renewleipzig{Poss}{poss}{Possessiv}
+\renewleipzig{Pst}{pst}{Präteritum}
+\renewleipzig{Ptcp}{ptcp}{Partizip}
+\renewleipzig{Refl}{refl}{Reflexiv}
+\renewleipzig{Rel}{rel}{Relativ}
+\renewleipzig{Second}{2}{zweite Person}
+\renewleipzig{Sg}{sg}{Singular}
+\renewleipzig{Third}{3}{dritte Person}
+\renewleipzig{Top}{top}{Topik}
+
+% Other common abbreviations, undefined by default
+\newleipzig{Dim}{dim}{Diminutiv}
+
+% ɮɛ̃̂.kɔ̌ʔ
+\newleipzig{Acv}{acv}{Aktiv}
+\newleipzig{Clf}{clf}{Klassifizierer}
+\newleipzig{Elv}{elv}{Elativ}
+\newleipzig{Inch}{inch}{Inchoativ}
+\newleipzig{Ipfv}{ipfv}{Imperfektiv}
+\newleipzig{Nmz}{nmz}{Substantivierung}
+\newleipzig{Npst}{npst}{Nicht-Präteritum}
+\newleipzig{Pfv}{pfv}{Perfektiv}
+\newleipzig{Stv}{stv}{Stativ}
+
+% Ayeri
+\newleipzig{AgtT}{at}{Agenstopik}
+\newleipzig{Anim}{anim}{belebt}
+\newleipzig{Ayr}{ayr}{Ayeri}
+\newleipzig{CauT}{caut}{Kausativtopik}
+\newleipzig{Conj}{conj}{konjunktiv}
+\newleipzig{DatT}{datt}{Dativtopik}
+\newleipzig{Dir}{dir}{direktiv}
+\newleipzig{GenT}{gent}{Genitivtopik}
+\newleipzig{Hab}{hab}{Habitativ}
+\newleipzig{Hort}{hort}{Hortativ}
+\newleipzig{Inan}{inan}{unbelebt}
+\newleipzig{InsT}{inst}{Instrumentaltopik}
+\newleipzig{Ints}{ints}{intensiv}
+\newleipzig{Iter}{iter}{iterativ}
+\newleipzig{LocT}{loct}{Lokativtopik}
+\newleipzig{Oblig}{oblig}{obligativ}
+\newleipzig{PatT}{pt}{Patienstopik}
+\newleipzig{Sup}{sup}{Superlativ}
