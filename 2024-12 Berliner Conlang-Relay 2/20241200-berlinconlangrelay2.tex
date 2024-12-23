@@ -30,8 +30,11 @@
 
 
 % Handle language and quotation marks
-\usepackage{babel}
-\usepackage{csquotes} % Put quotations in \enquote{}!
+\usepackage[
+	english,
+	main=ngerman
+]{babel}
+\usepackage[autostyle]{csquotes} % Put quotations in \enquote{}!
 \SetBlockEnvironment{quotation}
 \renewcommand*{\mkccitation}[1]{ (#1)}
 \let\q\textquote
@@ -96,18 +99,29 @@
 
 % Load BibLaTeX (using Biber), configure citation styles
 \usepackage[
-	authordate-trad,
+	style=langsci-unified,
 	backend=biber,
 	alldates=terse,
 	safeinputenc,
 	natbib,
-]{biblatex-chicago}
-
-% To make \textcite look like "Doe (2014: 213)"
-\renewcommand*{\postnotedelim}{\addcolon\addspace}
-\DeclareFieldFormat{postnote}{#1}
-\DeclareFieldFormat{multipostnote}{#1}
+]{biblatex}
 \addbibresource{bibliography.bib}
+
+% biblatex
+% Use sane date format as specified in LangSci Generic Style Rules:
+% (Accessed YYYY-MM-DD) => (Zugriff am DD.MM.YYYY)
+% Essentially, undefine redefinition from langsci-unified.bbx. Copied from
+% biblatex/biblatex.def and modified from biblatex/lbx/german.lbx.
+\DefineBibliographyStrings{german}{%
+  % Defaults to "gesehen am" per biblatex/lbx/german.lbx
+  urlseen = {Zugriff am},
+}
+\renewbibmacro*{url+urldate}{%
+  \usebibmacro{url}%
+  \iffieldundef{urlyear}
+    {}
+    {\setunit*{\addspace}%
+     \usebibmacro{urldate}}}
 
 % Date etc.
 \usepackage[
@@ -340,12 +354,13 @@ Another local relay was held in Berlin during November and a little into early
 December 2024. This time, I had the pleasure to translate from Henrik's
 \emph{\Lhengko} as the last person in a circle of seven participants. Thus, I
 returned my torch back to Bruno, who had started the game, and who translated
-my \emph{Ayeri} text into his \emph{Kèramkaq} to conclude. Again, the game was
+my \emph{Ayeri} text into his \emph{XXX} to conclude. Again, the game was
 run in German due to the limited, local scope. The text that reached me was
 about a fox's repeated but unsuccessful attempts to reach and eat ripe grapes
 growing at the top of a vine in a vinyard during summer. It gives up eventually
 and trots away. The narrator somewhat enigmatically surmises that the wine
-really will be sour.
+really will be sour. The original text was Aesop's fable \tit{The fox and the
+grapes}.
 \end{abstract}
 
 Nachdem das Relay im Mai Anklang fand, hatten wir Lust auf eine weitere Runde
@@ -353,7 +368,7 @@ und konnten zwei weitere Teilnehmende dazugewinnen. Insgesamt haben also sieben
 Personen an diesem Relay teilgenommen, wobei ich mit \emph{Ayeri} der letzte im
 Kreis war, bevor der Staffelstab an die erste Person zurückging, um das Spiel
 zu beenden. Mein Vorgänger war Henrik mit \emph{\Lhengko}, mein Nachfolger
-Bruno mit \emph{Kèramkaq}. Natürlich wurde auch diesmal nach den bewährten
+Bruno mit \emph{XXX}. Natürlich wurde auch diesmal nach den bewährten
 Spielregeln gespielt.%
 %
 	\footnote{Siehe
@@ -364,6 +379,24 @@ Die Teilnehmenden hatten dieses Mal aufgrund der größeren Anzahl vier Tage Zei
 für ihre Etappe, daher ist der zu übersetzende Text im Vergleich zum letzten
 Mal kürzer ausgefallen. Das Spiel wurde wieder auf Deutsch durchgeführt.
 
+Der ursprüngliche Text war eine englischsprachige Version der Äsop-Fabel
+\tit{Der Fuchs und die Trauben}.
+
+\foreignblockcquote{english}[76--77]{jacobs1894}{One hot summer's day a Fox was
+strolling through an orchard till he came to a bunch of Grapes just ripening on
+a vine which had been trained over a lofty branch. \q{Just the thing to quench
+my thirst} quoth he. Drawing back a few paces, he took a run and a jump, and
+just missed the bunch. Turning round again with a One, Two, Three, he jumped
+up, but with no greater success. Again and again he tried after the tempting
+morsel, but at last had to give it up, and walked away with his nose in the
+air, saying: \q{I am sure they are sour.}}
+
+Die Moral (\foreigntextquote{english}{It is easy to despise what you cannot
+get}, \cite[77]{jacobs1894}) hatte Bruno schon bei der ersten Übersetzung
+weggelassen. Der Inhalt des Texts ist die ganze Runde hindurch weitestgehend
+erhalten geblieben. Durch con-kulturelle Erzählpraktiken sind allerdings
+Einleitungs- und Schlusssätze dazugekommen.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Analyse der Vorlage auf \Lhengko}
@@ -371,7 +404,7 @@ Mal kürzer ausgefallen. Das Spiel wurde wieder auf Deutsch durchgeführt.
 
 Den nachfolgenden Text habe ich von Henrik neben einer Wortliste und ein paar
 Notizen zur Grammatik analog zum hier gezeigten Material erhalten, wie üblich.
-Henrik scheint eine Vorliebe für komplexe Silben und \textsc{ipa} als
+Henrik scheint eine Vorliebe für komplexe Silben und IPA als
 Transkriptionssystem anstelle der lateinischen Schrift zu haben, was bereits
 beim letzten Spiel an \fw{ʀu.lu} deutlich wurde, aus dem Kierán übersetzt hat.%
 %
@@ -525,7 +558,7 @@ ingressiv, rührt von der ursprünglichen Bedeutung des Hilfsverbs her.
 Das Subjekt von \cref{ex:lheng6}, \fw{nœ̌.ɻʷɛ̃.f"|i.lʲœ̃}, ist eine
 nominalisierte Verbform, welche dem Kontext nach wörtlich vermutlich am besten
 als \wdef{der Hinkommende} zu übersetzen ist. Da \Lhengko{} sehr durchgängig
-\textsc{ov}-Merkmale zeigt, befindet sich nicht nur das Verb \fw{ˀnœ̌.tʃʰɛʔ}
+OV-Merkmale zeigt, befindet sich nicht nur das Verb \fw{ˀnœ̌.tʃʰɛʔ}
 \wdef{sah nach oben} am Ende des Satzes, sondern es zeigen sich auch
 durchgängig Postpositionen wie \fw{ɣǐʔ} \wdef{in} und \fw{ɬʷy̟̌} \wdef{an}.
 Genau wie Adjektive erwartungsgemäß vorangehen, besitzen die Komposita
@@ -538,10 +571,10 @@ Genau wie Adjektive erwartungsgemäß vorangehen, besitzen die Komposita
 
 Ein weiteres auf"|fälliges Merkmal von \Lhengko{} sind Klassifizierer, die mit
 Mengenangaben und Kardinalzahlen auftreten, wie hier \fw{ˀɬwʉ̌ zjɔ̃ ɣʉ χî˞}.
-Diese \textsc{np} habe ich als \wdef{ein paar reife Trauben} interpretiert.
+Diese NP habe ich als \wdef{ein paar reife Trauben} interpretiert.
 Entweder benötigt das Objekt von \fw{ˀnœ̌.tʃʰɛʔ} keine Markierung mit dem
 Stativ (\tsup{?}\fw{ⁿχî˞.ʐʷɔ̃}) oder meine Analyse ist nicht ganz korrekt.
-Dieselbe \textsc{np} zeigt außerdem eine Komplikation in der Regel zum
+Dieselbe NP zeigt außerdem eine Komplikation in der Regel zum
 \fw{onset feature spread}. Im Text heißt es \fw{ɣʉ́ χî˞}, nicht *\fw{ɣʉ́
 ⁿχî˞}, weil \fw{ʉ} das Auslautmerkmal \leipzigfont{[+\,gespannt]} besitzt. Das
 Auslautmerkmal blockiert die Weitergabe der Pränasalierung von
@@ -571,7 +604,9 @@ hier in einer seriellen Verbkonstruktion mit koordinativer Bedeutung stehen.%
 %
 	\footnote{Serielle Verben, Tonakzent und Klassifizierer in einer
 	Silbensprache lassen als Inspirationsquelle kontinental-ostasiatische
-	Sprachen vermuten.}
+	Sprachen vermuten. Beim Nachtreffen hat sich herausgestellt, dass Tangut
+	(\url{https://glottolog.org/resource/languoid/id/tang1334}; Zugriff am
+	\DTMdate{2024-12-13}) die hauptsächliche Inspirationsquelle war.}
 %
 Während \Lhengko{} bei den Tempora einen Unterschied zwischen Präteritum und
 Nicht-Präteritum macht, ist letztere Form vermutlich aufgrund des
@@ -633,10 +668,10 @@ Präteritum vereint, siehe auch \cref{ex:lheng8}.
 
 In \cref{ex:lheng13} wird \cref{ex:lheng10} wörtlich wiederholt. Auch die
 Formulierung \fw{pjœ̌.f"|i.ʐwɔ̃ zwê.pjœ̌} zu \fw{pʲŷ} \wdef{erreichen} in
-\cref{ex:lheng14}, wörtlich \wdef{das Erreichte hat nichts erreicht}, sieht ein
-bisschen wie ein Wortspiel basierend auf dem Wortlaut von \cref{ex:lheng11}
-aus. Im Zusammenhang bezieht sie sich \cref{ex:lheng14} wohl auf die
-erfolglosen Versuche, an die Trauben zu gelangen.
+\cref{ex:lheng14}, wörtlich \wdef{das Erreichte hat nichts erreicht}, sieht
+etwas wie ein Wortspiel basierend auf dem Wortlaut von \cref{ex:lheng11} aus.
+Im Zusammenhang bezieht sie sich \cref{ex:lheng14} wohl auf die erfolglosen
+Versuche, an die Trauben zu gelangen.
 
 Was die Zahlenangabe \fw{ʈʷɔ̂ˠ tʃɛ̃} \wdef{zweimal} betrifft, gehen die
 Grammatiknotizen nur auf den Unterschied zwischen Kardinal- und Ordinalzahlen
@@ -698,12 +733,18 @@ Erreichte} in \cref{ex:lheng14} mitbetrachtet.
 
 Die beiden Teilsätze in \cref{ex:lheng18+19} scheinen aufeinander bezogen zu
 sein, insofern \cref{ex:lheng19} den in \cref{ex:lheng18} genannten Grund
-ausführt. Die Tempus- und Aspektmarkierung von \fw{kxʉ̂.χʲœ̌} zum Stamm \fw{ˀχʲŷ}
+ausführt.%
+%
+	\footnote{Bei der Nachbesprechung hat sich herausgestellt, dass hier in
+	einer früheren Stufe eine Verwechslung zwischen dem Verb für \wdef{sagen}
+	und dem Verb für \wdef{können} passiert ist.}
+%
+Die Tempus- und Aspektmarkierung von \fw{kxʉ̂.χʲœ̌} zum Stamm \fw{ˀχʲŷ}
 \wdef{können, vermögen} in \cref{ex:lheng18} deutet eine abgeschlossene
 Handlung in der Vergangenheit an, die von \fw{kiỹ̌.ŋɑ̌} zum Stamm
 \fw{ŋâ} \wdef{sauer sein} in \cref{ex:lheng19} dagegen in der Zukunft, da die
 Kombination von Nicht-Präteritum mit Perfektivmarkierung eine futurische
-Bedeutung hat. Vermutlich wird also eine Zukunft aus der Perspektive der
+Bedeutung hat. Möglicherweise wird also eine Zukunft aus der Perspektive der
 Vergangenheit der Erzählung gemeint sein.
 
 Bei der Übersetzung für den Staffelstab hatte ich aus dem Zeitdruck
@@ -747,7 +788,7 @@ dasselbe Subjekt haben oder reziproke Handlungen vorliegen. In
 Reziprozität annehmen, sodass ich für den Staffelstab \wdef{So erzählt man sich
 unter den Menschen} als Übersetzung gewählt habe. Auffälligerweise fehlt bei
 \fw{tʲɛœ̂} wieder die Kasusmarkierung, was möglicherweise ein Hinweis darauf
-ist, dass diese \textsc{np} nicht eindeutig Subjekt oder Objekt ist.
+ist, dass diese NP nicht eindeutig Subjekt oder Objekt ist.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -862,7 +903,7 @@ li/liMkyoNF IknnFymF.
 ANF tunFyo maaj koMdFymF rej.
 ru\_a subFrFyoNF pMtY naarY.
 ANF d/riNFyo runj vinaasF yon nj sryoNF.
-ymnFreNF yomiNF Edlej:
+ymnFreNF yomiNF Edlej~:
 nimpurNF pFrsi AMkYu.
 ANF d/niNFynF kejnmFye sitnYymF.
 \end{multicols}
@@ -870,8 +911,9 @@ ANF d/niNFynF kejnmFye sitnYymF.
 
 Der Text auf \Lhengko{} beginnt mit einer aus mehreren Sätzen bestehenden
 rhetorischen Figur, welche die Erzählzeit als Vergangenheit etabliert. Ich habe
-mich entschlossen, diese Passage nicht wörtlich zu übersetzen, sondern in dem
-Satz in \cref{ex:ayr1} zusammenzufassen.
+mich entschlossen, diese Passage (die von Dominique stammt, der allerdings
+diesmal nicht ins Hoan übersetzt hat) nicht wörtlich zu übersetzen, sondern in
+dem Satz in \cref{ex:ayr1} zusammenzufassen.
 
 \begin{exe}
 \ex \label{ex:ayr1}
@@ -882,6 +924,16 @@ Satz in \cref{ex:ayr1} zusammenzufassen.
 		gejagt.}
 \end{exe}
 
+Um die märchenhafte Vergangenheit der Fabel zu beschwören, habe ich mit
+1.0000.0000\tsub{12} Nächten -- was wörtlich immerhin 429.981.696\tsub{10}
+entspricht -- versucht, eine metaphorisch sehr lange Zeitspanne anzudeuten. Das
+Zahlwort \xayr{smNF}{samang}{zehntausend} ist von der Kardinalzahl
+\xayr{smF}{sam}{zwei} abgeleitet. Um die multiplikative Bedeutung abzuleiten,
+wird die Kardinalzahl nominalisiert (\xayr{smNnF}{samangan}{zehntausendste})
+und dann in den Dativ gesetzt: \xayr{smNnFymF}{samanganyam}{zehntausendmal}.
+Der Dativ markiert hier also weder einen Rezipienten noch ein Ziel
+(vgl.~\cref{tab:decl,numeralia}).
+
 \begin{exe}
 \ex \label{ex:ayr2}
 	\gll Ang sahasayo adauyi runay nimpurivanya matayya. \\
@@ -890,6 +942,20 @@ Satz in \cref{ex:ayr1} zusammenzufassen.
 	\trans \wdef{Ein Fuchs kam damals im Sommer regelmäßig in den Weinberg.}
 \end{exe}
 
+Die Formulierung \fw{unser Fuchs} in der Vorlage auf \Lhengko{} ist dem
+Genussystem des XXX von Paul geschuldet, das Substantive pragmatisch als für
+die Sprecherinstanz zur Gruppe oder nicht zur Gruppe gehörig markiert. Henrik
+hatte sich dazu entschieden, die Assoziativ-Markierung in diesem Kontext mit
+\fw{zʲaô ɻy̌ˠ.lʲœ̃} \wdef{unser Fuchs} zu übersetzen und es als Ansprache der
+Erzählerinstanz an den Leser verstanden. Dass in der Fabel daher immer von
+\fw{unserem Fuchs} die Rede ist, habe ich als stilistische Eigenheit aufgefasst
+und konventioneller mit \xayr{runj}{runay}{Fuchs} ohne Possessivpronomen
+\xayr{nn}{nana}{unser} übersetzt.
+
+Satz \cref{ex:lheng5} in der Vorlage greift nachfolgend noch einmal auf, dass
+der Fuchs die Trauben bemerkt, als er in den Weinberg gelaufen kommt. Diese
+Redundanz habe ich in \cref{ex:ayr3} getilgt.
+
 \begin{exe}
 \ex \label{ex:ayr3}
 	\gll Kengyong, ya yomayo ling nusan betayjang-aril vilay. \\
@@ -897,6 +963,8 @@ Satz in \cref{ex:ayr1} zusammenzufassen.
 	\trans \wdef{Er bemerkte, dass sich oben an den Reben einige reife
 		Trauben befanden.}
 \end{exe}
+
+...
 
 \begin{exe}
 \ex \label{ex:ayr4}
@@ -1225,13 +1293,13 @@ Modussuf"|fixe, die einen vorangehenden Vokal typischerweise tilgen.
 
 \subsubsection{Syntax}
 
-Ayeri (\mbox{\ayr{Ayeri}}) verwendet Verberststellung (\textsc{vso}) als
+Ayeri (\mbox{\ayr{Ayeri}}) verwendet Verberststellung (VSO) als
 unmarkierte Konstituentenfolge. Da die Sprache eine Variante des
-\textsc{vo}-Typus darstellt, folgen Modifikatoren ihren Köpfen in der Regel.
+VO-Typus darstellt, folgen Modifikatoren ihren Köpfen in der Regel.
 Dies bedeutet, dass Adjektive, Possessiva und Relativsätze ihrem Nomen folgen;
 genauso folgen Possessoren auch dem Possessum.
 
-% Darüber hinaus ist Ayeri im Grunde eine Akkusativsprache (\textsc{s~=~a~≠~o}).
+% Darüber hinaus ist Ayeri im Grunde eine Akkusativsprache (S~=~A~≠~O).
 % \q{Echte} Passivsubjekte behalten allerdings ihre Patiensmarkierung, während
 % das Agensargument dann fehlt. In diesen Fällen von Ergativität zu sprechen,
 % würde die Beschreibung nur unnötig verkomplizieren. Obwohl Belebtheit sogar
@@ -1247,8 +1315,8 @@ genauso folgen Possessoren auch dem Possessum.
 % Fall nicht herabgestuft.
 
 % In ditransitiven Sätzen wird der Donor als Agens markiert
-% (\textsc{s~=~a~=~d}), das Thema als Patiens (\textsc{o~=~t}). Der Rezipient
-% (\textsc{r}) erhält Dativmarkierung. Prädikative \textsc{np}s werden
+% (S~=~A~=~D), das Thema als Patiens (O~=~T). Der Rezipient
+% (R) erhält Dativmarkierung. Prädikative NPs werden
 % abweichend als Patiens markiert, um Subjekt (Agens) und Prädikat
 % (\q{Patiens}) zu unterscheiden, da Ayeri keine overte Kopula besitzt und
 % doppelte Kernrollenmarkierung im gleichen Satz vermeidet.
@@ -1263,29 +1331,29 @@ Satzes gestellt werden.
 % Relativsätzen. Relativsätze brauchen allerdings immer ein Antezedens, freie
 % Relativsätze sind also nicht erlaubt. Relativsätze sind im Grunde eigenständige
 % Sätze, insofern die Relativpartikel \rayr{si}{si} die Funktion einer
-% Subjunktion hat, die ein komplexes Attribut an eine \textsc{np} bindet oder mit
+% Subjunktion hat, die ein komplexes Attribut an eine NP bindet oder mit
 % deren Hilfe Attribute in ihrem Bezug desambiguiert werden können. Relativsätze
 % haben daher normalerweise einen internen Kopf. Wenn ein Relativsatz einen
 % Kopulasatz enthält, kann dessen Subjekt ausfallen.
 
-% Komplemente von \textsc{np}s werden zur Vermeidung von Ambiguität in der
-% Modifikationsrelation rechtsversetzt, wenn die \textsc{np} ein Adjunkt enthält,
+% Komplemente von NPs werden zur Vermeidung von Ambiguität in der
+% Modifikationsrelation rechtsversetzt, wenn die NP ein Adjunkt enthält,
 % welches das Kopfnomen modifiziert.
 
 \subsubsection{Morphosyntax}
 \label{subsubsec:morphsyn}
 
 Die Topik wird durch ein Proklitikum am Verb markiert, das im Grunde der
-Kasusendung der Topik-\textsc{np} entspricht, während die Topik-\textsc{np}
+Kasusendung der Topik-NP entspricht, während die Topik-NP
 selbst nullmarkiert ist. Es handelt sich bei Ayeri also um eine sogenannte
 \fw{trigger conlang}. Es bestehen nahezu keine Restriktionen für die Wahl der
-Topik-\textsc{np}. Pronomen können in gleicher Weise topikalisiert werden.
+Topik-NP. Pronomen können in gleicher Weise topikalisiert werden.
 Topikmarkierung ist obligatorisch in transitiven Sätzen, während intransitive
 Sätze normalerweise keine Topik markieren. Auch imperative Verben tragen
 normalerweise keine Topikmarkierung.
 
 % Die Relativpartikel \rayr{si}{si} zeigt optional Kasuskongruenz mit der
-% \textsc{np}, welche der Relativsatz modifiziert. Dies geschieht vor allem dann,
+% NP, welche der Relativsatz modifiziert. Dies geschieht vor allem dann,
 % wenn der Relativsatz rechtsversetzt ist.
 
 Neben den verschiedenen Pronomenarten ist die einzige Kongruenz zeigende
@@ -1298,7 +1366,7 @@ syntaktischem Subjekt.
 \subsubsection{Morphologie}
 
 Ayeri ist eine agglutinierende Sprache und dabei sehr regelmäßig. Entsprechend
-dem \textsc{vo}-Typus werden hauptsächlich Suf"|fixe zur Flexion benutzt.
+dem VO-Typus werden hauptsächlich Suf"|fixe zur Flexion benutzt.
 Darüber hinaus besitzt die Sprache etliche Klitika, die sich insbesondere bei
 finiten Verben in einem Klitikcluster vor dem Verb zeigen.
 
@@ -1399,7 +1467,7 @@ Kasus
 \Ins
 	& \multicolumn{2}{c}{-(e)ri}
 	& \multicolumn{2}{c}{ri}
-	& Instrument, Helfer; Komplement einer \textsc{np}
+	& Instrument, Helfer; Komplement einer NP
 	\\
 
 \bottomrule
@@ -1407,7 +1475,7 @@ Kasus
 \label{tab:decl}
 \end{table}
 
-Topikalisierte \textsc{np}s sind nullmarkiert, stattdessen wird der
+Topikalisierte NPs sind nullmarkiert, stattdessen wird der
 entsprechende Kasus mit der in \cref{tab:decl} angegebenen klitischen Form
 links vom Verb markiert. Eigennamen verwenden ebenfalls die klitische Form bei
 der Kasusmarkierung, zum Beispiel \xayr{n bliinF}{na Balīn}{von Berlin}.
@@ -1574,7 +1642,7 @@ Kasusendung, die dieselbe wie bei der Deklination der Nomina ist
 % zweite Kasusendung, die seine grammatische Funktion als Konstituente innerhalb
 % des Relativsatzes markiert. Wenn die Relativpartikel keine primäre
 % Kasuskongruenz aufweist (z.\,B. \rayr{sin}{sina} mit Bezug auf eine
-% Genitiv-\textsc{np}) und so die sekundäre Endung an das einfache \rayr{si}{si}
+% Genitiv-NP) und so die sekundäre Endung an das einfache \rayr{si}{si}
 % tritt, wird der Vokal der sekundären Endung zur Desambiguierung gedehnt, zum
 % Beispiel \xayr{sinaa}{sinā}{von welchem}. Sekundär markierte Relativa können
 % jedoch innerhalb des Relativsatzes nicht selbst als Topiken fungieren, insofern
@@ -1591,7 +1659,7 @@ Personenendungen der regulären Kongruenz mit dem Subjekt und die
 topikalisierten pronominalen Klitika sind homophon, zum Beispiel korrespondiert
 die Vollform \xayr{/yaaNF}{-yāng}{er} mit der topikalisierten Form
 \rayr{ANF—/y}{ang \dots\ -ya}. \rayr{/y}{-ya} ist gleichzeitig auch die
-Kongruenzendung für den Bezug auf eine Subjekt-\textsc{np} im Singular
+Kongruenzendung für den Bezug auf eine Subjekt-NP im Singular
 Maskulinum.
 
 Finite Verben weisen darüber hinaus optional Flexion für Tempus\label{tempus}
@@ -1651,6 +1719,7 @@ ein Adjektiv oder eine Präposition (adverbiale Quantoren) angehängt werden.
 % Der Text enthält mehrere solcher Partikeln, zum Beispiel
 % \xayr{/kj}{-kay}{wenig, etwas, ein bisschen}.
 
+\label{numeralia}
 Numeralia sind duodezimal. Größere Potenzen werden mit dem Derivationssuffix
 \rayr{/nNF}{-nang} gebildet: \xayr{menNF}{menang}{100} (zu
 \xayr{menF}{men}{eins}), \xayr{smNF}{samang}{1\,00\,00} (zu
