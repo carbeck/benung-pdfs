@@ -123,6 +123,10 @@
     {\setunit*{\addspace}%
      \usebibmacro{urldate}}}
 
+% AVMs
+\usepackage{langsci-avm}
+\avmsetup{values=\normalfont}
+
 % Date etc.
 \usepackage[
 	useregional=numeric,
@@ -230,6 +234,7 @@
 
 % Trees
 \usepackage[linguistics]{forest}
+\usetikzlibrary{tikzmark, positioning}
 
 % Underline, strikeout
 \usepackage{soul}
@@ -1094,21 +1099,70 @@ im Prinzip transitiv.
 \begin{exe}
 \ex \label{ex:ayr10}
 	\gll Ang tunyo māy konjam rey. \\
-		\AgtT= verlangen=\Tsg.\N.\Top{} \Ints{} essen-\Ptcp{}
+		\AgtT= sich.sehnen=\Tsg.\N.\Top{} \Ints{} essen-\Ptcp{}
 		\Tpl.\Inan.\Parg \\
 	\trans \wdef{Er sehnte sich so, sie zu essen.}
 \end{exe}
 
-Im Sinne der \fw{Lexical-functional Grammar} könnte als erweiterte
-Argumentstruktur vielleicht
-\wdef{verlangen ⟨(↑~\leipzigfont{subj})~(↑~\leipzigfont{xcomp})⟩
-(↑~\leipzigfont{xcomp~obj})} angenommen werden, weil das Objekt des
-Komplementsatzes (\leipzigfont{xcomp obj}) ein Objekt des Matrixprädikats wird,
-allerdings nicht notwendigerweise ein semantisch kompatibles. Daher habe ich es
-hier als externes Argument aufgefasst \autocite[Auflistung hinter den
-Spitzklammern, welche die dem Verb eigenen Argumente kennzeichnen;
-vgl.][304--308, 319--323]{bresnanetal2016}. Meine Annahme ist also, dass
-gleichzeitig Subjektkontrolle und Objektraising vorliegen.
+Im Sinne der \fw{Lexical-functional Grammar} könnte vielleicht die funktionale
+Struktur in \cref{fig:ayr10_fstruct} angenommen werden, nach welcher das Objekt
+(\leipzigfont{obj}) des Komplementsatzes (\leipzigfont{xcomp}) in \textit{g}
+ein Objekt des Prädikators (\leipzigfont{pred}) in \textit{f} wird, allerdings
+ein externes (Auf"|listung hinter den Spitzklammern), weil es kein semantisch
+eigenes Argument des Verbs in \textit{f} ist \autocite[vgl.][304--308,
+319--323]{bresnanetal2016}. Meine Annahme ist also, dass gleichzeitig
+Subjektkontrolle und Objektraising vorliegen.
+
+\begin{figure}
+	\avm{
+		\textit{f}:[
+			pred	& \wdef{sich-sehnen <(↑~subj) (↑~xcomp)> (↑~obj)}\smallskip\\
+			adj		& \{
+				[
+					pred	& \wdef{so}
+				]
+			\}\smallskip\\
+			%
+			top	& [
+				pred	& \textit{pro}\\
+				pers	& \Third\\
+				anim	& $+$\\
+				gend	& \N\\
+				num		& \Sg\\
+				case	& \Aarg
+			]\tikzmark{upst_top}\smallskip\\
+			%
+			subj	& \tikzmark{upst_subj}\\
+			%
+			obj		& [
+				pred	& \textit{pro}\\
+				pers	& \Third\\
+				anim	& $-$\\
+				num		& \Pl\\
+				case	& \Parg
+			]\tikzmark{upst_obj}\smallskip\\
+			%
+			xcomp	& \textit{g}:[
+				pred	& \wdef{essen <(↑~subj) (↑~obj)>}\\
+				subj	& \tikzmark{dnst_subj}\\
+				obj		& \tikzmark{dnst_obj}\\
+			]\\
+		]
+	}
+	\begin{tikzpicture}[remember picture, overlay]
+		\draw [rounded corners=1ex, black!50] ([yshift=.5ex]{pic cs:upst_top})
+			-- ++(east:11em) |- ([yshift=.5ex]{pic cs:upst_subj});
+		%
+		\draw [rounded corners=1ex, black!50] ([yshift=.5ex]{pic cs:upst_subj})
+			-- ++(east:16em) |- ([yshift=.5ex]{pic cs:dnst_subj});
+		%
+		\draw [rounded corners=1ex, black!50] ([yshift=.5ex]{pic cs:upst_obj})
+			-- ++(east:10.25em) |- ([yshift=.5ex]{pic cs:dnst_obj});
+	\end{tikzpicture}
+	\caption{Funktionale Struktur des Satzes \fw{Ang tunyo māy konjam rey}
+		\wdef{Er sehnte sich so, sie zu essen}}
+	\label{fig:ayr10_fstruct}
+\end{figure}
 
 \begin{exe}
 \ex \label{ex:ayr11}
