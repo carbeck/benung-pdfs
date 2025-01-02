@@ -86,7 +86,7 @@
 \setmainfont[
 	Ligatures=TeX,
 	Numbers={OldStyle,Proportional},
-]{Junicode VF}
+]{Junicode}
 
 \setsansfont[
 	Ligatures=TeX,
@@ -124,7 +124,7 @@
      \usebibmacro{urldate}}}
 
 % AVMs
-\usepackage{langsci-avm}
+\usepackage[lfg]{langsci-avm}
 \avmsetup{values=\normalfont}
 
 % Date etc.
@@ -585,10 +585,10 @@ Komposita \fw{ⁿχî˞.ʂʷǒ} \wdef{Weinberg} und \fw{ⁿχî˞.sʲɛʔ}
 %
 	\footnote{Dies passt perfekt zu
 	\citeauthor{greenberg1966}s~(\citeyear[77--79, 85--86]{greenberg1966})
-	Universalien 4 (SOV korreliert Postpositionen) und 18 (vorangestellte
+	Universalien 4 (SOV korreliert mit Postpositionen) und 18 (vorangestellte
 	Adjektive korrelieren mit vorangestellten Demonstrativa und Numeralia), sowie
 	zum Umkehrschluss aus Universalie~5, demzufolge vorangestellte Genitive mit
-	vorangestellten Adjektiven korrelieren müssten.}
+	vorangestellten Adjektiven korrelieren sollten.}
 
 Ein weiteres auf"|fälliges Merkmal des \Lhengko{} sind Klassifizierer, die mit
 Mengenangaben und Kardinalzahlen auftreten, wie bei \fw{ˀɬwʉ̌ zjɔ̃ ɣʉ χî˞} in
@@ -1142,7 +1142,7 @@ Subjektkontrolle und Objektraising vorliegen.
 
 \begin{figure}
 	\avm{
-		\textit{f}:[
+		\id{f}{[
 			pred	& \wdef{sich-sehnen <(↑~subj) (↑~xcomp)> (↑~obj)}\smallskip\\
 			adj		& \{
 				[
@@ -1169,22 +1169,22 @@ Subjektkontrolle und Objektraising vorliegen.
 				case	& \Parg
 			]\tikzmark{upst_obj}\smallskip\\
 			%
-			xcomp	& \textit{g}:[
+			xcomp	& \id{g}{[
 				pred	& \wdef{essen <(↑~subj) (↑~obj)>}\\
 				subj	& \tikzmark{dnst_subj}\\
 				obj		& \tikzmark{dnst_obj}\\
-			]\\
-		]
+			]}\\
+		]}
 	}
 	\begin{tikzpicture}[remember picture, overlay]
 		\draw [rounded corners=1ex, black!50] ([yshift=.5ex]{pic cs:upst_top})
-			-- ++(east:11.05em) |- ([yshift=.5ex]{pic cs:upst_subj});
+			-- ++(east:10.05em) |- ([yshift=.5ex]{pic cs:upst_subj});
 		%
 		\draw [rounded corners=1ex, black!50] ([yshift=.5ex]{pic cs:upst_subj})
-			-- ++(east:16em) |- ([yshift=.5ex]{pic cs:dnst_subj});
+			-- ++(east:15em) |- ([yshift=.5ex]{pic cs:dnst_subj});
 		%
 		\draw [rounded corners=1ex, black!50] ([yshift=.5ex]{pic cs:upst_obj})
-			-- ++(east:10.25em) |- ([yshift=.5ex]{pic cs:dnst_obj});
+			-- ++(east:9.25em) |- ([yshift=.5ex]{pic cs:dnst_obj});
 	\end{tikzpicture}
 	\caption{Angenommene funktionale Struktur des Satzes \fw{Ang tunyo māy konjam
 		rey} \wdef{Er sehnte sich so, sie zu essen}}
@@ -1279,10 +1279,8 @@ unbekannten Sprache einzuarbeiten und diesen zu analysieren. \Lhengko\ hat die
 Glossierung des Texts aufgrund der sehr agglutinierenden Morphologie recht
 einfach gemacht, trotz der phonologischen Tücken bezüglich der regressiven
 Ausbreitung von Anlautmerkmalen und der sehr komplexen Silbenstruktur.
-Schwierig war es allerdings teilweise, die Bezüge aus dem Text herauszulesen,
-weil Verben sehr häufig keine overte Personenmarkierung besitzen. Überraschend
-war, dass dieses Mal zur Übersetzung keine Wortstämme neu gebildet oder alte in
-ihrer Bedeutung erweitert werden mussten.
+Überraschend war, dass dieses Mal zur Übersetzung keine Wortstämme neu gebildet
+oder alte in ihrer Bedeutung erweitert werden mussten.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
